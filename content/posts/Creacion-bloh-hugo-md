@@ -67,6 +67,8 @@ Para ejecutar nuestra pagina de forma local, ejecutamos:
 hugo server -D
 ~~~
 
+### Despliegue Netlify ###
+
 Despues de comprobar en local que la plantilla esta bien, pasaremos a despleguarlo en Netlify, para ello , usaremos github. En nuestra cuenta de github nos crearemos un repositorio, en mi caso lo llame igual que mi proyecto hugo, myblog.
 
 Una vez creado el repositorio que alojara nuestro blog en github, lo vincularemos al directorio de nuestro proyecto, para ello en el directorio de nuestro blog ejecutamos los siguientes comandos:
