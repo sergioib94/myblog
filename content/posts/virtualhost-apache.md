@@ -92,6 +92,6 @@ Esto es todo por parte del servidor web, ahora solo quedara modificar el fichero
 
 ### **Prueba de funcionamiento** ###
 
-![iesgn.org](../static/virtualhosting/iesgn.png)
+![iesgn.org](static/virtualhosting/iesgn.png)
 
-![departamentosgn.org](../static/virtualhosting/depart.png)
+![departamentosgn.org](static/virtualhosting/depart.png)
