@@ -6,7 +6,19 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Mar 2021 16:19:25 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Mar 2021 16:43:41 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Servidor Web Nginx</title>
+      <link>https://sergioib.netlify.app/posts/servidor-web-nginx/</link>
+      <pubDate>Thu, 11 Mar 2021 16:43:41 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidor-web-nginx/</guid>
+      <description>Tarea 1: Crea una máquina del cloud con una red pública. Añade la clave pública del profesor a la máquina. Instala el servidor web nginx en la máquina. Modifica la página index.html que viene por defecto y accede a ella desde un navegador.
+  Entrega la ip flotante de la máquina para que el profesor pueda acceder a ella.
+  172.22.200.135
+ Entrega una captura de pantalla accediendo a ella.</description>
+    </item>
+    
     <item>
       <title>Configuracion Cliente VPN con certificado x509</title>
       <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
