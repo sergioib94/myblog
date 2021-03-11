@@ -21,7 +21,7 @@ Si el T2 expira mientras el cliente está esperando en el estado renewing, el cl
 
 Al expirar T3 el cliente devuelve su ip y deja de usarla en la red, pero el cliente no necesita esperar a que expire el tiempo de alquiler para dejar de usar la ip, también puede renunciar a ella. 
 
-### **Preparación de escenario**##
+### **Preparación de escenario** ###
 
 Crea un escenario usando Vagrant que defina las siguientes máquinas:
     • Servidor: Tiene dos tarjetas de red: una pública y una privada que se conectan a la red local.
@@ -30,7 +30,20 @@ Servidor dhcp
 
 El Vagrantfile empleado para la creacion del escenarios es el siguiente:
 
-
+~~~
+Vagrant.configure("2") do |config|
+  config.vm.define :nodo1 do |nodo1|
+      nodo1.vm.box = "debian/buster64"
+      nodo1.vm.hostname = "server"
+      nodo1.vm.network :public_network,:bridge=>"wlo1"
+      nodo1.vm.network :private_network, ip: "192.168.100.1/24", virtualbox__intnet: "Red1"
+  end
+  config.vm.define :nodo2 do |nodo2|
+      nodo2.vm.box = "debian/buster64"
+      nodo2.vm.hostname = "nodo1"
+      nodo2.vm.network :private_network, type: "dhcp", virtualbox__intnet: "Red1"
+  end
+~~~
 
 Instala un servidor dhcp en el ordenador “servidor” que de servicio a los ordenadores de red local, teniendo en cuenta que el tiempo de concesión sea 12 horas y que la red local tiene el direccionamiento 192.168.100.0/24.
 

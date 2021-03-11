@@ -51,7 +51,7 @@ Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en l
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          7 min read
+          8 min read
         </div>
       </div>
     </header>
@@ -68,13 +68,25 @@ Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en l
 <p>Cuando expira el T1, el cliente pasa a estado de renovación en el que negocia de nuevo con el servidor una nueva ip. En el caso de que el servidor por algún motivo no renueve la ip del cliente, este volverá al estado init en el que volverá a solicitar una nueva ip. En el caso de que el servidor si responda, recibirá el cliente un dhcpack con la ip, y la nueva duración.</p>
 <p>Si el T2 expira mientras el cliente está esperando en el estado renewing, el cliente pasará al estado rebinding en el que envía de nuevo un DHCPrequest a cualquier servidor, ya que por el servidor original no estaría disponible. Si un servidor contesta con un dhcpack, el cliente renueva su ip y sus temporizadores y pasa al estado bound.</p>
 <p>Al expirar T3 el cliente devuelve su ip y deja de usarla en la red, pero el cliente no necesita esperar a que expire el tiempo de alquiler para dejar de usar la ip, también puede renunciar a ella.</p>
-<h3 id="preparación-de-escenario"><strong>Preparación de escenario</strong>##</h3>
+<h3 id="preparación-de-escenario"><strong>Preparación de escenario</strong></h3>
 <p>Crea un escenario usando Vagrant que defina las siguientes máquinas:
 • Servidor: Tiene dos tarjetas de red: una pública y una privada que se conectan a la red local.
 • nodo_lan1: Un cliente conectado a la red local.
 Servidor dhcp</p>
 <p>El Vagrantfile empleado para la creacion del escenarios es el siguiente:</p>
-<p>Instala un servidor dhcp en el ordenador “servidor” que de servicio a los ordenadores de red local, teniendo en cuenta que el tiempo de concesión sea 12 horas y que la red local tiene el direccionamiento 192.168.100.0/24.</p>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+  config.vm.define :nodo1 do |nodo1|
+      nodo1.vm.box = &quot;debian/buster64&quot;
+      nodo1.vm.hostname = &quot;server&quot;
+      nodo1.vm.network :public_network,:bridge=&gt;&quot;wlo1&quot;
+      nodo1.vm.network :private_network, ip: &quot;192.168.100.1/24&quot;, virtualbox__intnet: &quot;Red1&quot;
+  end
+  config.vm.define :nodo2 do |nodo2|
+      nodo2.vm.box = &quot;debian/buster64&quot;
+      nodo2.vm.hostname = &quot;nodo1&quot;
+      nodo2.vm.network :private_network, type: &quot;dhcp&quot;, virtualbox__intnet: &quot;Red1&quot;
+  end
+</code></pre><p>Instala un servidor dhcp en el ordenador “servidor” que de servicio a los ordenadores de red local, teniendo en cuenta que el tiempo de concesión sea 12 horas y que la red local tiene el direccionamiento 192.168.100.0/24.</p>
 <ul>
 <li>Tarea 3: Muestra el fichero de configuración del servidor, la lista de concesiones, la modificación en la configuración que has hecho en el cliente para que tome la configuración de forma automática y muestra la salida del comando &ldquo;ip address&rdquo;.</li>
 </ul>
