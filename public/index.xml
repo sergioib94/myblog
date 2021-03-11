@@ -6,7 +6,17 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Mar 2021 09:15:13 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Mar 2021 09:33:55 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Servidor DHCP Linux</title>
+      <link>https://sergioib.netlify.app/posts/servidor-dhcp-linux/</link>
+      <pubDate>Thu, 11 Mar 2021 09:33:55 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidor-dhcp-linux/</guid>
+      <description>Funcionamiento de un servidor DHCP El cliente al iniciarse se encuentra en estado init, sin saber sus parámetros ip en ese momento envía un mensaje DHCPDiscover a la dirección de broadcast para saber si algún servidor dhcp le puede ofrecer una ip. El cliente espera un tiempo entre 1 y 10 seg al enviar este dhcpdiscover para evitar posibles colisiones con otras peticiones de otros clientes.
+Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en la que recibira las dhcpoffer de los servidores dhcp.</description>
+    </item>
+    
     <item>
       <title>Cifrado Asimetrico Gpg Y Openssl</title>
       <link>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</link>
