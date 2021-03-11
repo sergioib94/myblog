@@ -3,10 +3,10 @@ title: "Creacion Blog Hugo"
 date: 2021-03-11T08:07:44+01:00
 ---
 
-Introducción
+### **Introducción** ##
 En este post se hablara de como ha sido creado este blog donde se van a ir metiendo varios trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR).
 
-Creación del blog
+### **Creación del blog** ###
 Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian10. Esta instalacion la podemos hacer de la siguiente forma:
 
 ~~~
@@ -64,7 +64,7 @@ Para ejecutar nuestra pagina de forma local, ejecutamos:
 hugo server -D
 ~~~
 
-### Despliegue Netlify ###
+### **Despliegue Netlify** ###
 
 Despues de comprobar en local que la plantilla esta bien, pasaremos a despleguarlo en Netlify, para ello , usaremos github. En nuestra cuenta de github nos crearemos un repositorio, en mi caso lo llame igual que mi proyecto hugo, myblog.
 

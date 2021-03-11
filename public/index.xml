@@ -6,7 +6,17 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Mar 2021 08:07:44 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Mar 2021 09:15:13 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cifrado Asimetrico Gpg Y Openssl</title>
+      <link>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</link>
+      <pubDate>Thu, 11 Mar 2021 09:15:13 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</guid>
+      <description>Tarea 1: Generación de claves  Genera un par de claves (pública y privada). ¿En que directorio se guarda las claves de un usuario?  gpg --gen-key Se nos piden algunos datos como nombre y apellidos, correo y contraseña y una vez introducida la información, se ve que la clave se nos crea en un directorio oculto .gnupg
+ gpg: clave CFCF1D130D5A52C5 marcada como de confianza absoluta gpg: creado el directorio &#39;/home/sergioib/.</description>
+    </item>
+    
     <item>
       <title>Creacion Blog Hugo</title>
       <link>https://sergioib.netlify.app/posts/creacion-blog-hugo/</link>
