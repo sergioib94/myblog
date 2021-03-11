@@ -1,5 +1,5 @@
 ---
-title: "Configuracio Clientevpn"
+title: "Configuracion Cliente VPN con certificado x509"
 date: 2021-03-11T16:19:25+01:00
 ---
 
@@ -7,19 +7,19 @@ date: 2021-03-11T16:19:25+01:00
 
 Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
 
-<pre>
+~~~
 root@debian-sergio:~# openssl genrsa 4096 > /etc/ssl/private/debian-sergio.ibanez.key
 Generating RSA private key, 4096 bit long modulus (2 primes)
 ........................++++
 .....................................................................................................................................................................................................................................................................................................................................................................................................................++++
 e is 65537 (0x010001)
-</pre>
+~~~
 
 * Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona
 
 Creamos el fichero csr para que sea firmado con el siguiente comando y rellenamos los parámetros necesarios que se nos piden: Country Name,  State or Province Name (full name), Locality Name, Organization Name, Organizational Unit Name y Common Name (e.g. server FQDN or YOUR name), el resto de los parámetros son opcionales.
 
-<pre>
+~~~
 root@debian-sergio:~# openssl req -new -key /etc/ssl/private/debian-sergio.ibanez.key -out /root/debian-sergio.ibanez.csr
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
@@ -40,7 +40,7 @@ Please enter the following 'extra' attributes
 to be sent with your certificate request
 A challenge password []:
 An optional company name []:
-</pre>
+~~~
 
 * Descarga el certificado firmado cuando esté disponible
 
@@ -54,7 +54,7 @@ Una vez instalado en el directorio /etc/openvp, se creara un fichero .conf (en m
 
 Configuración del fichero .conf:
 
-<pre>
+~~~
 dev tun
 remote sputnik.gonzalonazareno.org
 ifconfig 172.23.0.0 255.255.255.0
@@ -69,17 +69,17 @@ comp-lzo
 keepalive 10 60
 log /var/log/openvpn-sputnik.log
 verb 1
-</pre>
+~~~
 
 En el caso del fichero.key, le deberemos de cambiar los permisos con chmod y ponerle 600 
 
 Una vez configurado el fichero, reiniciamos el servicio openvpn para comprobar que se crea el túnel y que se ha añadido la nueva ruta en encaminamiento.
 
-<pre>
+~~~
 systemctl restart openvpn.service
-</pre>
+~~~
 
-<pre>
+~~~
 sergioib@debian-sergio:~$ ip r
 default via 192.168.1.1 dev wlo1 proto dhcp metric 600 
 169.254.0.0/16 dev wlo1 scope link metric 1000 
@@ -87,11 +87,11 @@ default via 192.168.1.1 dev wlo1 proto dhcp metric 600
 172.23.0.1 via 172.23.0.65 dev tun0 
 172.23.0.65 dev tun0 proto kernel scope link src 172.23.0.66 
 192.168.1.0/24 dev wlo1 proto kernel scope link src 192.168.1.74 metric 600 
-</pre>
+~~~
 
 Comprobamos también el contenido del log en /var/log:
 
-<pre>
+~~~
 root@debian-sergio:/var/log# cat openvpn-sputnik.log 
 Mon Nov  2 11:54:25 2020 OpenVPN 2.4.7 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Feb 20 2019
 Mon Nov  2 11:54:25 2020 library versions: OpenSSL 1.1.1d  10 Sep 2019, LZO 2.10
@@ -107,13 +107,13 @@ Mon Nov  2 11:54:28 2020 /sbin/ip link set dev tun0 up mtu 1500
 Mon Nov  2 11:54:28 2020 /sbin/ip addr add dev tun0 local 172.23.0.66 peer 172.23.0.65
 Mon Nov  2 11:54:28 2020 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
 Mon Nov  2 11:54:28 2020 Initialization Sequence Completed
-</pre>
+~~~
 
 * Cuando hayas establecido la conexión VPN tendrás acceso a la red 172.22.0.0/16 a través de un túnel SSL. Compruébalo haciendo ping a 172.22.0.1
 
 Prueba de funcionamiento con ping:
 
-<pre>
+~~~
 sergioib@debian-sergio:~$ ping 172.22.0.1
 PING 172.22.0.1 (172.22.0.1) 56(84) bytes of data.
 64 bytes from 172.22.0.1: icmp_seq=1 ttl=63 time=80.6 ms
@@ -128,6 +128,6 @@ PING 172.22.0.1 (172.22.0.1) 56(84) bytes of data.
 --- 172.22.0.1 ping statistics ---
 8 packets transmitted, 8 received, 0% packet loss, time 17ms
 rtt min/avg/max/mdev = 72.873/85.504/151.959/25.347 ms
-</pre>
+~~~
 
 Comprobamos que funciona perfectamente.

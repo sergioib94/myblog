@@ -8,13 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 11 Mar 2021 16:19:25 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Configuracio Clientevpn</title>
+      <title>Configuracion Cliente VPN con certificado x509</title>
       <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
       <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/configuracio-clientevpn/</guid>
       <description>Genera una clave privada RSA 4096  Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
- Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona  Creamos el fichero csr para que sea firmado con el siguiente comando y rellenamos los parámetros necesarios que se nos piden: Country Name, State or Province Name (full name), Locality Name, Organization Name, Organizational Unit Name y Common Name (e.</description>
+root@debian-sergio:~# openssl genrsa 4096 &amp;gt; /etc/ssl/private/debian-sergio.ibanez.key Generating RSA private key, 4096 bit long modulus (2 primes) ........................++++ .....................................................................................................................................................................................................................................................................................................................................................................................................................++++ e is 65537 (0x010001)  Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona  Creamos el fichero csr para que sea firmado con el siguiente comando y rellenamos los parámetros necesarios que se nos piden: Country Name, State or Province Name (full name), Locality Name, Organization Name, Organizational Unit Name y Common Name (e.</description>
     </item>
     
     <item>
