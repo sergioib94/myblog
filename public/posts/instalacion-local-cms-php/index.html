@@ -13,12 +13,14 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Instalacion Local CMS Php"/>
-<meta name="twitter:description" content="Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile. Configuración del vagrantfile:
-	Vagrant.configure(&quot;2&quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &quot;debian/buster64&quot; nodo1.vm.hostname = &quot;server&quot; nodo1.vm.network :private_network, type: &quot;dhcp&quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh   Instala en esa maquina virtual toda la pila LAMP  Lo primero que haremos en la maquina sera ejecutar un update y un upgrade."/>
+<meta name="twitter:description" content="Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+Configuración del vagrantfile:
+Vagrant.configure(&quot;2&quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &quot;debian/buster64&quot; nodo1.vm.hostname = &quot;server&quot; nodo1.vm.network :private_network, type: &quot;dhcp&quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh"/>
 
     <meta property="og:title" content="Instalacion Local CMS Php" />
-<meta property="og:description" content="Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile. Configuración del vagrantfile:
-	Vagrant.configure(&quot;2&quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &quot;debian/buster64&quot; nodo1.vm.hostname = &quot;server&quot; nodo1.vm.network :private_network, type: &quot;dhcp&quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh   Instala en esa maquina virtual toda la pila LAMP  Lo primero que haremos en la maquina sera ejecutar un update y un upgrade." />
+<meta property="og:description" content="Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+Configuración del vagrantfile:
+Vagrant.configure(&quot;2&quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &quot;debian/buster64&quot; nodo1.vm.hostname = &quot;server&quot; nodo1.vm.network :private_network, type: &quot;dhcp&quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-local-cms-php/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-11T10:13:49&#43;01:00" />
@@ -70,16 +72,15 @@
 <ul>
 <li>Crea una instancia de vagrant basado en un box debian o ubuntu</li>
 </ul>
-<p>Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
-Configuración del vagrantfile:</p>
-<pre><code>	Vagrant.configure(&quot;2&quot;) do |config|
-  	config.vm.define :nodo1 do |nodo1|
-    		nodo1.vm.box = &quot;debian/buster64&quot;
-    		nodo1.vm.hostname = &quot;server&quot;
-    		nodo1.vm.network :private_network, type: &quot;dhcp&quot;
-  	end
-</code></pre><pre><code>Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos 	conectamos al servidor con vagrant ssh 
-</code></pre>
+<p>Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.</p>
+<p>Configuración del vagrantfile:</p>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+config.vm.define :nodo1 do |nodo1|
+    nodo1.vm.box = &quot;debian/buster64&quot;
+    nodo1.vm.hostname = &quot;server&quot;
+    nodo1.vm.network :private_network, type: &quot;dhcp&quot;
+end
+</code></pre><p>Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh</p>
 <ul>
 <li>Instala en esa maquina virtual toda la pila LAMP</li>
 </ul>

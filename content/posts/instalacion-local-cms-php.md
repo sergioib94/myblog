@@ -8,18 +8,19 @@ date: 2021-03-11T10:13:49+01:00
 *  Crea una instancia de vagrant basado en un box debian o ubuntu
 
 Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
-	Configuración del vagrantfile:
+	
+Configuración del vagrantfile:
 
 ~~~
-	Vagrant.configure("2") do |config|
-  	config.vm.define :nodo1 do |nodo1|
-    		nodo1.vm.box = "debian/buster64"
-    		nodo1.vm.hostname = "server"
-    		nodo1.vm.network :private_network, type: "dhcp"
-  	end
+Vagrant.configure("2") do |config|
+config.vm.define :nodo1 do |nodo1|
+    nodo1.vm.box = "debian/buster64"
+    nodo1.vm.hostname = "server"
+    nodo1.vm.network :private_network, type: "dhcp"
+end
 ~~~
 
-	Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos 	conectamos al servidor con vagrant ssh 
+Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh 
 
 * Instala en esa maquina virtual toda la pila LAMP
 
