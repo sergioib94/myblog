@@ -2,3 +2,12 @@ baseURL = "https://sergioib.netlify.app/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "m10c"
+
+author = "Sergio Ibañez"
+description = "Estudiante de 2º ASIR en Gonzalo Nazareno"
+
+[params]
+  [[params.social]]
+    icon = "github"
+    name = "Github"
+    url = "https://github.com/sergioib94"
