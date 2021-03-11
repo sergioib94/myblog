@@ -4,7 +4,7 @@ title = "My New Hugo Site"
 theme = "m10c"
 
 author = "Sergio Ibañez"
-description = "Estudiante de 2º ASIR en Gonzalo Nazareno"
+description = "Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes"
 
 [params]
   [[params.social]]
