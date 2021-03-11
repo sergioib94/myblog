@@ -46,7 +46,7 @@ Creación del enlace simbólico
 vagrant@nodo1:/srv/mapeo$ sudo a2ensite mapeo.conf
 ~~~
 
-h3. *Tarea 1: Cuando se entre a la dirección www.mapeo.com se redireccionará automáticamente a www.mapeo.com/principal, donde se mostrará el mensaje de bienvenida.*
+* Tarea 1: Cuando se entre a la dirección www.mapeo.com se redireccionará automáticamente a www.mapeo.com/principal, donde se mostrará el mensaje de bienvenida.
 
 Para hacer la redirección lo primero será crear el directorio principal en /srv/mapeo y dentro del directorio principal un pequeño index.html con el mensaje de bienvenida. Una vez hecho esto en el fichero mapeo.conf se tendrá que añadir la siguiente linea para que la redirección funcione.
 
@@ -62,12 +62,12 @@ Con la linea anterior se indicara una redirección permanente (301) a la ruta /p
 
 Options: Determina para que sirven las siguientes opciones de funcionamiento:
 
-        ◦ All → Todas las opciones salvo multiviews
-        ◦ FollowSymLinks → Se pueden seguir los enlaces simbólicos.
-        ◦ Indexes → En el caso de acceder a un directorio y no encontrar un index.html, se mostrara la lista de ficheros del directorio.
-        ◦ MultiViews → Dependiendo del usuario que acceda al sitio web, se muestra un contenido u otro, como por ejemplo el idioma.
-        ◦ SymLinksOwnerMatch → Se pueden seguir los enlaces simbólicos siempre y cuando el destino y el enlace simbólico sean del mismo propietario.
-        ◦ ExecCGI → Permite usar script CGI.
+All → Todas las opciones salvo multiviews
+FollowSymLinks → Se pueden seguir los enlaces simbólicos.
+Indexes → En el caso de acceder a un directorio y no encontrar un index.html, se mostrara la lista de ficheros del directorio.
+MultiViews → Dependiendo del usuario que acceda al sitio web, se muestra un contenido u otro, como por ejemplo el idioma.
+SymLinksOwnerMatch → Se pueden seguir los enlaces simbólicos siempre y cuando el destino y el enlace simbólico sean del mismo propietario.
+ExecCGI → Permite usar script CGI.
 
 Determina como funciona si delante de las opciones pongo el signo + o -.
 

@@ -51,81 +51,81 @@ apt install php7.3
 Configuración en el servidor en drupal.conf:
 
 ~~~
-	<VirtualHost *:80>
-        	ServerAdmin webmaster@localhost
-        	DocumentRoot /srv/www/
-        	ServerName www.sergioib-drupal.org
-        	<Directory /srv/www/drupal>
-                	Options Indexes FollowSymLinks
-                	AllowOverride All
-             	Require all granted
-        	</Directory>
-        	ErrorLog ${APACHE_LOG_DIR}/error.log
-        	CustomLog ${APACHE_LOG_DIR}/access.log combined
-	</VirtualHost>
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /srv/www/
+    ServerName www.sergioib-drupal.org
+    <Directory /srv/www/drupal>
+        	Options Indexes FollowSymLinks
+        	AllowOverride All
+        	Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
 ~~~
 
-	Configuración en el cliente en etc/hosts:
+Configuración en el cliente en etc/hosts:
 
 ~~~
-	172.28.128.16   www.sergioib-drupal.org
+172.28.128.16   www.sergioib-drupal.org
 ~~~
 
 * Crea un usuario en la base de datos para trabajar con la base de datos donde se van a guardar los datos del CMS.
 
 ~~~
 vagrant@server:~$ sudo mysql -u root -p
-	Enter password: 
-	Welcome to the MariaDB monitor.  Commands end with ; or \g.
-	Your MariaDB connection id is 51
-	Server version: 10.3.25-MariaDB-0+deb10u1 Debian 10
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 51
+Server version: 10.3.25-MariaDB-0+deb10u1 Debian 10
 
-	Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
-	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-	MariaDB [(none)]> create database drupalbd;
-	Query OK, 1 row affected (0.001 sec)
+MariaDB [(none)]> create database drupalbd;
+Query OK, 1 row affected (0.001 sec)
 
-	MariaDB [(none)]> create user drupal;
-	Query OK, 0 rows affected (0.001 sec)
-	MariaDB [(none)]> grant all on drupalbd.* to drupal identified by 'drupal';
-	Query OK, 0 rows affected (0.001 sec)
+MariaDB [(none)]> create user drupal;
+Query OK, 0 rows affected (0.001 sec)
+MariaDB [(none)]> grant all on drupalbd.* to drupal identified by 'drupal';
+Query OK, 0 rows affected (0.001 sec)
 ~~~
 
 * Descarga la versión que te parezca más oportuna de Drupal y realiza la instalación.
 
 ~~~
-      wget https://www.drupal.org/download-latest/zip
+wget https://www.drupal.org/download-latest/zip
 ~~~
 
-      Una vez instalado, abrimos en un navegador la url de nuestro sitio para seguir con la instalacion en 6 pasos:
+Una vez instalado, abrimos en un navegador la url de nuestro sitio para seguir con la instalacion en 6 pasos:
 
-      El primer paso al elegir el idioma español, da error porque en la instalacion no se instalo la carpeta de idiomas, por lo que en el directorio /drupal/sites/default creamos el directorio /files/translations y en ese directorio translations descargamos el paquete del idioma español.
+El primer paso al elegir el idioma español, da error porque en la instalacion no se instalo la carpeta de idiomas, por lo que en el directorio /drupal/sites/default creamos el directorio /files/translations y en ese directorio translations descargamos el paquete del idioma español.
 
 ~~~
-      wget https://ftp.drupal.org/files/translations/all/drupal/drupal-8.9.7.es.po
+wget https://ftp.drupal.org/files/translations/all/drupal/drupal-8.9.7.es.po
 ~~~
 
-      En el segundo paso elegimos el perfil que vamos a tener, en este caso uno estándar.
+En el segundo paso elegimos el perfil que vamos a tener, en este caso uno estándar.
 
-      En el tercer paso ubo varios problemas con los requistos:
+En el tercer paso ubo varios problemas con los requistos:
 
-        ◦ Extensiones php
-            ▪ Solucion → sudo apt instal php-gd php-xml
+◦ Extensiones php
+    ▪ Solucion → sudo apt instal php-gd php-xml
 
-        ◦ Funcionalidad de bases de datos
-            ▪ Solucion → sudo apt install php7.3-pdo php7.3-mysqli
+◦ Funcionalidad de bases de datos
+    ▪ Solucion → sudo apt install php7.3-pdo php7.3-mysqli
 
-        ◦ Problemas de permisos /sites/default/files
-            ▪ Solución → sudo chmod a+w sites/default/files
+◦ Problemas de permisos /sites/default/files
+    ▪ Solución → sudo chmod a+w sites/default/files
 
-        ◦ Archivo de configuración
-            ▪ Solución:
-                • sudo cp sites/default/default.settings.php sites/default/settings.php
-                • sudo chmod a+w sites/default/settings.php
+◦ Archivo de configuración
+    ▪ Solución:
+        • sudo cp sites/default/default.settings.php sites/default/settings.php
+        • sudo chmod a+w sites/default/settings.php
 
-      En el cuarto introducimos los datos de nuestra base de datos, nombre de la base, usuario que la va a usar y contraseña. Después instalamos el sitio y lo configuramos.
+En el cuarto introducimos los datos de nuestra base de datos, nombre de la base, usuario que la va a usar y contraseña. Después instalamos el sitio y lo configuramos.
 
 * Realiza una configuración mínima de la aplicación (Cambia la plantilla, crea algún contenido, …)
 
@@ -137,7 +137,7 @@ Contenido →Añadir contenido →Elegir contenido a crear (en este caso un arti
 
 Ampliar → seleccionamos un modulo, en este caso el foro→ instalar, en mi caso como ejemplo instale el modulo forum.
 
-*Prueba de funcionamiento de Drupal 9 con las configuraciones ya realizadas*
+Prueba de funcionamiento de Drupal 9 con las configuraciones ya realizadas:
 
 !drupal.png!
 
@@ -181,17 +181,17 @@ Y creamos un usuario igual que en la tarea2:
 
 ~~~
 vagrant@server-bd:~$ sudo mysql -u root -p
-	Enter password: 
-	Welcome to the MariaDB monitor.  Commands end with ; or \g.
-	Your MariaDB connection id is 49
-	Server version: 10.3.25-MariaDB-0+deb10u1 Debian 10
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 49
+Server version: 10.3.25-MariaDB-0+deb10u1 Debian 10
 
-	Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
-	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-	MariaDB [(none)]> create user drupal identified by drupal;
-	Query OK, 0 rows affected (0.001 sec)
+MariaDB [(none)]> create user drupal identified by drupal;
+Query OK, 0 rows affected (0.001 sec)
 ~~~
 
 * Restaura la copia de seguridad en el nuevo servidor de base datos.
@@ -211,16 +211,16 @@ sudo apt purge mariadb-*
 Configuración de settings.php
 
 ~~~
-      $databases['default']['default'] = array (
-  	'database' => 'drupalbd',
-  	'username' => 'drupal',
-  	'password' => 'drupal',
-  	'prefix' => '',
-  	'host' => '192.168.100.20',
-  	'port' => '3306',
-  	'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  	'driver' => 'mysql',
-	);
+$databases['default']['default'] = array (
+'database' => 'drupalbd',
+'username' => 'drupal',
+'password' => 'drupal',
+'prefix' => '',
+'host' => '192.168.100.20',
+'port' => '3306',
+'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+'driver' => 'mysql',
+);
 ~~~
 
 ### **Instalación de otro CMS PHP** ###
@@ -246,15 +246,15 @@ sudo cp /etc/apache2/sites-available/drupal.conf /etc/apache2/sites-available/mo
 Configuración de moodle.conf:
 
 ~~~
-      <VirtualHost *:80>
-              ServerAdmin webmaster@localhost
-              DocumentRoot /srv/www/
-              ServerName www.sergioib-drupal.org
-              <Directory /srv/www/moodle>
-                      Options Indexes FollowSymLinks
-                      AllowOverride All
-                     Require all granted
-              </Directory>
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /srv/www/
+    ServerName www.sergioib-drupal.org
+    <Directory /srv/www/moodle>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+		</Directory>
 ~~~
 
 Instalación de la base de datos para moodle (en el servidor de base de datos): 

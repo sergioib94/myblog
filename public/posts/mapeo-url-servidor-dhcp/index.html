@@ -96,7 +96,9 @@ vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/
 &lt;/Directory&gt;
 </code></pre><p>Creación del enlace simbólico</p>
 <pre><code>vagrant@nodo1:/srv/mapeo$ sudo a2ensite mapeo.conf
-</code></pre><p>h3. <em>Tarea 1: Cuando se entre a la dirección <a href="http://www.mapeo.com">www.mapeo.com</a> se redireccionará automáticamente a <a href="http://www.mapeo.com/principal,">www.mapeo.com/principal,</a> donde se mostrará el mensaje de bienvenida.</em></p>
+</code></pre><ul>
+<li>Tarea 1: Cuando se entre a la dirección <a href="http://www.mapeo.com">www.mapeo.com</a> se redireccionará automáticamente a <a href="http://www.mapeo.com/principal,">www.mapeo.com/principal,</a> donde se mostrará el mensaje de bienvenida.</li>
+</ul>
 <p>Para hacer la redirección lo primero será crear el directorio principal en /srv/mapeo y dentro del directorio principal un pequeño index.html con el mensaje de bienvenida. Una vez hecho esto en el fichero mapeo.conf se tendrá que añadir la siguiente linea para que la redirección funcione.</p>
 <pre><code>RedirectMatch 301 ^/$ http://www.mapeo.com/principal/ 
 </code></pre><p>Con la linea anterior se indicara una redirección permanente (301) a la ruta /principal.</p>
@@ -105,13 +107,12 @@ vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/
 <li>Tarea 2: En el directorio principal no se permite ver la lista de los ficheros, no se permite que se siga los enlaces simbólicos y no se permite negociación de contenido. Muestra al profesor el funcionamiento. ¿Qué configuración tienes que poner?</li>
 </ul>
 <p>Options: Determina para que sirven las siguientes opciones de funcionamiento:</p>
-<pre><code>    ◦ All → Todas las opciones salvo multiviews
-    ◦ FollowSymLinks → Se pueden seguir los enlaces simbólicos.
-    ◦ Indexes → En el caso de acceder a un directorio y no encontrar un index.html, se mostrara la lista de ficheros del directorio.
-    ◦ MultiViews → Dependiendo del usuario que acceda al sitio web, se muestra un contenido u otro, como por ejemplo el idioma.
-    ◦ SymLinksOwnerMatch → Se pueden seguir los enlaces simbólicos siempre y cuando el destino y el enlace simbólico sean del mismo propietario.
-    ◦ ExecCGI → Permite usar script CGI.
-</code></pre>
+<p>All → Todas las opciones salvo multiviews
+FollowSymLinks → Se pueden seguir los enlaces simbólicos.
+Indexes → En el caso de acceder a un directorio y no encontrar un index.html, se mostrara la lista de ficheros del directorio.
+MultiViews → Dependiendo del usuario que acceda al sitio web, se muestra un contenido u otro, como por ejemplo el idioma.
+SymLinksOwnerMatch → Se pueden seguir los enlaces simbólicos siempre y cuando el destino y el enlace simbólico sean del mismo propietario.
+ExecCGI → Permite usar script CGI.</p>
 <p>Determina como funciona si delante de las opciones pongo el signo + o -.</p>
 <p>En el caso de usar “+” activamos la opcion y en el caso de usar “-”, la desactivamos. En este caso como se pide que en el directorio principal no se vea lista de ficheros, ni enlaces simbólicos ni negociación de contenido, la configuración seria la siguiente:</p>
 <pre><code>&lt;Directory /srv/mapeo/principal&gt;
