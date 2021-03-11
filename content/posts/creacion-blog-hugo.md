@@ -1,15 +1,13 @@
 ---
-title: "Creacion Blog con hugo y despliegue en Netlify"
-date: 2021-03-10T21:48:45+01:00
+title: "Creacion Blog Hugo"
+date: 2021-03-11T08:07:44+01:00
 draft: true
 ---
 
-### Introducción ###
-
+Introducción
 En este post se hablara de como ha sido creado este blog donde se van a ir metiendo varios trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR).
 
-### Creación del blog ###
-
+Creación del blog
 Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian10. Esta instalacion la podemos hacer de la siguiente forma:
 
 ~~~
@@ -45,7 +43,7 @@ Una vez en dentro de la carpeta, iniciamos git:
 git init
 ~~~
 
-Ahora ejecutaremos un git-clone y clonaremos el tema que hayamos elegido para el blog, en mi caso m10c. hay mucho mas [aqui](https://themes.gohugo.io/)
+Ahora ejecutaremos un git-clone y clonaremos el tema que hayamos elegido para el blog, en mi caso m10c. hay mucho mas aqui
 
 Una vez detengamos el tema en nuestro equipo lo configuramos en nustro fichero config.toml de la siguiente forma:
 
