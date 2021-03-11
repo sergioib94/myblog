@@ -42,7 +42,7 @@ Una vez en dentro de la carpeta, iniciamos git:
 git init
 ~~~
 
-Ahora ejecutaremos un git-clone y clonaremos el tema que hayamos elegido para el blog, en mi caso m10c. hay mucho mas aqui
+Ahora ejecutaremos un git-clone y clonaremos el tema que hayamos elegido para el blog, en mi caso m10c. hay mucho mas [aqui](https://themes.gohugo.io/tags/blog/)
 
 Una vez detengamos el tema en nuestro equipo lo configuramos en nustro fichero config.toml de la siguiente forma:
 
