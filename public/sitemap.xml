@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</loc>
-    <lastmod>2021-03-11T10:13:49+01:00</lastmod>
+    <loc>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</loc>
+    <lastmod>2021-03-11T16:00:38+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/</loc>
-    <lastmod>2021-03-11T10:13:49+01:00</lastmod>
+    <lastmod>2021-03-11T16:00:38+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/posts/</loc>
+    <lastmod>2021-03-11T16:00:38+01:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</loc>
     <lastmod>2021-03-11T10:13:49+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</loc>
