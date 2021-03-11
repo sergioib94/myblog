@@ -3,10 +3,10 @@ languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "m10c"
 
-author = "Sergio Ibañez"
-description = "Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes"
-
 [params]
+  author = "Sergio Ibañez"
+  description = "Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes"
+  
   [[params.social]]
     icon = "github"
     name = "Github"
