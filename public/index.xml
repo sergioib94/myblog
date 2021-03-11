@@ -13,7 +13,9 @@
       <pubDate>Thu, 11 Mar 2021 09:47:06 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/virtualhost-apache/</guid>
-      <description></description>
+      <description>Configuración de VirtualHosting Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
+sudo apt install apache2 Una vez descargado apache2, creamos los ficheros.conf que usaran tanto www.iesgn.org como www.departamentosgn.org para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf Modificaciones de iesgn.conf y departamentos.conf  iesgn.conf:  &amp;lt;VirtualHost *:80&amp;gt; ServerAdmin webmaster@localhost DocumentRoot /srv/www/iesgn ServerName www.</description>
     </item>
     
     <item>

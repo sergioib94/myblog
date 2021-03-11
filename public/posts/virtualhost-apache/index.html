@@ -13,10 +13,14 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Virtualhost Apache"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="Configuración de VirtualHosting Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
+sudo apt install apache2 Una vez descargado apache2, creamos los ficheros.conf que usaran tanto www.iesgn.org como www.departamentosgn.org para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf Modificaciones de iesgn.conf y departamentos.conf  iesgn.conf:  &lt;VirtualHost *:80&gt; ServerAdmin webmaster@localhost DocumentRoot /srv/www/iesgn ServerName www."/>
 
     <meta property="og:title" content="Virtualhost Apache" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Configuración de VirtualHosting Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
+sudo apt install apache2 Una vez descargado apache2, creamos los ficheros.conf que usaran tanto www.iesgn.org como www.departamentosgn.org para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf Modificaciones de iesgn.conf y departamentos.conf  iesgn.conf:  &lt;VirtualHost *:80&gt; ServerAdmin webmaster@localhost DocumentRoot /srv/www/iesgn ServerName www." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/virtualhost-apache/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-11T09:47:06&#43;01:00" />
@@ -49,12 +53,69 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          0 min read
+          2 min read
         </div>
       </div>
     </header>
     <div class="post-content">
-      
+      <h3 id="configuración-de-virtualhosting"><strong>Configuración de VirtualHosting</strong></h3>
+<p>Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.</p>
+<pre><code>sudo apt install apache2
+</code></pre><p>Una vez descargado apache2, creamos los ficheros.conf que usaran tanto <a href="http://www.iesgn.org">www.iesgn.org</a> como <a href="http://www.departamentosgn.org">www.departamentosgn.org</a> para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:</p>
+<pre><code>vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf
+</code></pre><h3 id="modificaciones-de-iesgnconf-y-departamentosconf"><strong>Modificaciones de iesgn.conf y departamentos.conf</strong></h3>
+<ul>
+<li>iesgn.conf:</li>
+</ul>
+<pre><code>&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster@localhost
+        DocumentRoot /srv/www/iesgn
+        ServerName www.iesgn.org
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre><ul>
+<li>departamentos.conf:</li>
+</ul>
+<pre><code>&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster@localhost
+        DocumentRoot /srv/www/departamentos
+        ServerName www.departamentosgn.org
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre><p>Cuando estén configurados, creamos los directorios que alojaran los index de iesgn y departamentos en /srv/www.</p>
+<pre><code>vagrant@nodo1:/srv$ sudo mkdir -p www/iesgn
+vagrant@nodo1:/srv$ sudo mkdir -p www/departamentos
+</code></pre><p>Se configura el fichero apache2.conf para que srv sea accesible dejándolo de la siguiente forma:</p>
+<pre><code>&lt;Directory /srv/www/&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+&lt;/Directory&gt;
+</code></pre><p>Creamos los enlaces simbólicos de ficheros a apache2/sites-enabled usando para ello el comando a2ensite.</p>
+<pre><code>vagrant@nodo1:/srv/www/iesgn$ sudo a2ensite iesgn.conf
+Enabling site iesgn.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+
+vagrant@nodo1:/srv/www/departamentos$ sudo a2ensite departamentos.conf 
+Enabling site departamento.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+</code></pre><p>Creamos los index en los directorios creados anteriormente.</p>
+<pre><code>vagrant@nodo1:/srv$ sudo touch www/iesgn/index.html
+vagrant@nodo1:/srv$ sudo touch www/departamentos/index.html
+</code></pre><p>Una vez hecho todo reiniciamos el servicio y comprobamos que ambas paginas son accesibles desde nuestro navegador.</p>
+<pre><code>vagrant@nodo1:/srv/www/iesgn$ sudo systemctl restart apache2
+</code></pre><p>Esto es todo por parte del servidor web, ahora solo quedara modificar el fichero /etc/hosts de nuestra maquina para que se haga una conversion entre los nombres de los dominios y la ip de nuestro servidor de forma que seamos capaces de acceder a las paginas.</p>
+<h3 id="prueba-de-funcionamiento"><strong>Prueba de funcionamiento</strong></h3>
+<p><a href="http://www.iesgn.org">www.iesgn.org</a></p>
+<p>!iesgn.png!</p>
+<p><a href="http://www.departamentosgn.org">www.departamentosgn.org</a></p>
+<p>!depart.png!</p>
+
     </div>
     <div class="post-footer">
       
