@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Instalacion Local CMS Php // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Instalacion Local CMS Php"/>
+<meta name="twitter:description" content="Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile. Configuración del vagrantfile:
+	Vagrant.configure(&quot;2&quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &quot;debian/buster64&quot; nodo1.vm.hostname = &quot;server&quot; nodo1.vm.network :private_network, type: &quot;dhcp&quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh   Instala en esa maquina virtual toda la pila LAMP  Lo primero que haremos en la maquina sera ejecutar un update y un upgrade."/>
+
+    <meta property="og:title" content="Instalacion Local CMS Php" />
+<meta property="og:description" content="Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile. Configuración del vagrantfile:
+	Vagrant.configure(&quot;2&quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &quot;debian/buster64&quot; nodo1.vm.hostname = &quot;server&quot; nodo1.vm.network :private_network, type: &quot;dhcp&quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh   Instala en esa maquina virtual toda la pila LAMP  Lo primero que haremos en la maquina sera ejecutar un update y un upgrade." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-local-cms-php/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-11T10:13:49&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-11T10:13:49&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Instalacion Local CMS Php</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 11, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          8 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="instalación-de-un-servidor-lamp"><strong>Instalación de un servidor LAMP</strong></h3>
+<ul>
+<li>Crea una instancia de vagrant basado en un box debian o ubuntu</li>
+</ul>
+<p>Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+Configuración del vagrantfile:</p>
+<pre><code>	Vagrant.configure(&quot;2&quot;) do |config|
+  	config.vm.define :nodo1 do |nodo1|
+    		nodo1.vm.box = &quot;debian/buster64&quot;
+    		nodo1.vm.hostname = &quot;server&quot;
+    		nodo1.vm.network :private_network, type: &quot;dhcp&quot;
+  	end
+</code></pre><pre><code>Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos 	conectamos al servidor con vagrant ssh 
+</code></pre>
+<ul>
+<li>Instala en esa maquina virtual toda la pila LAMP</li>
+</ul>
+<p>Lo primero que haremos en la maquina sera ejecutar un update y un upgrade. Después de el update y el upgrade, empezaremos a descargar la pila LAMP (apache, mariadb y php):</p>
+<p>Apache:</p>
+<pre><code>sudo apt install apache2
+</code></pre><p>Mariadb:</p>
+<pre><code>apt install mariadb-server mariadb-client
+</code></pre><p>PHP:</p>
+<pre><code>apt install php7.3
+</code></pre><h3 id="instalación-de-drupal-en-el-servidor-local"><strong>Instalación de Drupal en el servidor local</strong></h3>
+<ul>
+<li>Configura el servidor web con virtual hosting para que el CMS sea accesible desde la dirección: <a href="http://www.nombrealumno-drupal.org">www.nombrealumno-drupal.org</a>.</li>
+</ul>
+<p>Configuración en el servidor en drupal.conf:</p>
+<pre><code>	&lt;VirtualHost *:80&gt;
+        	ServerAdmin webmaster@localhost
+        	DocumentRoot /srv/www/
+        	ServerName www.sergioib-drupal.org
+        	&lt;Directory /srv/www/drupal&gt;
+                	Options Indexes FollowSymLinks
+                	AllowOverride All
+             	Require all granted
+        	&lt;/Directory&gt;
+        	ErrorLog ${APACHE_LOG_DIR}/error.log
+        	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	&lt;/VirtualHost&gt;
+</code></pre><pre><code>Configuración en el cliente en etc/hosts:
+</code></pre>
+<pre><code>	172.28.128.16   www.sergioib-drupal.org
+</code></pre><ul>
+<li>Crea un usuario en la base de datos para trabajar con la base de datos donde se van a guardar los datos del CMS.</li>
+</ul>
+<pre><code>vagrant@server:~$ sudo mysql -u root -p
+	Enter password: 
+	Welcome to the MariaDB monitor.  Commands end with ; or \g.
+	Your MariaDB connection id is 51
+	Server version: 10.3.25-MariaDB-0+deb10u1 Debian 10
+
+	Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+	MariaDB [(none)]&gt; create database drupalbd;
+	Query OK, 1 row affected (0.001 sec)
+
+	MariaDB [(none)]&gt; create user drupal;
+	Query OK, 0 rows affected (0.001 sec)
+	MariaDB [(none)]&gt; grant all on drupalbd.* to drupal identified by 'drupal';
+	Query OK, 0 rows affected (0.001 sec)
+</code></pre><ul>
+<li>Descarga la versión que te parezca más oportuna de Drupal y realiza la instalación.</li>
+</ul>
+<pre><code>      wget https://www.drupal.org/download-latest/zip
+</code></pre><pre><code>  Una vez instalado, abrimos en un navegador la url de nuestro sitio para seguir con la instalacion en 6 pasos:
+
+  El primer paso al elegir el idioma español, da error porque en la instalacion no se instalo la carpeta de idiomas, por lo que en el directorio /drupal/sites/default creamos el directorio /files/translations y en ese directorio translations descargamos el paquete del idioma español.
+</code></pre>
+<pre><code>      wget https://ftp.drupal.org/files/translations/all/drupal/drupal-8.9.7.es.po
+</code></pre><pre><code>  En el segundo paso elegimos el perfil que vamos a tener, en este caso uno estándar.
+
+  En el tercer paso ubo varios problemas con los requistos:
+
+    ◦ Extensiones php
+        ▪ Solucion → sudo apt instal php-gd php-xml
+
+    ◦ Funcionalidad de bases de datos
+        ▪ Solucion → sudo apt install php7.3-pdo php7.3-mysqli
+
+    ◦ Problemas de permisos /sites/default/files
+        ▪ Solución → sudo chmod a+w sites/default/files
+
+    ◦ Archivo de configuración
+        ▪ Solución:
+            • sudo cp sites/default/default.settings.php sites/default/settings.php
+            • sudo chmod a+w sites/default/settings.php
+
+  En el cuarto introducimos los datos de nuestra base de datos, nombre de la base, usuario que la va a usar y contraseña. Después instalamos el sitio y lo configuramos.
+</code></pre>
+<ul>
+<li>Realiza una configuración mínima de la aplicación (Cambia la plantilla, crea algún contenido, …)</li>
+</ul>
+<p>Apariencia → instalar nuevo tema → pegar enlace donde este el tema → buscarlo y descargarlo</p>
+<p>Contenido →Añadir contenido →Elegir contenido a crear (en este caso un articulo) →Guardar los cambios</p>
+<ul>
+<li>Instala un módulo para añadir alguna funcionalidad a drupal.</li>
+</ul>
+<p>Ampliar → seleccionamos un modulo, en este caso el foro→ instalar, en mi caso como ejemplo instale el modulo forum.</p>
+<p><em>Prueba de funcionamiento de Drupal 9 con las configuraciones ya realizadas</em></p>
+<p>!drupal.png!</p>
+<h3 id="configuración-multimodo"><strong>Configuración multimodo</strong></h3>
+<ul>
+<li>Realiza copia de seguridad de la base de datos:</li>
+</ul>
+<pre><code>mysqldump --user=drupal --password=drupal drupalbd &gt; copiadrupalbd.sql
+</code></pre><ul>
+<li>Crea otra máquina con vagrant, conectada con una red interna a la anterior y configura un servidor de base de datos.</li>
+</ul>
+<p>Configuración de vagrantfile:</p>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+  config.vm.define :nodo1 do |nodo1|
+    nodo1.vm.box = &quot;debian/buster64&quot;
+    nodo1.vm.hostname = &quot;server&quot;
+    nodo1.vm.network :public_network,:bridge=&gt;&quot;wlo1&quot;
+    nodo1.vm.network :private_network, ip: &quot;192.168.100.10/24&quot;, virtualbox__intnet: &quot;Red_int&quot;
+  end
+
+  config.vm.define :nodo2 do |nodo2|
+    nodo2.vm.box = &quot;debian/buster64&quot;
+    nodo2.vm.hostname = &quot;server-bd&quot;
+    nodo2.vm.network :private_network, ip: &quot;192.168.100.20/24&quot;, virtualbox__intnet: &quot;Red_int&quot;
+  end
+</code></pre><ul>
+<li>Crea un usuario en la base de datos para trabajar con la nueva base de datos.</li>
+</ul>
+<p>Instalamos mariadb igual que en la tarea1:</p>
+<pre><code>sudo apt install mariadb-server mariadb-client
+</code></pre><p>Y creamos un usuario igual que en la tarea2:</p>
+<pre><code>vagrant@server-bd:~$ sudo mysql -u root -p
+	Enter password: 
+	Welcome to the MariaDB monitor.  Commands end with ; or \g.
+	Your MariaDB connection id is 49
+	Server version: 10.3.25-MariaDB-0+deb10u1 Debian 10
+
+	Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+	MariaDB [(none)]&gt; create user drupal identified by drupal;
+	Query OK, 0 rows affected (0.001 sec)
+</code></pre><ul>
+<li>Restaura la copia de seguridad en el nuevo servidor de base datos.</li>
+</ul>
+<pre><code>mysql -u drupal -pdrupal drupalbd &lt; copiadrupaldb.sql
+</code></pre><ul>
+<li>Desinstala el servidor de base de datos en el servidor principal.</li>
+</ul>
+<pre><code>sudo apt purge mariadb-*
+</code></pre><ul>
+<li>Realiza los cambios de configuración necesario en drupal para que la página funcione.</li>
+</ul>
+<p>Configuración de settings.php</p>
+<pre><code>      $databases['default']['default'] = array (
+  	'database' =&gt; 'drupalbd',
+  	'username' =&gt; 'drupal',
+  	'password' =&gt; 'drupal',
+  	'prefix' =&gt; '',
+  	'host' =&gt; '192.168.100.20',
+  	'port' =&gt; '3306',
+  	'namespace' =&gt; 'Drupal\\Core\\Database\\Driver\\mysql',
+  	'driver' =&gt; 'mysql',
+	);
+</code></pre><h3 id="instalación-de-otro-cms-php"><strong>Instalación de otro CMS PHP</strong></h3>
+<ul>
+<li>Elige otro CMS realizado en PHP y realiza la instalación en tu infraestructura.</li>
+</ul>
+<p>Instalación de moodle:</p>
+<pre><code>sudo wget https://es.osdn.net/projects/sfnet_moodle/downloads/Moodle/stable38/moodle-latest-38.zip
+</code></pre><p>En este caso no se ha podido descargar de la pagina oficial <a href="http://www.download.moodle.org">www.download.moodle.org</a> ya que por algún motivo a la hora de descargarse no se descargaba completa y en ese caso al intentar 	desempaquetar el zip que se descargaba con unzip, no se podía.</p>
+<ul>
+<li>Configura otro virtualhost y elige otro nombre en el mismo dominio.</li>
+</ul>
+<p>Una vez que tengamos la moodle en nuestro equipo empezamos a configurar el virtualhost. Copiamos el fichero drupal.conf en /etc/apache2/sites-availables y creamos un moodle.conf:</p>
+<pre><code>sudo cp /etc/apache2/sites-available/drupal.conf /etc/apache2/sites-available/moodle.conf
+</code></pre><p>Configuración de moodle.conf:</p>
+<pre><code>      &lt;VirtualHost *:80&gt;
+              ServerAdmin webmaster@localhost
+              DocumentRoot /srv/www/
+              ServerName www.sergioib-drupal.org
+              &lt;Directory /srv/www/moodle&gt;
+                      Options Indexes FollowSymLinks
+                      AllowOverride All
+                     Require all granted
+              &lt;/Directory&gt;
+</code></pre><p>Instalación de la base de datos para moodle (en el servidor de base de datos):</p>
+<pre><code>vagrant@server-bd:~$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 40
+Server version: 10.3.25-MariaDB-0+deb10u1 Debian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]&gt; create database moodlebd;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]&gt; create user moodle;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]&gt; grant all on moodlebd.* to moodle identified by 'moodle'
+    -&gt; ;
+Query OK, 0 rows affected (0.001 sec)
+</code></pre><p>Modificación de permisos /srv ya que a la hora de instalar se creara un directorio moodledata en /srv y no tiene el directorio permisos de escritura  de un fichero config.php en el directorio /srv/www/moodle ya que el script de instalación no fue capaz de generarlo.</p>
+<p>Contenido de config.php:</p>
+<pre><code>&lt;?php  // Moodle configuration file
+
+unset($CFG);
+global $CFG;
+$CFG = new stdClass();
+
+$CFG-&gt;dbtype    = 'mysql';
+$CFG-&gt;dblibrary = 'native';
+$CFG-&gt;dbhost    = '192.168.100.20';
+$CFG-&gt;dbname    = 'moodlebd';
+$CFG-&gt;dbuser    = 'moodle';
+$CFG-&gt;dbpass    = 'moodle';
+$CFG-&gt;prefix    = 'mdl_';
+$CFG-&gt;dboptions = array (
+  'dbpersist' =&gt; 0,
+  'dbport' =&gt; '',
+  'dbsocket' =&gt; '',
+  'dbcollation' =&gt; 'utf8mb4_general_ci',
+);
+$CFG-&gt;wwwroot   = 'http://www.sergioib-drupal.org/moodle';
+$CFG-&gt;dataroot  = '/srv/moodledata';
+$CFG-&gt;admin     = 'admin';
+
+$CFG-&gt;directorypermissions = 0777;
+
+require_once(__DIR__ . '/lib/setup.php');
+
+// There is no php closing tag in this file,
+// it is intentional because it prevents trailing whitespace problems!
+</code></pre><p>Algunos de los fallos saltaron en la instalacion fueron los siguientes:</p>
+<ul>
+<li>dbtype en config.php debía ser cambiado a mariadb.</li>
+<li>Es necesaria extensión php-intl</li>
+</ul>
+<p>Reiniciamos el servidor y al continuar la instalación, solo faltara poner los datos de administrador para de esa forma tener operativa la moodle.</p>
+<p><em>Prueba de funcionamiento de moodle instalada</em></p>
+<p>!moodle.png!</p>
+<h3 id="necesidad-de-otros-servicios"><strong>Necesidad de otros servicios</strong></h3>
+<ul>
+<li>
+<p>La mayoría de los CMS tienen la posibilidad de mandar correos electrónicos (por ejemplo para notificar una nueva versión, notificar un comentario,…)</p>
+</li>
+<li>
+<p>Instala un servidor de correo electrónico en tu servidor. debes configurar un servidor relay de correo, para ello en el fichero /etc/postfix/main.cf, debes poner la siguiente línea:</p>
+</li>
+</ul>
+<p>Lo primero que haremos será instalar el paquete postfix</p>
+<pre><code>sudo apt install postfix
+</code></pre><p>Una vez que lo instalamos, en el menú de instalación podremos configurar el correo que se usara, en este caso escogemos la opción Internet Site y despues ponemos el nombre del correo que se va a usar, en este caso sergioib-drupal.org. Ahora pasamos a introducir la siguiente linea en /etc/postfix/main.cf:</p>
+<pre><code>relayhost = babuino-smtp.gonzalonazareno.org
+</code></pre><p>De forma que el fichero quede de esta forma:</p>
+<pre><code>smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = server.home
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = $myhostname, sergioib-drupal.org, server, localhost.localdomain, localhost
+relayhost = babuino-smtp.gonzalonazareno.org
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+inet_protocols = all
+</code></pre><p>Ahora solo queda configurar alguno de los CMS para que nos envíe algún correo:</p>
+<ul>
+<li>
+<p>En el caso de drupal lo configuramos de la siguiente forma: Configurar -&gt; People -&gt; Accont -&gt; setting -&gt; Notification email addres.</p>
+</li>
+<li>
+<p>En el caso de la moodle: Configuración -&gt; Usuarios -&gt; Cuentas -&gt; Acciones de usuario masivas</p>
+</li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
