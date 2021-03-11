@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://sergioib.netlify.app/posts/instalacion-debian10/</loc>
-    <lastmod>2021-03-10T21:20:45+01:00</lastmod>
+    <loc>https://sergioib.netlify.app/posts/creacion-blog-hugo/</loc>
+    <lastmod>2021-03-11T08:07:44+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/</loc>
-    <lastmod>2021-03-10T21:20:45+01:00</lastmod>
+    <lastmod>2021-03-11T08:07:44+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/posts/</loc>
+    <lastmod>2021-03-11T08:07:44+01:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/instalacion-debian10/</loc>
     <lastmod>2021-03-10T21:20:45+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/categories/</loc>
