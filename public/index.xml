@@ -6,7 +6,49 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Mar 2021 16:00:38 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Mar 2021 16:19:25 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configuracio Clientevpn</title>
+      <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
+      <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracio-clientevpn/</guid>
+      <description>Genera una clave privada RSA 4096  Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
+ Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona  Creamos el fichero csr para que sea firmado con el siguiente comando y rellenamos los parámetros necesarios que se nos piden: Country Name, State or Province Name (full name), Locality Name, Organization Name, Organizational Unit Name y Common Name (e.</description>
+    </item>
+    
+    <item>
+      <title>Configuracion Apache con .htaccess</title>
+      <link>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</link>
+      <pubDate>Thu, 11 Mar 2021 16:17:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</guid>
+      <description>Date de alta en un proveedor de hosting. ¿Si necesitamos configurar el servidor web que han configurado los administradores del proveedor?, ¿qué podemos hacer? Explica la directiva AllowOverride de apache2. Utilizando archivos .htaccess realiza las siguientes configuraciones:  Se ha dado de alta en 000.webhost
+ Tarea1: Habilita el listado de ficheros en la URL http://host.dominio/nas.  Configuramos el fichero .htaccess añadiéndole la siguiente linea:
+Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer una prueba de funcionamiento.</description>
+    </item>
+    
+    <item>
+      <title>Control De Acceso Autentificacion Autorizacion</title>
+      <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</guid>
+      <description>Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.  Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:
+ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName www.</description>
+    </item>
+    
+    <item>
+      <title>Compilacion Programa C con Makefile</title>
+      <link>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</link>
+      <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</guid>
+      <description>Compilacion paquete less Empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.
+apt source less Una vez que se tenga el código en nuestra maquina, lo siguiente sera descomprimirlo ejecutando el comando tar.
+tar xvzf less_487.orig.tar.gz Dentro del directorio less ejecutamos ./configure para comprobar si el paquete esta bien configurado para el sistema.</description>
+    </item>
+    
     <item>
       <title>Integridad Firmas Autentificacion</title>
       <link>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</link>
