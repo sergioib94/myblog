@@ -91,11 +91,3 @@ vagrant@nodo1:/srv/www/iesgn$ sudo systemctl restart apache2
 Esto es todo por parte del servidor web, ahora solo quedara modificar el fichero /etc/hosts de nuestra maquina para que se haga una conversion entre los nombres de los dominios y la ip de nuestro servidor de forma que seamos capaces de acceder a las paginas.
 
 ### **Prueba de funcionamiento** ###
-
-www.iesgn.org
-
-!iesgn.png!
-
-www.departamentosgn.org
-
-!depart.png!
