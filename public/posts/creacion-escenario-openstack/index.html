@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Creacion de Escenario Openstack // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creacion de Escenario Openstack"/>
+<meta name="twitter:description" content="Introduccion En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
+  Tarea 1: Creación de la red interna: ◦ Nombre red interna de &lt;sergio.ibañez&gt; ◦ 10.0.1.0/24
+  Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20."/>
+
+    <meta property="og:title" content="Creacion de Escenario Openstack" />
+<meta property="og:description" content="Introduccion En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
+  Tarea 1: Creación de la red interna: ◦ Nombre red interna de &lt;sergio.ibañez&gt; ◦ 10.0.1.0/24
+  Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/creacion-escenario-openstack/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T11:43:35&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T11:43:35&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Creacion de Escenario Openstack</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introduccion"><strong>Introduccion</strong></h3>
+<p>En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.</p>
+<ul>
+<li>
+<p>Tarea 1: Creación de la red interna:
+◦ Nombre red interna de &lt;sergio.ibañez&gt;
+◦ 10.0.1.0/24</p>
+</li>
+<li>
+<p>Tarea 2: Creación de las instancias:
+◦ Dulcinea:
+▪ Debian Buster sobre volumen con sabor m1.mini
+▪ Accesible directamente a través de la red externa y con una IP flotante
+▪ Conectada a la red interna, de la que será la puerta de enlace
+◦ Sancho:
+▪ Ubuntu 20.04 sobre volumen con sabor m1.mini
+▪ Conectada a la red interna
+▪ Accesible indirectamente a través de dulcinea
+◦ Quijote:
+▪ CentOS 7 sobre volumen con sabor m1.mini
+▪ Conectada a la red interna
+▪ Accesible indirectamente a través de dulcinea</p>
+</li>
+</ul>
+<p>Escenario una vez creadas las instancias:</p>
+<p><img src="/static/escenario-openstack/topologia.png" alt="escenario openstack"></p>
+<p>Una vez creadas las instancias, solo faltaría hacer accesible de forma indirecta a las instancias de sancho y quijote a través de dulcinea. En este caso la red 10.0.0.0/24, tiene 2 maquinas de un trabajo creado anteriormente para otra asignatura.</p>
+<ul>
+<li>Tarea 3: Configuración de NAT en Dulcinea (Es necesario deshabilitar la seguridad en todos los puertos de dulcinea).</li>
+</ul>
+<p>Deshabilitamos la seguridad:</p>
+<pre><code>       (openstackclient) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/openstackclient$ openstack port list
+       +--------------------------------------+------+-------------------+-------------------------------------------------------------------------+--------+
+       | ID                                   | Name | MAC Address       | Fixed IP Addresses                                                      | Status |
+       +--------------------------------------+------+-------------------+-------------------------------------------------------------------------+--------+
+       | 0d8be2be-d440-4038-93e3-1eefdf2be853 |      | fa:16:3e:13:42:a1 | ip_address='10.0.0.3', subnet_id='4f9841a0-12bc-48a4-a89c-1b5f4dd3fbf7' | ACTIVE |
+       | 44dbc572-eb86-4f34-99a5-e23b81e83aff |      | fa:16:3e:80:c5:0c | ip_address='10.0.0.2', subnet_id='4f9841a0-12bc-48a4-a89c-1b5f4dd3fbf7' | ACTIVE |
+       | 52dd0fee-42f4-4d85-ae81-cff268c7924e |      | fa:16:3e:dd:20:7b | ip_address='10.0.1.4', subnet_id='dd45ee2a-7d50-4da8-b421-8f8844b65c0d' | ACTIVE |
+       | 5b9bf738-2b3b-4844-ad00-ceee38670008 |      | fa:16:3e:42:35:7c | ip_address='10.0.0.1', subnet_id='4f9841a0-12bc-48a4-a89c-1b5f4dd3fbf7' | ACTIVE |
+       | 7fecf2dd-e6ba-4959-b0e8-823ae013421c |      | fa:16:3e:64:51:7f | ip_address='10.0.0.5', subnet_id='4f9841a0-12bc-48a4-a89c-1b5f4dd3fbf7' | ACTIVE |
+       | a0f080fa-4b6e-40a1-9ef2-6ffb0195ba11 |      | fa:16:3e:a8:ba:5c | ip_address='10.0.1.3', subnet_id='dd45ee2a-7d50-4da8-b421-8f8844b65c0d' | ACTIVE |
+       | abbc307e-b9f0-4ca1-ac2f-130eb8230906 |      | fa:16:3e:3b:d5:a6 | ip_address='10.0.0.8', subnet_id='4f9841a0-12bc-48a4-a89c-1b5f4dd3fbf7' | ACTIVE |
+       | cb2e3a19-a2d3-43ce-83d6-9257d1967b93 |      | fa:16:3e:86:3d:2d | ip_address='10.0.1.2', subnet_id='dd45ee2a-7d50-4da8-b421-8f8844b65c0d' | ACTIVE |
+       | db5ea957-1ea1-4b0e-b9d8-80b3be8cf4b6 |      | fa:16:3e:b6:b1:24 | ip_address='10.0.1.8', subnet_id='dd45ee2a-7d50-4da8-b421-8f8844b65c0d' | ACTIVE |
+       +--------------------------------------+------+-------------------+-------------------------------------------------------------------------+--------+
+</code></pre><p>En este caso Dulcinea cuenta con dos interfaces, la 10.0.1.4 (Red Interna) y la 10.0.0.3 (red externa) por lo que deshabilitamos el grupo de seguridad en ambas interfaces:</p>
+<pre><code>(openstackclient) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/openstackclient$ openstack port set --disable-port-security 0d8be2be-d440-4038-93e3-1eefdf2be853
+(openstackclient) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/openstackclient$ openstack port set --disable-port-security 52dd0fee-42f4-4d85-ae81-cff268c7924e
+</code></pre><p>Configuración de NAT (Dulcinea):</p>
+<p>En dulcinea empezamos poniendo la nueva regla de iptables</p>
+<pre><code>iptables -t nat -A POSTROUTING -s 10.0.1.0/24 -o eth1 -j MASQUERADE
+</code></pre><p>De esta forma se indicara la interfaz por la que se hará nat, que en este caso es la eth0 (interfaz interna). Una vez tengamos esto, tendremos que activar nat de la siguiente forma:</p>
+<pre><code>sed -i '/^#net.ipv4.ip\_forward/s/^#//g' /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
+</code></pre><ul>
+<li>Tarea 4: Definición de contraseña en todas las instancias (para poder modificarla desde consola en caso necesario)</li>
+</ul>
+<p>Dulcinea:</p>
+<pre><code>sudo passwd debian
+</code></pre><p>sancho:</p>
+<pre><code>sudo passwd ubuntu
+</code></pre><p>quijote:</p>
+<pre><code>sudo passwd centos
+</code></pre><ul>
+<li>Tarea 5: Modificación de las instancias sancho y quijote para que usen direccionamiento estático y dulcinea como puerta de enlace</li>
+</ul>
+<p>Configuración de sancho (/etc/netplan/50-cloud-init.yaml):</p>
+<pre><code>       network:
+           version: 2
+           ethernets:
+               ens3:
+                   dhcp4: no
+                   addresses:
+                   - 10.0.1.8/24
+                   macaddress: fa:16:3e:b6:b1:24
+                   gateway4: 10.0.1.4
+</code></pre><p>Una vez configurado reiniciamos el servicio ejecutando sudo netplan apply</p>
+<p>Configuración de quijote:</p>
+<pre><code>BOOTPROTO=static
+DEVICE=eth0
+HWADDR=fa:16:3e:a8:ba:5c
+ONBOOT=yes
+IPADDR=10.0.1.3
+NETMASK=255.255.255.0
+GATEWAY=10.0.1.4
+TYPE=Ethernet
+USERCTL=no
+</code></pre><p>Una vez configurado, reiniciamos el servicio ejecutando service network restart.</p>
+<ul>
+<li>Tarea 6: Modificación de la subred de la red interna, deshabilitando el servidor DHCP</li>
+</ul>
+<p>Comprobamos con openstackclient las subnet que tenemos y cogemos la ID de la que subnet a la que le quitaremos el dhcp, en este caso la red-toboso.</p>
+<pre><code>(openstackclient) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/openstackclient$ openstack subnet list
++--------------------------------------+------------+--------------------------------------+-------------+
+| ID                                   | Name       | Network                              | Subnet      |
++--------------------------------------+------------+--------------------------------------+-------------+
+| 4f9841a0-12bc-48a4-a89c-1b5f4dd3fbf7 |            | 086ed7a1-2831-403b-9b0f-bc01be9184e2 | 10.0.0.0/24 |
+| dd45ee2a-7d50-4da8-b421-8f8844b65c0d | red-toboso | 0212c291-3149-4cac-b5bd-04cbbe112008 | 10.0.1.0/24 |
++--------------------------------------+------------+--------------------------------------+-------------+
+</code></pre><p>Una ve que se sepa la ID se ejecutara openstack subnet set &ndash;no-dhcp dd45ee2a-7d50-4da8-b421-8f8844b65c0d para dejar la subnet sin dhcp.</p>
+<ul>
+<li>Tarea 7: Utilización de ssh-agent para acceder a las instancias</li>
+</ul>
+<pre><code>sergioib@debian-sergio:~$ ssh-agent /bin/bash
+sergioib@debian-sergio:~$ ssh-add .ssh/2asir.pem 
+Identity added: .ssh/2asir.pem (.ssh/2asir.pem)
+sergioib@debian-sergio:~$ ssh -i .ssh/2asir.pem debian@172.22.200.151
+Linux dulcinea 4.19.0-11-cloud-amd64 #1 SMP Debian 4.19.146-1 (2020-09-17) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Nov 14 19:54:18 2020 from 172.23.0.66
+</code></pre><ul>
+<li>Tarea 8. Creación del usuario profesor en todas las instancias. Usuario que puede utilizar sudo sin contraseña</li>
+</ul>
+<p>Creamos los usuarios en las distintas instancias haciendo uso del comando useradd o adduser y una vez creados los usuario profesor, editamos el siguiente fichero para que a la hora de hacer sudo no solicite contraseña</p>
+<p>Creamos los usuarios ejecutando:</p>
+<pre><code>sudo useradd -m -s /bin/bash profesor
+</code></pre><p>En centos7 sera suficiente ejecutando sudo adduser profesor ya que por defecto se crea el /home/usuario de forma automática cogiendo los ficheros de /etc/skell.</p>
+<pre><code>nano /etc/sudoers
+profesor ALL=(ALL) NOPASSWD: ALL
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

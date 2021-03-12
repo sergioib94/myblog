@@ -6,7 +6,29 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Mar 2021 10:37:20 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Mar 2021 12:22:28 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Despliegue de Aplicaciones Python</title>
+      <link>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</link>
+      <pubDate>Fri, 12 Mar 2021 12:22:28 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</guid>
+      <description>Tarea 1: Entorno de desarrollo  Vamos a desarrollar la aplicación del tutorial de django 3.1. Vamos a configurar tu equipo como entorno de desarrollo para trabajar con la aplicación, para ello:
+ Realiza un fork del repositorio de GitHub: https://github.com/josedom24/django_tutorial. Crea un entorno virtual de python3 e instala las dependencias necesarias para que funcione el proyecto (fichero requirements.txt).  Creamos el entorno virtual:
+sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv practica_despliegue Clonamos el repositorio de django-tutorial en el entorno virtual:</description>
+    </item>
+    
+    <item>
+      <title>Creacion de Escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 11:43:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</guid>
+      <description>Introduccion En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
+  Tarea 1: Creación de la red interna: ◦ Nombre red interna de &amp;lt;sergio.ibañez&amp;gt; ◦ 10.0.1.0/24
+  Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20.</description>
+    </item>
+    
     <item>
       <title>Aplicaciones PHP en OVH</title>
       <link>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</link>
