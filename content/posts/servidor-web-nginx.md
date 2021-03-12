@@ -43,9 +43,9 @@ Commercial support is available at
 
 Funcionamiento:
 
-![inicio](/static/nginx/nginx1.png)
+![inicio](/nginx/nginx1.png)
 
-### *Virtualhosting** ###
+### **Virtualhosting** ###
 
 Queremos que nuestro servidor web ofrezca dos sitios web, teniendo en cuenta lo siguiente:
 * Cada sitio web tendrá nombres distintos.
@@ -104,11 +104,11 @@ Prueba de funcionamiento:
 
 iesgn
 
-![iesgn](/static/nginx/nginx2.png)
+![iesgn](/nginx/nginx2.png)
 
 departamentos:
 
-![departamentos.iesgn](/static/nginx/nginx3.png)
+![departamentos.iesgn](/nginx/nginx3.png)
 
 ### **Mapeo URL** ###
 
@@ -240,7 +240,7 @@ server {
 
 Prueba de funcionamiento:
 
-![error 404](/static/nginx/nginx6.png)
+![error 404](/nginx/nginx6.png)
 
 * Tarea 6: Añade al escenario otra máquina conectada por una red interna al servidor. A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.
 
@@ -293,7 +293,7 @@ Bienvenido desde intranet
 
 Cliente fuera de la red (intranet):
 
-![error 403](/static/nginx/nginx8.png)
+![error 403](/nginx/nginx8.png)
 
 Cliente de la red interna (internet):
 
@@ -307,7 +307,7 @@ Cliente de la red interna (internet):
 
 Cliente fuera de la red (internet):
 
-![](/static/nginx/nginx9.png)
+![](/nginx/nginx9.png)
 
 * Tarea 7: Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente.
 
@@ -391,6 +391,6 @@ pagina secreta revelada
 
 Desde fuera de la red interna por el contrario se nos pide autentificacion:
 
-![](/static/nginx/nginx10.png)
+![](/nginx/nginx10.png)
 
-![](/static/nginx/nginx11.png)
+![](/nginx/nginx11.png)

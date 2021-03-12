@@ -157,21 +157,21 @@ Django version 3.1.3, using settings 'django_tutorial.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 </code></pre><p>Acceso a /admin:</p>
-<p><img src="/static/despliegue-aplicacion-python/admin.png" alt="/admin"></p>
+<p><img src="/despliegue-aplicacion-python/admin.png" alt="/admin"></p>
 <ul>
 <li>Crea dos preguntas, con posibles respuestas.</li>
 </ul>
 <p>Una vez en la zona de administración de nuestro proyecto, en el apartado questions, hacemos clic en add y creamos dos nuevas preguntas con sus respectivas respuestas.</p>
-<p><img src="/static/despliegue-aplicacion-python/django2.png" alt="django"></p>
+<p><img src="/despliegue-aplicacion-python/django2.png" alt="django"></p>
 <p><img src="static/despliegue-aplicacion-python/django3.png" alt="django"></p>
 <ul>
 <li>Comprueba en el navegador que la aplicación está funcionando, accede a la url \polls.</li>
 </ul>
 <p>Accedemos ahora a http://127.0.0.1:8000/polls para comprobar que la aplicación funciona correctamente:</p>
-<p><img src="/static/despliegue-aplicacion-python/django-poll.png" alt="django"></p>
+<p><img src="/despliegue-aplicacion-python/django-poll.png" alt="django"></p>
 <p>Comprobamos que se nos muestren las dos preguntas creadas anteriormente y que se nos muestren las posibles respuestas:</p>
-<p><img src="/static/despliegue-aplicacion-python/django.poll1.png" alt="django"></p>
-<p><img src="/static/despliegue-aplicacion-python/django-poll2.png" alt="django"></p>
+<p><img src="/despliegue-aplicacion-python/django.poll1.png" alt="django"></p>
+<p><img src="/despliegue-aplicacion-python/django-poll2.png" alt="django"></p>
 <ul>
 <li>Tarea2: entorno de producción</li>
 </ul>
@@ -325,8 +325,8 @@ Superuser created successfully.
         &lt;/Directory&gt;
 &lt;/VirtualHost&gt;
 </code></pre><p>Una vez hecho esto ya podremos accedes a nuestra aplicación desde el navegador:</p>
-<p><img src="/static/despliegue-aplicacion-python/django1.png" alt="dejango"></p>
-<p><img src="/static/despliegue-aplicacion-python/despliegue_django.png" alt="despliegue django"></p>
+<p><img src="/despliegue-aplicacion-python/django1.png" alt="dejango"></p>
+<p><img src="/despliegue-aplicacion-python/despliegue_django.png" alt="despliegue django"></p>
 <ul>
 <li>Debes asegurarte que el contenido estático se está sirviendo: ¿Se muestra la imagen de fondo de la aplicación? ¿Se ve de forma adecuada la hoja de estilo de la zona de administración?. Para arreglarlo puedes encontrar documentación en How to use Django with Apache and mod_wsgi.</li>
 </ul>
@@ -343,7 +343,7 @@ Alias /static/polls/ /var/www/html/django_tutorial/polls/static/
                 Require all granted
         &lt;/Directory&gt;
 </code></pre><p>Comprobamos que se vea ya de forma correcta:</p>
-<p><img src="/static/despliegue-aplicacion-python/despliegue_django2.png" alt="despliegue django"></p>
+<p><img src="/despliegue-aplicacion-python/despliegue_django2.png" alt="despliegue django"></p>
 <ul>
 <li>Desactiva en la configuración (fichero settings.py) el modo debug a False. Para que los errores de ejecución no den información sensible de la aplicación.</li>
 </ul>
@@ -363,13 +363,13 @@ DEBUG = False
 </ul>
 <p>Para ello o único que hacemos es introducir en el html una etiqueta h2 con nuestro nombre:</p>
 <pre><code>&lt;h2&gt; Sergio Ibañez Nuñez &lt;/h2&gt;
-</code></pre><p><img src="/static/despliegue-aplicacion-python/modificacion1.png" alt="primer modificacion"></p>
+</code></pre><p><img src="/despliegue-aplicacion-python/modificacion1.png" alt="primer modificacion"></p>
 <ul>
 <li>Modifica la imagen de fondo que se ve la aplicación.
 Vamos a crear una nueva tabla en la base de datos, para ello sigue los siguientes pasos:</li>
 </ul>
 <p>Para ello nos descargamos una imagen cualquiera y la guardamos en /polls/static/polls/images/ con el mismo nombre que el fondo actual, background.jpg de forma que se sobrescriban y al actualizar se cambiara el fondo.</p>
-<p><img src="/static/despliegue-aplicacion-python/modificacion2.png" alt="modificacion 2"></p>
+<p><img src="/despliegue-aplicacion-python/modificacion2.png" alt="modificacion 2"></p>
 <ul>
 <li>Añade un nuevo modelo al fichero polls/models.py:</li>
 </ul>
@@ -404,7 +404,7 @@ Running migrations:
 </code></pre><p>Y añade al final la siguiente línea:</p>
 <pre><code>  admin.site.register(Categoria)
 </code></pre><p>Comprobacion:</p>
-<p><img src="/static/despliegue-aplicacion-python/modificacion3.png" alt="modificacion 3"></p>
+<p><img src="/despliegue-aplicacion-python/modificacion3.png" alt="modificacion 3"></p>
 <p>Despliega el cambio producido al crear la nueva tabla en el entorno de producción.</p>
 <p>Una vez hecho todos los cambios en desarrollo, los subimos a github con git push y nos descargamos los cambios en produccion</p>
 <pre><code>root@produccion:/var/www/html/django_tutorial# git pull
@@ -431,7 +431,7 @@ Operations to perform:
 Running migrations:
   Applying polls.0002_categoria... OK
 </code></pre><p>Recargamos apache y comprobamos los cambios.</p>
-<p><img src="/static/despliegue-aplicacion-python/migracion.png" alt="migracion"></p>
+<p><img src="/despliegue-aplicacion-python/migracion.png" alt="migracion"></p>
 
     </div>
     <div class="post-footer">

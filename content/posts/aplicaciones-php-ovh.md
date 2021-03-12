@@ -38,7 +38,7 @@ sudo ln -s /etc/nginx/sites-available/iesgn /etc/nginx/sites-enabled/
 
 Configuramos en nuestra zona DNS de OVH un nuevo CNAME:
 
-![zona dns en ovh](/static/ovh-aplicaciones-php/zona_dns.png)
+![zona dns en ovh](/ovh-aplicaciones-php/zona_dns.png)
 
 * Tarea 2. Vamos a nombrar el servicio de base de datos que tenemos en producción. Como es un servicio interno no la vamos a nombrar en la zona DNS, la vamos a nombrar usando resolución estática. El nombre del servicio de base de datos se debe llamar: bd.iesgnXX.es.
 
@@ -115,7 +115,7 @@ $settings['config_sync_directory'] = 'sites/default/files/config_wGnfMPSoSAYjv-l
 
 Después de esto, al entrar en la pagina obtendremos el siguiente error:
 
-![error inicial](/static/ovh-aplicaciones-php/error_inicial.png)
+![error inicial](/ovh-aplicaciones-php/error_inicial.png)
 
 Este error se debe a que son necesarios varios módulos php7.3 que no están instalados
 
@@ -125,7 +125,7 @@ sudo apt install php7.3-gd, php7.3-xml y php7.3-mysql
 
 Cuando estén instalados dichos modulo, comprobamos que realmente funciona y se puede acceder a drupal sin ningún tipo de problema.
 
-![drupal](/static/ovh-aplicaciones-php/proyecto-drupal2.png)
+![drupal](/ovh-aplicaciones-php/proyecto-drupal2.png)
 
 * Tarea 5. Asegúrate que las URL limpias de drupal siguen funcionando en nginx.
 
@@ -149,17 +149,17 @@ server {
 
 Prueba de error accediendo al contenido de drupal:
 
-![error](/static/ovh-aplicaciones-php/error.png)
+![error](/ovh-aplicaciones-php/error.png)
 
 Prueba de funcionamiento al acceder al mismo sitio, el contenido de nuestro drupal:
 
-![funcionamiento drupal](/static/ovh-aplicaciones-php/protyecto-drupal3.png)
+![funcionamiento drupal](/ovh-aplicaciones-php/protyecto-drupal3.png)
 
 * Tarea 6. La aplicación debe estar disponible en la URL: portal.iesgnXX.es (Sin ningún directorio).
 
 Comprobamos que podemos acceder a drupal desde esa url sin ningún directorio:
 
-![drupal](/static/ovh-aplicaciones-php/proyecto-drupal2.png)
+![drupal](/ovh-aplicaciones-php/proyecto-drupal2.png)
 
 ### **Instalación / migración de la aplicación Nextcloud** ###
 
@@ -413,7 +413,7 @@ La linea memcache.local solo sera necesaria en caso de haber instalado php-apcu 
 
 Prueba de funcionamiento de Nextcloud:
 
-![nextcloud migrado](/static/ovh-aplicaciones-php/nextcloud_migrado.png)
+![nextcloud migrado](/ovh-aplicaciones-php/nextcloud_migrado.png)
 
 * Tarea 3. Instala en un ordenador el cliente de nextcloud y realiza la configuración adecuada para acceder a "tu nube".
 
@@ -425,7 +425,7 @@ sudo apt instalar nextcloud-desktop
 
 Abrimos nextcloud y al hacerlo nos preguntaran si nos queremos registrar en un proveedor o entrar, en nuestro caso como tenemos un nextcloud montado en nuestro servidor hacemos clic en "Entrar". Después de eso nos preguntara la dirección de nuestro nextcloud:
 
-![](/static/ovh-aplicaciones-php/cliente1.png)
+![](/ovh-aplicaciones-php/cliente1.png)
 
 Luego, iniciaremos sesión con nuestro usuario:
 
@@ -433,7 +433,7 @@ Luego, iniciaremos sesión con nuestro usuario:
 
 A continuación conectamos con nuestro nexclaud del servidor:
 
-![](/static/ovh-aplicaciones-php/cliente3.png)
+![](/ovh-aplicaciones-php/cliente3.png)
 
 En este caso se sincronizara el directorio Nextcloud de nuestra maquina, con un directorio llamado Documentos creado en el servidor nextcloud.
 
@@ -449,12 +449,12 @@ sergioib@debian-sergio:~/Nextcloud$ touch prueba_funcionamiento
 
 Nextcloud:
 
-![](/static/ovh-aplicaciones-php/cliente5.png)
+![](/ovh-aplicaciones-php/cliente5.png)
 
 Probamos a copiar un par de documentos de apuntes en Nextcloud.
 
 Nextcloud:
 
-![](/static/ovh-aplicaciones-php/cliente6.png)
+![](/ovh-aplicaciones-php/cliente6.png)
 
 Como podemos comprobar, funciona.

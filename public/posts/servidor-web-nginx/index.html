@@ -109,8 +109,8 @@ Commercial support is available at
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><p>Funcionamiento:</p>
-<p><img src="/static/nginx/nginx1.png" alt="inicio"></p>
-<h3 id="virtualhosting"><em>Virtualhosting</em>*</h3>
+<p><img src="/nginx/nginx1.png" alt="inicio"></p>
+<h3 id="virtualhosting"><strong>Virtualhosting</strong></h3>
 <p>Queremos que nuestro servidor web ofrezca dos sitios web, teniendo en cuenta lo siguiente:</p>
 <ul>
 <li>
@@ -165,9 +165,9 @@ Los dos sitios web tendrán las siguientes características:</p>
 </code></pre><p>Creamos los enlaces simbólicos con el comando ln -s ya que nginx no cuenta con el comando a2ensite como apache.</p>
 <p>Prueba de funcionamiento:</p>
 <p>iesgn</p>
-<p><img src="/static/nginx/nginx2.png" alt="iesgn"></p>
+<p><img src="/nginx/nginx2.png" alt="iesgn"></p>
 <p>departamentos:</p>
-<p><img src="/static/nginx/nginx3.png" alt="departamentos.iesgn"></p>
+<p><img src="/nginx/nginx3.png" alt="departamentos.iesgn"></p>
 <h3 id="mapeo-url"><strong>Mapeo URL</strong></h3>
 <p>Cambia la configuración del sitio web <a href="http://www.iesgn.org">www.iesgn.org</a> para que se comporte de la siguiente forma:</p>
 <ul>
@@ -277,7 +277,7 @@ total 0
                     internal;
             }
 </code></pre><p>Prueba de funcionamiento:</p>
-<p><img src="/static/nginx/nginx6.png" alt="error 404"></p>
+<p><img src="/nginx/nginx6.png" alt="error 404"></p>
 <ul>
 <li>Tarea 6: Añade al escenario otra máquina conectada por una red interna al servidor. A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.</li>
 </ul>
@@ -315,7 +315,7 @@ debian@nginx:~$ sudo touch /srv/www/departamentos/intranet/index.html
 <p>Ejecutando w3m departamentos.iesgn.org/intranet</p>
 <pre><code>Bienvenido desde intranet
 </code></pre><p>Cliente fuera de la red (intranet):</p>
-<p><img src="/static/nginx/nginx8.png" alt="error 403"></p>
+<p><img src="/nginx/nginx8.png" alt="error 403"></p>
 <p>Cliente de la red interna (internet):</p>
 <pre><code>                                 403 Forbidden
 
@@ -323,7 +323,7 @@ debian@nginx:~$ sudo touch /srv/www/departamentos/intranet/index.html
                                  nginx/1.14.2
 
 </code></pre><p>Cliente fuera de la red (internet):</p>
-<p><img src="/static/nginx/nginx9.png" alt=""></p>
+<p><img src="/nginx/nginx9.png" alt=""></p>
 <ul>
 <li>Tarea 7: Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente.</li>
 </ul>
@@ -380,8 +380,8 @@ Adding password for user usuario
 <p>Intranet ejecutando w3m departamentos.iesgn.org/secreto nos muestra el mensaje de la pagina sin autentificación.</p>
 <pre><code>pagina secreta revelada
 </code></pre><p>Desde fuera de la red interna por el contrario se nos pide autentificacion:</p>
-<p><img src="/static/nginx/nginx10.png" alt=""></p>
-<p><img src="/static/nginx/nginx11.png" alt=""></p>
+<p><img src="/nginx/nginx10.png" alt=""></p>
+<p><img src="/nginx/nginx11.png" alt=""></p>
 
     </div>
     <div class="post-footer">

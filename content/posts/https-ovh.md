@@ -101,9 +101,9 @@ De forma automática, certbot nos permite elegir a cual de nuestros sitios web s
 
 Funcionamiento:
 
-![https iesgn](/static/https-ovh/https_iesgn.png)
+![https iesgn](/https-ovh/https_iesgn.png)
 
-![https cloud](/static/https-ovh/https_cloud.png)
+![https cloud](/https-ovh/https_cloud.png)
 
 Para el portal.iesgn07.es sitio solicitaremos el certificado de una forma mas manual.
 
@@ -231,14 +231,14 @@ Des esta forma cada 3 meses se hará una renovación de forma silenciosa (sin qu
 
 Certificado www.iesgn07.es:
 
-![certificado iesgn](/static/https-ovh/certificado_iesgn.png)
+![certificado iesgn](/https-ovh/certificado_iesgn.png)
 
 Certificado portal.iesgn07.es:
 
-![certificado cloud](/static/https-ovh/certificado_cloud.png)
+![certificado cloud](/https-ovh/certificado_cloud.png)
 
 Certificado portal.iesgn07.es:
 
 * 7. Modifica la configuración del cliente de Nextcloud para comprobar que sigue en funcionamiento con HTTPS.
 
-![https nextcloud](/static/https-ovh/https_nextcloud.png)
+![https nextcloud](/https-ovh/https_nextcloud.png)

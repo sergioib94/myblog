@@ -6,7 +6,29 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Mar 2021 14:24:08 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Mar 2021 16:01:48 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalacion De Aplicacion Web Python Openstack</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 16:01:48 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</guid>
+      <description>• Instala el CMS en el entorno de desarrollo. Debes utilizar un entorno virtual.
+Entorno de desarrollo Creamos el entorno virtual:
+sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezzanine sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ source mezzanine/bin/activate Instalamos mezzanine:
+(mezzanine) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/mezzanine$ pip install mezzanine Collecting mezzanine Downloading https://files.pythonhosted.org/packages/7f/cf/0f2cbd27edfc9568c7fad26ca217e02d209031e0298562a29040e2b75a5e/Mezzanine-4.3.1-py2.py3-none-any.whl (5.9MB) 100% |████████████████████████████████| 5.9MB 188kB/s Collecting tzlocal&amp;gt;=1.0 (from mezzanine) Downloading https://files.pythonhosted.org/packages/5d/94/d47b0fd5988e6b7059de05720a646a2930920fff247a826f61674d436ba4/tzlocal-2.1-py2.py3-none-any.whl Collecting grappelli-safe&amp;gt;=0.5.0 (from mezzanine) Downloading https://files.pythonhosted.org/packages/3e/af/10804d792cfe4eb0029959c55169086e2d4ab02b99d88bd4d85281f48245/grappelli_safe-0.5.2-py2.py3-none-any.whl (163kB) 100% |████████████████████████████████| 163kB 745kB/s Collecting django-contrib-comments (from mezzanine) Downloading https://files.pythonhosted.org/packages/67/45/1c55c21d5151e8c39c7991b351bb4fae152ce863bb4b6a1ed35e88f31511/django_contrib_comments-2.0.0-py3-none-any.whl (414kB) 100% |████████████████████████████████| 419kB 739kB/s Collecting future&amp;gt;=0.</description>
+    </item>
+    
+    <item>
+      <title>Https en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/https-en-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 15:52:50 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/https-en-openstack/</guid>
+      <description>El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &amp;ldquo;gestiona&amp;rdquo;.
+ Explica los pasos fundamentales para la creación del certificado. Especificando los campos que has rellenado en el fichero CSR.  Instalamos openssl sudo apt install openssl Se crea la clave</description>
+    </item>
+    
     <item>
       <title>Instalacion Y Configuracion Basica Vmware ESXI</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</link>

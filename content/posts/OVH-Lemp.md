@@ -138,7 +138,7 @@ Server {
 
 Prueba de funcionamiento:
 
-![funcionamiento de redireccion](/static/ovh-lemp/lemp1.png)
+![funcionamiento de redireccion](/ovh-lemp/lemp1.png)
 
 * Tarea 6. Cuando se acceda a www.iesgnXX.es se nos redigirá a la página www.iesgnXX.es/principal
 
@@ -166,7 +166,7 @@ Server {
 
 Prueba de funcionamiento:
 
-![funcionamiento redireccion /principal](/static/ovh-lemp/lemp2.png)
+![funcionamiento redireccion /principal](/ovh-lemp/lemp2.png)
 
 * Tarea 7. En la página www.iesgnXX.es/principal se debe mostrar una página web estática (utiliza alguna plantilla para que tenga hoja de estilo). En esta página debe aparecer tu nombre, y una lista de enlaces a las aplicaciones que vamos a ir desplegando posteriormente.
 
@@ -174,7 +174,7 @@ nos descargamos una plantilla html y a través de scp pasamos el fichero zip al 
 
 Prueba de funcionamiento:
 
-![funcionamiento del servidor](/static/ovh-lemp/lemp4.png)
+![funcionamiento del servidor](/ovh-lemp/lemp4.png)
 
 * Tarea 8. Configura el nuevo virtualhost, para que pueda ejecutar PHP. Determina que configuración tiene por defecto php-fpm (socket unix o socket TCP) para configurar nginx de forma adecuada.
 
@@ -215,4 +215,4 @@ phpinfo();
 
 Prueba de funcionamiento:
 
-![fichero php](/static/ovh-lemp/lemp3.png)
+![fichero php](/ovh-lemp/lemp3.png)

@@ -123,7 +123,7 @@ sudo chown tomcat:tomcat /etc/guacamole/user-mapping.xml
 <p>Dependiendo del uso que se le vaya a dar a guacamole hay otras librerias que son opcionales:</p>
 <p>libavutil-dev libswscale-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev</p>
 <p>Comprobamos que guacamole realmente esta funcionando</p>
-<p><img src="/static/guacamole/Guacamole-server.png" alt="Guacamole server"></p>
+<p><img src="/guacamole/Guacamole-server.png" alt="Guacamole server"></p>
 <ul>
 <li>Realiza la configuración necesaria en apache2 y tomcat (utilizando el protocolo AJP) para que la aplicación sea servida por el servidor web.</li>
 </ul>
@@ -165,11 +165,11 @@ sudo a2enmod proxy_http
 <li>Entrega una captura de pantalla donde se vea la aplicación funcionando servida por apache2.</li>
 </ul>
 <p>Ponemos en el navegador el nombre que le hemos dado en apache a la aplicacion, en mi caso guacamole.sergio.org y comprobamos que se nos abre la aplicación de guacamole.</p>
-<p><img src="/static/guacamole/guacamole_inicio.png" alt="guacamole inicio"></p>
+<p><img src="/guacamole/guacamole_inicio.png" alt="guacamole inicio"></p>
 <p>Accedemos a través del usuario y contraseña configurados anterior mente en el fichero user-mapping.xml.</p>
-<p><img src="/static/guacamole/guacamole.png" alt="guacamole"></p>
+<p><img src="/guacamole/guacamole.png" alt="guacamole"></p>
 <p>En la parte inferior se nos muestran las dos conexiones configuradas anteriormente, una a mi maquina real, y otra a una maquina vagrant, comprobamos que realmente guacamole funciona conectándonos como ejemplo a la maquina real.</p>
-<p><img src="/static/guacamole/conexion_guacamole.png" alt="conexion guacamole"></p>
+<p><img src="/guacamole/conexion_guacamole.png" alt="conexion guacamole"></p>
 <p>Comprobamos que funciona la aplicación perfectamente.</p>
 <h3 id="autentificación-a-través-de-base-de-datos"><strong>Autentificación a través de base de datos</strong></h3>
 <p>Instalamos en este caso la base de datos postgresql</p>
@@ -207,13 +207,13 @@ postgresql-database: guacamole_db
 postgresql-username: sergio
 postgresql-password: uaurio01
 </code></pre><p>De esta forma contaremos con un usuario a parte del administrador para acceder a nuestro guacamole. Ahora probamos a crear una conexión remota accediendo como administrador.</p>
-<p><img src="/static/guacamole/admin.png" alt="admin"></p>
+<p><img src="/guacamole/admin.png" alt="admin"></p>
 <p>Una vez que hemos accedido como admin, en el apartado de configuración, vamos a conexiones y una vez ahí probamos a crear la conexión que hemos hecho anteriormente con el usuario normal a nuestra maquina.</p>
-<p><img src="/static/guacamole/creacion_conexion.png" alt="creacion conexion"></p>
+<p><img src="/guacamole/creacion_conexion.png" alt="creacion conexion"></p>
 <p>Los parámetros a configurar son los mismos que se configuran en user-pammipn.xml, al guardar esta conexion, volvemos al inicio y podremos acceder sin problemas a la maquina.</p>
-<p><img src="/static/guacamole/conexion_autentificada.png" alt="conexion autentificada"></p>
+<p><img src="/guacamole/conexion_autentificada.png" alt="conexion autentificada"></p>
 <p>Probamos tambien a conectarnos a alguna de las maquinas del escenario openstack con el que contamos, en este caso nos conectamos a Dulcinea.</p>
-<p><img src="/static/guacamole/conexion_dulcinea.png" alt="conexion Dulcinea"></p>
+<p><img src="/guacamole/conexion_dulcinea.png" alt="conexion Dulcinea"></p>
 
     </div>
     <div class="post-footer">
