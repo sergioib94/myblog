@@ -38,7 +38,7 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 25 -j DNAT --to 10.0.1.3
 
 Para cada configuración, hay que mostrar las reglas que se han configurado y una prueba de funcionamiento de la misma:
 
-### **ping** ###:
+### **ping** ###
 1. Todas las máquinas de las dos redes pueden hacer ping entre ellas.
 
 **Dulcinea → LAN**
