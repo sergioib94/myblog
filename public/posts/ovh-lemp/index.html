@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>OVH Lemp // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OVH Lemp"/>
+<meta name="twitter:description" content="Introduccion En este post instalaremos un servidor Lemp (Linux (E)nginx Mariadb PHP) en una maquina virtual alojada en OVH.
+ Tarea 1. Instalacion de servidor web nginx  sudo apt install nginx  Tarea 2. Instala un servidor de base de datos MariaDB. Ejecuta el programa necesario para asegurar el servicio, ya que lo vamos a tener corriendo en el entorno de producción.  sudo apt install -y mariadb-server mariadb-client Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:"/>
+
+    <meta property="og:title" content="OVH Lemp" />
+<meta property="og:description" content="Introduccion En este post instalaremos un servidor Lemp (Linux (E)nginx Mariadb PHP) en una maquina virtual alojada en OVH.
+ Tarea 1. Instalacion de servidor web nginx  sudo apt install nginx  Tarea 2. Instala un servidor de base de datos MariaDB. Ejecuta el programa necesario para asegurar el servicio, ya que lo vamos a tener corriendo en el entorno de producción.  sudo apt install -y mariadb-server mariadb-client Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/ovh-lemp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T09:44:16&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T09:44:16&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">OVH Lemp</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introduccion"><strong>Introduccion</strong></h3>
+<p>En este post instalaremos un servidor Lemp (Linux (E)nginx Mariadb PHP) en una maquina virtual alojada en OVH.</p>
+<ul>
+<li>Tarea 1. Instalacion de servidor web nginx</li>
+</ul>
+<pre><code>sudo apt install nginx
+</code></pre><ul>
+<li>Tarea 2. Instala un servidor de base de datos MariaDB. Ejecuta el programa necesario para asegurar el servicio, ya que lo vamos a tener corriendo en el entorno de producción.</li>
+</ul>
+<pre><code>sudo apt install -y mariadb-server mariadb-client
+</code></pre><p>Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:</p>
+<pre><code>debian@hades:~$ sudo mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none): 
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+You already have a root password set, so you can safely answer 'n'.
+
+Change the root password? [Y/n] y
+New password: 
+Re-enter new password: 
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+</code></pre><ul>
+<li>Tarea 3. Instala un servidor de aplicaciones php php-fpm.</li>
+</ul>
+<pre><code>Sudo apt install php7.3 php-fpm 
+</code></pre><ul>
+<li>Tarea 4. Crea un virtualhost al que vamos acceder con el nombre <a href="http://www.iesgnXX.es">www.iesgnXX.es</a>. Recuerda que tendrás que crear un registro CNAME en la zona DNS.</li>
+</ul>
+<p>Configuración iesgn:</p>
+<pre><code>Server {
+    listen 80;
+    listen [::]:80;
+
+    root /srv/www/iesgn;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name www.iesgn07.es;
+
+    location / {
+            try_files $uri $uri/ =404;
+    }
+}
+</code></pre><p>A la hora de crear el registro CNAME en la zona DNS sera necesario eliminar o modificar el registro que ya existe (<a href="http://www.iesgn07.es">www.iesgn07.es</a> CNAME susano.iesgn.es.) ya que de no hacerlo salta un error.</p>
+<ul>
+<li>Tarea 5. Cuando se acceda al virtualhost por defecto default nos tiene que redirigir al virtualhost que hemos creado en el punto anterior.</li>
+</ul>
+<p>Configuración de default:</p>
+<pre><code>Server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        return 301 http://www.iesgn07.es;
+        try_files $uri $uri/ =404;
+    }
+</code></pre><p>Prueba de funcionamiento:</p>
+<p><img src="/static/ovh-lemp/lemp1.png" alt="funcionamiento de redireccion"></p>
+<ul>
+<li>Tarea 6. Cuando se acceda a <a href="http://www.iesgnXX.es">www.iesgnXX.es</a> se nos redigirá a la página <a href="http://www.iesgnXX.es/principal">www.iesgnXX.es/principal</a></li>
+</ul>
+<p>Configuración de iesgn:</p>
+<pre><code>Server {
+    listen 80;
+    listen [::]:80;
+
+    root /srv/www/iesgn;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name www.iesgn07.es;
+
+    location / {
+            return 301 http://www.iesgn07.es/principal;
+    }
+    location /principal {
+            try_files $uri $uri/ =404;
+    }
+}
+</code></pre><p>Prueba de funcionamiento:</p>
+<p><img src="/static/ovh-lemp/lemp2.png" alt="funcionamiento redireccion /principal"></p>
+<ul>
+<li>Tarea 7. En la página <a href="http://www.iesgnXX.es/principal">www.iesgnXX.es/principal</a> se debe mostrar una página web estática (utiliza alguna plantilla para que tenga hoja de estilo). En esta página debe aparecer tu nombre, y una lista de enlaces a las aplicaciones que vamos a ir desplegando posteriormente.</li>
+</ul>
+<p>nos descargamos una plantilla html y a través de scp pasamos el fichero zip al directorio principal en /srv/www/iesgn</p>
+<p>Prueba de funcionamiento:</p>
+<p><img src="/static/ovh-lemp/lemp4.png" alt="funcionamiento del servidor"></p>
+<ul>
+<li>Tarea 8. Configura el nuevo virtualhost, para que pueda ejecutar PHP. Determina que configuración tiene por defecto php-fpm (socket unix o socket TCP) para configurar nginx de forma adecuada.</li>
+</ul>
+<p>Configuramos iesgn para que use ficheros php de la siguiente forma:</p>
+<pre><code>server {
+    listen 80;
+    listen [::]:80;
+    root /srv/www/iesgn;
+    index index.html index.htm index.nginx-debian.html index.php;
+
+    server_name www.iesgn07.es;
+
+    location / {
+            return 301 http://www.iesgn07.es/principal;
+    }
+
+    location /principal {
+            try_files $uri $uri/ =404;
+    }
+    location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+    }
+}
+</code></pre><ul>
+<li>Tarea 9. Crea un fichero info.php que demuestre que está funcionando el servidor LEMP.</li>
+</ul>
+<p>Creamos un fichero info.php en /srv/www/iesg y le añadimos el siguiente contenido:</p>
+<pre><code>&lt;?php
+phpinfo();
+</code></pre><p>Prueba de funcionamiento:</p>
+<p><img src="/static/ovh-lemp/lemp3.png" alt="fichero php"></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
