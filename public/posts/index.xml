@@ -6,7 +6,63 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Mar 2021 16:01:48 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Mar 2021 18:44:37 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ISCSI</title>
+      <link>https://sergioib.netlify.app/posts/iscsi/</link>
+      <pubDate>Fri, 12 Mar 2021 18:44:37 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/iscsi/</guid>
+      <description>Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
+En el servidor, empezamos instalando los paquetes tgt y lvm2.
+apt install tgt lvm2 Mientras en el cliente debian instalamos el paquete iscsi
+apt install open-iscsi Preparamos los discos para el uso de ISCSI LUN (en el server), usando lvm2 creamos los volúmenes físicos:</description>
+    </item>
+    
+    <item>
+      <title>Montaje De Pila ELK</title>
+      <link>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</link>
+      <pubDate>Fri, 12 Mar 2021 18:22:23 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</guid>
+      <description>¿Que es una pila ELK? Es un conjunto de herramientas de gran potencial de código abierto que se combinan para crear una herramienta de administración de registros permitiendo la monitorización, consolidación y análisis de logs generados en múltiples servidores, estas herramientas son:ElasticSearch, Logstash y Kibana.
+Para poder montar la pila completa sera necesario que la maquina que aloje las tres maquinas tenga mas de 2Gb de ram. Tambien es posible instalar estas herramientas en equipos distintos, sin embarlo la maquina donde se instale elasticsearch necesitara un minimo de 2gb.</description>
+    </item>
+    
+    <item>
+      <title>Introduccion a la Integracion Continua</title>
+      <link>https://sergioib.netlify.app/posts/integracion-continua/</link>
+      <pubDate>Fri, 12 Mar 2021 18:12:40 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integracion-continua/</guid>
+      <description>Integración continua de aplicación Django (test + deploy) Vamos a trabajar con el repositorio de la aplicación django_tutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.
+Para ejecutar las pruebas unitarias, ejecutamos la instrucción python3 manage.py test.
+Clonamos nuestro repositorio github en nuestro entorno virtual:
+(IC) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/IC$ git clone git@github.com:sergioib94/django_tutorial.git Clonando en &#39;django_tutorial&#39;... remote: Enumerating objects: 51, done. remote: Counting objects: 100% (51/51), done.</description>
+    </item>
+    
+    <item>
+      <title>Cortafuegos en Escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 17:53:20 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</guid>
+      <description>Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
+En este caso la maquina dulcinea cuenta con 3 interfaces de red:
+ eth0: interfaz al exterior eth1: interfaz de la red interna donde estan alojadas las maquinas freston(servidor ldap y de correos) y sancho (servidor base de datos y de copias de seguridad) eth2: interfaz a red dmz donde esta la maquina quijote (servidor web)  Política por defecto</description>
+    </item>
+    
+    <item>
+      <title>Sistemas De Ficheros Btrfs</title>
+      <link>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</link>
+      <pubDate>Fri, 12 Mar 2021 17:50:31 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</guid>
+      <description>• Crea un escenario que incluya una máquina y varios discos asociados a ella.
+El escenario con el que contamos para esta practica es el de una maquina virtual con sistema operativo debían 10 creada con vagrant con 4 discos adicionales en el que se instalara un Raid5 usando los 3 primeros discos, y el ultimo disco se dejara para posteriormente comprobar sustituciones de discos simulando fallos.
+vagrant@Btrfs:~$ lsblk -f NAME FSTYPE LABEL UUID FSAVAIL FSUSE% MOUNTPOINT sda ├─sda1 ext4 983742b1-65a8-49d1-a148-a3865ea09e24 16.</description>
+    </item>
+    
     <item>
       <title>Instalacion De Aplicacion Web Python Openstack</title>
       <link>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</link>
