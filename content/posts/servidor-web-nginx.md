@@ -43,7 +43,7 @@ Commercial support is available at
 
 Funcionamiento:
 
-!nginx1.png!
+![inicio](/static/nginx/nginx1.png)
 
 ### *Virtualhosting** ###
 
@@ -104,11 +104,11 @@ Prueba de funcionamiento:
 
 iesgn
 
-!nginx2.png!
+![iesgn](/static/nginx/nginx2.png)
 
 departamentos:
 
-!nginx3.png!
+![departamentos.iesgn](/static/nginx/nginx3.png)
 
 ### **Mapeo URL** ###
 
@@ -140,7 +140,7 @@ server {
 
 Reiniciamos nginx para que se cargue la nueva configuración ejecutando systemctl restart gnix o bien systemctl reload gnix (como root).
 
-* Tarea 4 (1 punto)(Obligatorio): Si accedes a la página www.iesgn.org/principal/documentos se visualizarán los documentos que hay en /srv/doc. Por lo tanto se permitirá el listado de fichero y el seguimiento de enlaces simbólicos siempre que sean a ficheros o directorios cuyo dueño sea el usuario. Muestra al profesor el funcionamiento.
+* Tarea 4: Si accedes a la página www.iesgn.org/principal/documentos se visualizarán los documentos que hay en /srv/doc. Por lo tanto se permitirá el listado de fichero y el seguimiento de enlaces simbólicos siempre que sean a ficheros o directorios cuyo dueño sea el usuario. Muestra al profesor el funcionamiento.
 
 Creamos el directorio doc en srv y una vez creado, configuramos un alias en iesgn de la siguiente forma:
 
@@ -193,10 +193,6 @@ total 0
 -rw-r--r-- 1 debian   debian   0 Nov  4 11:10 ficherousuario
 ~~~
 
-Prueba de funcionamiento:
-
-No ha funcionado por ahora
-
 * Tarea 5: En todo el host virtual se debe redefinir los mensajes de error de objeto no encontrado y no permitido. Para ello se crearan dos ficheros html dentro del directorio error. Entrega las modificaciones necesarias en la configuración y una comprobación del buen funcionamiento.*
 
 Creamos el directorio errores en /srv/www/iesgn y creamos en el los ficheros de error para no encontrado y prohibido. Después configuramos iesgn para que muestre los mensajes personalizados de la siguiente forma:
@@ -244,7 +240,7 @@ server {
 
 Prueba de funcionamiento:
 
-!nginx6.png!
+![error 404](/static/nginx/nginx6.png)
 
 * Tarea 6: Añade al escenario otra máquina conectada por una red interna al servidor. A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.
 
@@ -297,7 +293,7 @@ Bienvenido desde intranet
 
 Cliente fuera de la red (intranet):
 
-!nginx8.png!
+![error 403](/static/nginx/nginx8.png)
 
 Cliente de la red interna (internet):
 
@@ -311,7 +307,7 @@ Cliente de la red interna (internet):
 
 Cliente fuera de la red (internet):
 
-!nginx9.png!
+![](/static/nginx/nginx9.png)
 
 * Tarea 7: Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente.
 
@@ -395,6 +391,6 @@ pagina secreta revelada
 
 Desde fuera de la red interna por el contrario se nos pide autentificacion:
 
-!nginx10.png!
+![](/static/nginx/nginx10.png)
 
-!nginx11.png!
+![](/static/nginx/nginx11.png)

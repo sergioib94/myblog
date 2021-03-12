@@ -17,7 +17,7 @@ Options +Indexes
 
 Creamos una carpeta llamada nas y un par de ficheros para hacer una prueba de funcionamiento.
 
-!ejercicio6-1.png!
+![prueba de listado](/static/htaccess/ejercicio6-1.png)
 
 * Tarea2: Crea una redirección permanente: cuando entremos en http://host.dominio/google salte a www.google.es.
 
@@ -44,4 +44,4 @@ require valid-user
 
 Una vez que lo tenemos todo listo, hacemos la prueba de funcionamiento para comprobar si se nos pide usuario y contraseña:
 
-!ejercicio6-3.png!
+![prueba de autentificacion](/static/htaccess/ejercicio6-3.png)

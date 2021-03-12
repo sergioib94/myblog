@@ -102,7 +102,7 @@ vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/
 <p>Para hacer la redirección lo primero será crear el directorio principal en /srv/mapeo y dentro del directorio principal un pequeño index.html con el mensaje de bienvenida. Una vez hecho esto en el fichero mapeo.conf se tendrá que añadir la siguiente linea para que la redirección funcione.</p>
 <pre><code>RedirectMatch 301 ^/$ http://www.mapeo.com/principal/ 
 </code></pre><p>Con la linea anterior se indicara una redirección permanente (301) a la ruta /principal.</p>
-<p>!principal.png!</p>
+<p><img src="/static/mapeo-url/principal.png" alt="pagina principal"></p>
 <ul>
 <li>Tarea 2: En el directorio principal no se permite ver la lista de los ficheros, no se permite que se siga los enlaces simbólicos y no se permite negociación de contenido. Muestra al profesor el funcionamiento. ¿Qué configuración tienes que poner?</li>
 </ul>
@@ -148,9 +148,9 @@ total 8
 </code></pre><p>De esta forma al acceder a /documentos en un navegador se nos mostraran ambos ficheros, pero solo se podrá acceder al contenido del fichero1 ya que es el único de los dos cuyo propietario es el mismo tanto en fichero como en enlace.</p>
 <p>Pruebas de funcionamiento:</p>
 <p>fichero1:</p>
-<p>!fichero1.png!</p>
+<p><img src="/static/mapeo-url/fichero1.png" alt="primer fichero"></p>
 <p>fichero2</p>
-<p>!forbiden.png!</p>
+<p><img src="/static/mapeo-url/forbiden.png" alt="forbiden"></p>
 <p>En este caso el error 403 del fichero2 sale personalizado ya que es el ultimo ejercicio que hice, pero no se nos permite el acceso ya que los propietarios de fichero y enlace no son los mismos.</p>
 <ul>
 <li>Tarea 4: En todo el host virtual se debe redefinir los mensajes de error de objeto no encontrado y no permitido. Para el ello se crearan dos ficheros html dentro del directorio error. Entrega las modificaciones necesarias en la configuración y una comprobación del buen funcionamiento.</li>
@@ -164,9 +164,9 @@ total 8
 ErrorDocument 403 /error/403.html
 </code></pre><p>Ejecutamos un systemctl reload apache2 como root y comprobamos que se muestren los mensajes.</p>
 <p>Error 404:</p>
-<p>!error_404.png!</p>
+<p><img src="/static/mapeo-url/error_404.png" alt="error 404"></p>
 <p>Error 403:</p>
-<p>!error_403.png!</p>
+<p><img src="/static/mapeo-url/error_403.png" alt="error 403"></p>
 
     </div>
     <div class="post-footer">

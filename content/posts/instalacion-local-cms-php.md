@@ -139,8 +139,6 @@ Ampliar → seleccionamos un modulo, en este caso el foro→ instalar, en mi cas
 
 Prueba de funcionamiento de Drupal 9 con las configuraciones ya realizadas:
 
-!drupal.png!
-
 ### **Configuración multimodo** ###
 
 * Realiza copia de seguridad de la base de datos:
@@ -325,8 +323,6 @@ Algunos de los fallos saltaron en la instalacion fueron los siguientes:
 Reiniciamos el servidor y al continuar la instalación, solo faltara poner los datos de administrador para de esa forma tener operativa la moodle. 
 
 *Prueba de funcionamiento de moodle instalada*
-
-!moodle.png!
 
 ### **Necesidad de otros servicios** ###
 

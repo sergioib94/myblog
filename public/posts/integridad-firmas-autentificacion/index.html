@@ -140,7 +140,7 @@ sub  rsa3072/3C5DBE21F6961E37
 pub  rsa3072/C3B291882C4EE5DF
      creado: 2020-10-08  caduca: 2020-11-07  uso: SC  
      confianza: desconocido   validez: no definido
- Huella clave primaria: 443D 661D 9AAF 3ABA EDCA  93E1 C3B2 9188 2C4E E5DF
+Huella clave primaria: 443D 661D 9AAF 3ABA EDCA  93E1 C3B2 9188 2C4E E5DF
 
      Alejandro Gutierrez Valencia &lt;tojandro@gmail.com&gt;
 
@@ -226,14 +226,14 @@ Huellas dactilares de la clave primaria: 9233 303D 1F54 9573 9A6D  2CB4 636A E9E
 <p>Añade a la cuenta las opciones de seguridad para poder enviar correos firmados con tu clave privada o cifrar los mensajes para otros destinatarios.</p>
 </li>
 </ul>
-<p>!seguridad_correo.png!</p>
+<p><img src="/static/integracion-firmas-autentificacion/seguridad_correo.png" alt=""></p>
 <ul>
 <li>Envía y recibe varios mensajes con tus compañeros y comprueba el funcionamiento adecuado de GPG.</li>
 </ul>
 <p>Prueba de correo de Celia a mi:</p>
-<p>!prueb_correo.png!</p>
+<p><img src="/static/integracion-firmas-autentificacion/prueb_correo.png" alt="prueba de correo 1"></p>
 <p>Prueba de correo de mi a Celia:</p>
-<p>!pruebcorreo1.png!</p>
+<p><img src="/static/integracion-firmas-autentificacion/pruebcorreo1.png" alt="prueba de correo 2"></p>
 <h3 id="integridad-de-ficheros"><strong>Integridad de ficheros</strong></h3>
 <p>Vamos a descargarnos la ISO de debian, y posteriormente vamos a comprobar su integridad. Puedes encontrar la ISO en la dirección: <a href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/">https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/</a>.</p>
 <ul>
@@ -251,30 +251,30 @@ wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS
 wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS.sign
 wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS
 </code></pre><p>Comprobamos quien a firmado los ficheros de firma de comprobación para de esta forma saber así su ID de clave publica:</p>
-<pre><code>      sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign 
-      gpg: asumiendo que los datos firmados están en 'SHA512SUMS'
-      gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
-      gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
-      gpg: Imposible comprobar la firma: No public key
+<pre><code>sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign 
+gpg: asumiendo que los datos firmados están en 'SHA512SUMS'
+gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
+gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: Imposible comprobar la firma: No public key
 </code></pre><p>Una vez que conocemos la ID de la persona que ha firmado estos ficheros, nos descargamos su clave del servidor de claves de debian, ya que tendremos que tener la clave en nuestro sistema para mas adelante comprobar la firma.</p>
 <p>En este caso probamos a verificar como ejemplo el SHA512.</p>
-<pre><code>      sergioib@debian-sergio:~/Descargas$ gpg --keyserver keyring.debian.org --recv DF9B9C49EAA9298432589D76DA87E80D6294BE9B
-      gpg: clave DA87E80D6294BE9B: clave pública &quot;Debian CD signing key &lt;debian-cd@lists.debian.org&gt;&quot; importada
-      gpg: Cantidad total procesada: 1
-      gpg:               importadas: 1
+<pre><code>sergioib@debian-sergio:~/Descargas$ gpg --keyserver keyring.debian.org --recv DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: clave DA87E80D6294BE9B: clave pública &quot;Debian CD signing key &lt;debian-cd@lists.debian.org&gt;&quot; importada
+gpg: Cantidad total procesada: 1
+gpg:               importadas: 1
 </code></pre><p>Cuando ya tengamos la clave en nuestro equipo, ya podremos verificar la firma:</p>
-<pre><code>      sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign SHA512SUMS
-      gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
-      gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
-      gpg: comprobando base de datos de confianza
-      gpg: marginals needed: 3  completes needed: 1  trust model: pgp
-      gpg: nivel: 0  validez:   3  firmada:   3  confianza: 0-, 0q, 0n, 0m, 0f, 3u
-      gpg: nivel: 1  validez:   3  firmada:   0  confianza: 3-, 0q, 0n, 0m, 0f, 0u
-      gpg: siguiente comprobación de base de datos de confianza el: 2020-11-10
-      gpg: Firma correcta de &quot;Debian CD signing key &lt;debian-cd@lists.debian.org&gt;&quot; [desconocido]
-      gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!
-      gpg:          No hay indicios de que la firma pertenezca al propietario.
-      Huellas dactilares de la clave primaria: DF9B 9C49 EAA9 2984 3258  9D76 DA87 E80D 6294 BE9B
+<pre><code>sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign SHA512SUMS
+gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
+gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: comprobando base de datos de confianza
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: nivel: 0  validez:   3  firmada:   3  confianza: 0-, 0q, 0n, 0m, 0f, 3u
+gpg: nivel: 1  validez:   3  firmada:   0  confianza: 3-, 0q, 0n, 0m, 0f, 0u
+gpg: siguiente comprobación de base de datos de confianza el: 2020-11-10
+gpg: Firma correcta de &quot;Debian CD signing key &lt;debian-cd@lists.debian.org&gt;&quot; [desconocido]
+gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!
+gpg:          No hay indicios de que la firma pertenezca al propietario.
+Huellas dactilares de la clave primaria: DF9B 9C49 EAA9 2984 3258  9D76 DA87 E80D 6294 BE9B
 </code></pre><h3 id="identidad-y-autenticidad-apt-source"><strong>Identidad y autenticidad (apt source)</strong></h3>
 <p>Cuando nos instalamos un paquete en nuestra distribución linux tenemos que asegurarnos que ese paquete es legítimo. Para conseguir este objetivo se utiliza criptografía asimétrica, y en el caso de Debian a este sistema se llama apt secure. Esto lo debemos tener en cuenta al utilizar los repositorios oficiales. Cuando añadamos nuevos repositorios tendremos que añadir las firmas necesarias para confiar en que los paquetes son legítimos y no han sido modificados.</p>
 <ul>
@@ -332,10 +332,10 @@ Release.gpg → en el fichero se guardan las firmas del fichero release</p>
 <ul>
 <li>¿Qué significa este mensaje que aparece la primera vez que nos conectamos a un servidor?</li>
 </ul>
-<pre><code>      $ ssh debian@172.22.200.74
-      The authenticity of host '172.22.200.74 (172.22.200.74)' can't be established.
-      ECDSA key fingerprint is SHA256:7ZoNZPCbQTnDso1meVSNoKszn38ZwUI4i6saebbfL4M.
-      Are you sure you want to continue connecting (yes/no)? 
+<pre><code>$ ssh debian@172.22.200.74
+The authenticity of host '172.22.200.74 (172.22.200.74)' can't be established.
+ECDSA key fingerprint is SHA256:7ZoNZPCbQTnDso1meVSNoKszn38ZwUI4i6saebbfL4M.
+Are you sure you want to continue connecting (yes/no)? 
 </code></pre><p>La primera vez, al no tener la clave publica en la maquina a la que nos queremos conectar, nos salta este mensaje ya que puede tratarse de un servidor poco seguro.</p>
 <ul>
 <li>En ocasiones cuando estamos trabajando en el cloud, y reutilizamos una ip flotante nos aparece este mensaje:</li>

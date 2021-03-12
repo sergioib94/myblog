@@ -91,7 +91,7 @@ sub  rsa3072/3C5DBE21F6961E37
 pub  rsa3072/C3B291882C4EE5DF
      creado: 2020-10-08  caduca: 2020-11-07  uso: SC  
      confianza: desconocido   validez: no definido
- Huella clave primaria: 443D 661D 9AAF 3ABA EDCA  93E1 C3B2 9188 2C4E E5DF
+Huella clave primaria: 443D 661D 9AAF 3ABA EDCA  93E1 C3B2 9188 2C4E E5DF
 
      Alejandro Gutierrez Valencia <tojandro@gmail.com>
 
@@ -179,17 +179,17 @@ Ahora vamos a configurar nuestro cliente de correo electrónico para poder manda
 
 * Añade a la cuenta las opciones de seguridad para poder enviar correos firmados con tu clave privada o cifrar los mensajes para otros destinatarios.
 
-!seguridad_correo.png!
+![](/static/integracion-firmas-autentificacion/seguridad_correo.png)
 
 * Envía y recibe varios mensajes con tus compañeros y comprueba el funcionamiento adecuado de GPG.
 
 Prueba de correo de Celia a mi:
 
-!prueb_correo.png!
+![prueba de correo 1](/static/integracion-firmas-autentificacion/prueb_correo.png)
 
 Prueba de correo de mi a Celia:
 
-!pruebcorreo1.png!
+![prueba de correo 2](/static/integracion-firmas-autentificacion/pruebcorreo1.png)
 
 ### **Integridad de ficheros** ###
 
@@ -212,11 +212,11 @@ wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS
 Comprobamos quien a firmado los ficheros de firma de comprobación para de esta forma saber así su ID de clave publica:
 
 ~~~
-      sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign 
-      gpg: asumiendo que los datos firmados están en 'SHA512SUMS'
-      gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
-      gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
-      gpg: Imposible comprobar la firma: No public key
+sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign 
+gpg: asumiendo que los datos firmados están en 'SHA512SUMS'
+gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
+gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: Imposible comprobar la firma: No public key
 ~~~
 
 Una vez que conocemos la ID de la persona que ha firmado estos ficheros, nos descargamos su clave del servidor de claves de debian, ya que tendremos que tener la clave en nuestro sistema para mas adelante comprobar la firma.
@@ -224,27 +224,27 @@ Una vez que conocemos la ID de la persona que ha firmado estos ficheros, nos des
 En este caso probamos a verificar como ejemplo el SHA512.
 
 ~~~
-      sergioib@debian-sergio:~/Descargas$ gpg --keyserver keyring.debian.org --recv DF9B9C49EAA9298432589D76DA87E80D6294BE9B
-      gpg: clave DA87E80D6294BE9B: clave pública "Debian CD signing key <debian-cd@lists.debian.org>" importada
-      gpg: Cantidad total procesada: 1
-      gpg:               importadas: 1
+sergioib@debian-sergio:~/Descargas$ gpg --keyserver keyring.debian.org --recv DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: clave DA87E80D6294BE9B: clave pública "Debian CD signing key <debian-cd@lists.debian.org>" importada
+gpg: Cantidad total procesada: 1
+gpg:               importadas: 1
 ~~~
 
 Cuando ya tengamos la clave en nuestro equipo, ya podremos verificar la firma:
 
 ~~~
-      sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign SHA512SUMS
-      gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
-      gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
-      gpg: comprobando base de datos de confianza
-      gpg: marginals needed: 3  completes needed: 1  trust model: pgp
-      gpg: nivel: 0  validez:   3  firmada:   3  confianza: 0-, 0q, 0n, 0m, 0f, 3u
-      gpg: nivel: 1  validez:   3  firmada:   0  confianza: 3-, 0q, 0n, 0m, 0f, 0u
-      gpg: siguiente comprobación de base de datos de confianza el: 2020-11-10
-      gpg: Firma correcta de "Debian CD signing key <debian-cd@lists.debian.org>" [desconocido]
-      gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!
-      gpg:          No hay indicios de que la firma pertenezca al propietario.
-      Huellas dactilares de la clave primaria: DF9B 9C49 EAA9 2984 3258  9D76 DA87 E80D 6294 BE9B
+sergioib@debian-sergio:~/Descargas$ gpg --verify SHA512SUMS.sign SHA512SUMS
+gpg: Firmado el dom 27 sep 2020 02:24:23 CEST
+gpg:                usando RSA clave DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: comprobando base de datos de confianza
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: nivel: 0  validez:   3  firmada:   3  confianza: 0-, 0q, 0n, 0m, 0f, 3u
+gpg: nivel: 1  validez:   3  firmada:   0  confianza: 3-, 0q, 0n, 0m, 0f, 0u
+gpg: siguiente comprobación de base de datos de confianza el: 2020-11-10
+gpg: Firma correcta de "Debian CD signing key <debian-cd@lists.debian.org>" [desconocido]
+gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!
+gpg:          No hay indicios de que la firma pertenezca al propietario.
+Huellas dactilares de la clave primaria: DF9B 9C49 EAA9 2984 3258  9D76 DA87 E80D 6294 BE9B
 ~~~
 
 ### **Identidad y autenticidad (apt source)** ###
@@ -313,10 +313,10 @@ Este fichero contiene las claves de host DSA de los servidores SSH a los que se 
 * ¿Qué significa este mensaje que aparece la primera vez que nos conectamos a un servidor?
 
 ~~~
-      $ ssh debian@172.22.200.74
-      The authenticity of host '172.22.200.74 (172.22.200.74)' can't be established.
-      ECDSA key fingerprint is SHA256:7ZoNZPCbQTnDso1meVSNoKszn38ZwUI4i6saebbfL4M.
-      Are you sure you want to continue connecting (yes/no)? 
+$ ssh debian@172.22.200.74
+The authenticity of host '172.22.200.74 (172.22.200.74)' can't be established.
+ECDSA key fingerprint is SHA256:7ZoNZPCbQTnDso1meVSNoKszn38ZwUI4i6saebbfL4M.
+Are you sure you want to continue connecting (yes/no)? 
 ~~~
 
 La primera vez, al no tener la clave publica en la maquina a la que nos queremos conectar, nos salta este mensaje ya que puede tratarse de un servidor poco seguro.

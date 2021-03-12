@@ -104,12 +104,14 @@ Apache/2.4.38 (Debian) Server at www.departamentos.iesgn.org Port 80
 </code></pre><ul>
 <li>Intranet equipo fuera de la red</li>
 </ul>
-<p>!intranet.png!</p>
+<p><img src="/static/control-accesos/intranet.png" alt="prueba desde navegador"></p>
 <ul>
 <li>Internet equipo fuera de la red</li>
 </ul>
-<p>!internet.png!</p>
-<p>h3. <em>Tarea2: Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente. ¿Cómo se manda la contraseña entre el cliente y el servidor?. Entrega una breve explicación del ejercicio.</em></p>
+<p><img src="/static/control-accesos/internet.png" alt="prueba desde navegador"></p>
+<ul>
+<li>Tarea2: Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente. ¿Cómo se manda la contraseña entre el cliente y el servidor?. Entrega una breve explicación del ejercicio.*</li>
+</ul>
 <p>Creamos en /src/www/departamentos un directorio secreto con un index.html</p>
 <p>En /etc/apache2 creamos un directorio claves</p>
 <pre><code>mkdir claves
@@ -454,7 +456,7 @@ tcpdump: listening on eth2, link-type EN10MB (Ethernet), capture size 262144 byt
 </code></pre><ul>
 <li>Funcionamiento desde fuera de la red:</li>
 </ul>
-<p>!secreto2.png!</p>
+<p><img src="/static/control-accesos/secreto2.png" alt="autentificcion"></p>
 
     </div>
     <div class="post-footer">

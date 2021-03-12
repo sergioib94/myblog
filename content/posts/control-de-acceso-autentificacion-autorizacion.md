@@ -49,13 +49,13 @@ Apache/2.4.38 (Debian) Server at www.departamentos.iesgn.org Port 80
 
 * Intranet equipo fuera de la red
 
-!intranet.png!
+![prueba desde navegador](/static/control-accesos/intranet.png)
 
 * Internet equipo fuera de la red
 
-!internet.png!
+![prueba desde navegador](/static/control-accesos/internet.png)
 
-h3. *Tarea2: Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente. ¿Cómo se manda la contraseña entre el cliente y el servidor?. Entrega una breve explicación del ejercicio.*
+* Tarea2: Autentificación básica. Limita el acceso a la URL departamentos.iesgn.org/secreto. Comprueba las cabeceras de los mensajes HTTP que se intercambian entre el servidor y el cliente. ¿Cómo se manda la contraseña entre el cliente y el servidor?. Entrega una breve explicación del ejercicio.*
 
 Creamos en /src/www/departamentos un directorio secreto con un index.html
 
@@ -458,4 +458,4 @@ Bienvenido directivo
 
 * Funcionamiento desde fuera de la red:
 
-!secreto2.png!
+![autentificcion](/static/control-accesos/secreto2.png)
