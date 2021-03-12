@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Usuarios Grupos Y Acls en Ldap // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Usuarios Grupos Y Acls en Ldap"/>
+<meta name="twitter:description" content="Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.  Para crear estos usuarios, creamos un fichero .ldif llamado por ejemplo usuarios con el siguiente contenido:
+dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Sergio Ibañez uid: sergio uidNumber: 2000 gidNumber: 2000 homeDirectory: /home/sergio loginShell: /bin/bash userPassword: {SSHA}PkyDS12f&#43;fo6sR3uHGsY25CvUjMrmrVy sn: ibañez dn: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Manuel Lora uid: manuel uidNumber: 2001 gidNumber: 2001 homeDirectory: /home/lora loginShell: /bin/bash userPassword: {SSHA}ODN7zIXBS0rDW&#43;Uf9Z1J1/GUcBXhtrS/ sn: lora dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Antonio uid: juanan uidNumber: 2002 gidNumber: 2002 homeDirectory: /home/juanan loginShell: /bin/bash userPassword: {SSHA}V&#43;mrXKnbB/ReYwrdQ7Gh85ZQZw1A2iqs sn: reifs dn: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Fran Madueño uid: fran uidNumber: 2003 gidNumber: 2003 homeDirectory: /home/fran loginShell: /bin/bash userPassword: {SSHA}RnYnua1fD3L1UCc4arAfVrfNWrokHsoF sn: madueño dn: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alejando Gutierrez uid: alejandro uidNumber: 2004 gidNumber: 2004 homeDirectory: /home/alejandro loginShell: /bin/bash userPassword: {SSHA}H4js7CR0IjdgRIYJFtHA7zkq7&#43;9gWNff sn: gutierrez dn: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Jose Miguel uid: calderon uidNumber: 2005 gidNumber: 2005 homeDirectory: /home/calderon loginShell: /bin/bash userPassword: {SSHA}ioP7oyy5KXGXmTQE8sLajhSTPV0bUyVk sn: calderon dn: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Adrian Jaramillo uid: adrian uidNumber: 2006 gidNumber: 2006 homeDirectory: /home/adrian loginShell: /bin/bash userPassword: {SSHA}jGxqVD3yK9yRm8qtWVuFW7du/I75p9Qv sn: jaramillo dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Celia Garcia uid: celia uidNumber: 2007 gidNumber: 2007 homeDirectory: /home/celia loginShell: /bin/bash userPassword: {SSHA}WQ8IgcfkrrAz5sNwfqsdJhBtNXHJ1OyQ sn: garcia dn: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alvaro Vaca uid: alvaro uidNumber: 2008 gidNumber: 2008 homeDirectory: /home/alvaro loginShell: /bin/bash userPassword: {SSHA}W0XxEk1ojVDliy4jIN3IyZ4RVqFwiLxi sn: vaca dn: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Luis uid: juanlu uidNumber: 2009 gidNumber: 2009 homeDirectory: /home/juanlu loginShell: /bin/bash userPassword: {SSHA}u&#43;yL9u8EiUlYVKHvsD&#43;j&#43;Ww7iOGaNOBW sn: millan En este fichero, la estructura con la que se van a crear los usuarios es la misma:"/>
+
+    <meta property="og:title" content="Usuarios Grupos Y Acls en Ldap" />
+<meta property="og:description" content="Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.  Para crear estos usuarios, creamos un fichero .ldif llamado por ejemplo usuarios con el siguiente contenido:
+dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Sergio Ibañez uid: sergio uidNumber: 2000 gidNumber: 2000 homeDirectory: /home/sergio loginShell: /bin/bash userPassword: {SSHA}PkyDS12f&#43;fo6sR3uHGsY25CvUjMrmrVy sn: ibañez dn: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Manuel Lora uid: manuel uidNumber: 2001 gidNumber: 2001 homeDirectory: /home/lora loginShell: /bin/bash userPassword: {SSHA}ODN7zIXBS0rDW&#43;Uf9Z1J1/GUcBXhtrS/ sn: lora dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Antonio uid: juanan uidNumber: 2002 gidNumber: 2002 homeDirectory: /home/juanan loginShell: /bin/bash userPassword: {SSHA}V&#43;mrXKnbB/ReYwrdQ7Gh85ZQZw1A2iqs sn: reifs dn: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Fran Madueño uid: fran uidNumber: 2003 gidNumber: 2003 homeDirectory: /home/fran loginShell: /bin/bash userPassword: {SSHA}RnYnua1fD3L1UCc4arAfVrfNWrokHsoF sn: madueño dn: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alejando Gutierrez uid: alejandro uidNumber: 2004 gidNumber: 2004 homeDirectory: /home/alejandro loginShell: /bin/bash userPassword: {SSHA}H4js7CR0IjdgRIYJFtHA7zkq7&#43;9gWNff sn: gutierrez dn: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Jose Miguel uid: calderon uidNumber: 2005 gidNumber: 2005 homeDirectory: /home/calderon loginShell: /bin/bash userPassword: {SSHA}ioP7oyy5KXGXmTQE8sLajhSTPV0bUyVk sn: calderon dn: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Adrian Jaramillo uid: adrian uidNumber: 2006 gidNumber: 2006 homeDirectory: /home/adrian loginShell: /bin/bash userPassword: {SSHA}jGxqVD3yK9yRm8qtWVuFW7du/I75p9Qv sn: jaramillo dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Celia Garcia uid: celia uidNumber: 2007 gidNumber: 2007 homeDirectory: /home/celia loginShell: /bin/bash userPassword: {SSHA}WQ8IgcfkrrAz5sNwfqsdJhBtNXHJ1OyQ sn: garcia dn: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alvaro Vaca uid: alvaro uidNumber: 2008 gidNumber: 2008 homeDirectory: /home/alvaro loginShell: /bin/bash userPassword: {SSHA}W0XxEk1ojVDliy4jIN3IyZ4RVqFwiLxi sn: vaca dn: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Luis uid: juanlu uidNumber: 2009 gidNumber: 2009 homeDirectory: /home/juanlu loginShell: /bin/bash userPassword: {SSHA}u&#43;yL9u8EiUlYVKHvsD&#43;j&#43;Ww7iOGaNOBW sn: millan En este fichero, la estructura con la que se van a crear los usuarios es la misma:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/usuarios-grupos-y-acls-en-ldap/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T14:14:51&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T14:14:51&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Usuarios Grupos Y Acls en Ldap</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          8 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <ul>
+<li>Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.</li>
+</ul>
+<p>Para crear estos usuarios, creamos un fichero .ldif llamado por ejemplo usuarios con el siguiente contenido:</p>
+<pre><code>dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Sergio Ibañez
+uid: sergio
+uidNumber: 2000
+gidNumber: 2000
+homeDirectory: /home/sergio
+loginShell: /bin/bash
+userPassword: {SSHA}PkyDS12f+fo6sR3uHGsY25CvUjMrmrVy 
+sn: ibañez
+
+dn: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Manuel Lora
+uid: manuel
+uidNumber: 2001
+gidNumber: 2001
+homeDirectory: /home/lora
+loginShell: /bin/bash
+userPassword: {SSHA}ODN7zIXBS0rDW+Uf9Z1J1/GUcBXhtrS/
+sn: lora
+
+dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Juan Antonio
+uid: juanan
+uidNumber: 2002
+gidNumber: 2002
+homeDirectory: /home/juanan
+loginShell: /bin/bash
+userPassword: {SSHA}V+mrXKnbB/ReYwrdQ7Gh85ZQZw1A2iqs
+sn: reifs
+
+dn: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Fran Madueño
+uid: fran
+uidNumber: 2003
+gidNumber: 2003
+homeDirectory: /home/fran
+loginShell: /bin/bash
+userPassword: {SSHA}RnYnua1fD3L1UCc4arAfVrfNWrokHsoF
+sn: madueño
+
+dn: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Alejando Gutierrez
+uid: alejandro
+uidNumber: 2004
+gidNumber: 2004
+homeDirectory: /home/alejandro
+loginShell: /bin/bash
+userPassword: {SSHA}H4js7CR0IjdgRIYJFtHA7zkq7+9gWNff 
+sn: gutierrez
+
+dn: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Jose Miguel
+uid: calderon
+uidNumber: 2005
+gidNumber: 2005
+homeDirectory: /home/calderon
+loginShell: /bin/bash
+userPassword: {SSHA}ioP7oyy5KXGXmTQE8sLajhSTPV0bUyVk
+sn: calderon
+
+dn: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Adrian Jaramillo
+uid: adrian
+uidNumber: 2006
+gidNumber: 2006
+homeDirectory: /home/adrian
+loginShell: /bin/bash
+userPassword: {SSHA}jGxqVD3yK9yRm8qtWVuFW7du/I75p9Qv
+sn: jaramillo
+
+dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Celia Garcia
+uid: celia
+uidNumber: 2007
+gidNumber: 2007
+homeDirectory: /home/celia
+loginShell: /bin/bash
+userPassword: {SSHA}WQ8IgcfkrrAz5sNwfqsdJhBtNXHJ1OyQ
+sn: garcia
+
+dn: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Alvaro Vaca
+uid: alvaro
+uidNumber: 2008
+gidNumber: 2008
+homeDirectory: /home/alvaro
+loginShell: /bin/bash
+userPassword: {SSHA}W0XxEk1ojVDliy4jIN3IyZ4RVqFwiLxi 
+sn: vaca
+
+dn: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Juan Luis
+uid: juanlu
+uidNumber: 2009
+gidNumber: 2009
+homeDirectory: /home/juanlu
+loginShell: /bin/bash
+userPassword: {SSHA}u+yL9u8EiUlYVKHvsD+j+Ww7iOGaNOBW 
+sn: millan
+</code></pre><p>En este fichero, la estructura con la que se van a crear los usuarios es la misma:</p>
+<p>Todos tendrán tanto un objectClass posixAccount como un inetOrgPerson ya que los pide el propio ejercicio ademas de un atributo userPasswdord que aunque no es obligatorio también se pide, esta password esta cifrada en formato SSHA usando el comando sudo slappassword.</p>
+<p>Al tener el objectClass posixAccount, debemos poner ciertos atributos obligatorios para poner crear los usuarios como son por ejemplo:</p>
+<ul>
+<li>
+<p>cn (commonName): nombre del usuario.</p>
+</li>
+<li>
+<p>uid (id del usuario): En este caso al contrario que con la uid del sistema no es un numero sino el propio nombre característico del usuario, esta uid numérica que identifica al usuario, en ldap se pone usando el atributo uidNumber.</p>
+</li>
+<li>
+<p>gidNumber: es el identificador de grupo.</p>
+</li>
+<li>
+<p>homeDirectory: directorio que usara el usuario</p>
+</li>
+</ul>
+<p>Tanto uidNumbre como gidNumber, deben tener un numero bastante alejado del 1000 para que no haya conflicto con las uid de los usuarios del propio sistema, por lo que en este caso se pusieron por encima del 2000.</p>
+<p>Se podrían poner mas atributos al usuario, pero inetOrgPerson no tiene atributos que sean obligatorios por lo que en este caso no se pondría ninguno.</p>
+<p>Una vez creado el fichero, agregamos los nuevos usuarios a ldap:</p>
+<pre><code>debian@freston:~$ ldapadd -x -D cn=admin,dc=sergio,dc=gonzalonazareno,dc=org -W -f usuarios.ldif
+Enter LDAP Password: 
+adding new entry &quot;uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+</code></pre><ul>
+<li>Crea 3 grupos en LDAP dentro de una unidad organizativa diferente que sean objetos del tipo groupOfNames. Estos grupos serán: comercial, almacén y admin</li>
+</ul>
+<p>Ahora hacemos lo mismo pero con los grupos, creamos un fichero llamado grupos.ldif con la configuración de los 3 grupos necesarios y los añadimos.</p>
+<p>Configuración del fichero grupos.ldif</p>
+<pre><code>dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: comercial
+member:
+
+dn: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: almacen
+member:
+
+dn: cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: admin
+member:
+</code></pre><p>Básicamente les estamos poniendo nombre a los grupos a través del atributo &ldquo;cn&rdquo; y los estamos poniendo en la unidad organizativa Group con el objectClass groupOfNames.</p>
+<p>Se añaden los grupos:</p>
+<pre><code>debian@freston:~$ ldapadd -x -D cn=admin,dc=sergio,dc=gonzalonazareno,dc=org -W -f grupos.ldif
+Enter LDAP Password: 
+adding new entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+</code></pre><p>Ahora una vez añadidos los usuarios y los grupos, toca meter a dichos usuarios en los grupos, para ello, creamos un nuevo fichero.ldif indicando que usuario ira dentro de que grupo de la siguiente manera:</p>
+<pre><code>dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+dn: cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+changetype:modify
+add: member
+member: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+</code></pre><p>De esta forma, haciendo uso de la uid (que en principio debe ser única para cada usuario), indicamos a que grupo se incluye cada usuario. Se añaden los cambios:</p>
+<pre><code>debian@freston:~$ ldapmodify -x -D cn=admin,dc=sergio,dc=gonzalonazareno,dc=org -W -f usuariosengrupos.ldif
+Enter LDAP Password: 
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+</code></pre><p>Comprobamos que los usuarios han sido añadidos a los grupos correctamente:</p>
+<pre><code>debian@freston:~$ ldapsearch -x -h freston -b ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+# extended LDIF
+#
+# LDAPv3
+# base &lt;ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&gt; with scope subtree
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# Group, sergio.gonzalonazareno.org
+dn: ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+ou: Group
+objectClass: organizationalUnit
+
+# admin, Group, sergio.gonzalonazareno.org
+dn: cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: admin
+member:
+member: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+# almacen, Group, sergio.gonzalonazareno.org
+dn: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: almacen
+member:
+member: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+# comercial, Group, sergio.gonzalonazareno.org
+dn: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: comercial
+member:
+member: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+member: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 5
+# numEntries: 4
+</code></pre><p>Se han añadido correctamente a los grupos.</p>
+<ul>
+<li>Modifica OpenLDAP apropiadamente para que se pueda obtener los grupos a los que pertenece cada usuario a través del atributo &ldquo;memberOf&rdquo;.</li>
+</ul>
+<p>Creamos tres ficheros.ldif para añadir los módulos necesarios para que aparezca el atributo memberOf. En el primer fichero llamado por ejemplo memberofconf.ldif para cargar el modulo memberof a la configuración:</p>
+<pre><code>dn: cn=module,cn=config
+cn: module
+objectClass: olcModuleList
+objectclass: top
+olcModuleLoad: memberof.la
+olcModulePath: /usr/lib/ldap
+
+dn: olcOverlay={0}memberof,olcDatabase={1}mdb,cn=config
+objectClass: olcConfig
+objectClass: olcMemberOf
+objectClass: olcOverlayConfig
+objectClass: top
+olcOverlay: memberof
+olcMemberOfDangling: ignore
+olcMemberOfRefInt: TRUE
+olcMemberOfGroupOC: groupOfNames
+olcMemberOfMemberAD: member
+olcMemberOfMemberOfAD: memberOf
+</code></pre><p>En los otros dos ficheros se van a configurar la relación entre los objetos de grupos y usuarios de forma que no pierda coherencia en la configuración:</p>
+<p>Fichero refint1.ldif:</p>
+<pre><code>dn: cn=module,cn=config
+cn: module
+objectclass: olcModuleList
+objectclass: top
+olcmoduleload: refint.la
+olcmodulepath: /usr/lib/ldap
+
+dn: olcOverlay={1}refint,olcDatabase={1}mdb,cn=config
+objectClass: olcConfig
+objectClass: olcOverlayConfig
+objectClass: olcRefintConfig
+objectClass: top
+olcOverlay: {1}refint
+olcRefintAttribute: memberof member manager owne
+</code></pre><p>Fichero refint2.ldif:</p>
+<pre><code>dn: olcOverlay=memberof,olcDatabase={1}mdb,cn=config
+objectClass: olcOverlayConfig
+objectClass: olcMemberOf
+olcOverlay: memberof
+olcMemberOfRefint: TRUE
+</code></pre><p>Cargamos los ficheros de configuración creados:</p>
+<pre><code>debian@freston:~$ sudo ldapadd -Q -Y EXTERNAL -H ldapi:/// -f memberofconf.ldif 
+adding new entry &quot;cn=module,cn=config&quot;
+
+adding new entry &quot;olcOverlay={0}memberof,olcDatabase={1}mdb,cn=config&quot;
+
+debian@freston:~$ sudo ldapadd -Q -Y EXTERNAL -H ldapi:/// -f refint1.ldif
+adding new entry &quot;cn=module,cn=config&quot;
+
+adding new entry &quot;olcOverlay={1}refint,olcDatabase={1}mdb,cn=config&quot;
+ldap_add: Other (e.g., implementation specific) error (80)
+	additional info: olcRefintAttribute &lt;owne&gt;: attribute type undefined
+
+debian@freston:~$ sudo ldapadd -Q -Y EXTERNAL -H ldapi:/// -f refint2.ldif
+adding new entry &quot;olcOverlay=memberof,olcDatabase={1}mdb,cn=config&quot;
+</code></pre><p>Para que los cambios se realicen sobre los grupos ya creados, se tendrán que eliminar los objetos creados y volverlos a crear:</p>
+<pre><code>debian@freston:~$ sudo ldapdelete -x -D &quot;cn=admin,dc=sergio,dc=gonzalonazareno,dc=org&quot; 'cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org' -W
+Enter LDAP Password: 
+debian@freston:~$ sudo ldapdelete -x -D &quot;cn=admin,dc=sergio,dc=gonzalonazareno,dc=org&quot; 'cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org' -W 
+Enter LDAP Password: 
+debian@freston:~$ sudo ldapdelete -x -D &quot;cn=admin,dc=sergio,dc=gonzalonazareno,dc=org&quot; 'cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org' -W 
+Enter LDAP Password: 
+</code></pre><p>Y se vuelve a añadir el fichero grupos.ldif y las modificaciones de los grupos, con la relación entre los grupos y los usuarios, que se había guardado en el fichero usuariosengrupos.ldif.</p>
+<pre><code>debian@freston:~$ ldapadd -x -D cn=admin,dc=sergio,dc=gonzalonazareno,dc=org -W -f grupos.ldif
+Enter LDAP Password: 
+adding new entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+adding new entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+debian@freston:~$ ldapmodify -x -D cn=admin,dc=sergio,dc=gonzalonazareno,dc=org -W -f usuariosengrupos.ldif
+Enter LDAP Password: 
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+
+modifying entry &quot;cn=admin,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org&quot;
+</code></pre><p>Como memberOf no es parte de la configuración básica de LDAP, para que aparezca al realizar una búsqueda hay que especificar que éste aparezca:</p>
+<pre><code>debian@freston:~$ ldapsearch -LL -Y EXTERNAL -H ldapi:/// &quot;(uid=sergio)&quot; -b dc=sergio,dc=gonzalonazareno,dc=org memberOf
+SASL/EXTERNAL authentication started
+SASL username: gidNumber=1000+uidNumber=1000,cn=peercred,cn=external,cn=auth
+SASL SSF: 0
+version: 1
+
+dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+memberOf: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+
+debian@freston:~$ ldapsearch -LL -Y EXTERNAL -H ldapi:/// &quot;(uid=celia)&quot; -b dc=sergio,dc=gonzalonazareno,dc=org memberOf
+SASL/EXTERNAL authentication started
+SASL username: gidNumber=1000+uidNumber=1000,cn=peercred,cn=external,cn=auth
+SASL SSF: 0
+version: 1
+
+dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+memberOf: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+memberOf: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+
+debian@freston:~$ ldapsearch -LL -Y EXTERNAL -H ldapi:/// &quot;(uid=juanan)&quot; -b dc=sergio,dc=gonzalonazareno,dc=org memberOf
+SASL/EXTERNAL authentication started
+SASL username: gidNumber=1000+uidNumber=1000,cn=peercred,cn=external,cn=auth
+SASL SSF: 0
+version: 1
+
+dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
+memberOf: cn=comercial,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+memberOf: cn=almacen,ou=Group,dc=sergio,dc=gonzalonazareno,dc=org
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

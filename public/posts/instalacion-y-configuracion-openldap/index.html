@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Instalacion y Configuracion OpenLDAP // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Instalacion y Configuracion OpenLDAP"/>
+<meta name="twitter:description" content="Instalación Ldap sudo apt install slapd Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
+sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno."/>
+
+    <meta property="og:title" content="Instalacion y Configuracion OpenLDAP" />
+<meta property="og:description" content="Instalación Ldap sudo apt install slapd Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
+sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T14:11:19&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T14:11:19&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Instalacion y Configuracion OpenLDAP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="instalación-ldap"><strong>Instalación Ldap</strong></h3>
+<pre><code>sudo apt install slapd
+</code></pre><p>Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:</p>
+<pre><code>sudo dpkg-reconfigure -plow slapd
+</code></pre><p>Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno.</p>
+<p>Crea dos unidades organizativas, una para personas y otra para grupos</p>
+<p>Para crear estas unidades, necesitamos un fichero.ldif por lo que creamos uno en el directorio home, en este caso llamado ou.ldif con el siguiente contenido:</p>
+<pre><code>dn: ou=People,dc=freston-sergio,dc=gonzalonazareno,dc=org
+ou: People
+objectClass: organizationalUnit
+
+dn: ou=Group,dc=freston-sergio,dc=gonzalonazareno,dc=org
+ou: Group
+objectClass: organizationalUnit
+</code></pre><p>Una vez creado el fichero con la configuración necesaria, lo añadimos a nuestro árbol ldap ejecutando el ldapadd.</p>
+<pre><code>ldapadd -x -D &quot;cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org&quot; -W -f ou.ldif
+</code></pre><p>Nuestro servidor ldap quedara de la siguiente forma:</p>
+<pre><code>debian@freston:~$ sudo slapcat
+dn: dc=freston-sergio,dc=gonzalonazareno,dc=org
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: IES Gonzalo Nazareno
+dc: freston-sergio
+structuralObjectClass: organization
+entryUUID: a394a590-d284-103a-9869-af259156f1d8
+creatorsName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+createTimestamp: 20201214181924Z
+entryCSN: 20201214181924.616104Z#000000#000#000000
+modifiersName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+modifyTimestamp: 20201214181924Z
+
+dn: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword:: e1NTSEF9Mm4zR1hIZnB5TklMOTJseExobGZvcjFwdG5BNVpWVjY=
+structuralObjectClass: organizationalRole
+entryUUID: a39b1fa6-d284-103a-986a-af259156f1d8
+creatorsName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+createTimestamp: 20201214181924Z
+entryCSN: 20201214181924.658632Z#000000#000#000000
+modifiersName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+modifyTimestamp: 20201214181924Z
+
+dn: ou=People,dc=freston-sergio,dc=gonzalonazareno,dc=org
+ou: People
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+entryUUID: 9bd8b4a4-d289-103a-9037-499b5284f496
+creatorsName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+createTimestamp: 20201214185459Z
+entryCSN: 20201214185459.124066Z#000000#000#000000
+modifiersName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+modifyTimestamp: 20201214185459Z
+
+dn: ou=Group,dc=freston-sergio,dc=gonzalonazareno,dc=org
+ou: Group
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+entryUUID: 9bdf0b42-d289-103a-9038-499b5284f496
+creatorsName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+createTimestamp: 20201214185459Z
+entryCSN: 20201214185459.165633Z#000000#000#000000
+modifiersName: cn=admin,dc=freston-sergio,dc=gonzalonazareno,dc=org
+modifyTimestamp: 20201214185459Z
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
