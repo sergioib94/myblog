@@ -92,4 +92,4 @@ verb 3
 log /var/log/office1.log
 ~~~
 
-!Pueba_ping.jpeg!
+![Pueba de ping](/site-to-site/Pueba_ping.jpeg)
