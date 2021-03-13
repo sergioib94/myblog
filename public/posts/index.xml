@@ -6,7 +6,18 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Mar 2021 12:44:43 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Mar 2021 13:08:14 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalacion Openstack con Kolla Ansible</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/</link>
+      <pubDate>Sat, 13 Mar 2021 13:08:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/</guid>
+      <description>Introduccion Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:
+• Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. • Master (sistema ubuntu) • Compute (sistema ubuntu)
+El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb.</description>
+    </item>
+    
     <item>
       <title>Proxy Y Balanceador De Carga</title>
       <link>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</link>
