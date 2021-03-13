@@ -14,13 +14,11 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Instalacion Openstack con Kolla Ansible"/>
 <meta name="twitter:description" content="Introduccion Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:
-• Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. • Master (sistema ubuntu) • Compute (sistema ubuntu)
-El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb."/>
+ Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. Master (sistema ubuntu) Compute (sistema ubuntu)  El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb."/>
 
     <meta property="og:title" content="Instalacion Openstack con Kolla Ansible" />
 <meta property="og:description" content="Introduccion Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:
-• Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. • Master (sistema ubuntu) • Compute (sistema ubuntu)
-El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb." />
+ Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. Master (sistema ubuntu) Compute (sistema ubuntu)  El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-13T13:08:14&#43;01:00" />
@@ -70,12 +68,44 @@ El montaje de openstack requiere de mucho recurso por parte de la maquina anfitr
     <div class="post-content">
       <h3 id="introduccion">Introduccion</h3>
 <p>Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:</p>
-<p>• Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue.
-• Master (sistema ubuntu)
-• Compute (sistema ubuntu)</p>
+<ul>
+<li>Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue.</li>
+<li>Master (sistema ubuntu)</li>
+<li>Compute (sistema ubuntu)</li>
+</ul>
 <p>El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb.</p>
 <p>Tambien es recomendable usar sistemas operativos o ubuntu o centos en estos nodos (obviamente los 3 nodos deben de tener el mismo sistema operativo).</p>
-<h3 id="nodo-instalador">Nodo Instalador</h3>
+<h3 id="vgrantfile">Vgrantfile</h3>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+  config.vm.define :instalador do |instalador|
+    instalador.vm.box = &quot;ubuntu/bionic64&quot;
+    instalador.vm.hostname = &quot;instalador&quot;
+    instalador.vm.network :public_network, :bridge=&gt;&quot;wlo1&quot;
+    instalador.vm.network :private_network, ip: &quot;10.10.1.4&quot;, virtualbox__intnet: &quot;redinterna&quot;
+  end
+  config.vm.define :master do |master|
+    master.vm.box = &quot;ubuntu/bionic64&quot;
+    master.vm.hostname = &quot;master&quot;
+    master.vm.network :public_network, :bridge=&gt;&quot;wlo1&quot;
+    master.vm.network :private_network, ip: &quot;10.10.1.2&quot;, virtualbox__intnet: &quot;redinterna&quot;
+    master.vm.network :public_network, :bridge=&gt;&quot;wlo1&quot;
+    master.vm.provider &quot;virtualbox&quot; do |mv|
+      mv.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, &quot;6144&quot;]
+    end
+  end
+  config.vm.define :compute do |compute|
+    compute.vm.box = &quot;ubuntu/bionic64&quot;
+    compute.vm.hostname = &quot;compute&quot;
+    compute.vm.network :public_network, :bridge=&gt;&quot;wlo1&quot;
+    compute.vm.network :private_network, ip: &quot;10.10.1.3&quot;, virtualbox__intnet: &quot;redinterna&quot;
+    compute.vm.provider &quot;virtualbox&quot; do |mv|
+      mv.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, &quot;2048&quot;]
+    end
+  end
+end
+</code></pre><p>Como podemos ver, en master tenemos 2 interfaces de red, sin embargo a una de las interfaces sera necesario quitarle la ip, esto lo podremos hacer ejecutando lo siguiente:</p>
+<pre><code>ip a del (interfaz de red)(ip de la interfaz)
+</code></pre><h3 id="nodo-instalador">Nodo Instalador</h3>
 <p>Lo primero que haremos sera actualizar la maquina:</p>
 <pre><code>apt update
 apt upgrade

@@ -7,13 +7,51 @@ date: 2021-03-13T13:08:14+01:00
 
 Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:
 
-• Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue.
-• Master (sistema ubuntu)
-• Compute (sistema ubuntu)
+* Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue.
+* Master (sistema ubuntu)
+* Compute (sistema ubuntu)
 
 El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb.
 
 Tambien es recomendable usar sistemas operativos o ubuntu o centos en estos nodos (obviamente los 3 nodos deben de tener el mismo sistema operativo).
+
+### Vgrantfile ###
+
+~~~
+Vagrant.configure("2") do |config|
+  config.vm.define :instalador do |instalador|
+    instalador.vm.box = "ubuntu/bionic64"
+    instalador.vm.hostname = "instalador"
+    instalador.vm.network :public_network, :bridge=>"wlo1"
+    instalador.vm.network :private_network, ip: "10.10.1.4", virtualbox__intnet: "redinterna"
+  end
+  config.vm.define :master do |master|
+    master.vm.box = "ubuntu/bionic64"
+    master.vm.hostname = "master"
+    master.vm.network :public_network, :bridge=>"wlo1"
+    master.vm.network :private_network, ip: "10.10.1.2", virtualbox__intnet: "redinterna"
+    master.vm.network :public_network, :bridge=>"wlo1"
+    master.vm.provider "virtualbox" do |mv|
+      mv.customize ["modifyvm", :id, "--memory", "6144"]
+    end
+  end
+  config.vm.define :compute do |compute|
+    compute.vm.box = "ubuntu/bionic64"
+    compute.vm.hostname = "compute"
+    compute.vm.network :public_network, :bridge=>"wlo1"
+    compute.vm.network :private_network, ip: "10.10.1.3", virtualbox__intnet: "redinterna"
+    compute.vm.provider "virtualbox" do |mv|
+      mv.customize ["modifyvm", :id, "--memory", "2048"]
+    end
+  end
+end
+~~~
+
+Como podemos ver, en master tenemos 2 interfaces de red, sin embargo a una de las interfaces sera necesario quitarle la ip, esto lo podremos hacer ejecutando lo siguiente:
+
+~~~
+ip a del (interfaz de red)(ip de la interfaz)
+~~~
 
 ### Nodo Instalador ###
 

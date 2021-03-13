@@ -14,8 +14,7 @@
       
       <guid>https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/</guid>
       <description>Introduccion Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:
-• Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. • Master (sistema ubuntu) • Compute (sistema ubuntu)
-El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb.</description>
+ Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. Master (sistema ubuntu) Compute (sistema ubuntu)  El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb.</description>
     </item>
     
     <item>
