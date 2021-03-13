@@ -6,7 +6,17 @@
     <description>Recent content in Aplicaciones Web on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Mar 2021 18:12:40 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/aplicaciones-web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Mar 2021 22:18:18 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/aplicaciones-web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creacion Blog Pelican</title>
+      <link>https://sergioib.netlify.app/posts/creacion-blog-pelican/</link>
+      <pubDate>Sat, 13 Mar 2021 22:18:18 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-blog-pelican/</guid>
+      <description>Instalacion de Pelican Para poder instalar este gestor de paginas web, ejecutamos apt install pelican y una vez instalado ejecutamos apt install markdown, que es el idioma en el que se escribirán los artículos del blog. Una vez instalados pelican y markdown en nuestro entorno de desarrollo (nuestra máquina) estará listo para usarse.
+apt install pelican apt install markdown Configuracion de un sitio web Para comenzar la configuracion de nuestro sitio web, lo primero sera ejecutar el comando pelican-quickstart donde empezaran a salir preguntas sobre la configuracion que deberan responderse:</description>
+    </item>
+    
     <item>
       <title>Introduccion a la Integracion Continua</title>
       <link>https://sergioib.netlify.app/posts/integracion-continua/</link>
