@@ -1,7 +1,6 @@
 ---
 title: "Cortafuegos en Escenario Openstack"
 date: 2021-03-12T17:53:20+01:00
-tags: [cortafuegos,puertos,forward,output,input,openstack,debian]
 categories: [Seguridad]
 ---
 

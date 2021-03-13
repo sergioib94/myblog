@@ -1,7 +1,6 @@
 ---
 title: "OVH Lemp"
 date: 2021-03-12T09:44:16+01:00
-tags: [ovh,lemp]
 categories: [Servicios]
 ---
 

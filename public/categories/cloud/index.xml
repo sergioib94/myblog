@@ -70,5 +70,15 @@ Una vez que comience la instalación, lo primero sera confirmar dicha instalaci�
   Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20.</description>
     </item>
     
+    <item>
+      <title>Configuracion Cliente VPN con certificado x509</title>
+      <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
+      <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracio-clientevpn/</guid>
+      <description>Genera una clave privada RSA 4096  Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
+root@debian-sergio:~# openssl genrsa 4096 &amp;gt; /etc/ssl/private/debian-sergio.ibanez.key Generating RSA private key, 4096 bit long modulus (2 primes) ........................++++ .....................................................................................................................................................................................................................................................................................................................................................................................................................++++ e is 65537 (0x010001)  Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona  Creamos el fichero csr para que sea firmado con el siguiente comando y rellenamos los parámetros necesarios que se nos piden: Country Name, State or Province Name (full name), Locality Name, Organization Name, Organizational Unit Name y Common Name (e.</description>
+    </item>
+    
   </channel>
 </rss>

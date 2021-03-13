@@ -1,8 +1,7 @@
 ---
 title: "Configuracion Cliente VPN con certificado x509"
 date: 2021-03-11T16:19:25+01:00
-tags: [vpn,openstack]
-categories: [Seguridad]
+categories: [Cloud]
 ---
 
 * Genera una clave privada RSA 4096

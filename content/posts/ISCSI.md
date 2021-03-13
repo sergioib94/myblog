@@ -1,7 +1,6 @@
 ---
 title: "ISCSI"
 date: 2021-03-12T18:44:37+01:00
-tags: [iscsi,debian,windows,vagrant]
 categories: [Cloud]
 ---
 

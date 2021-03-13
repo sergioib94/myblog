@@ -1,7 +1,6 @@
 ---
 title: "Servidores Web Base de Datos y Dns en Openstack"
 date: 2021-03-12T14:18:01+01:00
-tags: [base de datos,dna,openstack]
 categories: [Servicios]
 ---
 

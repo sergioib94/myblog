@@ -116,7 +116,7 @@ vagrant@Btrfs:~$ lsblk -f NAME FSTYPE LABEL UUID FSAVAIL FSUSE% MOUNTPOINT sda â
     </item>
     
     <item>
-      <title>Instalacion De Aplicacion Web Python Openstack</title>
+      <title>Instalacion de Mezzanine en Openstack</title>
       <link>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 16:01:48 +0100</pubDate>
       
@@ -318,7 +318,7 @@ Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer
     </item>
     
     <item>
-      <title>Control De Acceso Autentificacion Autorizacion</title>
+      <title>Control de Acceso, autentificacion y autorizacion</title>
       <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
       <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
       

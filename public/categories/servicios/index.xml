@@ -83,6 +83,16 @@ Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer
     </item>
     
     <item>
+      <title>Control de Acceso, autentificacion y autorizacion</title>
+      <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</guid>
+      <description>Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.  Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:
+ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName www.</description>
+    </item>
+    
+    <item>
       <title>Mapeo URL Virtualhost</title>
       <link>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</link>
       <pubDate>Thu, 11 Mar 2021 09:54:31 +0100</pubDate>

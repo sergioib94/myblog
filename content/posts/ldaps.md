@@ -1,7 +1,6 @@
 ---
 title: "Ldaps"
 date: 2021-03-12T14:13:08+01:00
-tags: [ldap,openstack,debian]
 categories: [Sistemas]
 ---
 

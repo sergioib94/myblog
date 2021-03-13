@@ -1,7 +1,6 @@
 ---
 title: "Https en Openstack"
 date: 2021-03-12T15:52:50+01:00
-tags: [https,openstack]
 categories: [Seguridad]
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Proxy y Balanceador De Carga"
 date: 2021-03-13T12:44:43+01:00
-tags: [balanceador,vagrant,proxy]
 categories: [Servicios]
 ---
 

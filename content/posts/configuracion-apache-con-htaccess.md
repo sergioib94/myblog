@@ -1,7 +1,6 @@
 ---
 title: "Configuracion Apache con .htaccess"
 date: 2021-03-11T16:17:14+01:00
-tags: [apache,htaccess]
 categories: [Servicios]
 ---
 

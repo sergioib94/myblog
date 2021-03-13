@@ -1,7 +1,6 @@
 ---
 title: "Instalacion Local CMS Php"
 date: 2021-03-11T10:13:49+01:00
-tags: [cms,php,lamp,vagrantfile,drupal,moodle]
 categories: [Aplicaciones Web]
 ---
 

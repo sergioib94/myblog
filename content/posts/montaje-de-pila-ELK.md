@@ -1,7 +1,6 @@
 ---
 title: "Montaje De Pila ELK"
 date: 2021-03-12T18:22:23+01:00
-tags: [openstack,elasticsearch,kibana,logstash,metricbeat,filebeat]
 categories: [Sistemas]
 ---
 
