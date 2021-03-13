@@ -13,18 +13,14 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vpn Site to Site"/>
-<meta name="twitter:description" content="VPN sitio a sitio con OpenVPN y certificados x509 Escenario:
-Servidor -&gt; 192.168.100.2 Cliente -&gt; 192.168.100.10
-Servidor-celia -&gt; 192.168.200.8 Cliente-celia -&gt; 192.168.200.4
-Fichero de configuracion sergio:
-#### Fichero de sit-to-site vpn #### #Dispositivo de túnel dev tun #IP del servidor remote 172.22.201.33 #Encaminamiento ifconfig 10.99.99.2 10.99.99.1 # Subred remota route 192.168.200.0 255.255.255.0 #Rol de cliente tls-client #Certificado de la CA ca /etc/openvpn/ca_celia.crt #Certificado cliente cert /etc/openvpn/cliente_celia.crt #Clave privada cliente key /etc/openvpn/cliente_celia."/>
+<meta name="twitter:description" content="Introduccion Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
+Se utilizarán direcciones de la red 10."/>
 
     <meta property="og:title" content="Vpn Site to Site" />
-<meta property="og:description" content="VPN sitio a sitio con OpenVPN y certificados x509 Escenario:
-Servidor -&gt; 192.168.100.2 Cliente -&gt; 192.168.100.10
-Servidor-celia -&gt; 192.168.200.8 Cliente-celia -&gt; 192.168.200.4
-Fichero de configuracion sergio:
-#### Fichero de sit-to-site vpn #### #Dispositivo de túnel dev tun #IP del servidor remote 172.22.201.33 #Encaminamiento ifconfig 10.99.99.2 10.99.99.1 # Subred remota route 192.168.200.0 255.255.255.0 #Rol de cliente tls-client #Certificado de la CA ca /etc/openvpn/ca_celia.crt #Certificado cliente cert /etc/openvpn/cliente_celia.crt #Clave privada cliente key /etc/openvpn/cliente_celia." />
+<meta property="og:description" content="Introduccion Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
+Se utilizarán direcciones de la red 10." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/vpn-site-to-site/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T19:00:38&#43;01:00" />
@@ -67,17 +63,24 @@ Fichero de configuracion sergio:
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          1 min read
+          2 min read
         </div>
       </div>
     </header>
     <div class="post-content">
-      <h3 id="vpn-sitio-a-sitio-con-openvpn-y-certificados-x509"><strong>VPN sitio a sitio con OpenVPN y certificados x509</strong></h3>
-<p>Escenario:</p>
+      <h3 id="introduccion">Introduccion</h3>
+<p>Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:</p>
+<p>Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.</p>
+<p>Se utilizarán direcciones de la red 10.99.99.0/24 para las direcciones virtuales de la VPN.
+Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.</p>
+<h3 id="vpn-sitio-a-sitio-con-openvpn-y-certificados-x509"><strong>VPN sitio a sitio con OpenVPN y certificados x509</strong></h3>
+<p>Escenario Propio:</p>
 <p>Servidor -&gt; 192.168.100.2
 Cliente -&gt; 192.168.100.10</p>
-<p>Servidor-celia -&gt; 192.168.200.8
-Cliente-celia -&gt; 192.168.200.4</p>
+<p>Escenario compañera Celia:</p>
+<p>Servidor -&gt; 192.168.200.8
+Cliente -&gt; 192.168.200.4</p>
+<p>En este caso mi servidor hace de cliente del servidor de celia.</p>
 <p>Fichero de configuracion sergio:</p>
 <pre><code>#### Fichero de sit-to-site vpn ####
 #Dispositivo de túnel
