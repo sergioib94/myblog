@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>guacamole on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/guacamole/</link>
+    <description>Recent content in guacamole on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 13:49:27 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/guacamole/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Despliegue Cms Java</title>
+      <link>https://sergioib.netlify.app/posts/despliegue-cms-java/</link>
+      <pubDate>Fri, 12 Mar 2021 13:49:27 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/despliegue-cms-java/</guid>
+      <description>Introduccion En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
+Guacamole permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>Usuarios Grupos Y Acls en Ldap // My New Hugo Site</title>
+    <title>Usuarios, grupos y ACLs en Ldap // My New Hugo Site</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.81.0" />
@@ -12,11 +12,11 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Usuarios Grupos Y Acls en Ldap"/>
+<meta name="twitter:title" content="Usuarios, grupos y ACLs en Ldap"/>
 <meta name="twitter:description" content="Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.  Para crear estos usuarios, creamos un fichero .ldif llamado por ejemplo usuarios con el siguiente contenido:
 dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Sergio Ibañez uid: sergio uidNumber: 2000 gidNumber: 2000 homeDirectory: /home/sergio loginShell: /bin/bash userPassword: {SSHA}PkyDS12f&#43;fo6sR3uHGsY25CvUjMrmrVy sn: ibañez dn: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Manuel Lora uid: manuel uidNumber: 2001 gidNumber: 2001 homeDirectory: /home/lora loginShell: /bin/bash userPassword: {SSHA}ODN7zIXBS0rDW&#43;Uf9Z1J1/GUcBXhtrS/ sn: lora dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Antonio uid: juanan uidNumber: 2002 gidNumber: 2002 homeDirectory: /home/juanan loginShell: /bin/bash userPassword: {SSHA}V&#43;mrXKnbB/ReYwrdQ7Gh85ZQZw1A2iqs sn: reifs dn: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Fran Madueño uid: fran uidNumber: 2003 gidNumber: 2003 homeDirectory: /home/fran loginShell: /bin/bash userPassword: {SSHA}RnYnua1fD3L1UCc4arAfVrfNWrokHsoF sn: madueño dn: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alejando Gutierrez uid: alejandro uidNumber: 2004 gidNumber: 2004 homeDirectory: /home/alejandro loginShell: /bin/bash userPassword: {SSHA}H4js7CR0IjdgRIYJFtHA7zkq7&#43;9gWNff sn: gutierrez dn: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Jose Miguel uid: calderon uidNumber: 2005 gidNumber: 2005 homeDirectory: /home/calderon loginShell: /bin/bash userPassword: {SSHA}ioP7oyy5KXGXmTQE8sLajhSTPV0bUyVk sn: calderon dn: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Adrian Jaramillo uid: adrian uidNumber: 2006 gidNumber: 2006 homeDirectory: /home/adrian loginShell: /bin/bash userPassword: {SSHA}jGxqVD3yK9yRm8qtWVuFW7du/I75p9Qv sn: jaramillo dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Celia Garcia uid: celia uidNumber: 2007 gidNumber: 2007 homeDirectory: /home/celia loginShell: /bin/bash userPassword: {SSHA}WQ8IgcfkrrAz5sNwfqsdJhBtNXHJ1OyQ sn: garcia dn: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alvaro Vaca uid: alvaro uidNumber: 2008 gidNumber: 2008 homeDirectory: /home/alvaro loginShell: /bin/bash userPassword: {SSHA}W0XxEk1ojVDliy4jIN3IyZ4RVqFwiLxi sn: vaca dn: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Luis uid: juanlu uidNumber: 2009 gidNumber: 2009 homeDirectory: /home/juanlu loginShell: /bin/bash userPassword: {SSHA}u&#43;yL9u8EiUlYVKHvsD&#43;j&#43;Ww7iOGaNOBW sn: millan En este fichero, la estructura con la que se van a crear los usuarios es la misma:"/>
 
-    <meta property="og:title" content="Usuarios Grupos Y Acls en Ldap" />
+    <meta property="og:title" content="Usuarios, grupos y ACLs en Ldap" />
 <meta property="og:description" content="Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.  Para crear estos usuarios, creamos un fichero .ldif llamado por ejemplo usuarios con el siguiente contenido:
 dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Sergio Ibañez uid: sergio uidNumber: 2000 gidNumber: 2000 homeDirectory: /home/sergio loginShell: /bin/bash userPassword: {SSHA}PkyDS12f&#43;fo6sR3uHGsY25CvUjMrmrVy sn: ibañez dn: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Manuel Lora uid: manuel uidNumber: 2001 gidNumber: 2001 homeDirectory: /home/lora loginShell: /bin/bash userPassword: {SSHA}ODN7zIXBS0rDW&#43;Uf9Z1J1/GUcBXhtrS/ sn: lora dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Antonio uid: juanan uidNumber: 2002 gidNumber: 2002 homeDirectory: /home/juanan loginShell: /bin/bash userPassword: {SSHA}V&#43;mrXKnbB/ReYwrdQ7Gh85ZQZw1A2iqs sn: reifs dn: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Fran Madueño uid: fran uidNumber: 2003 gidNumber: 2003 homeDirectory: /home/fran loginShell: /bin/bash userPassword: {SSHA}RnYnua1fD3L1UCc4arAfVrfNWrokHsoF sn: madueño dn: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alejando Gutierrez uid: alejandro uidNumber: 2004 gidNumber: 2004 homeDirectory: /home/alejandro loginShell: /bin/bash userPassword: {SSHA}H4js7CR0IjdgRIYJFtHA7zkq7&#43;9gWNff sn: gutierrez dn: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Jose Miguel uid: calderon uidNumber: 2005 gidNumber: 2005 homeDirectory: /home/calderon loginShell: /bin/bash userPassword: {SSHA}ioP7oyy5KXGXmTQE8sLajhSTPV0bUyVk sn: calderon dn: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Adrian Jaramillo uid: adrian uidNumber: 2006 gidNumber: 2006 homeDirectory: /home/adrian loginShell: /bin/bash userPassword: {SSHA}jGxqVD3yK9yRm8qtWVuFW7du/I75p9Qv sn: jaramillo dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Celia Garcia uid: celia uidNumber: 2007 gidNumber: 2007 homeDirectory: /home/celia loginShell: /bin/bash userPassword: {SSHA}WQ8IgcfkrrAz5sNwfqsdJhBtNXHJ1OyQ sn: garcia dn: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alvaro Vaca uid: alvaro uidNumber: 2008 gidNumber: 2008 homeDirectory: /home/alvaro loginShell: /bin/bash userPassword: {SSHA}W0XxEk1ojVDliy4jIN3IyZ4RVqFwiLxi sn: vaca dn: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Luis uid: juanlu uidNumber: 2009 gidNumber: 2009 homeDirectory: /home/juanlu loginShell: /bin/bash userPassword: {SSHA}u&#43;yL9u8EiUlYVKHvsD&#43;j&#43;Ww7iOGaNOBW sn: millan En este fichero, la estructura con la que se van a crear los usuarios es la misma:" />
 <meta property="og:type" content="article" />
@@ -31,6 +31,15 @@ dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top ob
     <header class="app-header">
       <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
       <h1>My New Hugo Site</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+      </nav>
       <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
       <div class="app-header-social">
         
@@ -47,7 +56,7 @@ dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top ob
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Usuarios Grupos Y Acls en Ldap</h1>
+      <h1 class ="post-title">Usuarios, grupos y ACLs en Ldap</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -62,6 +71,17 @@ dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top ob
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
           8 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://sergioib.netlify.app/tags/ldap/">ldap</a>
+              <a class="tag" href="https://sergioib.netlify.app/tags/usuarios/">usuarios</a>
+              <a class="tag" href="https://sergioib.netlify.app/tags/grupos/">grupos</a>
+              <a class="tag" href="https://sergioib.netlify.app/tags/acl/">acl</a>
+              <a class="tag" href="https://sergioib.netlify.app/tags/debian/">debian</a>
         </div>
       </div>
     </header>

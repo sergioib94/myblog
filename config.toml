@@ -3,6 +3,23 @@ languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "m10c"
 
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+
+  [[menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories/"
+
 [params]
   author = "Sergio Ibañez"
   description = "Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes"

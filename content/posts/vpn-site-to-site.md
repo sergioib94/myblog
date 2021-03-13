@@ -1,6 +1,8 @@
 ---
 title: "Vpn Site to Site"
 date: 2021-03-12T19:00:38+01:00
+tags: [vpn,site to site,openstack]
+categories: [Seguridad]
 ---
 
 ### Introduccion ###

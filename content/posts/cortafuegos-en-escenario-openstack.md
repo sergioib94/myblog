@@ -1,6 +1,8 @@
 ---
 title: "Cortafuegos en Escenario Openstack"
 date: 2021-03-12T17:53:20+01:00
+tags: [cortafuegos,puertos,forward,output,input,openstack,debian]
+categories: [Seguridad]
 ---
 
 Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.

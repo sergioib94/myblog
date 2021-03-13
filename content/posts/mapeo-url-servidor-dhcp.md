@@ -1,6 +1,8 @@
 ---
 title: "Mapeo URL Virtualhost"
 date: 2021-03-11T09:54:31+01:00
+tags: [virtualhost,mapeo,apache2,ejercicio]
+categories: [Servicios]
 ---
 
 * Crea un nuevo host virtual que es accedido con el nombre www.mapeo.com, cuyo DocumentRoot sea /srv/mapeo.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>input on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/input/</link>
+    <description>Recent content in input on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 17:53:20 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/input/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cortafuegos en Escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 17:53:20 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</guid>
+      <description>Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
+En este caso la maquina dulcinea cuenta con 3 interfaces de red:
+ eth0: interfaz al exterior eth1: interfaz de la red interna donde estan alojadas las maquinas freston(servidor ldap y de correos) y sancho (servidor base de datos y de copias de seguridad) eth2: interfaz a red dmz donde esta la maquina quijote (servidor web)  Política por defecto</description>
+    </item>
+    
+  </channel>
+</rss>

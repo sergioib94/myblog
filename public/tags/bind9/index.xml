@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bind9 on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/bind9/</link>
+    <description>Recent content in bind9 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 12:56:19 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/bind9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalacion Y Configuracion Servidor Dns</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</link>
+      <pubDate>Fri, 12 Mar 2021 12:56:19 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</guid>
+      <description>Servidor DNSmasq  Instala el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.*  Instalación:
+sudo apt install dnsmasq Configuración de dnsmasq (/etc/dnsmasq.conf):
+En este fichero lo que haremos sera primero descomentar la linea strict-order para que de esta forma en el caso de que nuestro dns no sea capaz de resolver una petición, lea el fichero resolv.conf y le pregunte a la maquina que tengamos indicada en el fichero para que ella resuelva la petición.</description>
+    </item>
+    
+  </channel>
+</rss>

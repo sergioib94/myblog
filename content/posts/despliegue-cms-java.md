@@ -1,6 +1,8 @@
 ---
 title: "Despliegue Cms Java"
 date: 2021-03-12T13:49:27+01:00
+tags: [despliegue,java,cms,tomcat,guacamole]
+categories: [Aplicaciones Web]
 ---
 
 ### **Introduccion** ###

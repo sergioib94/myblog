@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>drupal on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/drupal/</link>
+    <description>Recent content in drupal on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 10:37:20 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/drupal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aplicaciones PHP en OVH</title>
+      <link>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</link>
+      <pubDate>Fri, 12 Mar 2021 10:37:20 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</guid>
+      <description>Migración de Drupal Este drupal que va a migrarse de la maquina local a la maquina virtual alojada en ovh, es el mismo drupal que se creo en la anterior practica &amp;ldquo;instalacion local de cms php&amp;rdquo;.
+ Tarea 1. La aplicación se tendrá que migrar a un nuevo virtualhost al que se accederá con el nombre portal.iesgnXX.es.  Empezamos creando el virtualhost Portal, para ello accedemos a /etc/nginx/sites-availables/ y ejecutamos un sudo cp default portal:</description>
+    </item>
+    
+    <item>
+      <title>Instalacion Local CMS Php</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</link>
+      <pubDate>Thu, 11 Mar 2021 10:13:49 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</guid>
+      <description>Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+Configuración del vagrantfile:
+Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &amp;quot;debian/buster64&amp;quot; nodo1.vm.hostname = &amp;quot;server&amp;quot; nodo1.vm.network :private_network, type: &amp;quot;dhcp&amp;quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>autentificacion on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/autentificacion/</link>
+    <description>Recent content in autentificacion on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Mar 2021 16:00:38 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/autentificacion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Integridad, firmas y autentificacion</title>
+      <link>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:00:38 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</guid>
+      <description>Firmas electrónicas  Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc.sig --sign Triggers_I.ppt Verificacion de la firma de documento con compañero Lora:
+sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pdf.sig gpg: Firmado el mié 14 oct 2020 13:37:44 CEST gpg: usando RSA clave 9233303D1F5495739A6D2CB4636AE9EBCB7E3294 gpg: Firma correcta de &amp;quot;Manuel Lora Román &amp;lt;manuelloraroman@gmail.com&amp;gt;&amp;quot; [desconocido] gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!</description>
+    </item>
+    
+  </channel>
+</rss>

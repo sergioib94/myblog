@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>Proxy Y Balanceador De Carga // My New Hugo Site</title>
+    <title>Proxy y Balanceador De Carga // My New Hugo Site</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.81.0" />
@@ -12,12 +12,12 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Proxy Y Balanceador De Carga"/>
+<meta name="twitter:title" content="Proxy y Balanceador De Carga"/>
 <meta name="twitter:description" content="Balanceador de carga En la maquina de nuestro escenario llamada balanceador, instalamos haproxy:
 apt install haproxy Configuramos haproxy (/etc/haproxy/haproxy.cfg) de la siguiente forma:
 global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 127.0.0.1 local1 notice defaults mode http log global timeout connect 5000ms timeout client 50000ms timeout server 50000ms listen granja_cda bind 172.22.5.31:80 #aquí pon la dirección ip del balanceador mode http stats enable stats auth cda:cda balance roundrobin server uno 10."/>
 
-    <meta property="og:title" content="Proxy Y Balanceador De Carga" />
+    <meta property="og:title" content="Proxy y Balanceador De Carga" />
 <meta property="og:description" content="Balanceador de carga En la maquina de nuestro escenario llamada balanceador, instalamos haproxy:
 apt install haproxy Configuramos haproxy (/etc/haproxy/haproxy.cfg) de la siguiente forma:
 global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 127.0.0.1 local1 notice defaults mode http log global timeout connect 5000ms timeout client 50000ms timeout server 50000ms listen granja_cda bind 172.22.5.31:80 #aquí pon la dirección ip del balanceador mode http stats enable stats auth cda:cda balance roundrobin server uno 10." />
@@ -33,6 +33,15 @@ global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 12
     <header class="app-header">
       <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
       <h1>My New Hugo Site</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+      </nav>
       <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
       <div class="app-header-social">
         
@@ -49,7 +58,7 @@ global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 12
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Proxy Y Balanceador De Carga</h1>
+      <h1 class ="post-title">Proxy y Balanceador De Carga</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -64,6 +73,15 @@ global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 12
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
           7 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://sergioib.netlify.app/tags/balanceador/">balanceador</a>
+              <a class="tag" href="https://sergioib.netlify.app/tags/vagrant/">vagrant</a>
+              <a class="tag" href="https://sergioib.netlify.app/tags/proxy/">proxy</a>
         </div>
       </div>
     </header>

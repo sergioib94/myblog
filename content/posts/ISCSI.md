@@ -1,6 +1,8 @@
 ---
 title: "ISCSI"
 date: 2021-03-12T18:44:37+01:00
+tags: [iscsi,debian,windows,vagrant]
+categories: [Cloud]
 ---
 
 Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.

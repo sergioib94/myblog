@@ -1,6 +1,8 @@
 ---
 title: "Control De Acceso Autentificacion Autorizacion"
 date: 2021-03-11T16:13:52+01:00
+tags: [control de accesos,]
+categories: [Seguridad]
 ---
 
 * Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.

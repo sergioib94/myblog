@@ -1,6 +1,8 @@
 ---
 title: "Instalacion y Configuracion OpenLDAP"
 date: 2021-03-12T14:11:19+01:00
+tags: [ldap,debian,openstack]
+categories: [Sistemas]
 ---
 
 ### **Instalación Ldap** ###

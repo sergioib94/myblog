@@ -1,6 +1,8 @@
 ---
 title: "Compilacion Programa C con Makefile"
 date: 2021-03-11T16:10:39+01:00
+tags: [compilacion,paquete,less]
+categories: [Sistemas]
 ---
 
 ### **Compilacion paquete less** ###

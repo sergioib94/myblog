@@ -1,6 +1,8 @@
 ---
-title: "Usuarios Grupos Y Acls en Ldap"
+title: "Usuarios, grupos y ACLs en Ldap"
 date: 2021-03-12T14:14:51+01:00
+tags: [ldap,usuarios,grupos,acl,debian]
+categories: [Sistemas]
 ---
 
 * Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>raid5 on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/raid5/</link>
+    <description>Recent content in raid5 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 17:50:31 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/raid5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sistemas De Ficheros Btrfs</title>
+      <link>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</link>
+      <pubDate>Fri, 12 Mar 2021 17:50:31 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</guid>
+      <description>• Crea un escenario que incluya una máquina y varios discos asociados a ella.
+El escenario con el que contamos para esta practica es el de una maquina virtual con sistema operativo debían 10 creada con vagrant con 4 discos adicionales en el que se instalara un Raid5 usando los 3 primeros discos, y el ultimo disco se dejara para posteriormente comprobar sustituciones de discos simulando fallos.
+vagrant@Btrfs:~$ lsblk -f NAME FSTYPE LABEL UUID FSAVAIL FSUSE% MOUNTPOINT sda ├─sda1 ext4 983742b1-65a8-49d1-a148-a3865ea09e24 16.</description>
+    </item>
+    
+  </channel>
+</rss>

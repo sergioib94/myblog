@@ -1,6 +1,8 @@
 ---
 title: "Despliegue de Aplicaciones Python"
 date: 2021-03-12T12:22:28+01:00
+tags: [despliegue,python,migracion]
+categories: [Aplicaciones Web]
 ---
 
 * Tarea 1: Entorno de desarrollo

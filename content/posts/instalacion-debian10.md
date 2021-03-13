@@ -1,6 +1,8 @@
 ---
 title: "Instalacion de debian10"
 date: 2021-03-10T21:20:45+01:00
+tags: [debian]
+categories: [Sistemas]
 ---
 
 ## **Instacacion Debian 10** ##

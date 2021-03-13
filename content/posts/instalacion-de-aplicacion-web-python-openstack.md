@@ -1,6 +1,8 @@
 ---
 title: "Instalacion De Aplicacion Web Python Openstack"
 date: 2021-03-12T16:01:48+01:00
+tags: [mezzanine,openstack,python]
+categories: [Aplicaciones Web]
 ---
 
 • Instala el CMS en el entorno de desarrollo. Debes utilizar un entorno virtual.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>letsencrypt on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/letsencrypt/</link>
+    <description>Recent content in letsencrypt on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 13:05:15 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/letsencrypt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTTPS en OVH</title>
+      <link>https://sergioib.netlify.app/posts/https-ovh/</link>
+      <pubDate>Fri, 12 Mar 2021 13:05:15 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/https-ovh/</guid>
+      <description>Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.    Explica detenidamente cómo se solicita un certificado en Let&amp;rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:
+ ¿Qué función tiene el cliente ACME?  El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado.
+ ¿Qué configuración se realiza en el servidor web?</description>
+    </item>
+    
+  </channel>
+</rss>

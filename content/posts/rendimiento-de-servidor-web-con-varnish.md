@@ -1,6 +1,8 @@
 ---
 title: "Rendimiento De Servidor Web Con Varnish"
 date: 2021-03-12T18:53:19+01:00
+tags: [varnish,wordpress]
+categories: [Servicios]
 ---
 
 * Tarea 1: Vamos a configurar una máquina con la configuración ganadora: nginx + fpm_php (socket unix.Para ello ejecuta la receta ansible que encontraras en este repositorio. Accede al wordpress y termina la configuración del sitio.

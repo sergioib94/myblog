@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mapeo on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/mapeo/</link>
+    <description>Recent content in mapeo on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Mar 2021 16:43:41 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/mapeo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Servidor Web Nginx</title>
+      <link>https://sergioib.netlify.app/posts/servidor-web-nginx/</link>
+      <pubDate>Thu, 11 Mar 2021 16:43:41 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidor-web-nginx/</guid>
+      <description>Tarea 1: Crea una máquina del cloud con una red pública. Añade la clave pública del profesor a la máquina. Instala el servidor web nginx en la máquina. Modifica la página index.html que viene por defecto y accede a ella desde un navegador.
+  Entrega la ip flotante de la máquina para que el profesor pueda acceder a ella.
+  172.22.200.135
+ Entrega una captura de pantalla accediendo a ella.</description>
+    </item>
+    
+    <item>
+      <title>Mapeo URL Virtualhost</title>
+      <link>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</link>
+      <pubDate>Thu, 11 Mar 2021 09:54:31 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</guid>
+      <description>Crea un nuevo host virtual que es accedido con el nombre www.mapeo.com, cuyo DocumentRoot sea /srv/mapeo.  Creación del fichero .conf
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf mapeo.conf Modificaciones en mapeo.conf
+&amp;lt;VirtualHost *:80&amp;gt; ServerAdmin webmaster@localhost DocumentRoot /srv/mapeo ServerName www.mapeo.com ErrorLog ${APACHE_LOG_DIR}/error.log CustomLog ${APACHE_LOG_DIR}/access.log combined &amp;lt;/VirtualHost&amp;gt; Creamos el directorio en srv
+vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/ Configuración apache2
+&amp;lt;Directory /srv/&amp;gt; Options Indexes FollowSymLinks AllowOverride None Require all granted &amp;lt;/Directory&amp;gt; Creación del enlace simbólico</description>
+    </item>
+    
+  </channel>
+</rss>

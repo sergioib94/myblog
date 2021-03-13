@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dna on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/dna/</link>
+    <description>Recent content in dna on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 14:18:01 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/dna/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Servidores Web Base de Datos y Dns en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</link>
+      <pubDate>Fri, 12 Mar 2021 14:18:01 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</guid>
+      <description>Configuración bind con vistas:    En la maquina de Freston empezamos instalando el servidor dns:
+sudo apt install bind9 Una vez instalado bind9, lo primero sera configurar las vistas en /etc/bind/named.conf.local:
+acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0/15; }; view interna { match-clients { interna; }; allow-recursion { any; }; zone &amp;quot;gonzalonazareno.org&amp;quot; { type master; file &amp;quot;db.interna.gonzalonazareno.org&amp;quot;; }; zone &amp;quot;1.</description>
+    </item>
+    
+  </channel>
+</rss>

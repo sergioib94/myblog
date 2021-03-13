@@ -1,6 +1,8 @@
 ---
 title: "HTTPS en OVH"
 date: 2021-03-12T13:05:15+01:00
+tags: [https,ovh,letsencrypt]
+categories: [Seguridad]
 ---
 
 * 1. Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.

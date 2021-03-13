@@ -1,6 +1,8 @@
 ---
 title: "Instalacion Openstack con Kolla Ansible"
 date: 2021-03-13T13:08:14+01:00
+tags: [openstack,kolla,ansible,vagrant]
+categories: [Cloud]
 ---
 
 ### Introduccion ###

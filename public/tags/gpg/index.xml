@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gpg on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/gpg/</link>
+    <description>Recent content in gpg on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Mar 2021 16:00:38 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/gpg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Integridad, firmas y autentificacion</title>
+      <link>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:00:38 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</guid>
+      <description>Firmas electrónicas  Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc.sig --sign Triggers_I.ppt Verificacion de la firma de documento con compañero Lora:
+sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pdf.sig gpg: Firmado el mié 14 oct 2020 13:37:44 CEST gpg: usando RSA clave 9233303D1F5495739A6D2CB4636AE9EBCB7E3294 gpg: Firma correcta de &amp;quot;Manuel Lora Román &amp;lt;manuelloraroman@gmail.com&amp;gt;&amp;quot; [desconocido] gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!</description>
+    </item>
+    
+    <item>
+      <title>Cifrado Asimetrico Gpg Y Openssl</title>
+      <link>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</link>
+      <pubDate>Thu, 11 Mar 2021 09:15:13 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</guid>
+      <description>Tarea 1: Generación de claves  Genera un par de claves (pública y privada). ¿En que directorio se guarda las claves de un usuario?  gpg --gen-key Se nos piden algunos datos como nombre y apellidos, correo y contraseña y una vez introducida la información, se ve que la clave se nos crea en un directorio oculto .gnupg
+ gpg: clave CFCF1D130D5A52C5 marcada como de confianza absoluta gpg: creado el directorio &#39;/home/sergioib/.</description>
+    </item>
+    
+  </channel>
+</rss>

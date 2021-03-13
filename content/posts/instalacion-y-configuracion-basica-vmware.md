@@ -1,6 +1,8 @@
 ---
 title: "Instalacion Y Configuracion Basica Vmware ESXI"
 date: 2021-03-12T14:24:08+01:00
+tags: [vmware]
+categories: [Cloud]
 ---
 
 La instalación inicialmente es bastante sencilla, haciendo uso de un usb con la iso de vmware 5.5 lo conectamos en el servidor y nos aseguramos de que este configurado en bios para que arranque por usb y no por otro medio.

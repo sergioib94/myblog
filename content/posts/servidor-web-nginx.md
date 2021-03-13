@@ -1,6 +1,8 @@
 ---
 title: "Servidor Web Nginx"
 date: 2021-03-11T16:43:41+01:00
+tags: [nginx,mapeo,virtualhost]
+categories: [Servicios]
 ---
 
 * Tarea 1: Crea una máquina del cloud con una red pública. Añade la clave pública del profesor a la máquina. Instala el servidor web nginx en la máquina. Modifica la página index.html que viene por defecto y accede a ella desde un navegador.

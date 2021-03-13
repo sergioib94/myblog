@@ -1,6 +1,8 @@
 ---
 title: "Aplicaciones PHP en OVH"
 date: 2021-03-12T10:37:20+01:00
+tags: [aplicaciones,ovh,php,cms,drupal,migracion,base datos,nextcloud]
+categories: [Aplicaciones Web]
 ---
 
 ### **Migración de Drupal** ###

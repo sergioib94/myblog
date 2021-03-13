@@ -1,6 +1,8 @@
 ---
 title: "Sistemas De Ficheros Btrfs"
 date: 2021-03-12T17:50:31+01:00
+tags: [btrfs,sistema de ficheros,raid5,vagrant]
+categories: [Sistemas]
 ---
 
 • Crea un escenario que incluya una máquina y varios discos asociados a ella.

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>Servidores Web Base De Datos Y Dns en Openstack // My New Hugo Site</title>
+    <title>Servidores Web Base de Datos y Dns en Openstack // My New Hugo Site</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.81.0" />
@@ -12,12 +12,12 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Servidores Web Base De Datos Y Dns en Openstack"/>
+<meta name="twitter:title" content="Servidores Web Base de Datos y Dns en Openstack"/>
 <meta name="twitter:description" content="Configuración bind con vistas:    En la maquina de Freston empezamos instalando el servidor dns:
 sudo apt install bind9 Una vez instalado bind9, lo primero sera configurar las vistas en /etc/bind/named.conf.local:
 acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0/15; }; view interna { match-clients { interna; }; allow-recursion { any; }; zone &quot;gonzalonazareno.org&quot; { type master; file &quot;db.interna.gonzalonazareno.org&quot;; }; zone &quot;1."/>
 
-    <meta property="og:title" content="Servidores Web Base De Datos Y Dns en Openstack" />
+    <meta property="og:title" content="Servidores Web Base de Datos y Dns en Openstack" />
 <meta property="og:description" content="Configuración bind con vistas:    En la maquina de Freston empezamos instalando el servidor dns:
 sudo apt install bind9 Una vez instalado bind9, lo primero sera configurar las vistas en /etc/bind/named.conf.local:
 acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0/15; }; view interna { match-clients { interna; }; allow-recursion { any; }; zone &quot;gonzalonazareno.org&quot; { type master; file &quot;db.interna.gonzalonazareno.org&quot;; }; zone &quot;1." />
@@ -33,6 +33,15 @@ acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0
     <header class="app-header">
       <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
       <h1>My New Hugo Site</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+      </nav>
       <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
       <div class="app-header-social">
         
@@ -49,7 +58,7 @@ acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Servidores Web Base De Datos Y Dns en Openstack</h1>
+      <h1 class ="post-title">Servidores Web Base de Datos y Dns en Openstack</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -64,6 +73,14 @@ acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
           8 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://sergioib.netlify.app/tags/dna/">dna</a>
+              <a class="tag" href="https://sergioib.netlify.app/tags/openstack/">openstack</a>
         </div>
       </div>
     </header>

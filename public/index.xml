@@ -18,7 +18,7 @@
     </item>
     
     <item>
-      <title>Proxy Y Balanceador De Carga</title>
+      <title>Proxy y Balanceador De Carga</title>
       <link>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</link>
       <pubDate>Sat, 13 Mar 2021 12:44:43 +0100</pubDate>
       
@@ -148,7 +148,7 @@ Una vez que comience la instalaci√≥n, lo primero sera confirmar dicha instalaci√
     </item>
     
     <item>
-      <title>Servidores Web Base De Datos Y Dns en Openstack</title>
+      <title>Servidores Web Base de Datos y Dns en Openstack</title>
       <link>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</link>
       <pubDate>Fri, 12 Mar 2021 14:18:01 +0100</pubDate>
       
@@ -159,7 +159,7 @@ acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0
     </item>
     
     <item>
-      <title>Usuarios Grupos Y Acls en Ldap</title>
+      <title>Usuarios, grupos y ACLs en Ldap</title>
       <link>https://sergioib.netlify.app/posts/usuarios-grupos-y-acls-en-ldap/</link>
       <pubDate>Fri, 12 Mar 2021 14:14:51 +0100</pubDate>
       
@@ -339,7 +339,7 @@ tar xvzf less_487.orig.tar.gz Dentro del directorio less ejecutamos ./configure 
     </item>
     
     <item>
-      <title>Integridad Firmas Autentificacion</title>
+      <title>Integridad, firmas y autentificacion</title>
       <link>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</link>
       <pubDate>Thu, 11 Mar 2021 16:00:38 +0100</pubDate>
       

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>apache on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/apache/</link>
+    <description>Recent content in apache on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Mar 2021 16:17:14 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configuracion Apache con .htaccess</title>
+      <link>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</link>
+      <pubDate>Thu, 11 Mar 2021 16:17:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</guid>
+      <description>Date de alta en un proveedor de hosting. ¿Si necesitamos configurar el servidor web que han configurado los administradores del proveedor?, ¿qué podemos hacer? Explica la directiva AllowOverride de apache2. Utilizando archivos .htaccess realiza las siguientes configuraciones:  Se ha dado de alta en 000.webhost
+ Tarea1: Habilita el listado de ficheros en la URL http://host.dominio/nas.  Configuramos el fichero .htaccess añadiéndole la siguiente linea:
+Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer una prueba de funcionamiento.</description>
+    </item>
+    
+    <item>
+      <title>Virtualhost Apache</title>
+      <link>https://sergioib.netlify.app/posts/virtualhost-apache/</link>
+      <pubDate>Thu, 11 Mar 2021 09:47:06 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/virtualhost-apache/</guid>
+      <description>Configuración de VirtualHosting Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
+sudo apt install apache2 Una vez descargado apache2, creamos los ficheros.conf que usaran tanto www.iesgn.org como www.departamentosgn.org para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf Modificaciones de iesgn.conf y departamentos.conf  iesgn.conf:  &amp;lt;VirtualHost *:80&amp;gt; ServerAdmin webmaster@localhost DocumentRoot /srv/www/iesgn ServerName www.</description>
+    </item>
+    
+  </channel>
+</rss>

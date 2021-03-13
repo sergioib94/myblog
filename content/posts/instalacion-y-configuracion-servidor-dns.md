@@ -1,6 +1,8 @@
 ---
 title: "Instalacion Y Configuracion Servidor Dns"
 date: 2021-03-12T12:56:19+01:00
+tags: [dns,dnsmasq,bind9]
+categories: [Servicios]
 ---
 
 ### **Servidor DNSmasq** ###

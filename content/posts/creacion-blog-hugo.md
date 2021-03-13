@@ -1,6 +1,8 @@
 ---
 title: "Creacion Blog Hugo"
 date: 2021-03-11T08:07:44+01:00
+tags: [blog,hugo,debian,markdown,netlify]
+categories: [Aplicaciones Web]
 ---
 
 ### **Introducción** ##

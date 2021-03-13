@@ -1,6 +1,8 @@
 ---
 title: "Https en Openstack"
 date: 2021-03-12T15:52:50+01:00
+tags: [https,openstack]
+categories: [Seguridad]
 ---
 
 El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad "gestiona".

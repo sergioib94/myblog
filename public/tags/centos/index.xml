@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>centos on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/centos/</link>
+    <description>Recent content in centos on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 12:52:53 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Actualizacion de Centos7 a Centos8</title>
+      <link>https://sergioib.netlify.app/posts/actualizacion-centos8/</link>
+      <pubDate>Fri, 12 Mar 2021 12:52:53 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/actualizacion-centos8/</guid>
+      <description>Introduccion Esta practica se realizara en nuestra maquina Quijote del escenario opestack creado anteriormente.
+* Actualizacion de Centos 7 a Centos 8 en la maquina quijote* Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.9.2009 de centos.
+Instalamos el repositorio epel en nuestro centos 7:
+sudo yum install -y epel-release.</description>
+    </item>
+    
+    <item>
+      <title>Creacion de Escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 11:43:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</guid>
+      <description>Introduccion En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
+  Tarea 1: Creación de la red interna: ◦ Nombre red interna de &amp;lt;sergio.ibañez&amp;gt; ◦ 10.0.1.0/24
+  Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20.</description>
+    </item>
+    
+  </channel>
+</rss>
