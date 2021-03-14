@@ -6,7 +6,16 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Mar 2021 22:18:18 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Mar 2021 12:08:28 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bacula</title>
+      <link>https://sergioib.netlify.app/posts/bacula/</link>
+      <pubDate>Sun, 14 Mar 2021 12:08:28 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/bacula/</guid>
+      <description>Introduccion Bacula es un sistema de copias de seguridad que funciona como cliente y servidor. Este sistema de copias de seguridad va a ser instalado en una de las maquinas virtuales de nuestro escenario openstack que hemos creado en posts anteriores, mas concretamente como bacula necesita de una base de datos mariadb, se usara nuestra maquina Sancho (servidor de base de datos del escenario openstack) como servidor de copias de seguridad y las demas maquinas haran de clientes.</description>
+    </item>
+    
     <item>
       <title>Creacion blog Pelican</title>
       <link>https://sergioib.netlify.app/posts/creacion-blog-pelican/</link>
