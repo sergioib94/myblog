@@ -6,22 +6,22 @@
     <description>Recent content in Categories on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Mar 2021 12:08:28 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Mar 2021 13:26:35 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aplicaciones Web</title>
+      <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>
+      <pubDate>Sun, 14 Mar 2021 13:26:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/aplicaciones-web/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Sistemas</title>
       <link>https://sergioib.netlify.app/categories/sistemas/</link>
       <pubDate>Sun, 14 Mar 2021 12:08:28 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/categories/sistemas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Aplicaciones Web</title>
-      <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>
-      <pubDate>Sat, 13 Mar 2021 22:18:18 +0100</pubDate>
-      
-      <guid>https://sergioib.netlify.app/categories/aplicaciones-web/</guid>
       <description></description>
     </item>
     

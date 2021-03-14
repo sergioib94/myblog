@@ -6,7 +6,17 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Mar 2021 12:08:28 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Mar 2021 13:26:35 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aplicaciones web PHP en Docker</title>
+      <link>https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/</link>
+      <pubDate>Sun, 14 Mar 2021 13:26:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/</guid>
+      <description>Introduccion En esta practica haciendo usao de docker, vamos a desplegar distintas aplicaciones en contenedores, en los primeros ejercicios se trabajara con bookmedik (aplicacion para organizar citas medicas) y en las dos ultimas se usara drupal y joomla.
+La forma de trabajar sera la siguiente, en nuestro equipo tendremos un directorio con todo lo necesario para los distintos ejercicios y dentro de este directorio habra otros dos (en los casos que sea necesario), tendremos un directorio buil donde tendremos tanto el directorio de la aplicacion con los ficheros necesarios para su ejecucion, un dockerfile que usaremos para crear los contenedores y un fichero script ue modificara y añadira los datos necesario en los contenedores.</description>
+    </item>
+    
     <item>
       <title>Bacula</title>
       <link>https://sergioib.netlify.app/posts/bacula/</link>
