@@ -19,7 +19,7 @@ Se utilizarán direcciones de la red 10.</description>
     </item>
     
     <item>
-      <title>Cortafuegos en Escenario Openstack</title>
+      <title>Cortafuegos en escenario Openstack</title>
       <link>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 17:53:20 +0100</pubDate>
       
@@ -30,7 +30,7 @@ En este caso la maquina dulcinea cuenta con 3 interfaces de red:
     </item>
     
     <item>
-      <title>Https en Openstack</title>
+      <title>HTTPS en Openstack</title>
       <link>https://sergioib.netlify.app/posts/https-en-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 15:52:50 +0100</pubDate>
       
@@ -62,7 +62,7 @@ sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pd
     </item>
     
     <item>
-      <title>Cifrado Asimetrico Gpg Y Openssl</title>
+      <title>Cifrado Asimetrico GPG Y Openssl</title>
       <link>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</link>
       <pubDate>Thu, 11 Mar 2021 09:15:13 +0100</pubDate>
       

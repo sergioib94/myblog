@@ -1,5 +1,5 @@
 ---
-title: "Instalacion Local CMS Php"
+title: "Instalacion local CMS PHP"
 date: 2021-03-11T10:13:49+01:00
 categories: [Aplicaciones Web]
 ---

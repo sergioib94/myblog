@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Mar 2021 22:18:18 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/aplicaciones-web/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Creacion Blog Pelican</title>
+      <title>Creacion blog Pelican</title>
       <link>https://sergioib.netlify.app/posts/creacion-blog-pelican/</link>
       <pubDate>Sat, 13 Mar 2021 22:18:18 +0100</pubDate>
       
@@ -42,7 +42,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezz
     </item>
     
     <item>
-      <title>Despliegue Cms Java</title>
+      <title>Despliegue CMS Java</title>
       <link>https://sergioib.netlify.app/posts/despliegue-cms-java/</link>
       <pubDate>Fri, 12 Mar 2021 13:49:27 +0100</pubDate>
       
@@ -52,7 +52,7 @@ Guacamole permite acceder a uno o más escritorios desde cualquier lugar de form
     </item>
     
     <item>
-      <title>Despliegue de Aplicaciones Python</title>
+      <title>Despliegue de aplicaciones python</title>
       <link>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</link>
       <pubDate>Fri, 12 Mar 2021 12:22:28 +0100</pubDate>
       
@@ -73,7 +73,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
     </item>
     
     <item>
-      <title>Instalacion Local CMS Php</title>
+      <title>Instalacion local CMS PHP</title>
       <link>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</link>
       <pubDate>Thu, 11 Mar 2021 10:13:49 +0100</pubDate>
       
@@ -84,7 +84,7 @@ Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do 
     </item>
     
     <item>
-      <title>Creacion Blog Hugo</title>
+      <title>Creacion blog Hugo</title>
       <link>https://sergioib.netlify.app/posts/creacion-blog-hugo/</link>
       <pubDate>Thu, 11 Mar 2021 08:07:44 +0100</pubDate>
       

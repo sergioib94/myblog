@@ -1,5 +1,5 @@
 ---
-title: "Instalacion Y Configuracion Basica Vmware ESXI"
+title: "Instalacion y configuracion basica Vmware ESXI"
 date: 2021-03-12T14:24:08+01:00
 categories: [Cloud]
 ---

@@ -41,7 +41,7 @@ apt install open-iscsi Preparamos los discos para el uso de ISCSI LUN (en el ser
     </item>
     
     <item>
-      <title>Instalacion Y Configuracion Basica Vmware ESXI</title>
+      <title>Instalacion y configuracion basica Vmware ESXI</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</link>
       <pubDate>Fri, 12 Mar 2021 14:24:08 +0100</pubDate>
       
@@ -51,7 +51,7 @@ Una vez que comience la instalaci√≥n, lo primero sera confirmar dicha instalaci√
     </item>
     
     <item>
-      <title>Modificaciones Del Escenario Openstack</title>
+      <title>Modificaciones del escenario Openstack</title>
       <link>https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 14:06:50 +0100</pubDate>
       
@@ -60,7 +60,7 @@ Una vez que comience la instalaci√≥n, lo primero sera confirmar dicha instalaci√
     </item>
     
     <item>
-      <title>Creacion de Escenario Openstack</title>
+      <title>Creacion de escenario Openstack</title>
       <link>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 11:43:35 +0100</pubDate>
       
@@ -71,7 +71,7 @@ Una vez que comience la instalaci√≥n, lo primero sera confirmar dicha instalaci√
     </item>
     
     <item>
-      <title>Configuracion Cliente VPN con certificado x509</title>
+      <title>Configuracion cliente VPN con certificado x509</title>
       <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
       <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
       

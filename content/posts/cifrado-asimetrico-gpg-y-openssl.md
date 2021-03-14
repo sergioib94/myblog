@@ -1,5 +1,5 @@
 ---
-title: "Cifrado Asimetrico Gpg Y Openssl"
+title: "Cifrado Asimetrico GPG Y Openssl"
 date: 2021-03-11T09:15:13+01:00
 categories: [Seguridad]
 ---

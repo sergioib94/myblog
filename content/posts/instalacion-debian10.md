@@ -1,5 +1,5 @@
 ---
-title: "Instalacion de debian10"
+title: "Instalacion de Debian10"
 date: 2021-03-10T21:20:45+01:00
 categories: [Sistemas]
 ---

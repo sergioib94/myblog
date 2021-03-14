@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Mar 2021 18:22:23 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/sistemas/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Montaje De Pila ELK</title>
+      <title>Montaje de pila ELK</title>
       <link>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</link>
       <pubDate>Fri, 12 Mar 2021 18:22:23 +0100</pubDate>
       
@@ -18,7 +18,7 @@ Para poder montar la pila completa sera necesario que la maquina que aloje las t
     </item>
     
     <item>
-      <title>Sistemas De Ficheros Btrfs</title>
+      <title>Sistemas de ficheros Btrfs</title>
       <link>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</link>
       <pubDate>Fri, 12 Mar 2021 17:50:31 +0100</pubDate>
       
@@ -49,7 +49,7 @@ Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros 
     </item>
     
     <item>
-      <title>Instalacion y Configuracion OpenLDAP</title>
+      <title>Instalacion y configuracion OpenLDAP</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</link>
       <pubDate>Fri, 12 Mar 2021 14:11:19 +0100</pubDate>
       
@@ -72,7 +72,7 @@ sudo yum install -y epel-release.</description>
     </item>
     
     <item>
-      <title>Compilacion Programa C con Makefile</title>
+      <title>Compilacion programa C con Makefile</title>
       <link>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</link>
       <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
       
@@ -83,7 +83,7 @@ tar xvzf less_487.orig.tar.gz Dentro del directorio less ejecutamos ./configure 
     </item>
     
     <item>
-      <title>Instalacion de debian10</title>
+      <title>Instalacion de Debian10</title>
       <link>https://sergioib.netlify.app/posts/instalacion-debian10/</link>
       <pubDate>Wed, 10 Mar 2021 21:20:45 +0100</pubDate>
       

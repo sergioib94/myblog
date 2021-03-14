@@ -1,5 +1,5 @@
 ---
-title: "Instalacion y Configuracion OpenLDAP"
+title: "Instalacion y configuracion OpenLDAP"
 date: 2021-03-12T14:11:19+01:00
 categories: [Sistemas]
 ---

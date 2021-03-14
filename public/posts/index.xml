@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Mar 2021 22:18:18 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Creacion Blog Pelican</title>
+      <title>Creacion blog Pelican</title>
       <link>https://sergioib.netlify.app/posts/creacion-blog-pelican/</link>
       <pubDate>Sat, 13 Mar 2021 22:18:18 +0100</pubDate>
       
@@ -28,7 +28,7 @@ apt install pelican apt install markdown Configuracion de un sitio web Para come
     </item>
     
     <item>
-      <title>Proxy y Balanceador De Carga</title>
+      <title>Proxy y balanceador de carga</title>
       <link>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</link>
       <pubDate>Sat, 13 Mar 2021 12:44:43 +0100</pubDate>
       
@@ -61,7 +61,7 @@ Se utilizarán direcciones de la red 10.</description>
     </item>
     
     <item>
-      <title>Rendimiento De Servidor Web Con Varnish</title>
+      <title>Rendimiento de servidor Web con Varnish</title>
       <link>https://sergioib.netlify.app/posts/rendimiento-de-servidor-web-con-varnish/</link>
       <pubDate>Fri, 12 Mar 2021 18:53:19 +0100</pubDate>
       
@@ -82,7 +82,7 @@ apt install open-iscsi Preparamos los discos para el uso de ISCSI LUN (en el ser
     </item>
     
     <item>
-      <title>Montaje De Pila ELK</title>
+      <title>Montaje de pila ELK</title>
       <link>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</link>
       <pubDate>Fri, 12 Mar 2021 18:22:23 +0100</pubDate>
       
@@ -104,7 +104,7 @@ Clonamos nuestro repositorio github en nuestro entorno virtual:
     </item>
     
     <item>
-      <title>Cortafuegos en Escenario Openstack</title>
+      <title>Cortafuegos en escenario Openstack</title>
       <link>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 17:53:20 +0100</pubDate>
       
@@ -115,7 +115,7 @@ En este caso la maquina dulcinea cuenta con 3 interfaces de red:
     </item>
     
     <item>
-      <title>Sistemas De Ficheros Btrfs</title>
+      <title>Sistemas de ficheros Btrfs</title>
       <link>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</link>
       <pubDate>Fri, 12 Mar 2021 17:50:31 +0100</pubDate>
       
@@ -138,7 +138,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezz
     </item>
     
     <item>
-      <title>Https en Openstack</title>
+      <title>HTTPS en Openstack</title>
       <link>https://sergioib.netlify.app/posts/https-en-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 15:52:50 +0100</pubDate>
       
@@ -148,7 +148,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezz
     </item>
     
     <item>
-      <title>Instalacion Y Configuracion Basica Vmware ESXI</title>
+      <title>Instalacion y configuracion basica Vmware ESXI</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</link>
       <pubDate>Fri, 12 Mar 2021 14:24:08 +0100</pubDate>
       
@@ -158,7 +158,7 @@ Una vez que comience la instalación, lo primero sera confirmar dicha instalaci�
     </item>
     
     <item>
-      <title>Servidores Web Base de Datos y Dns en Openstack</title>
+      <title>Servidores Web, base de Datos y DNS en Openstack</title>
       <link>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</link>
       <pubDate>Fri, 12 Mar 2021 14:18:01 +0100</pubDate>
       
@@ -189,7 +189,7 @@ Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros 
     </item>
     
     <item>
-      <title>Instalacion y Configuracion OpenLDAP</title>
+      <title>Instalacion y configuracion OpenLDAP</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</link>
       <pubDate>Fri, 12 Mar 2021 14:11:19 +0100</pubDate>
       
@@ -199,7 +199,7 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
     </item>
     
     <item>
-      <title>Modificaciones Del Escenario Openstack</title>
+      <title>Modificaciones del escenario Openstack</title>
       <link>https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 14:06:50 +0100</pubDate>
       
@@ -208,7 +208,7 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
     </item>
     
     <item>
-      <title>Despliegue Cms Java</title>
+      <title>Despliegue CMS Java</title>
       <link>https://sergioib.netlify.app/posts/despliegue-cms-java/</link>
       <pubDate>Fri, 12 Mar 2021 13:49:27 +0100</pubDate>
       
@@ -229,7 +229,7 @@ Guacamole permite acceder a uno o más escritorios desde cualquier lugar de form
     </item>
     
     <item>
-      <title>Instalacion Y Configuracion Servidor Dns</title>
+      <title>Instalacion y configuracion servidor DNS</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</link>
       <pubDate>Fri, 12 Mar 2021 12:56:19 +0100</pubDate>
       
@@ -253,7 +253,7 @@ sudo yum install -y epel-release.</description>
     </item>
     
     <item>
-      <title>Despliegue de Aplicaciones Python</title>
+      <title>Despliegue de aplicaciones python</title>
       <link>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</link>
       <pubDate>Fri, 12 Mar 2021 12:22:28 +0100</pubDate>
       
@@ -264,7 +264,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
     </item>
     
     <item>
-      <title>Creacion de Escenario Openstack</title>
+      <title>Creacion de escenario Openstack</title>
       <link>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</link>
       <pubDate>Fri, 12 Mar 2021 11:43:35 +0100</pubDate>
       
@@ -307,7 +307,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
     </item>
     
     <item>
-      <title>Configuracion Cliente VPN con certificado x509</title>
+      <title>Configuracion cliente VPN con certificado x509</title>
       <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
       <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
       
@@ -317,7 +317,7 @@ root@debian-sergio:~# openssl genrsa 4096 &amp;gt; /etc/ssl/private/debian-sergi
     </item>
     
     <item>
-      <title>Configuracion Apache con .htaccess</title>
+      <title>Configuracion apache con .htaccess</title>
       <link>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</link>
       <pubDate>Thu, 11 Mar 2021 16:17:14 +0100</pubDate>
       
@@ -328,7 +328,7 @@ Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer
     </item>
     
     <item>
-      <title>Control de Acceso, autentificacion y autorizacion</title>
+      <title>Control de acceso, autentificacion y autorizacion</title>
       <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
       <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
       
@@ -338,7 +338,7 @@ ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName w
     </item>
     
     <item>
-      <title>Compilacion Programa C con Makefile</title>
+      <title>Compilacion programa C con Makefile</title>
       <link>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</link>
       <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
       
@@ -360,7 +360,7 @@ sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pd
     </item>
     
     <item>
-      <title>Instalacion Local CMS Php</title>
+      <title>Instalacion local CMS PHP</title>
       <link>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</link>
       <pubDate>Thu, 11 Mar 2021 10:13:49 +0100</pubDate>
       
@@ -384,7 +384,7 @@ vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R w
     </item>
     
     <item>
-      <title>Virtualhost Apache</title>
+      <title>Virtualhost apache</title>
       <link>https://sergioib.netlify.app/posts/virtualhost-apache/</link>
       <pubDate>Thu, 11 Mar 2021 09:47:06 +0100</pubDate>
       
@@ -405,7 +405,7 @@ Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en l
     </item>
     
     <item>
-      <title>Cifrado Asimetrico Gpg Y Openssl</title>
+      <title>Cifrado Asimetrico GPG Y Openssl</title>
       <link>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</link>
       <pubDate>Thu, 11 Mar 2021 09:15:13 +0100</pubDate>
       
@@ -415,7 +415,7 @@ Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en l
     </item>
     
     <item>
-      <title>Creacion Blog Hugo</title>
+      <title>Creacion blog Hugo</title>
       <link>https://sergioib.netlify.app/posts/creacion-blog-hugo/</link>
       <pubDate>Thu, 11 Mar 2021 08:07:44 +0100</pubDate>
       
@@ -426,7 +426,7 @@ sudo apt install hugo Sin embargo, en mi caso por defecto se instala la version 
     </item>
     
     <item>
-      <title>Instalacion de debian10</title>
+      <title>Instalacion de Debian10</title>
       <link>https://sergioib.netlify.app/posts/instalacion-debian10/</link>
       <pubDate>Wed, 10 Mar 2021 21:20:45 +0100</pubDate>
       

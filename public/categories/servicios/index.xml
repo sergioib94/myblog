@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Mar 2021 12:44:43 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/servicios/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Proxy y Balanceador De Carga</title>
+      <title>Proxy y balanceador de carga</title>
       <link>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</link>
       <pubDate>Sat, 13 Mar 2021 12:44:43 +0100</pubDate>
       
@@ -19,7 +19,7 @@ global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 12
     </item>
     
     <item>
-      <title>Rendimiento De Servidor Web Con Varnish</title>
+      <title>Rendimiento de servidor Web con Varnish</title>
       <link>https://sergioib.netlify.app/posts/rendimiento-de-servidor-web-con-varnish/</link>
       <pubDate>Fri, 12 Mar 2021 18:53:19 +0100</pubDate>
       
@@ -28,7 +28,7 @@ global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 12
     </item>
     
     <item>
-      <title>Servidores Web Base de Datos y Dns en Openstack</title>
+      <title>Servidores Web, base de Datos y DNS en Openstack</title>
       <link>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</link>
       <pubDate>Fri, 12 Mar 2021 14:18:01 +0100</pubDate>
       
@@ -39,7 +39,7 @@ acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0
     </item>
     
     <item>
-      <title>Instalacion Y Configuracion Servidor Dns</title>
+      <title>Instalacion y configuracion servidor DNS</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</link>
       <pubDate>Fri, 12 Mar 2021 12:56:19 +0100</pubDate>
       
@@ -72,7 +72,7 @@ En este fichero lo que haremos sera primero descomentar la linea strict-order pa
     </item>
     
     <item>
-      <title>Configuracion Apache con .htaccess</title>
+      <title>Configuracion apache con .htaccess</title>
       <link>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</link>
       <pubDate>Thu, 11 Mar 2021 16:17:14 +0100</pubDate>
       
@@ -83,7 +83,7 @@ Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer
     </item>
     
     <item>
-      <title>Control de Acceso, autentificacion y autorizacion</title>
+      <title>Control de acceso, autentificacion y autorizacion</title>
       <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
       <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
       
@@ -106,7 +106,7 @@ vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R w
     </item>
     
     <item>
-      <title>Virtualhost Apache</title>
+      <title>Virtualhost apache</title>
       <link>https://sergioib.netlify.app/posts/virtualhost-apache/</link>
       <pubDate>Thu, 11 Mar 2021 09:47:06 +0100</pubDate>
       
