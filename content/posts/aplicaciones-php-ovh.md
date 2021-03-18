@@ -430,7 +430,7 @@ Abrimos nextcloud y al hacerlo nos preguntaran si nos queremos registrar en un p
 
 Luego, iniciaremos sesión con nuestro usuario:
 
-![](static/ovh-aplicaciones-php/cliente2.png)
+![](/ovh-aplicaciones-php/cliente2.png)
 
 A continuación conectamos con nuestro nexclaud del servidor:
 
