@@ -56,24 +56,24 @@ La shell de mongo es una una interfaz javascript interactiva para mongodb. La sh
 
 Instalacion de la shell en Linux
 
-    • Para ello, vamos al centro de descargas de mongodb (https://www.mongodb.com/try/download/shell) y al seleccionar nuestro sistema operativo, descargamos el archivo.
+* Para ello, vamos al centro de descargas de mongodb (https://www.mongodb.com/try/download/shell) y al seleccionar nuestro sistema operativo, descargamos el archivo.
 
-    • Movemos el archivo al directorio principal.
+* Movemos el archivo al directorio principal.
       
-    • Lo descomprimimos y actualizamos la ruta de la shell.
-        ◦ Exec bash
+* Lo descomprimimos y actualizamos la ruta de la shell.
+    * Exec bash
 
-    • Abrimos /etc/path (con nano)
+* Abrimos /etc/path (con nano)
       
-    • El terminal pedira una contraseña e introduciremos nuestra contraseña de admin.
+* El terminal pedira una contraseña e introduciremos nuestra contraseña de admin.
       
-    • Accedemos al directorio principal y abrimos la carpeta extraida donde veremos un directorio bin. Copiaremos la ruta del directorio bin en /etc/path.
+* Accedemos al directorio principal y abrimos la carpeta extraida donde veremos un directorio bin. Copiaremos la ruta del directorio bin en /etc/path.
       
-    • Comprobamos que la shell funciona sin problemas ejecutando el siguiente comando:
+* Comprobamos que la shell funciona sin problemas ejecutando el siguiente comando:
 
-    ~~~
-	mongo --nodb
-    ~~~
+~~~
+mongo --nodb
+~~~
 
 Con esto lo que haremos sera iniciar la mongo shell sin necesidad de conectarse a ninguna instancia de mongodb. Si todo funciono correctamente se nos mostrara la version de mongo shell que tenemos instalada.
 
@@ -111,7 +111,7 @@ Descargamos compass en el siguiente enlace (https://www.mongodb.com/try/download
 
 Al abrir mongo compass, nos debera salir una ventana que ponga “nueva conexion”, esta conexión podemos hacerla de dos formas:
 
-    • Usando una cadena:
+* Usando una cadena:
 
 Añadimos la siguiente cadena para facilitar la conexión cada vez que entremos en compass.
 
@@ -119,7 +119,7 @@ Añadimos la siguiente cadena para facilitar la conexión cada vez que entremos 
 mongodb + srv: // m001-student: m001-mongodb-basics@cluster0-jxeqq.mongodb.net/test
 ~~~
 
-    • Completando los campos individuales:
+* Completando los campos individuales:
 
 Hacemos clic en “fill in connection fields individually” y pegamos la cadena srv (como la puesta en el caso anterior). Antes de conectarse tendremos que rellenar los siguientes campos:
 
@@ -156,7 +156,7 @@ En el caso de no tenerlo instalado, elegimos la opcion “i do not have mongodb 
 En este panel principal podemos ver todas las bases de datos con las que contamos en el cluster. En mongodb una base de datos sirve como espacio de nombres para las colecciones, las colecciones almacenan los registros individuales o documentos. Hacemos referecia a una colección poniendo primero el nombre de la base de datos a la que pertenece,“.” y el nombre de la colección. Ej: 
 
 ~~~
-	city.neighborhoods
+city.neighborhoods
 ~~~
 
 Ademas de el listados de las bases de datos con las que contamos, podremos ver el tamaño que ocupa cada una, el numero de colecciones que contiene y los indices que contienen dichas direcciones.
@@ -169,18 +169,18 @@ En la pestaña documents, encontraremos una lista de documentos que componen esa
 
 En los documentos de mongo, podemos encontrarnos valores: 
 
-    • Escalables, como las cadenas/strings.
+* Escalables, como las cadenas/strings.
       
-    • Enteros y dobles
+* Enteros y dobles
       
-    • Anidaciones de documentos → es el valor de un documento dentro de otro. Por ejemplo, en base de datos de temperaturas al ver la temperatura del aire encontramos dos campos, calidad que es string y temperatura que es number.
+* Anidaciones de documentos → es el valor de un documento dentro de otro. Por ejemplo, en base de datos de temperaturas al ver la temperatura del aire encontramos dos campos, calidad que es string y temperatura que es number.
       
-    • Matrices o arrays → campos que contienen un conjunto particular de campos suplementarios. Estos campos suplementarios se indican con un indice numerico, por lo que a la hora de filtrar la busqueda se hace muy facil.
+* Matrices o arrays → campos que contienen un conjunto particular de campos suplementarios. Estos campos suplementarios se indican con un indice numerico, por lo que a la hora de filtrar la busqueda se hace muy facil.
 
 Estos dos ultimos tipos, anidacion y matrices pueden encontrarse juntos como en el siguiente ejemplo:
 
 ~~~
-	skycoverlayer o position
+skycoverlayer o position
 ~~~
 
 ### Consultas mongo compass ###
@@ -188,7 +188,7 @@ Estos dos ultimos tipos, anidacion y matrices pueden encontrarse juntos como en 
 En mongo compass una de las formas que tenemos de filtrar documentos, es poner en el apartado “Filter” una consulta, por ejemplo usando la colección tips de la base de datos citibike:
 
 ~~~
-	{'end station name': 'Broadway & E 22 St'}
+{'end station name': 'Broadway & E 22 St'}
 ~~~
 
 Las consultas que se hagan para filtrar siempre deben ir entre llaves, en ese caso estamos filtrando para que se muestren todos los documentos en los que la estacion final, el nombre tenga el valor Brodway y East 22 street. En este caso el filtro aplicado es un filtro de igualdad, lo que quiere decir que filtrara todos los documentos donde el nombre de la estacion final sea Brodway & East 22 street.
@@ -196,7 +196,7 @@ Las consultas que se hagan para filtrar siempre deben ir entre llaves, en ese ca
 Otro tipo de filtros es el filtrado por rangos, por ejemplo mostrar los documentos en los que el ciclista haya nacido entre 1985 y 1990:
 
 ~~~
-	{'birth year': {$gte: 1985,$lt: 1990}}
+{'birth year': {$gte: 1985,$lt: 1990}}
 ~~~
 
 En este caso para filtrar por un rango se utilizan los operadores, indicandolos con “$”.
@@ -262,7 +262,7 @@ Si es como en este caso y nos sale “MongoDB Enterprise Cluster0-shard-0:PRIMAR
 
 Comandos mongo shell:
 
-    • Ver bases de datos → show dbs
+* Ver bases de datos → show dbs
 
 ~~~
 MongoDB Enterprise Cluster0-shard-0:PRIMARY> show dbs
@@ -270,7 +270,7 @@ admin     0.000GB
 local     3.784GB
 ~~~
 
-    • Carga de datos:
+* Carga de datos:
 
 En mi caso al realizar el curso de mongodb, cargue un fichero de una base de datos llamada videos con colecciones de peliculas (parecido a la base da datos de peliculas que se ha visto anteriormente con mongo compass). Al descargar el fichero zip los descomprimi en un directorio que hice para tenerlo organizado y bien ubicado y cargue la base de datos al cluster ejecutando load(“nombre del fichero.js”).
 
@@ -427,21 +427,21 @@ Mongodb es una base de datos de documentos en el que sera necesarios cierto nive
 
 Hay dos tipos de datos con los que trabajaremos en mongodb:
 
-    • Datos simples
+* Datos simples
 
-        ◦ números → enteros (negativos y positivos), decimales, etc...
-        ◦ cadenas de texto
-        ◦ fecha
-        ◦ hora
-        ◦ boleanos
+    * números → enteros (negativos y positivos), decimales, etc...
+    * cadenas de texto
+    * fecha
+    * hora
+    * boleanos
 
-    • Datos Complejos
+* Datos Complejos
 
-        ◦ arrays → listas
-        ◦ objetos → documento incrustado o añadido en el documento principal.
-        ◦ binarios → almacenar elementos multimedia
-        ◦ objectid → clave unica que asigna mongo a cada documento si el usuario no la especifica.
-        ◦ expresiones regulares
+    * arrays → listas
+    * objetos → documento incrustado o añadido en el documento principal.
+    * binarios → almacenar elementos multimedia
+    * objectid → clave unica que asigna mongo a cada documento si el usuario no la especifica.
+    * expresiones regulares
 
 ### Conceptos basicos de operaciones CRUD (Create Read Delete Update) ###
 
@@ -451,7 +451,7 @@ En mongodb se entiende a crear operaciones como la insercion de documentos o sim
 
 Inserción de colecciones y documentos:
 
-    • Mongo compass
+* Mongo compass
 
 Usando la vista de la base de datos en compas, podemos crear una colección simplemente haciendo clic en alguna base de datos que tengamos, y despues haciendo clic en “create collection”. Por ejemplo en la base de datos peliculas, he creado la colección peliculas_prueba.
 
@@ -461,7 +461,7 @@ Al crear una nueva colección obviamente estara vacia, pero con compass podemos 
 
 Creamos un pequeño documento a modo de prueba.
 
-    • Mongo shell
+* Mongo shell
 
 En mongo shell podemos realizar la misma insercion de datos que en compass, pero al no tener entorno grafico esto se hara a traves del uso de los metodos, concretamente el metodo insertOne, que es un metodo de colecciones.
 
@@ -565,17 +565,17 @@ De esta forma, aunque salgan errores, insertMany continuara insertando documento
 
 ### Filtros ###
 
-    • Filtros de igualdad:
+* Filtros de igualdad:
 
 Anteriormente vimos ya algún ejemplo de filtro de igualdad, ahora veremos varios ejemplos de filtros tanto en compass como en shell:
 
-Compass
+**Compass**
 
 En el caso de compass la consulta es bastante sencilla ya que simplemente tendremos que introducir la consulta y hacer clic en filtrar. Por ejemplo filtraremos en la base de datos de peliculas las que esten calificadas como PG-13.
 
 Si en lugar de un valor de busqueda ponemos varios, solo se mostraran aquellos documentos que contengan ambos valores.
 
-Shell
+**Shell**
 
 En shell utilizamos para el filtro de igualdad el metodo find, este metodo ya se ha usado anteriormente. Como ejemplo realizaremos la misma consulta que en compass.
 
@@ -637,11 +637,11 @@ MongoDB Enterprise Cluster0-shard-0:PRIMARY> db.movies.find({mpaaRating: "PG-13"
 
 En el caso de no introducir ningun parametro en el filtro con find, se mostraran todos los documentos de la colección. Hay algunos casos en los que a lo mejor queremos filtrar algo que a su vez se divide en varios campos. Este caso lo podemos encontrar varias veces en la base de datos del tiempo como por ejemplo el viento que a su vez tiene el campo type por lo que si queremos filtrar por tipo de viento seria de la siguiente forma:
 
-Compass
+**Compass**
 
 ![Primer filtro](/Mongo-01/filtro1.png)
 
-Shell
+**Shell**
 
 ~~~
 MongoDB Enterprise Cluster0-shard-0:PRIMARY> use 100YWeatherSmall
@@ -700,11 +700,11 @@ A esta forma de filtrar se le llama notación de puntos y este tipo de filtro se
 
 Para filtrar en una lista utilizamos los índices. Por ejemplo en la base de datos de películas tenemos varias listas en el campo cast (reparto), en el ejemplo se mostraran todas las peliculas en el que en el reparto Jeff Bridges sea el primero de la lista.
 
-Compass
+**Compass**
 
 ![Filtrado de lista](/Mongo-01/filtros5.png)
 
-Shell
+**Shell**
 
 En la shell se filtra de igual forma:
 
@@ -770,7 +770,7 @@ Por defecto mongodb devuelve todos los campos en todos los documentos que coinci
 
 Las proyecciones son un segundo argumento al argumento de busqueda, por ejemplo si en lugar de mostrar todos los datos de todas las peliculas de un genero en especifico, solo queremos mostrar los titulos, esto se haria de la siguiente forma:
 
-Shell
+**Shell**
 
 ~~~
 MongoDB Enterprise Cluster0-shard-0:PRIMARY> db.movies.find({genre: "Action"}, {title: 1})
@@ -873,9 +873,9 @@ MongoDB Enterprise Cluster0-shard-0:PRIMARY> db.movies.find({genre: "Action"}, {
 
 ### Operadores de Mongodb ###
 
-• Operadores de comparacion: Como su propio nombre indica, nos permiten comparar dos valores en una consulta.
+* Operadores de comparacion: Como su propio nombre indica, nos permiten comparar dos valores en una consulta.
       
-    ◦ $gt (mayor que): se utiliza para hacer una consulta comparando un campo de los documentos de la colección con uno mayor. Por ejemplo, mostrar el titulo de todas las peliculas que duren mas de 90 min:
+    * $gt (mayor que): se utiliza para hacer una consulta comparando un campo de los documentos de la colección con uno mayor. Por ejemplo, mostrar el titulo de todas las peliculas que duren mas de 90 min:
 
     ~~~      
         MongoDB Enterprise Cluster0-shard-0:PRIMARY> db.movieDetails.find({runtime: {$gt: 90}}, {_id: 0, title: 1, runtime: 1})
@@ -1007,42 +1007,42 @@ MongoDB Enterprise Cluster0-shard-0:PRIMARY> db.movieDetails.find({runtime: {$ne
 Type "it" for more
 ~~~
 
-• Operadores lógicos
+* Operadores lógicos
       
-    ◦ $and y $or: ambos operadores unen dos valores de una consulta, sin embargo $and mostrara todos los documentos que coincidan con ambos valores mientras que $or mostrara todos los documentos que coincidan con uno de los dos valores.
+    * $and y $or: ambos operadores unen dos valores de una consulta, sin embargo $and mostrara todos los documentos que coincidan con ambos valores mientras que $or mostrara todos los documentos que coincidan con uno de los dos valores.
 
-    ◦ $not: devuelve los documentos que no esten relacionados con los valores de consulta.
+    * $not: devuelve los documentos que no esten relacionados con los valores de consulta.
           
-    ◦ $nor: devuelve los documentos que no coinciden con ambos valores de busqueda.
+    * $nor: devuelve los documentos que no coinciden con ambos valores de busqueda.
 
-• Operadores de elementos
++ Operadores de elementos
 
-    ◦ $exists: muestra los documentos que coinciden con la busqueda.
-    ◦ $type: muestra los documentos si un campo es del typo especificado.
+    * $exists: muestra los documentos que coinciden con la busqueda.
+    * $type: muestra los documentos si un campo es del typo especificado.
 
-• Operadores de matrices
+* Operadores de matrices
 
-    ◦ $all: coincide con las matrices o arrays que contienen todos los elementos especificados en una consulta. 
-    ◦ $size: muestra los documentos siempre que la array tenga el tamaño especificado.
-    ◦ $elemMatch: muestra los documentos si el elemento del campo array coincide con los valores especificados
+    * $all: coincide con las matrices o arrays que contienen todos los elementos especificados en una consulta. 
+    * $size: muestra los documentos siempre que la array tenga el tamaño especificado.
+    * $elemMatch: muestra los documentos si el elemento del campo array coincide con los valores especificados
 
-• Operadores de evaluación
+* Operadores de evaluación
       
-    ◦ $regexp: muestra documentos donde los valores coinciden con la expresion regular especificada.
+    * $regexp: muestra documentos donde los valores coinciden con la expresion regular especificada.
 
 
 ### Metodo para contabilizar los resultados de busqueda ###
 
 En mongodb hay dos formas bastante parecidas de contabilizar los resultados de una busqueda:
 
-    • Usando el metodo count. Ej contar las peliculas que hay en la base de datos de peliculas:
+* Usando el metodo count. Ej contar las peliculas que hay en la base de datos de peliculas:
 
 ~~~
 MongoDB Enterprise Cluster0-shard-0:PRIMARY> db.movieDetails.count()
 2295
 ~~~
 
-    • Usando el metodo count junto al metodo find:
+* Usando el metodo count junto al metodo find:
 
 ~~~
 MongoDB Enterprise Cluster0-shard-0:PRIMARY> db.movieDetails.find().count()
