@@ -6,7 +6,16 @@
     <description>Recent content in Categories on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Mar 2021 13:26:35 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Apr 2021 13:25:45 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Base de Datos</title>
+      <link>https://sergioib.netlify.app/categories/base-de-datos/</link>
+      <pubDate>Sat, 03 Apr 2021 13:25:45 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/base-de-datos/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Aplicaciones Web</title>
       <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>

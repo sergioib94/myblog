@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Base de Datos on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/categories/base-de-datos/</link>
+    <description>Recent content in Base de Datos on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Apr 2021 13:25:45 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/base-de-datos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conceptos Basicos de Mongodb</title>
+      <link>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</link>
+      <pubDate>Sat, 03 Apr 2021 13:25:45 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</guid>
+      <description>Introduccion En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD.
+Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university).</description>
+    </item>
+    
+  </channel>
+</rss>

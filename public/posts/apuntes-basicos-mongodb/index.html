@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Conceptos Basicos de Mongodb // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Conceptos Basicos de Mongodb"/>
+<meta name="twitter:description" content="Introduccion En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD.
+Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university)."/>
+
+    <meta property="og:title" content="Conceptos Basicos de Mongodb" />
+<meta property="og:description" content="Introduccion En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD.
+Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-03T13:25:45&#43;02:00" />
+<meta property="article:modified_time" content="2021-04-03T13:25:45&#43;02:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>My New Hugo Site</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Conceptos Basicos de Mongodb</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 3, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          37 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introduccion">Introduccion</h3>
+<p>En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD.</p>
+<p>Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university).</p>
+<h3 id="instalacion-de-mongodb-debian-10">Instalacion de mongodb (debian 10)</h3>
+<p>Para descargar mongodb en debian, necesitaremos tener instalado el paquete gnupg, por lo que si no  lo tenemos, tendremos que instalarlo.</p>
+<pre><code>apt install gnupg
+</code></pre><p>Como los paquetes que vamos a descargarnos de mongo estan firmados, lo primero que haremos sera importar la clave publica del certificado:</p>
+<pre><code>wget https://www.mongodb.org/static/pgp/server-4.4.asc -qO- | sudo apt-key add -
+</code></pre><p>Cuando tengamos la clave en nuestro equipo, añadiremos el repositorio de mongo de la siguiente forma, editamos el fichero /etc/apt/sources.list.d/mongodb-org.list y añadimos la siguiente linea:</p>
+<pre><code>deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main
+</code></pre><p>Una vez que tengamos listo el repositorio, ya podremos instalar mongo en el equipo.</p>
+<pre><code>apt install mongodb-org
+</code></pre><p>Arrancamos el servicio de forma manual y lo habilitamos para que se inicie automaticamente en el arranque:</p>
+<pre><code>systemctl enable --now mongod
+</code></pre><p>Ya tendremos mongo instalado y listo para usar.</p>
+<h3 id="configuracion-basica-y-conexion-de-herramientas">Configuracion basica y conexion de herramientas</h3>
+<h3 id="mongodb-compass">Mongodb compass</h3>
+<p>Compass cuenta con una interfaz visual para mongodb nos permite tanto explorar los datos que contiene una base de datos asi como tambien gestionarla.</p>
+<h3 id="mongo-shell">Mongo shell</h3>
+<p>La shell de mongo es una una interfaz javascript interactiva para mongodb. La shell mongo para consultar y actualizar datos, así como para realizar operaciones administrativas.</p>
+<p>Instalacion de la shell en Linux</p>
+<pre><code>• Para ello, vamos al centro de descargas de mongodb (https://www.mongodb.com/try/download/shell) y al seleccionar nuestro sistema operativo, descargamos el archivo.
+
+• Movemos el archivo al directorio principal.
+  
+• Lo descomprimimos y actualizamos la ruta de la shell.
+    ◦ Exec bash
+
+• Abrimos /etc/path (con nano)
+  
+• El terminal pedira una contraseña e introduciremos nuestra contraseña de admin.
+  
+• Accedemos al directorio principal y abrimos la carpeta extraida donde veremos un directorio bin. Copiaremos la ruta del directorio bin en /etc/path.
+  
+• Comprobamos que la shell funciona sin problemas ejecutando el siguiente comando:
+
+~~~
+mongo --nodb
+~~~
+</code></pre>
+<p>Con esto lo que haremos sera iniciar la mongo shell sin necesidad de conectarse a ninguna instancia de mongodb. Si todo funciono correctamente se nos mostrara la version de mongo shell que tenemos instalada.</p>
+<pre><code>mongo --nodb
+MongoDB shell version v4.4.4
+&gt; 
+</code></pre><h3 id="atlas">Atlas</h3>
+<p>Atlas es una base de datos de mongodb como solucion de servicio que proporciona funcionalidad para configurar la base de datos en la nube sin necesidad de usar la shell. Tambien maneja las replicas, es decir que mantiene copias redundantes de los datos.</p>
+<p>Funcionamiento:</p>
+<p>En Atlas los usuarios pueden implementar un cluster, estos servidores configurados en un conjunto de replicas, esto quiere decir que cada vez que se inserte o actualicen los documentos, los cambios se almacenaran de forma redundante.</p>
+<p>Uno de los principales motivos para el uso de atlas es lo facil que es de configurar, ademas administra la creacion de clusteres por lo que la implementacion del sistema se hace mucho mas facil.</p>
+<p>La interfaz de atlas facilita tanto la administracion e implementacion de mongodb en los proveedores y en la nube.</p>
+<p>Para esta introduccion a mongodb se va a usar el nivel gratuito de atlas (en el cual el cluster que podremos usar con 512 mb de almacenamiento nunca caducara).</p>
+<p>Inicio atlas:</p>
+<p>En colecciones podremos ver los datos que tenemos en nuestro cluster, en colecciones podremos ver todos los documentos dentro de nuestra base de datos asi como buscar documentos especificos. Atlas tambien nos permite configurar usuarios con distintos privilegios.</p>
+<p><img src="/Mongo-01/inicio_atlas.png" alt="Inicio Atlas"></p>
+<h3 id="conexion-a-mongo-compass">Conexion a Mongo compass</h3>
+<p>Mongo Compass es un cliente de mongo al igual que mongo shell, solo que este cuenta con interfaz grafica.</p>
+<p>Descargamos compass en el siguiente enlace (<a href="https://www.mongodb.com/try/download/compass">https://www.mongodb.com/try/download/compass</a>) es recomendable usar la version estable, o de lo contrario actualizarla una vez instalada.</p>
+<p>Al abrir mongo compass, nos debera salir una ventana que ponga “nueva conexion”, esta conexión podemos hacerla de dos formas:</p>
+<pre><code>• Usando una cadena:
+</code></pre>
+<p>Añadimos la siguiente cadena para facilitar la conexión cada vez que entremos en compass.</p>
+<pre><code>mongodb + srv: // m001-student: m001-mongodb-basics@cluster0-jxeqq.mongodb.net/test
+</code></pre><pre><code>• Completando los campos individuales:
+</code></pre>
+<p>Hacemos clic en “fill in connection fields individually” y pegamos la cadena srv (como la puesta en el caso anterior). Antes de conectarse tendremos que rellenar los siguientes campos:</p>
+<p>nombre de host → nombre de nuestro cluster.
+puerto → por defecto mongo utiliza el 27017.
+autentificacion → username/password
+nombre de usuario → por defecto m001-student
+contraseña del usuario → por defecto m001-mongodb-basics
+base de datos de autentificacion → admin</p>
+<p>Mas opciones:</p>
+<p>Replica set name → cluster0-shard-0
+Read preference → Primary preferred
+ssl → system ca/atlas deployment
+ssh tunel → none</p>
+<p>En mi caso me conecte usando la cadena ya que es mas facil a la hora de entrar varias veces:</p>
+<p><img src="/Mongo-01/compass.png" alt="Mongo compass conexion"></p>
+<p><img src="/Mongo-01/compass2.png" alt="Mongo compass"></p>
+<h3 id="conexion-de-cluster-con-mongo-compass">Conexion de cluster con Mongo Compass</h3>
+<p>En la ventana de cluster sandbox al igual que cuando conectamos atlas a mongo shell, hacemos clic en “connect”, pero esta vez eligiendo la opcion “connect using mongodb compass”.</p>
+<p>En el caso de no tenerlo instalado, elegimos la opcion “i do not have mongodb compass” lo descargamos e instalamos, pero como no es este caso, copiamos la cadena que se nos da en mongo compass cambiando la parte <!-- raw HTML omitted --> por nuestra contraseña y ya tendremos conectado nuestro cluster con mongo compass.</p>
+<p><img src="/Mongo-01/compass-cluster.png" alt="Compass conectado al cluster"></p>
+<h3 id="panel-principal-de-mongo-compass">Panel principal de mongo compass</h3>
+<p>En este panel principal podemos ver todas las bases de datos con las que contamos en el cluster. En mongodb una base de datos sirve como espacio de nombres para las colecciones, las colecciones almacenan los registros individuales o documentos. Hacemos referecia a una colección poniendo primero el nombre de la base de datos a la que pertenece,“.” y el nombre de la colección. Ej:</p>
+<pre><code>	city.neighborhoods
+</code></pre><p>Ademas de el listados de las bases de datos con las que contamos, podremos ver el tamaño que ocupa cada una, el numero de colecciones que contiene y los indices que contienen dichas direcciones.</p>
+<h3 id="colecciones-en-compass">Colecciones en compass</h3>
+<p>En el menu izquierdo, hacemos clic sobre una de las bases de datos que queramos explorar y despues hacemos clic en la colección, por ejemplo videos.movies. La pestaña schema es bastante util ya que nos proporciona una lista de campos encontrados en documentos de la colección como por ejemplo los id de las peliculas, director, genre (genero), etc.</p>
+<p>En la pestaña documents, encontraremos una lista de documentos que componen esa colección. Mas adelante podremos ver como insertar datos nuevos, actualizarlos, filtrarlos, etc.</p>
+<p>En los documentos de mongo, podemos encontrarnos valores:</p>
+<pre><code>• Escalables, como las cadenas/strings.
+  
+• Enteros y dobles
+  
+• Anidaciones de documentos → es el valor de un documento dentro de otro. Por ejemplo, en base de datos de temperaturas al ver la temperatura del aire encontramos dos campos, calidad que es string y temperatura que es number.
+  
+• Matrices o arrays → campos que contienen un conjunto particular de campos suplementarios. Estos campos suplementarios se indican con un indice numerico, por lo que a la hora de filtrar la busqueda se hace muy facil.
+</code></pre>
+<p>Estos dos ultimos tipos, anidacion y matrices pueden encontrarse juntos como en el siguiente ejemplo:</p>
+<pre><code>	skycoverlayer o position
+</code></pre><h3 id="consultas-mongo-compass">Consultas mongo compass</h3>
+<p>En mongo compass una de las formas que tenemos de filtrar documentos, es poner en el apartado “Filter” una consulta, por ejemplo usando la colección tips de la base de datos citibike:</p>
+<pre><code>	{'end station name': 'Broadway &amp; E 22 St'}
+</code></pre><p>Las consultas que se hagan para filtrar siempre deben ir entre llaves, en ese caso estamos filtrando para que se muestren todos los documentos en los que la estacion final, el nombre tenga el valor Brodway y East 22 street. En este caso el filtro aplicado es un filtro de igualdad, lo que quiere decir que filtrara todos los documentos donde el nombre de la estacion final sea Brodway &amp; East 22 street.</p>
+<p>Otro tipo de filtros es el filtrado por rangos, por ejemplo mostrar los documentos en los que el ciclista haya nacido entre 1985 y 1990:</p>
+<pre><code>	{'birth year': {$gte: 1985,$lt: 1990}}
+</code></pre><p>En este caso para filtrar por un rango se utilizan los operadores, indicandolos con “$”.</p>
+<h3 id="conexion-mongo-shell---atlas">Conexion Mongo shell - Atlas</h3>
+<p>Para esta conexión usaremos el siguiente comando:</p>
+<pre><code>mongo &quot;mongodb+srv://cluster0-jxeqq.mongodb.net/test&quot; --username m001-student -password m001-mongodb-basics
+</code></pre><p>El resultado sera algo como esto:</p>
+<pre><code>MongoDB shell version v4.4.4
+connecting to: mongodb://cluster0-shard-00-01-jxeqq.mongodb.net:27017,cluster0-shard-00-02-jxeqq.mongodb.net:27017,cluster0-shard-00-00-jxeqq.mongodb.net:27017/test?authSource=admin&amp;compressors=disabled&amp;gssapiServiceName=mongodb&amp;replicaSet=Cluster0-shard-0&amp;ssl=true
+Implicit session: session { &quot;id&quot; : UUID(&quot;030690e8-f6dc-43b1-b66a-a8b49baee295&quot;) }
+MongoDB server version: 4.2.12
+WARNING: shell and server versions do not match
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; 
+</code></pre><p>En este caso nos salta un error ya que la shell descargada y el server son de versiones distintas (4.4.4.) y (4.2.12), pero aun asi podemos acceder sin problemas al nodo principal del cluster.</p>
+<p>En el caso de que no funcione, probar este otro:</p>
+<pre><code>mongo &quot;mongodb://cluster0-shard-00-00-jxeqq.mongodb.net:27017,cluster0-shard-00-01-jxeqq.mongodb.net:27017,cluster0-shard-00-02-jxeqq.mongodb.net:27017/test?replicaSet=Cluster0-shard-0&quot; --authenticationDatabase admin --ssl --username m001-student --password m001-mongodb-basics
+</code></pre><h3 id="conexion-atlas---mongo-shell">Conexion Atlas - Mongo shell</h3>
+<ol>
+<li>Iniciar sesion en el cluster Atlas</li>
+<li>En la ventana “clusters” hacer clic en “connect”</li>
+</ol>
+<p><img src="/Mongo-01/connect_atlas.png" alt="Atlas cluster"></p>
+<ol start="3">
+<li>Una vez le demos a connect, elegimos la opcion “connect with the mongo shell”.</li>
+<li>Elegimos “i have the mongo shell instaled” en caso de tener mongo shell ya instalado en el equipo y copiamos el comando que se nos da.</li>
+<li>Pegamos el comando en la terminal.</li>
+<li>Añadimos la opcion de password al comando obtenido anteriormente y comprobamos el acceso.</li>
+</ol>
+<pre><code>sergioib@debian-sergio:~$ mongo &quot;mongodb+srv://cluster0.hqn5x.mongodb.net/myFirstDatabase&quot; --username m001-student --password m001-mongodb-basics
+MongoDB shell version v4.4.4
+connecting to: mongodb://cluster0-shard-00-01.hqn5x.mongodb.net:27017,cluster0-shard-00-02.hqn5x.mongodb.net:27017,cluster0-shard-00-00.hqn5x.mongodb.net:27017/myFirstDatabase?authSource=admin&amp;compressors=disabled&amp;gssapiServiceName=mongodb&amp;replicaSet=Cluster0-shard-0&amp;ssl=true
+Implicit session: session { &quot;id&quot; : UUID(&quot;07c7b3ff-c7fe-493d-91a4-07777d316bff&quot;) }
+MongoDB server version: 4.4.4
+Welcome to the MongoDB shell.
+For interactive help, type &quot;help&quot;.
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+Error while trying to show server startup warnings: user is not allowed to do action [getLog] on [admin.]
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; 
+</code></pre><p>Si es como en este caso y nos sale “MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; ” significara que nos hemos podido conectar correctamente.</p>
+<h3 id="carga-de-datos-en-atlas">Carga de datos en Atlas</h3>
+<p>Comandos mongo shell:</p>
+<pre><code>• Ver bases de datos → show dbs
+</code></pre>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; show dbs
+admin     0.000GB
+local     3.784GB
+</code></pre><pre><code>• Carga de datos:
+</code></pre>
+<p>En mi caso al realizar el curso de mongodb, cargue un fichero de una base de datos llamada videos con colecciones de peliculas (parecido a la base da datos de peliculas que se ha visto anteriormente con mongo compass). Al descargar el fichero zip los descomprimi en un directorio que hice para tenerlo organizado y bien ubicado y cargue la base de datos al cluster ejecutando load(“nombre del fichero.js”).</p>
+<p>Una vez cargado, volvemos a ejecutar show dbs al igual que antes y comprobamos si se ha cargadao correctamente:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; show dbs
+admin     0.000GB
+local     3.784GB
+video     0.001GB
+</code></pre><p>Para acceder a los datos de la base de datos, usamos primero la base de datos, despues vemos las colecciones que hay y por ultimo realizamos una busqueda usando la colección:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; use video
+switched to db video
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; show collections
+movieDetails
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find().pretty()
+{
+	&quot;_id&quot; : ObjectId(&quot;5e7754bbff453565d25411a9&quot;),
+	&quot;title&quot; : &quot;Slow West&quot;,
+	&quot;year&quot; : 2015,
+	&quot;rated&quot; : &quot;R&quot;,
+	&quot;runtime&quot; : 84,
+	&quot;countries&quot; : [
+		&quot;UK&quot;,
+		&quot;New Zealand&quot;
+	],
+	&quot;genres&quot; : [
+		&quot;Action&quot;,
+		&quot;Thriller&quot;,
+		&quot;Western&quot;
+	],
+	&quot;director&quot; : &quot;John Maclean&quot;,
+	&quot;writers&quot; : [
+		&quot;John Maclean&quot;
+	],
+	&quot;actors&quot; : [
+		&quot;Kodi Smit-McPhee&quot;,
+		&quot;Michael Fassbender&quot;,
+		&quot;Ben Mendelsohn&quot;,
+		&quot;Aorere Paki&quot;
+	],
+	&quot;plot&quot; : &quot;A young Scottish man travels across America in pursuit of the woman he loves, attracting the attention of an outlaw who is willing to serve as a guide.&quot;,
+	&quot;poster&quot; : &quot;http://ia.media-imdb.com/images/M/MV5BNTYxNDA5ODk5NF5BMl5BanBnXkFtZTgwNzMwMzIwNTE@._V1_SX300.jpg&quot;,
+	&quot;imdb&quot; : {
+		&quot;id&quot; : &quot;tt3205376&quot;,
+		&quot;rating&quot; : 7,
+		&quot;votes&quot; : 19101
+	},
+	&quot;tomato&quot; : {
+		&quot;meter&quot; : 92,
+		&quot;image&quot; : &quot;certified&quot;,
+		&quot;rating&quot; : 7.5,
+		&quot;reviews&quot; : 115,
+		&quot;fresh&quot; : 106,
+		&quot;consensus&quot; : &quot;Slow West serves as an impressive calling card for first-time writer-director John M. Maclean -- and offers an inventive treat for fans of the Western.&quot;,
+		&quot;userMeter&quot; : 75,
+		&quot;userRating&quot; : 3.7,
+		&quot;userReviews&quot; : 9850
+	},
+	&quot;metacritic&quot; : 72,
+	&quot;awards&quot; : {
+		&quot;wins&quot; : 2,
+		&quot;nominations&quot; : 9,
+		&quot;text&quot; : &quot;2 wins &amp; 9 nominations.&quot;
+	},
+	&quot;type&quot; : &quot;movie&quot;
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;5e7754bbff453565d25411d4&quot;),
+	&quot;title&quot; : &quot;The Adventures of Buckaroo Banzai Across the 8th Dimension&quot;,
+	&quot;year&quot; : 1984,
+	&quot;rated&quot; : &quot;PG&quot;,
+	&quot;runtime&quot; : 103,
+	&quot;countries&quot; : [
+		&quot;USA&quot;
+	],
+	&quot;genres&quot; : [
+		&quot;Adventure&quot;,
+		&quot;Comedy&quot;,
+		&quot;Romance&quot;
+	],
+	&quot;director&quot; : &quot;W.D. Richter&quot;,
+	&quot;writers&quot; : [
+		&quot;Earl Mac Rauch&quot;
+	],
+	&quot;actors&quot; : [
+		&quot;Peter Weller&quot;,
+		&quot;John Lithgow&quot;,
+		&quot;Ellen Barkin&quot;,
+		&quot;Jeff Goldblum&quot;
+	],
+	&quot;plot&quot; : &quot;Adventurer/surgeon/rock musician Buckaroo Banzai and his band of men, the Hong Kong Cavaliers, take on evil alien invaders from the 8th dimension.&quot;,
+	&quot;poster&quot; : &quot;http://ia.media-imdb.com/images/M/MV5BMTk3OTAwNDQwOF5BMl5BanBnXkFtZTgwOTE0MzQxMDE@._V1_SX300.jpg&quot;,
+	&quot;imdb&quot; : {
+		&quot;id&quot; : &quot;tt0086856&quot;,
+		&quot;rating&quot; : 6.4,
+		&quot;votes&quot; : 17154
+	},
+	&quot;awards&quot; : {
+		&quot;wins&quot; : 0,
+		&quot;nominations&quot; : 5,
+		&quot;text&quot; : &quot;5 nominations.&quot;
+	},
+	&quot;type&quot; : &quot;movie&quot;
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;5e7754bbff453565d25411ac&quot;),
+	&quot;title&quot; : &quot;How the West Was Won&quot;,
+	&quot;year&quot; : 1962,
+	&quot;rated&quot; : &quot;APPROVED&quot;,
+	&quot;runtime&quot; : 164,
+	&quot;countries&quot; : [
+		&quot;USA&quot;
+	],
+	&quot;genres&quot; : [
+		&quot;Western&quot;
+	],
+	&quot;director&quot; : &quot;John Ford, Henry Hathaway, George Marshall, Richard Thorpe&quot;,
+	&quot;writers&quot; : [
+		&quot;James R. Webb&quot;
+	],
+	&quot;actors&quot; : [
+		&quot;Carroll Baker&quot;,
+		&quot;Lee J. Cobb&quot;,
+		&quot;Henry Fonda&quot;,
+		&quot;Carolyn Jones&quot;
+	],
+	&quot;plot&quot; : &quot;A family saga covering several decades of Westward expansion in the nineteenth century--including the Gold Rush, the Civil War, and the building of the railroads.&quot;,
+	&quot;poster&quot; : &quot;http://ia.media-imdb.com/images/M/MV5BNTk2NDk1NjY0MV5BMl5BanBnXkFtZTgwMzkzNTcxMTE@._V1_SX300.jpg&quot;,
+	&quot;imdb&quot; : {
+		&quot;id&quot; : &quot;tt0056085&quot;,
+		&quot;rating&quot; : 7.1,
+		&quot;votes&quot; : 13640
+	},
+	&quot;awards&quot; : {
+		&quot;wins&quot; : 7,
+		&quot;nominations&quot; : 5,
+		&quot;text&quot; : &quot;Won 3 Oscars. Another 7 wins &amp; 5 nominations.&quot;
+	},
+	&quot;type&quot; : &quot;movie&quot;
+}
+...
+Type &quot;it&quot; for more
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt;
+</code></pre><h3 id="que-es-mongodb">¿Que es mongodb?</h3>
+<p>Mongodb es una base de datos de documentos en el que sera necesarios cierto nivel de comprension de json para su uso, ya que tanto los el lenguaje de los documentos que usa la base de datos, asi como gran parte de la administracion de mongo, se hace en formato json.</p>
+<p>Hay dos tipos de datos con los que trabajaremos en mongodb:</p>
+<pre><code>• Datos simples
+
+    ◦ números → enteros (negativos y positivos), decimales, etc...
+    ◦ cadenas de texto
+    ◦ fecha
+    ◦ hora
+    ◦ boleanos
+
+• Datos Complejos
+
+    ◦ arrays → listas
+    ◦ objetos → documento incrustado o añadido en el documento principal.
+    ◦ binarios → almacenar elementos multimedia
+    ◦ objectid → clave unica que asigna mongo a cada documento si el usuario no la especifica.
+    ◦ expresiones regulares
+</code></pre>
+<h3 id="conceptos-basicos-de-operaciones-crud-create-read-delete-update">Conceptos basicos de operaciones CRUD (Create Read Delete Update)</h3>
+<h3 id="create">Create</h3>
+<p>En mongodb se entiende a crear operaciones como la insercion de documentos o simplemente hacer inserciones.</p>
+<p>Inserción de colecciones y documentos:</p>
+<pre><code>• Mongo compass
+</code></pre>
+<p>Usando la vista de la base de datos en compas, podemos crear una colección simplemente haciendo clic en alguna base de datos que tengamos, y despues haciendo clic en “create collection”. Por ejemplo en la base de datos peliculas, he creado la colección peliculas_prueba.</p>
+<p>Al crear una nueva colección obviamente estara vacia, pero con compass podemos insertar un documento de forma sencilla haciendo clc en “add data” → “insert document”.</p>
+<p><img src="/Mongo-01/ejemplo_insert.png" alt="insercion de documentos"></p>
+<p>Creamos un pequeño documento a modo de prueba.</p>
+<pre><code>• Mongo shell
+</code></pre>
+<p>En mongo shell podemos realizar la misma insercion de datos que en compass, pero al no tener entorno grafico esto se hara a traves del uso de los metodos, concretamente el metodo insertOne, que es un metodo de colecciones.</p>
+<p>Para usar insertOne, primero tendremos que especificar la base de datos a usar, en este caso como ejemplo se usara la base de datos de videos, y una vez especificada insertamos el documento. Ej:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; show databases
+admin     0.000GB
+local     3.837GB
+practica  0.002GB
+video     0.001GB
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; use video
+switched to db video
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; show collections
+movieDetails
+peliculas_prueba
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.peliculas_prueba.insertOne({title: &quot;Rogue One&quot;, year: 2016})
+{
+	&quot;acknowledged&quot; : true,
+	&quot;insertedId&quot; : ObjectId(&quot;605b1d03653110148a9b1edf&quot;)
+}
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.peliculas_prueba.find().pretty()
+{
+	&quot;_id&quot; : ObjectId(&quot;605b14c6798aa68ea3f5e7cd&quot;),
+	&quot;title&quot; : &quot;The Avengers EndGame&quot;,
+	&quot;year&quot; : 2019
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;605b1993798aa68ea3f5e7ce&quot;),
+	&quot;title&quot; : &quot;Raya&quot;,
+	&quot;year&quot; : 2021
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;605b1d03653110148a9b1edf&quot;),
+	&quot;title&quot; : &quot;Rogue One&quot;,
+	&quot;year&quot; : 2016
+}
+</code></pre><p>Con este mismo metodo, si la colección peliculas_prueba no existiese se crearia de forma automatica al crear el documento.</p>
+<p>Como se puede ver en el ejemplo anterior, si no especificamos ningun id (todo objeto en la colección debe tener un identificador unico), el propio mongo o el cliente que se este usando le especifica uno por defecto. En el caso de introducir manualmente la id, tendremos que asegurarnos de que no se repita en ningun momento en la colección, sino nos saltara un mensaje de error como “duplicate key error collection”.</p>
+<p>Seguramente, despues de ver el ejemplo de insertOne mas de uno piense por ejemplo ¿y si por ejemplo quiero una base de datos para saber que canciones o videojuegos tengo? ¿que hago un insertOne por cada uno de ellos?</p>
+<p>Pues no, para ello mongo cuenta con otro metodo llamado insertMany, con el que es posible insertar varios documentos a la vez. Ej:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.peliculas_prueba.insertMany([{title: &quot;Star Wars: Episodio I - La amenaza fantasma&quot;, year: 1999}, {title: &quot;Star Wars: Episodio II - El ataque de los clones&quot;, year: 2002}, {title: &quot;Star Wars: Episodio III - La venganza de los Sith&quot;, year: 2005}])
+
+{
+	&quot;acknowledged&quot; : true,
+	&quot;insertedIds&quot; : [
+		ObjectId(&quot;605b21f2653110148a9b1ee3&quot;),
+		ObjectId(&quot;605b21f2653110148a9b1ee4&quot;),
+		ObjectId(&quot;605b21f2653110148a9b1ee5&quot;)
+	]
+}
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.peliculas_prueba.find().pretty()
+{
+	&quot;_id&quot; : ObjectId(&quot;605b14c6798aa68ea3f5e7cd&quot;),
+	&quot;title&quot; : &quot;The Avengers EndGame&quot;,
+	&quot;year&quot; : 2019
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;605b1993798aa68ea3f5e7ce&quot;),
+	&quot;title&quot; : &quot;Raya&quot;,
+	&quot;year&quot; : 2021
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;605b1d03653110148a9b1edf&quot;),
+	&quot;title&quot; : &quot;Rogue One&quot;,
+	&quot;year&quot; : 2016
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;605b21f2653110148a9b1ee3&quot;),
+	&quot;title&quot; : &quot;Star Wars: Episodio I - La amenaza fantasma&quot;,
+	&quot;year&quot; : 1999
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;605b21f2653110148a9b1ee4&quot;),
+	&quot;title&quot; : &quot;Star Wars: Episodio II - El ataque de los clones&quot;,
+	&quot;year&quot; : 2002
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;605b21f2653110148a9b1ee5&quot;),
+	&quot;title&quot; : &quot;Star Wars: Episodio III - La venganza de los Sith&quot;,
+	&quot;year&quot; : 2005
+}
+</code></pre><p>InsertMany hace una insercion ordenada de los datos por defecto, lo que significa que si por ejemplo introducimos 10 documentos, si al insertar salta un error en el documento 4 por ejemplo, solo se introducen los 3 primeros. Esto podemos cambiarlo haciendo que insertMany no haga una insercion ordenada, sino una insercion desordenada.</p>
+<p>Para cambiar la forma de actuar del metodo insertMany, itroducimos la siguiente instrucción en la insercion:</p>
+<p>{“ordered”: false}</p>
+<p>De esta forma, aunque salgan errores, insertMany continuara insertando documentos.</p>
+<h3 id="read">Read</h3>
+<h3 id="filtros">Filtros</h3>
+<pre><code>• Filtros de igualdad:
+</code></pre>
+<p>Anteriormente vimos ya algún ejemplo de filtro de igualdad, ahora veremos varios ejemplos de filtros tanto en compass como en shell:</p>
+<p>Compass</p>
+<p>En el caso de compass la consulta es bastante sencilla ya que simplemente tendremos que introducir la consulta y hacer clic en filtrar. Por ejemplo filtraremos en la base de datos de peliculas las que esten calificadas como PG-13.</p>
+<p>Si en lugar de un valor de busqueda ponemos varios, solo se mostraran aquellos documentos que contengan ambos valores.</p>
+<p>Shell</p>
+<p>En shell utilizamos para el filtro de igualdad el metodo find, este metodo ya se ha usado anteriormente. Como ejemplo realizaremos la misma consulta que en compass.</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; use video
+switched to db video
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movies.find({mpaaRating: &quot;PG-13&quot;})
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6c99d4ee0af9e10b9d&quot;), &quot;title&quot; : &quot;Wings&quot;, &quot;year&quot; : 1927, &quot;imdbId&quot; : &quot;tt0018578&quot;, &quot;mpaaRating&quot; : &quot;PG-13&quot;, &quot;genre&quot; : &quot;Drama, Romance, War&quot;, &quot;viewerRating&quot; : 7.8, &quot;viewerVotes&quot; : 7196, &quot;runtime&quot; : 144, &quot;director&quot; : &quot;William A. Wellman, Harry d'Abbadie d'Arrast&quot;, &quot;cast&quot; : [ &quot;Clara Bow&quot;, &quot;Charles 'Buddy' Rogers&quot;, &quot;Richard Arlen&quot;, &quot;Jobyna Ralston&quot; ], &quot;plot&quot; : &quot;Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I.&quot;, &quot;language&quot; : &quot;English&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6d99d4ee0af9e14d35&quot;), &quot;title&quot; : &quot;Kate &amp; Leopold&quot;, &quot;year&quot; : 2001, &quot;imdbId&quot; : &quot;tt0035423&quot;, &quot;mpaaRating&quot; : &quot;PG-13&quot;, &quot;genre&quot; : &quot;Comedy, Fantasy, Romance&quot;, &quot;viewerRating&quot; : 6.3, &quot;viewerVotes&quot; : 59951, &quot;runtime&quot; : 118, &quot;director&quot; : &quot;James Mangold&quot;, &quot;cast&quot; : [ &quot;Meg Ryan&quot;, &quot;Hugh Jackman&quot;, &quot;Liev Schreiber&quot;, &quot;Breckin Meyer&quot; ], &quot;plot&quot; : &quot;Kate and her actor brother live in N.Y. in the 21st Century. Her ex-boyfriend, Stuart, lives above her apartment. Stuart finds a space near the Brooklyn Bridge where there is a gap in time....&quot;, &quot;language&quot; : &quot;English, French&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6f99d4ee0af9e17da0&quot;), &quot;title&quot; : &quot;Rebel Without a Cause&quot;, &quot;year&quot; : 1955, &quot;imdbId&quot; : &quot;tt0048545&quot;, &quot;mpaaRating&quot; : &quot;PG-13&quot;, &quot;genre&quot; : &quot;Drama&quot;, &quot;viewerRating&quot; : 7.8, &quot;viewerVotes&quot; : 58627, &quot;runtime&quot; : 111, &quot;director&quot; : &quot;Nicholas Ray&quot;, &quot;cast&quot; : [ &quot;James Dean&quot;, &quot;Natalie Wood&quot;, &quot;Sal Mineo&quot;, &quot;Jim Backus&quot; ], &quot;plot&quot; : &quot;A rebellious young man with a troubled past comes to a new town, finding friends and enemies.&quot;, &quot;language&quot; : &quot;English&quot; }
+…
+</code></pre><p>De esta forma se ve muy mal la informacion, para que se vea mejor usamos .pretty()</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movies.find({mpaaRating: &quot;PG-13&quot;}).pretty()
+{
+	&quot;_id&quot; : ObjectId(&quot;58c59c6c99d4ee0af9e10b9d&quot;),
+	&quot;title&quot; : &quot;Wings&quot;,
+	&quot;year&quot; : 1927,
+	&quot;imdbId&quot; : &quot;tt0018578&quot;,
+	&quot;mpaaRating&quot; : &quot;PG-13&quot;,
+	&quot;genre&quot; : &quot;Drama, Romance, War&quot;,
+	&quot;viewerRating&quot; : 7.8,
+	&quot;viewerVotes&quot; : 7196,
+	&quot;runtime&quot; : 144,
+	&quot;director&quot; : &quot;William A. Wellman, Harry d'Abbadie d'Arrast&quot;,
+	&quot;cast&quot; : [
+		&quot;Clara Bow&quot;,
+		&quot;Charles 'Buddy' Rogers&quot;,
+		&quot;Richard Arlen&quot;,
+		&quot;Jobyna Ralston&quot;
+	],
+	&quot;plot&quot; : &quot;Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I.&quot;,
+	&quot;language&quot; : &quot;English&quot;
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;58c59c6d99d4ee0af9e14d35&quot;),
+	&quot;title&quot; : &quot;Kate &amp; Leopold&quot;,
+	&quot;year&quot; : 2001,
+	&quot;imdbId&quot; : &quot;tt0035423&quot;,
+	&quot;mpaaRating&quot; : &quot;PG-13&quot;,
+	&quot;genre&quot; : &quot;Comedy, Fantasy, Romance&quot;,
+	&quot;viewerRating&quot; : 6.3,
+	&quot;viewerVotes&quot; : 59951,
+	&quot;runtime&quot; : 118,
+	&quot;director&quot; : &quot;James Mangold&quot;,
+	&quot;cast&quot; : [
+		&quot;Meg Ryan&quot;,
+		&quot;Hugh Jackman&quot;,
+		&quot;Liev Schreiber&quot;,
+		&quot;Breckin Meyer&quot;
+	],
+	&quot;plot&quot; : &quot;Kate and her actor brother live in N.Y. in the 21st Century. Her ex-boyfriend, Stuart, lives above her apartment. Stuart finds a space near the Brooklyn Bridge where there is a gap in time....&quot;,
+	&quot;language&quot; : &quot;English, French&quot;
+}
+</code></pre><p>En el caso de no introducir ningun parametro en el filtro con find, se mostraran todos los documentos de la colección. Hay algunos casos en los que a lo mejor queremos filtrar algo que a su vez se divide en varios campos. Este caso lo podemos encontrar varias veces en la base de datos del tiempo como por ejemplo el viento que a su vez tiene el campo type por lo que si queremos filtrar por tipo de viento seria de la siguiente forma:</p>
+<p>Compass</p>
+<p><img src="/Mongo-01/filtro1.png" alt="Primer filtro"></p>
+<p>Shell</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; use 100YWeatherSmall
+switched to db 100YWeatherSmall
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.data.find({&quot;wind.type&quot;: &quot;N&quot;}).pretty()
+{
+	&quot;_id&quot; : ObjectId(&quot;5553a98ce4b02cf7150dee3c&quot;),
+	&quot;st&quot; : &quot;x-00700+086000&quot;,
+	&quot;ts&quot; : ISODate(&quot;1984-01-01T00:00:00Z&quot;),
+	&quot;position&quot; : {
+		&quot;type&quot; : &quot;Point&quot;,
+		&quot;coordinates&quot; : [
+			86,
+			-0.7
+		]
+	},
+	&quot;elevation&quot; : 9999,
+	&quot;callLetters&quot; : &quot;PHQK&quot;,
+	&quot;qualityControlProcess&quot; : &quot;V020&quot;,
+	&quot;dataSource&quot; : &quot;4&quot;,
+	&quot;type&quot; : &quot;FM-13&quot;,
+	&quot;airTemperature&quot; : {
+		&quot;value&quot; : 27.5,
+		&quot;quality&quot; : &quot;1&quot;
+	},
+	&quot;dewPoint&quot; : {
+		&quot;value&quot; : 999.9,
+		&quot;quality&quot; : &quot;9&quot;
+	},
+	&quot;pressure&quot; : {
+		&quot;value&quot; : 1012.2,
+		&quot;quality&quot; : &quot;1&quot;
+	},
+	&quot;wind&quot; : {
+		&quot;direction&quot; : {
+			&quot;angle&quot; : 290,
+			&quot;quality&quot; : &quot;1&quot;
+		},
+		&quot;type&quot; : &quot;N&quot;,
+		&quot;speed&quot; : {
+			&quot;rate&quot; : 2.6,
+			&quot;quality&quot; : &quot;1&quot;
+		}
+	},
+	&quot;visibility&quot; : {
+		&quot;distance&quot; : {
+			&quot;value&quot; : 20000,
+			&quot;quality&quot; : &quot;1&quot;
+		},
+	...
+</code></pre><p>A esta forma de filtrar se le llama notación de puntos y este tipo de filtro se puede usar tanto para filtrar campos dentro de un objeto así como para filtrar en campos anidados.</p>
+<h3 id="filtrado-en-listas">Filtrado en listas</h3>
+<p>Para filtrar en una lista utilizamos los índices. Por ejemplo en la base de datos de películas tenemos varias listas en el campo cast (reparto), en el ejemplo se mostraran todas las peliculas en el que en el reparto Jeff Bridges sea el primero de la lista.</p>
+<p>Compass</p>
+<p><img src="/Mongo-01/filtros5.png" alt="Filtrado de lista"></p>
+<p>Shell</p>
+<p>En la shell se filtra de igual forma:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; use video
+switched to db video
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movies.find({&quot;cast.0&quot;: &quot;Jeff Bridges&quot;}).pretty()
+{
+	&quot;_id&quot; : ObjectId(&quot;58c59c7199d4ee0af9e1c2ee&quot;),
+	&quot;title&quot; : &quot;Bad Company&quot;,
+	&quot;year&quot; : 1972,
+	&quot;imdbId&quot; : &quot;tt0068245&quot;,
+	&quot;mpaaRating&quot; : &quot;PG&quot;,
+	&quot;genre&quot; : &quot;Drama, Western&quot;,
+	&quot;viewerRating&quot; : 7.1,
+	&quot;viewerVotes&quot; : 2423,
+	&quot;runtime&quot; : 93,
+	&quot;director&quot; : &quot;Robert Benton&quot;,
+	&quot;cast&quot; : [
+		&quot;Jeff Bridges&quot;,
+		&quot;Barry Brown&quot;,
+		&quot;Jim Davis&quot;,
+		&quot;David Huddleston&quot;
+	],
+	&quot;plot&quot; : &quot;A god-fearing Ohio boy dodging the Civil War draft arrives in Jefferson City where he joins up with a hardscrabble group of like runaways heading west.&quot;,
+	&quot;language&quot; : &quot;English&quot;
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;58c59c7199d4ee0af9e1ca26&quot;),
+	&quot;title&quot; : &quot;The Last American Hero&quot;,
+	&quot;year&quot; : 1973,
+	&quot;imdbId&quot; : &quot;tt0070287&quot;,
+	&quot;mpaaRating&quot; : &quot;PG&quot;,
+	&quot;genre&quot; : &quot;Drama, Sport&quot;,
+	&quot;viewerRating&quot; : 6.3,
+	&quot;viewerVotes&quot; : 1016,
+	&quot;runtime&quot; : 95,
+	&quot;director&quot; : &quot;Lamont Johnson&quot;,
+	&quot;cast&quot; : [
+		&quot;Jeff Bridges&quot;,
+		&quot;Valerie Perrine&quot;,
+		&quot;Geraldine Fitzgerald&quot;,
+		&quot;Ned Beatty&quot;
+	],
+	&quot;plot&quot; : &quot;A young hellraiser quits his moonshine business to try to become the best NASCAR racer the south had ever seen.&quot;,
+	&quot;language&quot; : &quot;English&quot;
+}
+…
+</code></pre><h3 id="cursores">Cursores</h3>
+<p>Los métodos de búsqueda como find, devuelven cursores. Los cursores son básicamente un puntero a la ubicación actual en un conjunto de resultados.</p>
+<p>En mongo shell el cursor se itera de forma automática mostrando los primeros 20 resultados. En el caso de necesitar mostrar mas resultados de busqueda, la shell proporciona un
+“metodo” para mostrar los siguientes 20 resultados, esto se haria escribiendo “it” (abreviatura de iterar) al mostrar los primeros resultados, de esta forma podemos iterar un conjunto completo de resultados de busqueda.</p>
+<h3 id="proyecciones">Proyecciones</h3>
+<p>Las proyecciones la sobrecarga y el procesamiento de la red requisitos, limitando los campos que son devueltos en los documentos de resultados.</p>
+<p>Por defecto mongodb devuelve todos los campos en todos los documentos que coinciden con las consultas.</p>
+<p>Las proyecciones son un segundo argumento al argumento de busqueda, por ejemplo si en lugar de mostrar todos los datos de todas las peliculas de un genero en especifico, solo queremos mostrar los titulos, esto se haria de la siguiente forma:</p>
+<p>Shell</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movies.find({genre: &quot;Action&quot;}, {title: 1})
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d24c&quot;), &quot;title&quot; : &quot;The Exploits of Elaine&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d2f1&quot;), &quot;title&quot; : &quot;The Hazards of Helen&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d3ce&quot;), &quot;title&quot; : &quot;Lucille Love: The Girl of Mystery&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d486&quot;), &quot;title&quot; : &quot;The Perils of Pauline&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d836&quot;), &quot;title&quot; : &quot;The Girl and the Game&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0dfbc&quot;), &quot;title&quot; : &quot;The Shielding Shadow&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e0d5&quot;), &quot;title&quot; : &quot;The Yellow Menace&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0dfa6&quot;), &quot;title&quot; : &quot;The Secret of the Submarine&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0dfa3&quot;), &quot;title&quot; : &quot;The Scarlet Runner&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e20c&quot;), &quot;title&quot; : &quot;The Fatal Ring&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e42b&quot;), &quot;title&quot; : &quot;The Purple Mask&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e991&quot;), &quot;title&quot; : &quot;The Adventures of Ruth&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e702&quot;), &quot;title&quot; : &quot;The House of Hate&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ea70&quot;), &quot;title&quot; : &quot;Elmo, the Mighty&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0eb83&quot;), &quot;title&quot; : &quot;The Lion Man&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ee14&quot;), &quot;title&quot; : &quot;The Branded Four&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0eeac&quot;), &quot;title&quot; : &quot;The Evil Eye&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ee92&quot;), &quot;title&quot; : &quot;The Dragon's Net&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ee68&quot;), &quot;title&quot; : &quot;Daredevil Jack&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0efb2&quot;), &quot;title&quot; : &quot;King of the Circus&quot; }
+Type &quot;it&quot; for more
+</code></pre><p>Vemos como en lugar de mostrar toda la información, solo muestra la id (por defecto) y el titulo, que es lo que hemos especificado. Tambien vemos lo explicado anteriormente en los cursores, el “it”, si escribimos it obtenemos los siguientes 20 titulos.</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movies.find({genre: &quot;Action&quot;}, {title: 1})
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d24c&quot;), &quot;title&quot; : &quot;The Exploits of Elaine&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d2f1&quot;), &quot;title&quot; : &quot;The Hazards of Helen&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d3ce&quot;), &quot;title&quot; : &quot;Lucille Love: The Girl of Mystery&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d486&quot;), &quot;title&quot; : &quot;The Perils of Pauline&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6a99d4ee0af9e0d836&quot;), &quot;title&quot; : &quot;The Girl and the Game&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0dfbc&quot;), &quot;title&quot; : &quot;The Shielding Shadow&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e0d5&quot;), &quot;title&quot; : &quot;The Yellow Menace&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0dfa6&quot;), &quot;title&quot; : &quot;The Secret of the Submarine&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0dfa3&quot;), &quot;title&quot; : &quot;The Scarlet Runner&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e20c&quot;), &quot;title&quot; : &quot;The Fatal Ring&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e42b&quot;), &quot;title&quot; : &quot;The Purple Mask&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e991&quot;), &quot;title&quot; : &quot;The Adventures of Ruth&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0e702&quot;), &quot;title&quot; : &quot;The House of Hate&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ea70&quot;), &quot;title&quot; : &quot;Elmo, the Mighty&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0eb83&quot;), &quot;title&quot; : &quot;The Lion Man&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ee14&quot;), &quot;title&quot; : &quot;The Branded Four&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0eeac&quot;), &quot;title&quot; : &quot;The Evil Eye&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ee92&quot;), &quot;title&quot; : &quot;The Dragon's Net&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0ee68&quot;), &quot;title&quot; : &quot;Daredevil Jack&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0efb2&quot;), &quot;title&quot; : &quot;King of the Circus&quot; }
+Type &quot;it&quot; for more
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; it
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0efef&quot;), &quot;title&quot; : &quot;The Mystery of 13&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f16a&quot;), &quot;title&quot; : &quot;The Whirlwind&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f22a&quot;), &quot;title&quot; : &quot;Cameron of the Royal Mounted&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f223&quot;), &quot;title&quot; : &quot;Cold Steel&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f5ac&quot;), &quot;title&quot; : &quot;The Boss of Camp Four&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f3b6&quot;), &quot;title&quot; : &quot;Miracles of the Jungle&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f485&quot;), &quot;title&quot; : &quot;The Secret Four&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f557&quot;), &quot;title&quot; : &quot;The Yellow Arm&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f623&quot;), &quot;title&quot; : &quot;The Cub Reporter&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f6a3&quot;), &quot;title&quot; : &quot;Great Alone&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f9c0&quot;), &quot;title&quot; : &quot;The Eagle's Talons&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f7fb&quot;), &quot;title&quot; : &quot;Reckless Chances&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f845&quot;), &quot;title&quot; : &quot;Smiles Are Trumps&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0f843&quot;), &quot;title&quot; : &quot;Speed&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0fbd2&quot;), &quot;title&quot; : &quot;The Thrill Chaser&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0fd22&quot;), &quot;title&quot; : &quot;Dynamite Dan&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0fc6a&quot;), &quot;title&quot; : &quot;American Manners&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0fced&quot;), &quot;title&quot; : &quot;The Cyclone Rider&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e0fd3d&quot;), &quot;title&quot; : &quot;A Fighting Heart&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;58c59c6b99d4ee0af9e10109&quot;), &quot;title&quot; : &quot;The Great Jewel Robbery&quot; }
+</code></pre><p>En las proyecciones se usa el valor 1 para incluir campos a la busqueda y el valor 0 para excluir campos de la busqueda, por lo que si quisieramos quitar el id de la busqueda anterior podriamos hacerlo de la siguiente forma:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movies.find({genre: &quot;Action&quot;}, {title: 1, _id: 0})
+{ &quot;title&quot; : &quot;The Exploits of Elaine&quot; }
+{ &quot;title&quot; : &quot;The Hazards of Helen&quot; }
+{ &quot;title&quot; : &quot;Lucille Love: The Girl of Mystery&quot; }
+{ &quot;title&quot; : &quot;The Perils of Pauline&quot; }
+{ &quot;title&quot; : &quot;The Girl and the Game&quot; }
+{ &quot;title&quot; : &quot;The Shielding Shadow&quot; }
+{ &quot;title&quot; : &quot;The Yellow Menace&quot; }
+{ &quot;title&quot; : &quot;The Secret of the Submarine&quot; }
+{ &quot;title&quot; : &quot;The Scarlet Runner&quot; }
+{ &quot;title&quot; : &quot;The Fatal Ring&quot; }
+{ &quot;title&quot; : &quot;The Purple Mask&quot; }
+{ &quot;title&quot; : &quot;The Adventures of Ruth&quot; }
+{ &quot;title&quot; : &quot;The House of Hate&quot; }
+{ &quot;title&quot; : &quot;Elmo, the Mighty&quot; }
+{ &quot;title&quot; : &quot;The Lion Man&quot; }
+{ &quot;title&quot; : &quot;The Branded Four&quot; }
+{ &quot;title&quot; : &quot;The Evil Eye&quot; }
+{ &quot;title&quot; : &quot;The Dragon's Net&quot; }
+{ &quot;title&quot; : &quot;Daredevil Jack&quot; }
+{ &quot;title&quot; : &quot;King of the Circus&quot; }
+</code></pre><h3 id="operadores-de-mongodb">Operadores de Mongodb</h3>
+<p>• Operadores de comparacion: Como su propio nombre indica, nos permiten comparar dos valores en una consulta.</p>
+<pre><code>◦ $gt (mayor que): se utiliza para hacer una consulta comparando un campo de los documentos de la colección con uno mayor. Por ejemplo, mostrar el titulo de todas las peliculas que duren mas de 90 min:
+
+~~~      
+    MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find({runtime: {$gt: 90}}, {_id: 0, title: 1, runtime: 1})
+    { &quot;title&quot; : &quot;Once Upon a Time in the West&quot;, &quot;runtime&quot; : 175 }
+    { &quot;title&quot; : &quot;A Million Ways to Die in the West&quot;, &quot;runtime&quot; : 116 }
+    { &quot;title&quot; : &quot;Wild Wild West&quot;, &quot;runtime&quot; : 106 }
+    { &quot;title&quot; : &quot;West Side Story&quot;, &quot;runtime&quot; : 152 }
+    { &quot;title&quot; : &quot;Red Rock West&quot;, &quot;runtime&quot; : 98 }
+    { &quot;title&quot; : &quot;How the West Was Won&quot;, &quot;runtime&quot; : 164 }
+    { &quot;title&quot; : &quot;Journey to the West&quot;, &quot;runtime&quot; : 110 }
+    { &quot;title&quot; : &quot;West of Memphis&quot;, &quot;runtime&quot; : 147 }
+    { &quot;title&quot; : &quot;Star Wars: Episode IV - A New Hope&quot;, &quot;runtime&quot; : 121 }
+    { &quot;title&quot; : &quot;Star Wars: Episode V - The Empire Strikes Back&quot;, &quot;runtime&quot; : 124 }
+    { &quot;title&quot; : &quot;Star Wars: Episode VI - Return of the Jedi&quot;, &quot;runtime&quot; : 131 }
+    { &quot;title&quot; : &quot;Star Wars: Episode I - The Phantom Menace&quot;, &quot;runtime&quot; : 136 }
+    { &quot;title&quot; : &quot;Star Wars: Episode III - Revenge of the Sith&quot;, &quot;runtime&quot; : 140 }
+    { &quot;title&quot; : &quot;Star Trek&quot;, &quot;runtime&quot; : 127 }
+    { &quot;title&quot; : &quot;Star Wars: Episode II - Attack of the Clones&quot;, &quot;runtime&quot; : 142 }
+    { &quot;title&quot; : &quot;Star Trek Into Darkness&quot;, &quot;runtime&quot; : 132 }
+    { &quot;title&quot; : &quot;Star Trek: First Contact&quot;, &quot;runtime&quot; : 111 }
+    { &quot;title&quot; : &quot;Star Trek II: The Wrath of Khan&quot;, &quot;runtime&quot; : 113 }
+    { &quot;title&quot; : &quot;Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb&quot;, &quot;runtime&quot; : 95 }
+    { &quot;title&quot; : &quot;Love Actually&quot;, &quot;runtime&quot; : 135 }
+    Type &quot;it&quot; for more
+~~~
+</code></pre>
+<p>Como vemos, todas las peliculas que se muestran tienen una duracion mayor de 90 min. De la misma forma que existe $gt, tambien existe $lt (menor que), que se usar para filtrar por valores inferiores. Haciendo uso de los dos a la vez podemos ser capaces de filtrar en un rango, por ejemplo, peliculas que duren mas de 90 min, y menos de 100.</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find({runtime: {$gt: 90, $lt: 100}}, {_id: 0, title: 1, runtime: 1})
+{ &quot;title&quot; : &quot;Red Rock West&quot;, &quot;runtime&quot; : 98 }
+{ &quot;title&quot; : &quot;Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Punch-Drunk Love&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;From Paris with Love&quot;, &quot;runtime&quot; : 92 }
+{ &quot;title&quot; : &quot;I Love You Phillip Morris&quot;, &quot;runtime&quot; : 98 }
+{ &quot;title&quot; : &quot;2001: A Space Travesty&quot;, &quot;runtime&quot; : 99 }
+{ &quot;title&quot; : &quot;The Adventures of Sharkboy and Lavagirl 3-D&quot;, &quot;runtime&quot; : 93 }
+{ &quot;title&quot; : &quot;The Adventures of Rocky &amp; Bullwinkle&quot;, &quot;runtime&quot; : 92 }
+{ &quot;title&quot; : &quot;Shaun of the Dead&quot;, &quot;runtime&quot; : 99 }
+{ &quot;title&quot; : &quot;Evil Dead&quot;, &quot;runtime&quot; : 91 }
+{ &quot;title&quot; : &quot;Night of the Living Dead&quot;, &quot;runtime&quot; : 96 }
+{ &quot;title&quot; : &quot;Treasure Planet&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Planet 51&quot;, &quot;runtime&quot; : 91 }
+{ &quot;title&quot; : &quot;Forbidden Planet&quot;, &quot;runtime&quot; : 98 }
+{ &quot;title&quot; : &quot;Beneath the Planet of the Apes&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Alien Nation&quot;, &quot;runtime&quot; : 91 }
+{ &quot;title&quot; : &quot;Alien Autopsy&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Diary of a Wimpy Kid&quot;, &quot;runtime&quot; : 94 }
+{ &quot;title&quot; : &quot;Trail of the Pink Panther&quot;, &quot;runtime&quot; : 96 }
+{ &quot;title&quot; : &quot;Crossfire Trail&quot;, &quot;runtime&quot; : 92 }
+Type &quot;it&quot; for more
+</code></pre><p>Sin embargo, este filtro muestra solo las que duran mas de 90 y menos de 100, es decir, si una pelicula dura 90 min o 100 min, no aparecera ya que solo se muestran valores superiores e inferiores. Para incluir a las peliculas de 90 y 100 min, usamos los operadores $gte (mayor o igual que) y $lt3 (menor o igual que):</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find({runtime: {$gte: 90, $lte: 100}}, {_id: 0, title: 1, runtime: 1})
+{ &quot;title&quot; : &quot;Red Rock West&quot;, &quot;runtime&quot; : 98 }
+{ &quot;title&quot; : &quot;Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Punch-Drunk Love&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;From Paris with Love&quot;, &quot;runtime&quot; : 92 }
+{ &quot;title&quot; : &quot;I Love You Phillip Morris&quot;, &quot;runtime&quot; : 98 }
+{ &quot;title&quot; : &quot;2001: A Space Travesty&quot;, &quot;runtime&quot; : 99 }
+{ &quot;title&quot; : &quot;The Adventures of Sharkboy and Lavagirl 3-D&quot;, &quot;runtime&quot; : 93 }
+{ &quot;title&quot; : &quot;The Adventures of Rocky &amp; Bullwinkle&quot;, &quot;runtime&quot; : 92 }
+{ &quot;title&quot; : &quot;The Rocky Horror Picture Show&quot;, &quot;runtime&quot; : 100 }
+{ &quot;title&quot; : &quot;Best in Show&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Shaun of the Dead&quot;, &quot;runtime&quot; : 99 }
+{ &quot;title&quot; : &quot;Evil Dead&quot;, &quot;runtime&quot; : 91 }
+{ &quot;title&quot; : &quot;Night of the Living Dead&quot;, &quot;runtime&quot; : 96 }
+{ &quot;title&quot; : &quot;Treasure Planet&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Planet 51&quot;, &quot;runtime&quot; : 91 }
+{ &quot;title&quot; : &quot;Forbidden Planet&quot;, &quot;runtime&quot; : 98 }
+{ &quot;title&quot; : &quot;Beneath the Planet of the Apes&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Alien Nation&quot;, &quot;runtime&quot; : 91 }
+{ &quot;title&quot; : &quot;Alien Autopsy&quot;, &quot;runtime&quot; : 95 }
+{ &quot;title&quot; : &quot;Alien Outpost&quot;, &quot;runtime&quot; : 90 }
+Type &quot;it&quot; for more
+</code></pre><p>En el caso de querer mostrar solo un resultado igual, se usa $eq (igual que)</p>
+<pre><code>◦ $ne (no igual): Es lo contrario a $eq, si por ejemplo si usando db.movieDetails.find({runtime: {$eq: 90}}, {_id: 0, title: 1, runtime: 1}) se nos muestran las peliculas que duran exactamente 90 min, con $ne se nos mostraran todas menos las de 90 min:
+</code></pre>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find({runtime: {$eq: 90}}, {_id: 0, title: 1, runtime: 1})
+{ &quot;title&quot; : &quot;Best in Show&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Alien Outpost&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Bill &amp; Ted's Excellent Adventure&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Trouble Bound&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Little Nicky&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Il Bi e il Ba&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Fink fährt ab&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Die Post geht ab&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Ao qi xiong ying&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Shou zhi ao chu&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Enchantress Eo-eul&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Babylon A.D.&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;B.J.: Black Jocks&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Ed Gein: The Butcher of Plainfield&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Il trucido e lo sbirro&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Tout le monde n'a pas eu la chance d'avoir des parents communistes&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Eu Não Faço a Menor Ideia do Que Eu Tô Fazendo Com a Minha Vida&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;The Death of J.P. Cuenca&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;Class of Nuke 'Em High Part II: Subhumanoid Meltdown&quot;, &quot;runtime&quot; : 90 }
+{ &quot;title&quot; : &quot;KJ: Music and Life&quot;, &quot;runtime&quot; : 90 }
+Type &quot;it&quot; for more
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find({runtime: {$ne: 90}}, {_id: 0, title: 1, runtime: 1})
+{ &quot;title&quot; : &quot;Once Upon a Time in the West&quot;, &quot;runtime&quot; : 175 }
+{ &quot;title&quot; : &quot;A Million Ways to Die in the West&quot;, &quot;runtime&quot; : 116 }
+{ &quot;title&quot; : &quot;Wild Wild West&quot;, &quot;runtime&quot; : 106 }
+{ &quot;title&quot; : &quot;West Side Story&quot;, &quot;runtime&quot; : 152 }
+{ &quot;title&quot; : &quot;Slow West&quot;, &quot;runtime&quot; : 84 }
+{ &quot;title&quot; : &quot;An American Tail: Fievel Goes West&quot;, &quot;runtime&quot; : 75 }
+{ &quot;title&quot; : &quot;Red Rock West&quot;, &quot;runtime&quot; : 98 }
+{ &quot;title&quot; : &quot;How the West Was Won&quot;, &quot;runtime&quot; : 164 }
+{ &quot;title&quot; : &quot;Journey to the West&quot;, &quot;runtime&quot; : 110 }
+{ &quot;title&quot; : &quot;West of Memphis&quot;, &quot;runtime&quot; : 147 }
+{ &quot;title&quot; : &quot;Star Wars: Episode IV - A New Hope&quot;, &quot;runtime&quot; : 121 }
+{ &quot;title&quot; : &quot;Star Wars: Episode V - The Empire Strikes Back&quot;, &quot;runtime&quot; : 124 }
+{ &quot;title&quot; : &quot;Star Wars: Episode VI - Return of the Jedi&quot;, &quot;runtime&quot; : 131 }
+{ &quot;title&quot; : &quot;Star Wars: Episode I - The Phantom Menace&quot;, &quot;runtime&quot; : 136 }
+{ &quot;title&quot; : &quot;Star Wars: Episode III - Revenge of the Sith&quot;, &quot;runtime&quot; : 140 }
+{ &quot;title&quot; : &quot;Star Trek&quot;, &quot;runtime&quot; : 127 }
+{ &quot;title&quot; : &quot;Star Wars: Episode II - Attack of the Clones&quot;, &quot;runtime&quot; : 142 }
+{ &quot;title&quot; : &quot;Star Trek Into Darkness&quot;, &quot;runtime&quot; : 132 }
+{ &quot;title&quot; : &quot;Star Trek: First Contact&quot;, &quot;runtime&quot; : 111 }
+{ &quot;title&quot; : &quot;Star Trek II: The Wrath of Khan&quot;, &quot;runtime&quot; : 113 }
+Type &quot;it&quot; for more
+</code></pre><p>• Operadores lógicos</p>
+<pre><code>◦ $and y $or: ambos operadores unen dos valores de una consulta, sin embargo $and mostrara todos los documentos que coincidan con ambos valores mientras que $or mostrara todos los documentos que coincidan con uno de los dos valores.
+
+◦ $not: devuelve los documentos que no esten relacionados con los valores de consulta.
+      
+◦ $nor: devuelve los documentos que no coinciden con ambos valores de busqueda.
+</code></pre>
+<p>• Operadores de elementos</p>
+<pre><code>◦ $exists: muestra los documentos que coinciden con la busqueda.
+◦ $type: muestra los documentos si un campo es del typo especificado.
+</code></pre>
+<p>• Operadores de matrices</p>
+<pre><code>◦ $all: coincide con las matrices o arrays que contienen todos los elementos especificados en una consulta. 
+◦ $size: muestra los documentos siempre que la array tenga el tamaño especificado.
+◦ $elemMatch: muestra los documentos si el elemento del campo array coincide con los valores especificados
+</code></pre>
+<p>• Operadores de evaluación</p>
+<pre><code>◦ $regexp: muestra documentos donde los valores coinciden con la expresion regular especificada.
+</code></pre>
+<h3 id="metodo-para-contabilizar-los-resultados-de-busqueda">Metodo para contabilizar los resultados de busqueda</h3>
+<p>En mongodb hay dos formas bastante parecidas de contabilizar los resultados de una busqueda:</p>
+<pre><code>• Usando el metodo count. Ej contar las peliculas que hay en la base de datos de peliculas:
+</code></pre>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.count()
+2295
+</code></pre><pre><code>• Usando el metodo count junto al metodo find:
+</code></pre>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find().count()
+2295
+</code></pre><p>Ambas formas dan el mismo resultado, sin embargo la diferencia entre estos dos metodos, es que usando solamente count no es posible filtrar, es decir no puedo pedir contar las peliculas de un genero especifico, ya que count solo lo que hace es mostrar la cantidad de documentos que componen la colección de la base de datos.</p>
+<p>Esto actualmente parece que ya no es asi, ya que he podido comprobar que en ambos es posible filtrar:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.count({genres: &quot;Comedy&quot;})
+749
+MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find({genres: &quot;Comedy&quot;}).count()
+749
+</code></pre><h3 id="metodo-limit">Metodo limit</h3>
+<p>El metodo limit, limitara el numero de resultado en un filtro, por ejemplo si en lugar de mostrar todas las peliculas, solo quieres mostrar las 3 o 4 primeras.</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.find({genres: &quot;Comedy&quot;}).limit(2).pretty()
+{
+	&quot;_id&quot; : ObjectId(&quot;5e7754bbff453565d25411d4&quot;),
+	&quot;title&quot; : &quot;The Adventures of Buckaroo Banzai Across the 8th Dimension&quot;,
+	&quot;year&quot; : 1984,
+	&quot;rated&quot; : &quot;PG&quot;,
+	&quot;runtime&quot; : 103,
+	&quot;countries&quot; : [
+		&quot;USA&quot;
+	],
+	&quot;genres&quot; : [
+		&quot;Adventure&quot;,
+		&quot;Comedy&quot;,
+		&quot;Romance&quot;
+	],
+	&quot;director&quot; : &quot;W.D. Richter&quot;,
+	&quot;writers&quot; : [
+		&quot;Earl Mac Rauch&quot;
+	],
+	&quot;actors&quot; : [
+		&quot;Peter Weller&quot;,
+		&quot;John Lithgow&quot;,
+		&quot;Ellen Barkin&quot;,
+		&quot;Jeff Goldblum&quot;
+	],
+	&quot;plot&quot; : &quot;Adventurer/surgeon/rock musician Buckaroo Banzai and his band of men, the Hong Kong Cavaliers, take on evil alien invaders from the 8th dimension.&quot;,
+	&quot;poster&quot; : &quot;http://ia.media-imdb.com/images/M/MV5BMTk3OTAwNDQwOF5BMl5BanBnXkFtZTgwOTE0MzQxMDE@._V1_SX300.jpg&quot;,
+	&quot;imdb&quot; : {
+		&quot;id&quot; : &quot;tt0086856&quot;,
+		&quot;rating&quot; : 6.4,
+		&quot;votes&quot; : 17154
+	},
+	&quot;awards&quot; : {
+		&quot;wins&quot; : 0,
+		&quot;nominations&quot; : 5,
+		&quot;text&quot; : &quot;5 nominations.&quot;
+	},
+	&quot;type&quot; : &quot;movie&quot;
+}
+{
+	&quot;_id&quot; : ObjectId(&quot;5e7754bbff453565d25411ba&quot;),
+	&quot;title&quot; : &quot;Love Actually&quot;,
+	&quot;year&quot; : 2003,
+	&quot;rated&quot; : &quot;R&quot;,
+	&quot;runtime&quot; : 135,
+	&quot;countries&quot; : [
+		&quot;UK&quot;,
+		&quot;USA&quot;,
+		&quot;France&quot;
+	],
+	&quot;genres&quot; : [
+		&quot;Comedy&quot;,
+		&quot;Drama&quot;,
+		&quot;Romance&quot;
+	],
+	&quot;director&quot; : &quot;Richard Curtis&quot;,
+	&quot;writers&quot; : [
+		&quot;Richard Curtis&quot;
+	],
+	&quot;actors&quot; : [
+		&quot;Bill Nighy&quot;,
+		&quot;Gregor Fisher&quot;,
+		&quot;Rory MacGregor&quot;,
+		&quot;Colin Firth&quot;
+	],
+	&quot;plot&quot; : &quot;Follows the lives of eight very different couples in dealing with their love lives in various loosely interrelated tales all set during a frantic month before Christmas in London, England.&quot;,
+	&quot;poster&quot; : &quot;http://ia.media-imdb.com/images/M/MV5BMTY4NjQ5NDc0Nl5BMl5BanBnXkFtZTYwNjk5NDM3._V1_SX300.jpg&quot;,
+	&quot;imdb&quot; : {
+		&quot;id&quot; : &quot;tt0314331&quot;,
+		&quot;rating&quot; : 7.7,
+		&quot;votes&quot; : 306036
+	},
+	&quot;tomato&quot; : {
+		&quot;meter&quot; : 63,
+		&quot;image&quot; : &quot;fresh&quot;,
+		&quot;rating&quot; : 6.4,
+		&quot;reviews&quot; : 192,
+		&quot;fresh&quot; : 120,
+		&quot;consensus&quot; : &quot;A sugary tale overstuffed with too many stories. Still, the cast charms.&quot;,
+		&quot;userMeter&quot; : 72,
+		&quot;userRating&quot; : 3.1,
+		&quot;userReviews&quot; : 31625241
+	},
+	&quot;metacritic&quot; : 55,
+	&quot;awards&quot; : {
+		&quot;wins&quot; : 10,
+		&quot;nominations&quot; : 24,
+		&quot;text&quot; : &quot;Nominated for 2 Golden Globes. Another 10 wins &amp; 24 nominations.&quot;
+	},
+	&quot;type&quot; : &quot;movie&quot;
+}
+</code></pre><p>Anteriormente vimos que de genero comedy habia 749 resultados, sin embargo ahora solo se muestran 2 por estar limiado a 2.</p>
+<h3 id="update">Update</h3>
+<p>Una de las cosas que distingue a mongodb de los gestores de datos relaciones, es la flexibilidad que tiene, ya que por ejemplo en mongodb no es necesario que los documentos de una misma colección tengan el mismo esquema, al contrario que en las bases de datos relacionales. Por ejemplo en la bases de datos de peliculas, todos los documentos tienen los mismos campos basicos, sin embargo hay campos que solo tienen algunas, como por ejemplo el campo premios que obviamente solo tienen las peliculas que ganaron alguno o por ejemplo el campo poster.</p>
+<p>Usando compass es muy facil actualizar un documento ya que lo podemos editar a mano y simplemente podemos hacer clic en actualizar.</p>
+<p>En shell por otro lado, la actualización de un documento se hace a traves del metodo updateOne(). Para ello primero se hace un filtro para concretar el documento a actualizar, hay que tener en cuenta que este metodo solo actualizara el primer documento que coincida con el filtro.</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.updateOne({title: “The Martian”}, {$set: {poster: https://www.google.com/url?sa=i&amp;url=http%3A%2F%2Fwww.sensacine.com%2Fpeliculas%2Fpelicula-221524%2F&amp;psig=AOvVaw1MypUGK_TXWkglEMdCNTXV&amp;ust=1616771781342000&amp;source=images&amp;cd=vfe&amp;ved=2ahUKEwiJs_mu3svvAhUJxOAKHXI0BEMQjRx6BAgAEAc}})
+</code></pre><p>En este caso hacemos uso del operador $set para indicar el campo que se va a añadir a la pelicula con el titulo “The Martian”. En el caso de que el campo poster ya exista, si usamos $set se modificara el campo poster con el nuevo valor que hemos añadido.</p>
+<p>Este metodo seguramente resulte familiar al uso de insertOne e insertMany y al igual que ocurre con insert, tambien existe un updateMany.</p>
+<p>La diferencia entre updateOne y updateMany es que updateMany actualizara o modificara todos aquellos documentos que coincidan con el filtro, mientras updateOne solo actualiza o modifica el primero. Por ejemplo en la base de datos de peliculas, en algunos de los documentos se encuentrar campos que aparecen nulos (nulls) y se van a eliminar de la siguiente forma:</p>
+<pre><code>MongoDB Enterprise Cluster0-shard-0:PRIMARY&gt; db.movieDetails.updateMany({rated: null}, {$unset: {rated: “”}})
+</code></pre><p>En este caso se usa el operador $unset para eliminar el contenido, en este caso a todas las peliculas cuyo campo rated sea null se le eliminara el campo rated.</p>
+<h3 id="remplazar">Remplazar</h3>
+<p>ReplaceOne lo podemos usar tanto para modificar la informacion de la base de datos como para añadir contenido nuevo usando para ello upset.</p>
+<p>La sintaxis de replaceOne seria la siguiente, replaceOne({Objeto a reemplazar},{reemplazo}). Por ejemplo, si contamos con una base de datos de alumnos y queremos reemplazar la informacion de un alumno que tenga como apellido &ldquo;Gonzalez&rdquo; y lo queramos sustituir por &ldquo;nombre: sergio, apellido: ibañez&rdquo;, seria de la siguiente forma:</p>
+<p>db.alumnos.replaceOne({apellido: Gonzalez},{nombre: sergio, apellido: ibañez})</p>
+<h3 id="delete">Delete</h3>
+<p>Para eliminar datos en mongodb, tenemos dos opciones al igual que con insert y update, deleteOne y deleteMany.</p>
+<p>deleteOne elimina solo el primer documento que coincida con el filtro realizado, es decir, que si por ejemplo haciendo uso de nuestra base de datos de peliculas queremos eliminar todas aquellas peliculas de un genero especifico como Comedy, seria de la siguiente forma:</p>
+<p>db.peliculas.deleteOne(genre: &ldquo;Comedy&rdquo;)</p>
+<p>Sin embargo, de este genero hay varias peliculas, pero solo se eliminaria el primer resultado ya que deleteOne lo que hace es eliminar solo la primera coincidencia.</p>
+<p>Es aqui donde entra en juego el uso de deleteMany, ya que elimina todos aquellos documentos que coincidan con el filtro, es decir, que en este caso hacemos lo mismo que en el caso anterior, pero esta vez eliminariamos todas las peliculas del genero especificado en el filtro.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
