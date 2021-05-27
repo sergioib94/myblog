@@ -1,6 +1,6 @@
 baseURL = "https://sergioib.netlify.app/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "El rincon del admin"
 theme = "m10c"
 
 [menu]
@@ -17,7 +17,7 @@ theme = "m10c"
 
 [params]
   author = "Sergio Ibañez"
-  description = "Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes"
+  description = "Blog de informatica dedicado tanto a practicas realizadas en ASIR como a apuntes de administracion y variedades informaticas"
   
   [[params.social]]
     icon = "github"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Aplicaciones Web on My New Hugo Site</title>
+    <title>Aplicaciones Web on El rincon del admin</title>
     <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>
-    <description>Recent content in Aplicaciones Web on My New Hugo Site</description>
+    <description>Recent content in Aplicaciones Web on El rincon del admin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Mar 2021 13:26:35 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/aplicaciones-web/index.xml" rel="self" type="application/rss+xml" />
