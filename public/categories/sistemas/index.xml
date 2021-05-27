@@ -6,7 +6,17 @@
     <description>Recent content in Sistemas on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Mar 2021 12:08:28 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/sistemas/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 May 2021 15:28:17 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/sistemas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Active Directory</title>
+      <link>https://sergioib.netlify.app/posts/active-directory/</link>
+      <pubDate>Sun, 23 May 2021 15:28:17 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/active-directory/</guid>
+      <description>¿Que es? Active Directory es un servicio de directorio que almacena objetos de datos en su entorno de red local. El servicio registra datos en los usuarios, dispositivos, aplicaciones, grupos, y dispositivos en una estructura jerárquica.
+La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente.</description>
+    </item>
+    
     <item>
       <title>Bacula</title>
       <link>https://sergioib.netlify.app/posts/bacula/</link>

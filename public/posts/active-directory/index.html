@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Active Directory // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Active Directory"/>
+<meta name="twitter:description" content="¿Que es? Active Directory es un servicio de directorio que almacena objetos de datos en su entorno de red local. El servicio registra datos en los usuarios, dispositivos, aplicaciones, grupos, y dispositivos en una estructura jerárquica.
+La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente."/>
+
+    <meta property="og:title" content="Active Directory" />
+<meta property="og:description" content="¿Que es? Active Directory es un servicio de directorio que almacena objetos de datos en su entorno de red local. El servicio registra datos en los usuarios, dispositivos, aplicaciones, grupos, y dispositivos en una estructura jerárquica.
+La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/active-directory/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-23T15:28:17&#43;02:00" />
+<meta property="article:modified_time" content="2021-05-23T15:28:17&#43;02:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>My New Hugo Site</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado tanto a practicas realizadas en ASIR como apuntes</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Active Directory</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 23, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="que-es">¿Que es?</h3>
+<p>Active Directory es un servicio de directorio que almacena objetos de datos en su entorno de red local. El servicio registra datos en los usuarios, dispositivos, aplicaciones, grupos, y dispositivos en una estructura jerárquica.</p>
+<p>La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente.</p>
+<p><strong>Bosque</strong></p>
+<p>Es el nivel mas alto de organizacion en active directory. Un bosque es un grupo de dominios, cuando múltiples árboles se agrupan juntos se convierten en un bosque.</p>
+<p><strong>Arbol</strong></p>
+<p>El árbol es una entidad con un solo dominio o grupo de objetos seguido por dominios secundarios. Los distintos arboles en un bosque se conectan entre si a traves de una relación de confianza (la confianza entre los distintos dominios se hara de forma automatica) que permite que los distintos dominios compartan la información.</p>
+<p><strong>Dominios</strong></p>
+<p>Un dominio de Active Directory es un contenedor lógico utilizado para administrar usuarios, grupos y computadoras entre otros objetos.</p>
+<p>Todos estos objetos son contenidos en una partición específica dentro de la base de datos de Active Directory (ADDS).</p>
+<p><strong>Unidad Organizativa</strong></p>
+<p>Las unidaddes organizativas (OU) son contenedores de Active Diretory dentro de un dominio con los que podemos agrupar para organizar multitud de objetos de active directory como pueden ser: usuarios de dominios, grupos de dominios, equipos e incluso otras unidades organizativas.</p>
+<p><img src="/Active-Directory/jerarquia.png" alt="jerarquia active directory"></p>
+<h3 id="instalacion-en-windows-server-2012">Instalacion (En windows server 2012)</h3>
+<ol>
+<li>Nos dirigimos al Administrador de Servidor o Server Manager y hacemos clic en Agregar roles o características.</li>
+</ol>
+<p><img src="/Active-Directory/ws-1.png" alt=""></p>
+<ol start="2">
+<li>En la ventana inicial hacemos clic en siguiente y elegimos la opción de la Instalación basada en roles.</li>
+</ol>
+<p><img src="/Active-Directory/ws-2.png" alt=""></p>
+<ol start="3">
+<li>Hacemos clic en siguiente y elegimos el servidor donde queremos instalar nuestro rol de AD DS.</li>
+</ol>
+<p><img src="/Active-Directory/ws-3.png" alt=""></p>
+<ol start="4">
+<li>Hacemos clic en siguiente y elegimos el rol solicitado (Servicios de dominio de Active Directory), agregamos las características.</li>
+</ol>
+<p><img src="/Active-Directory/ws-4.png" alt=""></p>
+<ol start="5">
+<li>
+<p>Hacemos clic en siguiente seleccionamos las características y clic en siguiente y se desplegarán las caracteristicas que se van a instalar.</p>
+</li>
+<li>
+<p>Hacemos clic en siguiente y comenzamos con la instalacion.</p>
+</li>
+</ol>
+<p><img src="/Active-Directory/ws-6.png" alt=""></p>
+<ol start="7">
+<li>
+<p>Una vez instalado nuestro rol de Active Directory reiniciamos el servidor para aplicar los cambios. Antes de iniciar nuestro asistente de AD DS debemos promover nuestro servidor a controlador de dominio.</p>
+</li>
+<li>
+<p>Para promover el servidor a DC nos dirigimos a nuestro Administrador de Servidor y desplegamos el flag de información (la bandera) e indicamos la opcion &ldquo;promover este servidor a controlador de dominio&rdquo;.</p>
+</li>
+</ol>
+<p>Hacemos clic en esta opción y se desplegará el asistente para configuración de servicios de dominio de Directorio Activo.</p>
+<p>Veremos que contamos con 3 opciones de configuración:</p>
+<ul>
+<li>Agregar un controlador de dominio a un dominio existente:</li>
+<li>Agregar un nuevo dominio a un bosque existente:</li>
+<li>Agregar un nuevo bosque:</li>
+</ul>
+<p>En nuestro caso elegiremos la opción Agregar un nuevo bosque, elegiremos el nombre para nuestro domino y damos clic en Siguiente.</p>
+<p><img src="/Active-Directory/ws-8.png" alt=""></p>
+<ol start="9">
+<li>Después que el sistema valide si el nombre de dominio es válido, se desplegarán las opciones del controlador de dominio, donde contamos con algunas opciones muy importantes que debemos tener en cuenta a nivel de funcionalidad de nuestro servidor.</li>
+</ol>
+<p>El nivel funcional que se indique debe ser siempre el mas bajo de la red, es decir, en mi caso el servidor con Active Directory cuenta con windows server 2012 por lo que el nivel funcional tanto de dominio como de bosque, sera de windows 2012, sin embargo si en nuestra red contamos con algun otro servidor con windows server 2008 por ejemplo, el nivel funcional se debe de establecer en windows server 2008.</p>
+<p><img src="/Active-Directory/ws-10.png" alt=""></p>
+<ol start="10">
+<li>En la siguiente ventana tenemos las opciones de DNS.</li>
+</ol>
+<p><img src="/Active-Directory/ws-11.png" alt=""></p>
+<ol start="11">
+<li>Hacemos clic en siguiente, y veremos el nombre de NETBIOS asignado por el sistema, nosotros decidimos si lo cambiamos o dejamos ése por defecto.</li>
+</ol>
+<p><img src="/Active-Directory/ws-12.png" alt=""></p>
+<ol start="12">
+<li>Clic en Siguiente, se desplegará la ventana informativa de ubicación de la base de datos de AD DS.</li>
+</ol>
+<p><img src="/Active-Directory/ws-13.png" alt=""></p>
+<ol start="13">
+<li>Clic en Siguiente, a continuación se desplegará una ventana informativa con el proceso a realizar, si notamos en la parte inferior podemos realizar este mismo procedimiento usando Powershell, Windows Server nos da la opción de ver y copiar el script.</li>
+</ol>
+<p><img src="/Active-Directory/ws-14.png" alt=""></p>
+<ol start="14">
+<li>Hacemos clic en siguiente, y Windows Server realizará una validación para que todos los requisitos de instalación estén correctos y así poder comenzar la instalación.</li>
+</ol>
+<p><img src="/Active-Directory/ws-15.png" alt=""></p>
+<ol start="15">
+<li>
+<p>Hacemos clic en Instalar para iniciar el proceso de promover nuestro servidor a controlador de dominio.</p>
+</li>
+<li>
+<p>El sistema se reiniciará para guardar la configuración y veremos en el panel del Administrador del Servidor que ya contamos con las opciones relacionadas al Directorio Activo.</p>
+</li>
+</ol>
+<p>En caso de que necesitemos borrar un controlador de dominio de nuestra estructura de red, debemos seguir los siguientes pasos:</p>
+<ol>
+<li>
+<p>Entramos al menú Administrar y elegimos &ldquo;Quitar roles y funciones&rdquo;.</p>
+</li>
+<li>
+<p>Se desplegará la ventana informativa, Hacemos clic en Siguiente</p>
+</li>
+<li>
+<p>Seleccionamos el servidor donde tenemos instalado el rol de AD DS</p>
+</li>
+<li>
+<p>En la ventana de Roles de servidor seleccionamos la opción Servicios de dominio de directorio activo (debe quedar desactivada), quitamos las características de AD DS.</p>
+</li>
+<li>
+<p>Hacemos clic en siguiente, seleccionamos las características que deseemos eliminar y hacemos clic en siguiente, se mostrará un resumen de la tarea que estamos por ejecutar y hacemos clic en Quitar.</p>
+</li>
+</ol>
+<h2 id="creación-y-administración-de-usuarios-y-equipos">Creación y administración de usuarios y equipos</h2>
+<p>Podemos crear un usuario a través de diferentes herramientas como lo son: Los asistentes de la consola de AD DS, el comando DSADD.EXE, PowerShell entre otros, en nuestro ejemplo usaremos el asistente de AD DS. Para ello vamos a realizar los siguientes pasos:</p>
+<p>Ingresamos a Administre el servidor, elegimos en el menú Herramientas la opción Centro de administración de Active Directory:</p>
+<p>Se desplegará la consola del centro de administración de AD.</p>
+<p>Al seleccionar nuestro servidor en el panel lateral izquierdo podremos ver que se despliegan una serie de opciones, como por ejemplo, equipos, usuarios, sistema, dispositivos TPM entre otros.</p>
+<p>En el panel lateral derecho, en la parte inferior veremos que se abren las opciones referentes al objeto Users:</p>
+<p>Allí podremos elegir lo que deseemos crear, usuarios, equipos, grupos, etc. Elegimos Usuario y podremos ver cómo cambia la estructura de creación comparada con versiones anteriores (a nivel de apariencia).</p>
+<p><img src="/Active-Directory/ad-3.png" alt=""></p>
+<p>Una vez tengamos los cambios necesarios en el perfil del usuario damos clic en Aceptar para guardar dicha configuración.</p>
+<p><img src="/Active-Directory/ad-5.png" alt=""></p>
+<p>Si deseamos crear nuestros usuarios o equipos a través de cmd, podemos ejecutar el comando DCA.MSC o dirigirnos al menú Herramientas y elegir la opción Usuarios y equipos de Active Directory.</p>
+<p>El mismo procedimiento realizamos para la creación de cualquier otro objeto en nuestro Directorio Activo, equipos, OUs, etc. Por ejemplo para la creación de un equipo nos dirigimos al menú inferior derecho del Centro de administración de Active Directory y elegimos Nuevo / Equipo.</p>
+<p>En la ventana desplegada ingresamos información del equipo, así mismo indicamos a que dominio se va a incluir dicho equipo y para guardar los cambios damos clic en Aceptar.</p>
+<p><img src="/Active-Directory/ad-4.png" alt=""></p>
+<p>En el centro de administración de Active Directory podemos gestionar otras funciones de nuestro rol, en el panel lateral derecho podemos encontrar lo siguiente:</p>
+<ul>
+<li>
+<p>Cambiar el controlador de dominio: nos da la posibilidad de modificar nuestro DC.</p>
+</li>
+<li>
+<p>Elevar el nivel funcional del bosque: nos permite elevar la funcionalidad del bosque de nuestro servidor.</p>
+</li>
+<li>
+<p>Elevar el nivel funcional del dominio: da la posibilidad de elevar la funcionalidad de nuestro dominio.</p>
+</li>
+<li>
+<p>Habilitar la papelera de reciclaje: permite recuperar objetos eliminados en AD</p>
+</li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
