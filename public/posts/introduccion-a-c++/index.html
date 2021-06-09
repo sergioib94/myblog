@@ -82,16 +82,18 @@ Para escribir un programa en C&#43;&#43; necesitaremos de un editor de texto y u
 <h3 id="herramienta-zinjai">Herramienta Zinjai</h3>
 <p>Es una herramienta del mismo creador que psinc (para aprender pseudocódigo) para programas en C y C++ esta disponible tanto para Linux como para Windows.</p>
 <p>Pasos de instalación en Windows:</p>
-<pre><code>1. Descargar instalador para Windows.
-2. Ejecutamos el ejecutable descargado.
-3. Aceptamos los términos y seleccionamos todos los componentes para la instalación.
-4. Seleccionamos directorio de destino y comenzamos la instalación.
-5. Configuramos el idioma.
-</code></pre>
+<ol>
+<li>Descargar instalador para Windows.</li>
+<li>Ejecutamos el ejecutable descargado.</li>
+<li>Aceptamos los términos y seleccionamos todos los componentes para la instalación.</li>
+<li>Seleccionamos directorio de destino y comenzamos la instalación.</li>
+<li>Configuramos el idioma.</li>
+</ol>
 <p>Pasos de instalación en Linux</p>
-<pre><code>1. Descargar paquete para GNU/Linux.
-2. Descomprimimos el archivo descargado y ejecutamos el fichero zinjai para comenzar con la instalación (es posible que se requiera tener instalado xterm, por lo que al instalar, se instalara xterm y al ejecutar de nuevo la instalación se instalara completamente).
-</code></pre>
+<ol>
+<li>Descargar paquete para GNU/Linux.</li>
+<li>Descomprimimos el archivo descargado y ejecutamos el fichero zinjai para comenzar con la instalación (es posible que se requiera tener instalado xterm, por lo que al instalar, se instalara xterm y al ejecutar de nuevo la instalación se instalara completamente).</li>
+</ol>
 <h3 id="estructura-en-c">Estructura en C++</h3>
 <p>Ejemplo de programa básico:</p>
 <pre><code>#include &lt;iostream&gt;
@@ -102,63 +104,91 @@ int main (int argc, char *argv[])
 	cout &lt;&lt; “hola mundo”;
 	return 0;
 }
-</code></pre><pre><code>* La primera linea #include, nos permite añadir una librería, que en este caso se trata de la librería iostream donde se encuentran las funciones para la entrada y salida de datos.
-
-* Para que no haya problemas ni errores entre las distintas funciones, cada una usa un distinto espacio de nombre por lo que en este caso la función cout usa el espacio de nombres por defecto, std.
-* La linea int main hace referencia a la función principal, la función por la que se empieza a ejecutar el programa y posteriormente se van ejecutando las distintas instrucciones en orden dentro de {}. La función principal siempre debe llamarse “main” y en este caso se indica que devuelve un valor entero (int).
-
-* Cout nos permite escribir en pantalla.
-
-* Return, devuelve un valor entero al sistema operativo, si la instrucción se ejecuta correctamente devuelve 0, sino dará como resultado devuelve cualquier otro valor.
-</code></pre>
+</code></pre><ul>
+<li>
+<p>La primera linea #include, nos permite añadir una librería, que en este caso se trata de la librería iostream donde se encuentran las funciones para la entrada y salida de datos.</p>
+</li>
+<li>
+<p>Para que no haya problemas ni errores entre las distintas funciones, cada una usa un distinto espacio de nombre por lo que en este caso la función cout usa el espacio de nombres por defecto, std.</p>
+</li>
+<li>
+<p>La linea int main hace referencia a la función principal, la función por la que se empieza a ejecutar el programa y posteriormente se van ejecutando las distintas instrucciones en orden dentro de {}. La función principal siempre debe llamarse “main” y en este caso se indica que devuelve un valor entero (int).</p>
+</li>
+<li>
+<p>Cout nos permite escribir en pantalla.</p>
+</li>
+<li>
+<p>Return, devuelve un valor entero al sistema operativo, si la instrucción se ejecuta correctamente devuelve 0, sino dará como resultado devuelve cualquier otro valor.</p>
+</li>
+</ul>
 <p>Tipos de datos</p>
-<pre><code>• Datos simples:
-    ◦ Numeros enteros (int)
-    ◦ Numeros reales (float o double)
-    ◦ Valores lógicos (bool)
-    ◦ Caracteres (char)
-• Datos complejos: 
-    ◦ Arrays
-    ◦ Cadenas de caracteres
-    ◦ Estructura de datos
-</code></pre>
+<ul>
+<li>
+<p>Datos simples:
+◦ Numeros enteros (int)
+◦ Numeros reales (float o double)
+◦ Valores lógicos (bool)
+◦ Caracteres (char)</p>
+</li>
+<li>
+<p>Datos complejos:
+◦ Arrays
+◦ Cadenas de caracteres
+◦ Estructura de datos</p>
+</li>
+</ul>
 <p>los datos que nosotros indicamos en un programa lo podemos indicar de varias formas:</p>
-<pre><code>* Literales: nos permiten representar valores, por ejemplo un literal entero sera por ejemplo 5.
-
-* Variables: son identificadores en los que se guarda un valor. Las variables se declaran de un tipo de dato, por ejemplo una variable entera puede guardar datos enteros.
-
-* Constantes: nos permite declarar un valor de un determinado tipo por medio de de un identificador. Mientras el valor de una variable puede cambiar a lo largo de la ejecución de un programa, las constantes no cambian.
-
-* Expresiones: las expresiones son operaciones que podemos hacer entre distintos tipos de datos. El tipo de dato de una expresión dependerá del resultado de la operación. Según el tipo de datos con los que trabajemos tenemos distintos tipos de operadores:
-    ◦ Operadores aritméticos: para hacer operaciones con datos numéricos.
-    ◦ Operadores relacionales: nos permiten comparar datos y nos devuelve un valor lógico.
-    ◦ Operadores lógicos: nos permite trabajar con valores lógicos.
-    ◦ Operadores de asignación: Nos permite asignar valores a variables.
-    ◦ Otras operadores: operadores para trabajar con bits o punteros. 
-</code></pre>
-<p>La precedencia de operadores es la siguiente:
-* Paréntesis
-* Operadores unarios (+ / - para indicar números positivos y negativos)
-* Multiplicaciones, divisiones y módulos
-* Sumas y restas
-* Operador lógico. &amp;&amp; (Y)
-* Operador lógico. || (O)
-* Operadores de comparación
-* Operadores de asignación</p>
+<ul>
+<li>
+<p>Literales: nos permiten representar valores, por ejemplo un literal entero sera por ejemplo 5.</p>
+</li>
+<li>
+<p>Variables: son identificadores en los que se guarda un valor. Las variables se declaran de un tipo de dato, por ejemplo una variable entera puede guardar datos enteros.</p>
+</li>
+<li>
+<p>Constantes: nos permite declarar un valor de un determinado tipo por medio de de un identificador. Mientras el valor de una variable puede cambiar a lo largo de la ejecución de un programa, las constantes no cambian.</p>
+</li>
+<li>
+<p>Expresiones: las expresiones son operaciones que podemos hacer entre distintos tipos de datos. El tipo de dato de una expresión dependerá del resultado de la operación. Según el tipo de datos con los que trabajemos tenemos distintos tipos de operadores:</p>
+<p>◦ Operadores aritméticos: para hacer operaciones con datos numéricos.
+◦ Operadores relacionales: nos permiten comparar datos y nos devuelve un valor lógico.
+◦ Operadores lógicos: nos permite trabajar con valores lógicos.
+◦ Operadores de asignación: Nos permite asignar valores a variables.
+◦ Otras operadores: operadores para trabajar con bits o punteros.</p>
+</li>
+</ul>
+<p>La precedencia de operadores es la siguiente:</p>
+<ul>
+<li>Paréntesis</li>
+<li>Operadores unarios (+ / - para indicar números positivos y negativos)</li>
+<li>Multiplicaciones, divisiones y módulos</li>
+<li>Sumas y restas</li>
+<li>Operador lógico. &amp;&amp; (Y)</li>
+<li>Operador lógico. || (O)</li>
+<li>Operadores de comparación</li>
+<li>Operadores de asignación</li>
+</ul>
 <p>Es decir, los operadores dentro de un paréntesis serán los primeros en ejecutarse mientras que los operadores de asignación serán los últimos.</p>
 <h3 id="literales-y-constantes">Literales y Constantes</h3>
 <h3 id="linerales">Linerales</h3>
 <p>Como se ha dicho anteriormente nos permiten representar valores de diferentes tipos, por lo que contamos con diferentes tipos de literales:</p>
-<pre><code>* Literales enteros: para representar números enteros utilizamos cifras enteras. Ej: 5, -9, números en base octal: 877, base hexadecimal 0xfe, etc.
-
-* Literales reales: usamos un punto para separar la parte entera de la decimal. Por ejemplo 3.14159. también podemos usar “e” o “E” para representar el exponente.
-
-* Literales booleanos o lógicos: solo tienen dos valores, false cuando algo es falso y true cuando algo es verdadero.
-
-* Literales carácter: para indicar un valor de tipo carácter utilizamos las comillas simples (‘’). también podemos usar algunos caracteres especiales como pueden ser \n para indicar un salto de linea o \t para indicar una tabulación.
-
-* Literales cadenas de caracteres: una cadena de caracteres es un conjunto de caracteres. Para indicar una cadena de caracteres hacemos uso de las comillas dobles (“”).
-</code></pre>
+<ul>
+<li>
+<p>Literales enteros: para representar números enteros utilizamos cifras enteras. Ej: 5, -9, números en base octal: 877, base hexadecimal 0xfe, etc.</p>
+</li>
+<li>
+<p>Literales reales: usamos un punto para separar la parte entera de la decimal. Por ejemplo 3.14159. también podemos usar “e” o “E” para representar el exponente.</p>
+</li>
+<li>
+<p>Literales booleanos o lógicos: solo tienen dos valores, false cuando algo es falso y true cuando algo es verdadero.</p>
+</li>
+<li>
+<p>Literales carácter: para indicar un valor de tipo carácter utilizamos las comillas simples (‘’). también podemos usar algunos caracteres especiales como pueden ser \n para indicar un salto de linea o \t para indicar una tabulación.</p>
+</li>
+<li>
+<p>Literales cadenas de caracteres: una cadena de caracteres es un conjunto de caracteres. Para indicar una cadena de caracteres hacemos uso de las comillas dobles (“”).</p>
+</li>
+</ul>
 <h3 id="constantes">Constantes</h3>
 <p>Como se ha dicho anteriormente, las constantes nos permiten declarar un valor de un determinado tipo por medio de de un identificador. Mientras el valor de una variable puede cambiar a lo largo de la ejecución de un programa, las constantes no cambian.</p>
 <p>Para crear constantes usamos #define identificador valor (deben declararse antes del programa principal). Por ejemplo:</p>
@@ -187,38 +217,58 @@ int main () {
 	int variable3, variable4;
 	int variable5=20, variable6=-10;
 </code></pre><p>Contamos con dos tipos o ambitas de variables:</p>
-<pre><code>* Variables locales: se crean dentro de la función es decir si por ejemplo tengo una variable1 cuyo valor es 5 esa variable1 solo existirá en esa función, si tenemos varias funciones en esas otras variable1 no existira, se tendrá que volver a declarar e inicializar.
-
-* Variables Globales: estas variables sin embargo al contrario que las anteriores se declaran fuera de la función, por lo que es posible usarlas en cada una de las funciones con las que contemos en nuestro programa.
-</code></pre>
+<ul>
+<li>
+<p>Variables locales: se crean dentro de la función es decir si por ejemplo tengo una variable1 cuyo valor es 5 esa variable1 solo existirá en esa función, si tenemos varias funciones en esas otras variable1 no existira, se tendrá que volver a declarar e inicializar.</p>
+</li>
+<li>
+<p>Variables Globales: estas variables sin embargo al contrario que las anteriores se declaran fuera de la función, por lo que es posible usarlas en cada una de las funciones con las que contemos en nuestro programa.</p>
+</li>
+</ul>
 <h3 id="operadores-de-asignación">Operadores de asignación</h3>
 <p>Contamos con dos operadores de asignación en C++:</p>
-<pre><code>* Asignación simple (=): nos permite asignar a una variable tanto valores literales, como numéricos y expresiones. Ej: a = b+7; en este caso guardamos la suma b+7 en la variable a.
-
-* +=: suma y a continuación hace la asignación. Ej: a+=b es igual que a=a+b, es decir si tenemos a=7 y después tenemos a+=7, entonces nuestra variable a ya no vale 7, sino 14. en este caso también pueden usarse -=, *=, /=, etc.
-</code></pre>
+<ul>
+<li>
+<p>Asignación simple (=): nos permite asignar a una variable tanto valores literales, como numéricos y expresiones. Ej: a = b+7; en este caso guardamos la suma b+7 en la variable a.</p>
+</li>
+<li>
+<p>+=: suma y a continuación hace la asignación. Ej: a+=b es igual que a=a+b, es decir si tenemos a=7 y después tenemos a+=7, entonces nuestra variable a ya no vale 7, sino 14. en este caso también pueden usarse -=, *=, /=, etc.</p>
+</li>
+</ul>
 <h3 id="tipos-de-datos-numericos">Tipos de datos numericos</h3>
-<pre><code>* int → nos permite guardar valores enteros. Ej: 5, -8, 0...
-
-* Float → nos permite almacenar numeros reales, es decir con decimales (maximo 7 digitos decimales). 
-
-* Double → es parecido a float solo que permite almacenar numeros reales pero con 16 decimales.
-</code></pre>
+<ul>
+<li>
+<p>int → nos permite guardar valores enteros. Ej: 5, -8, 0&hellip;</p>
+</li>
+<li>
+<p>Float → nos permite almacenar numeros reales, es decir con decimales (maximo 7 digitos decimales).</p>
+</li>
+<li>
+<p>Double → es parecido a float solo que permite almacenar numeros reales pero con 16 decimales.</p>
+</li>
+</ul>
 <p>La diferencia principal entre float y double es espacio que la variable de este tipo ocupa en memoria  ya que float ocupa 4 bytes, mientras que double al contar con 16 digitos decimales, ocupa 8 bytes.</p>
 <h3 id="tipo-de-dato-carácter">Tipo de dato carácter</h3>
-<pre><code>* char: guarda un carácter, aunque realmente la variable es entera ya que internamente se guarda un numero que hace que cada carácter haga referencia a un numero usando la tabla ascii. Por ejemplo a una variable char le podemos asignar un valor de la siguientes formas:
-</code></pre>
+<ul>
+<li>char: guarda un carácter, aunque realmente la variable es entera ya que internamente se guarda un numero que hace que cada carácter haga referencia a un numero usando la tabla ascii. Por ejemplo a una variable char le podemos asignar un valor de la siguientes formas:</li>
+</ul>
 <pre><code>	char variable1=‘a’; o bien char variable2=97 (97 es el valor numerico asignado a ‘a’ en la 	tabla ascii);
 </code></pre><h3 id="modificadores-de-tipo">Modificadores de tipo</h3>
 <p>Los modificadores de tipo se pueden usar para modificar el tamaño de memoria que se coge para guardar datos o si se quieren guardar numeros positivos o negativos.</p>
-<pre><code>* int: nosotros podemos almacenar numeros desde el -2147483648 al 2147483647 mientras que si por ejemplo queremos la posibilidad de almacenar numeros solo positivos, usariamos unsigned int, que almacena valores de 0 al 4294967295.
-
-* short int: se usa para el caso en el que queramos redurie el tamaño de almacenamiento en memoria limitando la cantidad de valores posibles, en este caso de -32768 a 32767. en este caso en lugar de 4 bytes, ocupa 2 bytes.
-
-* unsigned short int: es una combinacion de las dos anteriores, por un lado limita el rango de valores de forma que ocupa menos espacio en memoria y a la vez permite solo valores positivos. Los valores van desde 0 a 65535.
-
-* long int: al igual que hay un short int para que los valores ocupen menos espacio en memoria, tambien contamos un long int que amplia el rango de valores al doble ocupando asu 8 bytes en memoria. El rango de vlores va desde -9223372036854775808 a 9223372036854775807.
-</code></pre>
+<ul>
+<li>
+<p>int: nosotros podemos almacenar numeros desde el -2147483648 al 2147483647 mientras que si por ejemplo queremos la posibilidad de almacenar numeros solo positivos, usariamos unsigned int, que almacena valores de 0 al 4294967295.</p>
+</li>
+<li>
+<p>short int: se usa para el caso en el que queramos redurie el tamaño de almacenamiento en memoria limitando la cantidad de valores posibles, en este caso de -32768 a 32767. en este caso en lugar de 4 bytes, ocupa 2 bytes.</p>
+</li>
+<li>
+<p>unsigned short int: es una combinacion de las dos anteriores, por un lado limita el rango de valores de forma que ocupa menos espacio en memoria y a la vez permite solo valores positivos. Los valores van desde 0 a 65535.</p>
+</li>
+<li>
+<p>long int: al igual que hay un short int para que los valores ocupen menos espacio en memoria, tambien contamos un long int que amplia el rango de valores al doble ocupando asu 8 bytes en memoria. El rango de vlores va desde -9223372036854775808 a 9223372036854775807.</p>
+</li>
+</ul>
 <p>Al declarar las variables podemos usar notaciones cortas donde no es necesario indicar el tipo int. Ej:</p>
 <pre><code>unsigned short var1;
 long var2;
@@ -237,23 +287,29 @@ float var2=var1
 float res; 
 res=(float)num1 / float(num2)
 </code></pre><h3 id="operadores-aritmeticos">Operadores aritmeticos</h3>
-<pre><code>* +: suma dos numeros.
-* -: resta dos numeros.
-* *: multiplica dos numeros.
-* /: divide dos numeros.
-* %: modulo o resto de la division.
-* +, -: operadores unarios positivo y negativo.
-* ++: operador de incremento, suma 1 a la variable, 1++ es lo mismo a 1=1+1.
-* –: operador de decremento, resta 1 a la variable.
-</code></pre>
+<ul>
+<li>+: suma dos numeros.</li>
+<li>-: resta dos numeros.</li>
+<li>*: multiplica dos numeros.</li>
+<li>/: divide dos numeros.</li>
+<li>%: modulo o resto de la division.</li>
+<li>+, -: operadores unarios positivo y negativo.</li>
+<li>++: operador de incremento, suma 1 a la variable, 1++ es lo mismo a 1=1+1.</li>
+<li>–: operador de decremento, resta 1 a la variable.</li>
+</ul>
 <h3 id="funciones-matematicas">Funciones matematicas</h3>
 <p>En la librería cmath tenemos distintas funciones matemática. Las más útiles que podemos usar en nuestros programas son:</p>
-<pre><code>* double pow(double, double);: Realiza la potencia, la base es el primer parámetro y el exponente el segundo. Recibe datos de tipo double y devuelve también una valor double.
-  
-* double sqrt(double);: Realiza la raíz cuadrada del parámetro double que recibe. Devuelve un valor `double.
-  
-* int abs(int);: Devuelve el valor absoluto (valor entero) del número entero que recibe como parámetro.
-</code></pre>
+<ul>
+<li>
+<p>double pow(double, double);: Realiza la potencia, la base es el primer parámetro y el exponente el segundo. Recibe datos de tipo double y devuelve también una valor double.</p>
+</li>
+<li>
+<p>double sqrt(double);: Realiza la raíz cuadrada del parámetro double que recibe. Devuelve un valor `double.</p>
+</li>
+<li>
+<p>int abs(int);: Devuelve el valor absoluto (valor entero) del número entero que recibe como parámetro.</p>
+</li>
+</ul>
 <p>Veamos un ejemplo:</p>
 <pre><code>#include &lt;iostream&gt;
 #include &lt;cmath&gt;
@@ -269,10 +325,14 @@ int main(int argc, char *argv[]) {
 }
 </code></pre><h3 id="cadenas-de-caracteres">Cadenas de caracteres</h3>
 <p>Tenemos dos formas de trabajar con cadenas de caracteres:</p>
-<pre><code>* La tradicional usada en C, que es entender  como una cadena de caracteres como un conjunto de variables de tipo carácter (arrays).
-  
-* C++ nos ofrece la clase string que nos permite trabajar con cadenas de caracteres.
-</code></pre>
+<ul>
+<li>
+<p>La tradicional usada en C, que es entender  como una cadena de caracteres como un conjunto de variables de tipo carácter (arrays).</p>
+</li>
+<li>
+<p>C++ nos ofrece la clase string que nos permite trabajar con cadenas de caracteres.</p>
+</li>
+</ul>
 <p>Podemos declarar una cadena string de la siguiente forma:</p>
 <pre><code>string cadena1;
 string cadena2=“Hola mundo”;
@@ -288,21 +348,24 @@ nombre_completo=nombre+“ ”+apellido
 </code></pre><p>El resultado de la concatenacion sera “sergio ibañez”.</p>
 <h3 id="entrada-y-salida-de-datos">Entrada y salida de datos</h3>
 <p>Las instrucciones que nos permiten leer y mostrar informacion por pantalla estan en la librería iostream.</p>
-<pre><code>* cout: representa el dispositivo de salida (la pantalla), el operador que escribe en pantalla es &lt;&lt; lo que hace es enviar el mensaje al dispositivo de salida estándar a traves de cout. Ej:
-</code></pre>
+<ul>
+<li>cout: representa el dispositivo de salida (la pantalla), el operador que escribe en pantalla es &laquo; lo que hace es enviar el mensaje al dispositivo de salida estándar a traves de cout. Ej:</li>
+</ul>
 <pre><code>	cout &lt;&lt; “bienvenido al sistema” end1; (end1 indica el final de linea)
-</code></pre><pre><code>* cin: valor para leer por teclado. Ej:
-</code></pre>
+</code></pre><ul>
+<li>cin: valor para leer por teclado. Ej:</li>
+</ul>
 <pre><code>	int edad;
 	cout &lt;&lt; “dime tu edad: ”;
 	cin &gt;&gt; edad;
-</code></pre><pre><code>De esta forma por pantalla se nos muestra la pregunta sobre nuestra edad mientras que la edad que introduzcamos por pantalla se guardara como valor de la variable edad a traves de &gt;&gt;.
-</code></pre>
+</code></pre><p>De esta forma por pantalla se nos muestra la pregunta sobre nuestra edad mientras que la edad que introduzcamos por pantalla se guardara como valor de la variable edad a traves de &raquo;.</p>
 <p>Sin embargo, cin no es capaz de leer variables de tipo cadena de carcteres, por lo que en caso de querer o necesitar leer cadenas de caracteres usamos la funcion getline. Ej:</p>
 <pre><code>string nombre;
 getline(cin,nombre);
 </code></pre><p>De esta forma podremos introducir el valor que tendra la variable nombre.</p>
-<pre><code>• cin.ignore: lo usamos para borrar valores introducidos por teclado.</code></pre>
+<ul>
+<li>cin.ignore: lo usamos para borrar valores introducidos por teclado.</li>
+</ul>
 
     </div>
     <div class="post-footer">
