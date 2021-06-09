@@ -56,7 +56,7 @@ int main (int argc, char *argv[])
 
 * Return, devuelve un valor entero al sistema operativo, si la instrucción se ejecuta correctamente devuelve 0, sino dará como resultado devuelve cualquier otro valor.
 
-Tipos de datos
+### Tipos de datos ###
 
 * Datos simples:
     ◦ Numeros enteros (int)
@@ -69,7 +69,7 @@ Tipos de datos
     ◦ Cadenas de caracteres
     ◦ Estructura de datos
 
-los datos que nosotros indicamos en un programa lo podemos indicar de varias formas:
+Los datos que nosotros indicamos en un programa lo podemos indicar de varias formas:
 
 * Literales: nos permiten representar valores, por ejemplo un literal entero sera por ejemplo 5.
 
