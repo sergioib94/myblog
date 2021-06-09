@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://sergioib.netlify.app/</loc>
+    <lastmod>2021-06-09T16:43:19+02:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</loc>
+    <lastmod>2021-06-09T16:43:19+02:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/</loc>
+    <lastmod>2021-06-09T16:43:19+02:00</lastmod>
+  </url><url>
     <loc>https://sergioib.netlify.app/posts/active-directory/</loc>
     <lastmod>2021-05-23T15:28:17+02:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/categories/</loc>
-    <lastmod>2021-05-23T15:28:17+02:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/</loc>
-    <lastmod>2021-05-23T15:28:17+02:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/posts/</loc>
     <lastmod>2021-05-23T15:28:17+02:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/categories/sistemas/</loc>
