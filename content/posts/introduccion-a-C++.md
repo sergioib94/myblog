@@ -4,8 +4,6 @@ date: 2021-06-09T16:43:19+02:00
 categories: []
 ---
 
-### Inicios en C++ ###
-
 ### Introducción ###
 
 C++ es un lenguaje de programación compilado creado en 1979 derivado del lenguaje C quedándose con lo mejor de C y añadiendo funcionalidades nuevas. 
@@ -100,7 +98,7 @@ Es decir, los operadores dentro de un paréntesis serán los primeros en ejecuta
 
 ### Literales y Constantes ###
 
-### Linerales ###
+### Literales ###
 
 Como se ha dicho anteriormente nos permiten representar valores de diferentes tipos, por lo que contamos con diferentes tipos de literales:
 

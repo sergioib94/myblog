@@ -17,7 +17,7 @@ theme = "m10c"
 
 [params]
   author = "Sergio Ibañez"
-  description = "Blog de informatica dedicado tanto a practicas realizadas en ASIR como a apuntes de administracion y variedades informaticas"
+  description = "Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administracion y variedades informaticas"
   
   [[params.social]]
     icon = "github"

@@ -13,7 +13,7 @@
       <pubDate>Wed, 09 Jun 2021 16:43:19 +0200</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</guid>
-      <description>Inicios en C++ Introducción C++ es un lenguaje de programación compilado creado en 1979 derivado del lenguaje C quedándose con lo mejor de C y añadiendo funcionalidades nuevas.
+      <description>Introducción C++ es un lenguaje de programación compilado creado en 1979 derivado del lenguaje C quedándose con lo mejor de C y añadiendo funcionalidades nuevas.
 Una de las mejoras que añade C++ es la posibilidad de usar la programación orientada a objetos la cual nos permite ampliar los tipos de datos que podemos utilizar permitiendo definir clases y objetos.
 Para escribir un programa en C++ necesitaremos de un editor de texto y un compilador, pero lo normal es utilizar herramientas de entornos integrados de desarrollo o IDEs que básicamente son herramientas como por ejemplo Visual Studio Code que permiten tanto editar el código fuente como compilar el programa una vez acabado.</description>
     </item>
