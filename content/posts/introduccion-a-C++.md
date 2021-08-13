@@ -1,7 +1,7 @@
 ---
 title: "Introduccion a C++"
 date: 2021-06-09T16:43:19+02:00
-categories: []
+categories: [Apuntes]
 ---
 
 ### Introducción ###
@@ -46,7 +46,7 @@ int main (int argc, char *argv[])
 
 * La primera linea #include, nos permite añadir una librería, que en este caso se trata de la librería iostream donde se encuentran las funciones para la entrada y salida de datos.
 
-* Para que no haya problemas ni errores entre las distintas funciones, cada una usa un distinto espacio de nombre por lo que en este caso la función cout usa el espacio de nombres por defecto, std.
+* Para que no haya problemas ni errores entre las distintas funciones, cada una usa un distinto espacio de nombre por lo que en este caso la función cout usa el espacio de nombres por defecto, std (especificada antes de iniciar la funcion principal).
     
 * La linea int main hace referencia a la función principal, la función por la que se empieza a ejecutar el programa y posteriormente se van ejecutando las distintas instrucciones en orden dentro de {}. La función principal siempre debe llamarse “main” y en este caso se indica que devuelve un valor entero (int).
 
@@ -77,11 +77,11 @@ Los datos que nosotros indicamos en un programa lo podemos indicar de varias for
 
 * Expresiones: las expresiones son operaciones que podemos hacer entre distintos tipos de datos. El tipo de dato de una expresión dependerá del resultado de la operación. Según el tipo de datos con los que trabajemos tenemos distintos tipos de operadores:
 
-    ◦ Operadores aritméticos: para hacer operaciones con datos numéricos.
-    ◦ Operadores relacionales: nos permiten comparar datos y nos devuelve un valor lógico.
-    ◦ Operadores lógicos: nos permite trabajar con valores lógicos.
-    ◦ Operadores de asignación: Nos permite asignar valores a variables.
-    ◦ Otras operadores: operadores para trabajar con bits o punteros. 
+    * Operadores aritméticos: para hacer operaciones con datos numéricos.
+    * Operadores relacionales: nos permiten comparar datos y nos devuelve un valor lógico.
+    * Operadores lógicos: nos permite trabajar con valores lógicos.
+    * Operadores de asignación: Nos permite asignar valores a variables.
+    * Otras operadores: operadores para trabajar con bits o punteros. 
 
 La precedencia de operadores es la siguiente:
 

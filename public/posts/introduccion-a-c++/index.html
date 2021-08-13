@@ -69,7 +69,7 @@ Para escribir un programa en C&#43;&#43; necesitaremos de un editor de texto y u
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          11 min read
+          12 min read
         </div>
       </div>
     </header>
@@ -108,7 +108,7 @@ int main (int argc, char *argv[])
 <p>La primera linea #include, nos permite añadir una librería, que en este caso se trata de la librería iostream donde se encuentran las funciones para la entrada y salida de datos.</p>
 </li>
 <li>
-<p>Para que no haya problemas ni errores entre las distintas funciones, cada una usa un distinto espacio de nombre por lo que en este caso la función cout usa el espacio de nombres por defecto, std.</p>
+<p>Para que no haya problemas ni errores entre las distintas funciones, cada una usa un distinto espacio de nombre por lo que en este caso la función cout usa el espacio de nombres por defecto, std (especificada antes de iniciar la funcion principal).</p>
 </li>
 <li>
 <p>La linea int main hace referencia a la función principal, la función por la que se empieza a ejecutar el programa y posteriormente se van ejecutando las distintas instrucciones en orden dentro de {}. La función principal siempre debe llamarse “main” y en este caso se indica que devuelve un valor entero (int).</p>
@@ -149,11 +149,13 @@ int main (int argc, char *argv[])
 </li>
 <li>
 <p>Expresiones: las expresiones son operaciones que podemos hacer entre distintos tipos de datos. El tipo de dato de una expresión dependerá del resultado de la operación. Según el tipo de datos con los que trabajemos tenemos distintos tipos de operadores:</p>
-<p>◦ Operadores aritméticos: para hacer operaciones con datos numéricos.
-◦ Operadores relacionales: nos permiten comparar datos y nos devuelve un valor lógico.
-◦ Operadores lógicos: nos permite trabajar con valores lógicos.
-◦ Operadores de asignación: Nos permite asignar valores a variables.
-◦ Otras operadores: operadores para trabajar con bits o punteros.</p>
+<ul>
+<li>Operadores aritméticos: para hacer operaciones con datos numéricos.</li>
+<li>Operadores relacionales: nos permiten comparar datos y nos devuelve un valor lógico.</li>
+<li>Operadores lógicos: nos permite trabajar con valores lógicos.</li>
+<li>Operadores de asignación: Nos permite asignar valores a variables.</li>
+<li>Otras operadores: operadores para trabajar con bits o punteros.</li>
+</ul>
 </li>
 </ul>
 <p>La precedencia de operadores es la siguiente:</p>

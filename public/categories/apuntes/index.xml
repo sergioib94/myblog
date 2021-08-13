@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apuntes on El rincon del admin</title>
+    <link>https://sergioib.netlify.app/categories/apuntes/</link>
+    <description>Recent content in Apuntes on El rincon del admin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Jun 2021 16:43:19 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/apuntes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduccion a C&#43;&#43;</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</link>
+      <pubDate>Wed, 09 Jun 2021 16:43:19 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</guid>
+      <description>Introducción C++ es un lenguaje de programación compilado creado en 1979 derivado del lenguaje C quedándose con lo mejor de C y añadiendo funcionalidades nuevas.
+Una de las mejoras que añade C++ es la posibilidad de usar la programación orientada a objetos la cual nos permite ampliar los tipos de datos que podemos utilizar permitiendo definir clases y objetos.
+Para escribir un programa en C++ necesitaremos de un editor de texto y un compilador, pero lo normal es utilizar herramientas de entornos integrados de desarrollo o IDEs que básicamente son herramientas como por ejemplo Visual Studio Code que permiten tanto editar el código fuente como compilar el programa una vez acabado.</description>
+    </item>
+    
+  </channel>
+</rss>
