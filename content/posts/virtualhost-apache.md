@@ -4,6 +4,14 @@ date: 2021-03-11T09:47:06+01:00
 categories: [Servicios]
 ---
 
+### **Introducción** ###
+
+En este post mediando una serie de tareas se configurara un virtualhost apache en un una maquina virtual creada con vagrant.
+
+¿Que es un virtualhost?
+
+El término Hosting Virtual o vertialhost se refiere a hacer funcionar más de un sitio web (como en este caso www.iesgn.org y www.departamentosgn.org) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio). Apache fue uno de los primeros servidores web en soportar hosting virtual basado en direcciones IP.
+
 ### **Configuración de VirtualHosting** ###
 
 Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
@@ -44,6 +52,8 @@ vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departament
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ~~~
+
+En estos ficheros lo que haremos sera indicar tanto el ServerName que sera el nombre de nuestro sitio web y el DocumentRoot que es la ruta donde estaran alojadas los documentos que usara nuestro sitio web, en este en srv/www/iesgn y srv/www/departamentos.
 
 Cuando estén configurados, creamos los directorios que alojaran los index de iesgn y departamentos en /srv/www.
 

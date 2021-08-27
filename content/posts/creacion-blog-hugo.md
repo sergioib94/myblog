@@ -5,10 +5,12 @@ categories: [Aplicaciones Web]
 ---
 
 ### **Introducción** ##
-En este post se hablara de como ha sido creado este blog donde se van a ir metiendo varios trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR).
+
+En este post se hablara de como ha sido creado este blog usando hugo donde se van a ir publicando trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR) ademas de apuntes o documentacion de interes y ademas la configuracion continua que se hara a traves de Github y Netlify.
 
 ### **Creación del blog** ###
-Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian10. Esta instalacion la podemos hacer de la siguiente forma:
+
+Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian 10. Esta instalación la podemos hacer de la siguiente forma:
 
 ~~~
 sudo apt install hugo
@@ -34,10 +36,10 @@ hugo new site myblog
 Accedemos a nuestro proyecto usando cd:
 
 ~~~
-cd mublog
+cd myblog
 ~~~
 
-Una vez en dentro de la carpeta, iniciamos git:
+Una vez dentro de la carpeta, iniciamos git:
 
 ~~~
 git init
@@ -48,7 +50,7 @@ Ahora ejecutaremos un git-clone y clonaremos el tema que hayamos elegido para el
 Una vez detengamos el tema en nuestro equipo lo configuramos en nustro fichero config.toml de la siguiente forma:
 
 ~~~
-theme = "nombre de la plantilla"
+theme = m10c
 ~~~
 
 Cuando este configurada la plantilla y tengamos nuestra plantilla metida en nuestro directorio themes, sera hora de crear algun post y comprobar si se ve correctamente de forma local.
@@ -88,7 +90,7 @@ Seguimos el asistente el cual nos pedirá permisos para acceder a nuestro reposi
 
 – elijo el repositorio git usado (GitHub). Aparece una ventana modal de GitHub pidiendo autorización.
 
-– Selecciono el repositorio: myblog
+– Selecciona el repositorio: myblog
 
 Una vez seleccionado, aparece una pantalla para la configuración básica. Aquí se puede seleccionar la rama que se desea publicar, el comando de compilación y el directorio de publicación. El directorio de publicación debe reflejar lo que se ha indicado en la configuración del sitio, cuyo valor predeterminado es public. Los siguientes pasos asumen que se está publicando desde la rama master.
 

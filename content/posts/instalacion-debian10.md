@@ -74,7 +74,7 @@ sergioib@debian:~$ lspci
 
 Mi controlador network vemos en este caso que es el RTL8822BE.
 
-* Otro de los problemas a sido que Debian no detecta la tarjeta gráfica, en mi caso Nvidia GTX 1050. Para solucionar este problema lo primero es saber cual es el controlador necesario para que la gráfica funcione, esto se puede saber ejecutando el comando nvidia-detect. Este comando lo que hará sera indicar cual es el controlador que necesitara nuestro sistema, en este caso Nvidia-driver.
+* Otro de los problemas a sido que Debian no detecta la tarjeta gráfica (problema corregido en versiones superiores de debian 10), en mi caso Nvidia GTX 1050. Para solucionar este problema lo primero es saber cual es el controlador necesario para que la gráfica funcione, esto se puede saber ejecutando el comando nvidia-detect. Este comando lo que hará sera indicar cual es el controlador que necesitara nuestro sistema, en este caso Nvidia-driver.
 
 ~~~
 sergioib@debian:~$ nvidia-detect

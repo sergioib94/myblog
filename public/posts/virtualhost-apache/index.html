@@ -13,14 +13,14 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Virtualhost apache"/>
-<meta name="twitter:description" content="Configuración de VirtualHosting Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
-sudo apt install apache2 Una vez descargado apache2, creamos los ficheros.conf que usaran tanto www.iesgn.org como www.departamentosgn.org para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:
-vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf Modificaciones de iesgn.conf y departamentos.conf  iesgn.conf:  &lt;VirtualHost *:80&gt; ServerAdmin webmaster@localhost DocumentRoot /srv/www/iesgn ServerName www."/>
+<meta name="twitter:description" content="Introducción En este post mediando una serie de tareas se configurara un virtualhost apache en un una maquina virtual creada con vagrant.
+¿Que es un virtualhost?
+El término Hosting Virtual o vertialhost se refiere a hacer funcionar más de un sitio web (como en este caso www.iesgn.org y www.departamentosgn.org) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio)."/>
 
     <meta property="og:title" content="Virtualhost apache" />
-<meta property="og:description" content="Configuración de VirtualHosting Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
-sudo apt install apache2 Una vez descargado apache2, creamos los ficheros.conf que usaran tanto www.iesgn.org como www.departamentosgn.org para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:
-vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf Modificaciones de iesgn.conf y departamentos.conf  iesgn.conf:  &lt;VirtualHost *:80&gt; ServerAdmin webmaster@localhost DocumentRoot /srv/www/iesgn ServerName www." />
+<meta property="og:description" content="Introducción En este post mediando una serie de tareas se configurara un virtualhost apache en un una maquina virtual creada con vagrant.
+¿Que es un virtualhost?
+El término Hosting Virtual o vertialhost se refiere a hacer funcionar más de un sitio web (como en este caso www.iesgn.org y www.departamentosgn.org) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/virtualhost-apache/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-11T09:47:06&#43;01:00" />
@@ -69,12 +69,16 @@ vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf 
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          2 min read
+          3 min read
         </div>
       </div>
     </header>
     <div class="post-content">
-      <h3 id="configuración-de-virtualhosting"><strong>Configuración de VirtualHosting</strong></h3>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>En este post mediando una serie de tareas se configurara un virtualhost apache en un una maquina virtual creada con vagrant.</p>
+<p>¿Que es un virtualhost?</p>
+<p>El término Hosting Virtual o vertialhost se refiere a hacer funcionar más de un sitio web (como en este caso <a href="http://www.iesgn.org">www.iesgn.org</a> y <a href="http://www.departamentosgn.org">www.departamentosgn.org</a>) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio). Apache fue uno de los primeros servidores web en soportar hosting virtual basado en direcciones IP.</p>
+<h3 id="configuración-de-virtualhosting"><strong>Configuración de VirtualHosting</strong></h3>
 <p>Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.</p>
 <pre><code>sudo apt install apache2
 </code></pre><p>Una vez descargado apache2, creamos los ficheros.conf que usaran tanto <a href="http://www.iesgn.org">www.iesgn.org</a> como <a href="http://www.departamentosgn.org">www.departamentosgn.org</a> para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:</p>
@@ -101,7 +105,8 @@ vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departament
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;
-</code></pre><p>Cuando estén configurados, creamos los directorios que alojaran los index de iesgn y departamentos en /srv/www.</p>
+</code></pre><p>En estos ficheros lo que haremos sera indicar tanto el ServerName que sera el nombre de nuestro sitio web y el DocumentRoot que es la ruta donde estaran alojadas los documentos que usara nuestro sitio web, en este en srv/www/iesgn y srv/www/departamentos.</p>
+<p>Cuando estén configurados, creamos los directorios que alojaran los index de iesgn y departamentos en /srv/www.</p>
 <pre><code>vagrant@nodo1:/srv$ sudo mkdir -p www/iesgn
 vagrant@nodo1:/srv$ sudo mkdir -p www/departamentos
 </code></pre><p>Se configura el fichero apache2.conf para que srv sea accesible dejándolo de la siguiente forma:</p>

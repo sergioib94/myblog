@@ -99,9 +99,8 @@ Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do 
       <pubDate>Thu, 11 Mar 2021 08:07:44 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/creacion-blog-hugo/</guid>
-      <description>Introducción En este post se hablara de como ha sido creado este blog donde se van a ir metiendo varios trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR).
-Creación del blog Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian10. Esta instalacion la podemos hacer de la siguiente forma:
-sudo apt install hugo Sin embargo, en mi caso por defecto se instala la version 0.</description>
+      <description>Introducción En este post se hablara de como ha sido creado este blog usando hugo donde se van a ir publicando trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR) ademas de apuntes o documentacion de interes y ademas la configuracion continua que se hara a traves de Github y Netlify.
+Creación del blog Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian 10.</description>
     </item>
     
   </channel>

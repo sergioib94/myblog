@@ -111,9 +111,9 @@ vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R w
       <pubDate>Thu, 11 Mar 2021 09:47:06 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/virtualhost-apache/</guid>
-      <description>Configuración de VirtualHosting Lo primero sera instalar apache2 en nuestra maquina virtual vagrant.
-sudo apt install apache2 Una vez descargado apache2, creamos los ficheros.conf que usaran tanto www.iesgn.org como www.departamentosgn.org para ello primero copiamos el 000-default para crearlos y luego los modificamos dejándolos de la siguiente forma:
-vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf iesgn.conf vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf departamentos.conf Modificaciones de iesgn.conf y departamentos.conf  iesgn.conf:  &amp;lt;VirtualHost *:80&amp;gt; ServerAdmin webmaster@localhost DocumentRoot /srv/www/iesgn ServerName www.</description>
+      <description>Introducción En este post mediando una serie de tareas se configurara un virtualhost apache en un una maquina virtual creada con vagrant.
+¿Que es un virtualhost?
+El término Hosting Virtual o vertialhost se refiere a hacer funcionar más de un sitio web (como en este caso www.iesgn.org y www.departamentosgn.org) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio).</description>
     </item>
     
     <item>

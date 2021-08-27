@@ -83,11 +83,9 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
       <pubDate>Fri, 12 Mar 2021 12:52:53 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/actualizacion-centos8/</guid>
-      <description>Introduccion Esta practica se realizara en nuestra maquina Quijote del escenario opestack creado anteriormente.
-* Actualizacion de Centos 7 a Centos 8 en la maquina quijote* Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
-[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.9.2009 de centos.
-Instalamos el repositorio epel en nuestro centos 7:
-sudo yum install -y epel-release.</description>
+      <description>Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7.
+Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.9.2009 de centos.</description>
     </item>
     
     <item>

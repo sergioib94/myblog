@@ -130,7 +130,7 @@ sda 8:0 0 931,5G 0 disk
 04:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS522A PCI Express Card Reader (rev 01)
 </code></pre><p>Mi controlador network vemos en este caso que es el RTL8822BE.</p>
 <ul>
-<li>Otro de los problemas a sido que Debian no detecta la tarjeta gráfica, en mi caso Nvidia GTX 1050. Para solucionar este problema lo primero es saber cual es el controlador necesario para que la gráfica funcione, esto se puede saber ejecutando el comando nvidia-detect. Este comando lo que hará sera indicar cual es el controlador que necesitara nuestro sistema, en este caso Nvidia-driver.</li>
+<li>Otro de los problemas a sido que Debian no detecta la tarjeta gráfica (problema corregido en versiones superiores de debian 10), en mi caso Nvidia GTX 1050. Para solucionar este problema lo primero es saber cual es el controlador necesario para que la gráfica funcione, esto se puede saber ejecutando el comando nvidia-detect. Este comando lo que hará sera indicar cual es el controlador que necesitara nuestro sistema, en este caso Nvidia-driver.</li>
 </ul>
 <pre><code>sergioib@debian:~$ nvidia-detect
 Detected NVIDIA GPUs:

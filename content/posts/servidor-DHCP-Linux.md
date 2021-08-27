@@ -24,10 +24,9 @@ Al expirar T3 el cliente devuelve su ip y deja de usarla en la red, pero el clie
 
 ### **Preparación de escenario** ###
 
-Crea un escenario usando Vagrant que defina las siguientes máquinas:
-    • Servidor: Tiene dos tarjetas de red: una pública y una privada que se conectan a la red local.
+Nuestro escenario vagrant contara con dos nodos, el node server y el cliente:
+    • Servidor: Tiene dos tarjetas de red (una pública y una privada que se conectan a la red local).
     • nodo_lan1: Un cliente conectado a la red local.
-Servidor dhcp
 
 El Vagrantfile empleado para la creacion del escenarios es el siguiente:
 
@@ -72,12 +71,14 @@ Ip a del cliente
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
+
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:8d:c0:4d brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
        valid_lft 86294sec preferred_lft 86294sec
     inet6 fe80::a00:27ff:fe8d:c04d/64 scope link 
        valid_lft forever preferred_lft forever
+
 3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:5c:a2:a9 brd ff:ff:ff:ff:ff:ff
     inet 192.168.100.50/24 brd 192.168.100.255 scope global dynamic eth1
@@ -95,9 +96,9 @@ sudo ip r del default
 sudo ip r add default via 192.168.1.1
 ~~~
 
-quitamos la ruta ip por defecto (eth0) y ponemos por defecto la eth1 que es la interfaz por la que accederemos a internet.
+Quitamos la ruta ip por defecto (eth0) y ponemos por defecto la eth1 que es la interfaz por la que accederemos a internet.
 
-añadimos la linea iptable al fichero /etc/network/interfaces de forma que indicamos la interfaz por la que haremos nat.
+Añadimos la linea iptable al fichero /etc/network/interfaces de forma que indicamos la interfaz por la que haremos nat.
 
 ~~~
 up iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o eth1 -j MASQUERADE
@@ -118,7 +119,7 @@ default via 192.168.1.1 dev eth1
 192.168.100.0/24 dev eth2 proto kernel scope link src 192.168.100.1
 ~~~
 
-* Tarea 5 (1 punto): Realizar una captura, desde el servidor usando tcpdump, de los cuatro paquetes que corresponden a una concesión: DISCOVER, OFFER, REQUEST, ACK.
+* Tarea 5: Realizar una captura, desde el servidor usando tcpdump, de los cuatro paquetes que corresponden a una concesión: DISCOVER, OFFER, REQUEST, ACK.
 
 ~~~
 vagrant@nodo1:~$ sudo tcpdump -i eth2
@@ -155,12 +156,14 @@ vagrant@nodo2:~$ ip a
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
+
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:8d:c0:4d brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
        valid_lft 85888sec preferred_lft 85888sec
     inet6 fe80::a00:27ff:fe8d:c04d/64 scope link 
        valid_lft forever preferred_lft forever
+
 3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:a4:37:9b brd ff:ff:ff:ff:ff:ff
     inet 192.168.100.50/24 brd 192.168.100.255 scope global dynamic eth1
@@ -179,12 +182,14 @@ vagrant@nodo2:~$ ip a
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
+
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:8d:c0:4d brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
        valid_lft 85864sec preferred_lft 85864sec
     inet6 fe80::a00:27ff:fe8d:c04d/64 scope link 
        valid_lft forever preferred_lft forever
+
 3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:a4:37:9b brd ff:ff:ff:ff:ff:ff
     inet 192.168.100.100/24 brd 192.168.100.255 scope global dynamic eth1
@@ -194,9 +199,12 @@ vagrant@nodo2:~$ ip a
 ~~~
 
 Uso de varios ámbitos
+
 Modifica el escenario Vagrant para añadir una nueva red local y un nuevo nodo:
+
     • Servidor: En el servidor hay que crear una nueva interfaz
     • nodo_lan2: Un cliente conectado a la segunda red local.
+    
 Configura el servidor dhcp en el ordenador “servidor” para que de servicio a los ordenadores de la nueva red local, teniendo en cuenta que el tiempo de concesión sea 24 horas y que la red local tiene el direccionamiento 192.168.200.0/24.
 
 * Tarea 9: Entrega el nuevo fichero Vagrantfile que define el escenario.
