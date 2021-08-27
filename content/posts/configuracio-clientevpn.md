@@ -4,7 +4,13 @@ date: 2021-03-11T16:19:25+01:00
 categories: [Cloud]
 ---
 
-* Genera una clave privada RSA 4096
+## **Introducción** ##
+
+Teniendo en cuenta que en el instituto y en casa cuentan con redes distintas, se configurara un cliente vpn para poder permitir la conexion entre las distintas redes.
+
+## **Configuración del cliente VPN** ##
+
+* Empezamos generando una clave privada RSA 4096
 
 Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
 
@@ -16,7 +22,7 @@ Generating RSA private key, 4096 bit long modulus (2 primes)
 e is 65537 (0x010001)
 ~~~
 
-* Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona
+* Generamos una solicitud de firma de certificado (fichero CSR).
 
 Creamos el fichero csr para que sea firmado con el siguiente comando y rellenamos los parámetros necesarios que se nos piden: Country Name,  State or Province Name (full name), Locality Name, Organization Name, Organizational Unit Name y Common Name (e.g. server FQDN or YOUR name), el resto de los parámetros son opcionales.
 
@@ -43,11 +49,11 @@ A challenge password []:
 An optional company name []:
 ~~~
 
-* Descarga el certificado firmado cuando esté disponible
+* Descargamos el certificado firmado cuando esté disponible
 
 Una vez disponible y firmado nuestro csr, lo descargamos de Gestiona en Utilidades -> Certificados
 
-* Instala y configura apropiadamente el cliente openvpn y muestra los registros (logs) del sistema que demuestren que se ha establecido una conexión.
+* Instalamos y configuramos apropiadamente el cliente openvpn y muestra los registros (logs) del sistema que demuestren que se ha establecido una conexión.
 
 Instalamos openvpn como root ejecutando apt openvpn
 

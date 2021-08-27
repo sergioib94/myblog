@@ -13,14 +13,14 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Integridad, firmas y autentificacion"/>
-<meta name="twitter:description" content="Firmas electrónicas  Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.  Creamos el fichero firmado:
-sergioib@debian-sergio:~/Descargas$ gpg --output doc.sig --sign Triggers_I.ppt Verificacion de la firma de documento con compañero Lora:
-sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pdf.sig gpg: Firmado el mié 14 oct 2020 13:37:44 CEST gpg: usando RSA clave 9233303D1F5495739A6D2CB4636AE9EBCB7E3294 gpg: Firma correcta de &quot;Manuel Lora Román &lt;manuelloraroman@gmail.com&gt;&quot; [desconocido] gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!"/>
+<meta name="twitter:description" content="Introduccion En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.
+Firmas electrónicas  Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc."/>
 
     <meta property="og:title" content="Integridad, firmas y autentificacion" />
-<meta property="og:description" content="Firmas electrónicas  Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.  Creamos el fichero firmado:
-sergioib@debian-sergio:~/Descargas$ gpg --output doc.sig --sign Triggers_I.ppt Verificacion de la firma de documento con compañero Lora:
-sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pdf.sig gpg: Firmado el mié 14 oct 2020 13:37:44 CEST gpg: usando RSA clave 9233303D1F5495739A6D2CB4636AE9EBCB7E3294 gpg: Firma correcta de &quot;Manuel Lora Román &lt;manuelloraroman@gmail.com&gt;&quot; [desconocido] gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!" />
+<meta property="og:description" content="Introduccion En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.
+Firmas electrónicas  Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-11T16:00:38&#43;01:00" />
@@ -74,9 +74,11 @@ sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pd
       </div>
     </header>
     <div class="post-content">
-      <h3 id="firmas-electrónicas"><strong>Firmas electrónicas</strong></h3>
+      <h2 id="introduccion"><strong>Introduccion</strong></h2>
+<p>En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.</p>
+<h3 id="firmas-electrónicas"><strong>Firmas electrónicas</strong></h3>
 <ul>
-<li>Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.</li>
+<li>Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.</li>
 </ul>
 <p>Creamos el fichero firmado:</p>
 <pre><code>sergioib@debian-sergio:~/Descargas$ gpg --output doc.sig --sign Triggers_I.ppt
@@ -97,15 +99,17 @@ Huellas dactilares de la clave primaria: 9233 303D 1F54 9573 9A6D  2CB4 636A E9E
  Huellas dactilares de la clave primaria: E8DD 5DA9 3B88 F08A DA1D  26BF 5141 3DDB 0C99 55FC
 </code></pre><p>Significa que aunque la firma este bien al no estar certificada por una firma de confianza, es posible que la persona que nos mande el mensaje no sea la misma con la que queremos contactar, que no sea de confianza.</p>
 <ul>
-<li>Vamos a crear un anillo de confianza entre los miembros de nuestra clase, para ello.</li>
-<li>Tu clave pública debe estar en un servidor de claves.</li>
-<li>Escribe tu fingerprint en un papel y dárselo a tu compañero, para que puede descargarse tu clave pública.</li>
-<li>Te debes bajar al menos tres claves públicas de compañeros. Firma estas claves.</li>
+<li>
+<p>Vamos a crear un anillo de confianza entre los miembros de nuestra clase, para ello nuestra clave pública debe estar en un servidor de claves.</p>
+</li>
+<li>
+<p>Te debes bajar al menos tres claves públicas de compañeros y firmamos estas claves.</p>
+</li>
 </ul>
 <p>Proceso de importación de claves:</p>
-<pre><code>Clave Juanan:
+<pre><code>Clave de Juanan:
 
-	gpg --keyserver keyserver.ubuntu.com --recv-key 9987B52D
+	gpg --keyserver keyserver.ubuntu.com --recv-key 9987B52D (fingerprint)
 
 Clave Celia:
 
@@ -157,12 +161,7 @@ con su clave: &quot;sergio ibañez &lt;sergio_hd_sony@hotmail.com&gt;&quot; (CFC
 ¿Firmar de verdad? (s/N) s
 </code></pre><p>En el caso de Alejandro, como a sido la ultima clave que he firmado, he puesto la salida completa del comando, con juanan y celia, solo he puesto el comando.</p>
 <ul>
-<li>
-<p>Tu te debes asegurar que tu clave pública es firmada por al menos tres compañeros de la clase.</p>
-</li>
-<li>
-<p>Una vez que firmes una clave se la tendrás que devolver a su dueño, para que otra persona se la firme.</p>
-</li>
+<li>Una vez que firmada la clave se la devolvemos a su dueño, para que otra persona se la firme.</li>
 </ul>
 <pre><code>Juanan:
 
@@ -177,16 +176,9 @@ Alejandro:
 gpg --export -a Alejandro Gutierrez Valencia &gt; alefirmado.asc
 
 </code></pre><ul>
-<li>
-<p>Cuando tengas las tres firmas sube la clave al servidor de claves y rellena tus datos en la tabla Claves públicas PGP 2020-2021.</p>
-</li>
-<li>
-<p>Asegúrate que te vuelves a bajar las claves públicas de tus compañeros que tengan las tres firmas.</p>
-</li>
-<li>
-<p>Muestra las firmas que tiene tu clave pública.</p>
-</li>
+<li>Muestra las firmas que tiene tu clave pública.</li>
 </ul>
+<p>Volvemos a bajarnos nuestra clave una vez que varias personas la hayan firmado y mostramos el resultado.</p>
 <pre><code>sergioib@debian-sergio:~$ gpg --list-sign
 /home/sergioib/.gnupg/pubring.kbx
 ---------------------------------
@@ -200,14 +192,14 @@ sig          C3B291882C4EE5DF 2020-11-06  Alejandro Gutierrez Valencia &lt;tojan
 sub   rsa3072 2020-10-06 [E] [caduca: 2022-10-06]
 sig          CFCF1D130D5A52C5 2020-10-06  sergio ibañez &lt;sergio_hd_sony@hotmail.com&gt;
 </code></pre><ul>
-<li>Comprueba que ya puedes verificar sin “problemas” una firma recibida por una persona en la que confías.</li>
+<li>Comprobamos que ya puedemos verificar sin “problemas” una firma recibida por una persona en la que confíamos.</li>
 </ul>
 <pre><code>sergioib@debian-sergio:~/Descargas$ gpg --output juanan --decrypt saludo.sig
 gpg: Firmado el mar 10 nov 2020 08:53:41 CET
 gpg:                usando RSA clave AD19812061DA946F8DA70E0C4F54B5799987B52D
 gpg: Firma correcta de &quot;Juan Antonio Reifs &lt;initategnat9@gmail.com&gt;&quot; [total]
 </code></pre><ul>
-<li>Comprueba que puedes verificar con confianza una firma de una persona en las que no confías, pero sin embargo si confía otra persona en la que tu tienes confianza total.</li>
+<li>Compruebamos que puedes verificar con confianza una firma de una persona en las que no confías, pero sin embargo si confía otra persona en la que tu tienes confianza total.</li>
 </ul>
 <pre><code>sergioib@debian-sergio:~/Descargas$ gpg --output verificacion_lora --decrypt documentolora.pdf.sig
 El fichero 'verificacion_lora' ya existe. ¿Sobreescribir? (s/N) s
@@ -226,7 +218,7 @@ Huellas dactilares de la clave primaria: 9233 303D 1F54 9573 9A6D  2CB4 636A E9E
 <p>Ahora vamos a configurar nuestro cliente de correo electrónico para poder mandar correos cifrados, para ello:</p>
 <ul>
 <li>
-<p>Configura el cliente de correo evolution con tu cuenta de correo habitual</p>
+<p>Configuramos el cliente de correo evolution con nuestra cuenta de correo habitual.</p>
 </li>
 <li>
 <p>Añade a la cuenta las opciones de seguridad para poder enviar correos firmados con tu clave privada o cifrar los mensajes para otros destinatarios.</p>
@@ -234,7 +226,7 @@ Huellas dactilares de la clave primaria: 9233 303D 1F54 9573 9A6D  2CB4 636A E9E
 </ul>
 <p><img src="/static/integracion-firmas-autentificacion/seguridad_correo.png" alt=""></p>
 <ul>
-<li>Envía y recibe varios mensajes con tus compañeros y comprueba el funcionamiento adecuado de GPG.</li>
+<li>Envíamos y recibimos varios mensajes de los compañeros y compruebamos el funcionamiento adecuado de GPG.</li>
 </ul>
 <p>Prueba de correo de Celia a mi:</p>
 <p><img src="/static/integracion-firmas-autentificacion/prueb_correo.png" alt="prueba de correo 1"></p>
@@ -247,7 +239,7 @@ Huellas dactilares de la clave primaria: 9233 303D 1F54 9573 9A6D  2CB4 636A E9E
 <p>Para validar el contenido de la imagen CD, solo asegúrese de usar la herramienta apropiada para sumas de verificación. Para cada versión publicada existen archivos de suma de comprobación con algoritmos fuertes (SHA256 y SHA512); debería usar las herramientas sha256sum o sha512sum para trabajar con ellos.</p>
 </li>
 <li>
-<p>Verifica que el contenido del hash que has utilizado no ha sido manipulado, usando la firma digital que encontrarás en el repositorio. Puedes encontrar una guía para realizarlo en este artículo: How to verify an authenticity of downloaded Debian ISO images.</p>
+<p>Verificamos que el contenido del hash que hemos utilizado no ha sido manipulado, usando la firma digital que encontrarás en el repositorio. Puedes encontrar una guía para realizarlo en este artículo: How to verify an authenticity of downloaded Debian ISO images.</p>
 </li>
 </ul>
 <p>Para ello nos descargamos los ficheros necesarios en un mismo directorio. Para verificar la firma haremos lo siguiente:</p>

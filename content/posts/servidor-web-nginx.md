@@ -4,11 +4,40 @@ date: 2021-03-11T16:43:41+01:00
 categories: [Servicios]
 ---
 
-* Tarea 1: Crea una máquina del cloud con una red pública. Añade la clave pública del profesor a la máquina. Instala el servidor web nginx en la máquina. Modifica la página index.html que viene por defecto y accede a ella desde un navegador.
+## **Introducción** ##
 
-* Entrega la ip flotante de la máquina para que el profesor pueda acceder a ella.
+NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar. Ofrece recursos de equilibrio de carga, proxy inverso y streaming, además de gestionar miles de conexiones simultáneas. El resultado de sus aportes es una mayor velocidad y escalabilidad.
 
-172.22.200.135
+Además de otras tareas, los servidores web son los encargados de la entrega de aplicaciones web, respondiendo a peticiones HTTPS realizadas por usuarios, normalmente desde un navegador web.
+
+El funcionamiento base de Nginx es similar al de otros servidores web, en el que un usuario realiza una petición a través del navegador al servidor, y este le envía la información solicitada al navegador.
+
+Lo que hace diferente a Nginx es su arquitectura a la hora de manejar procesos, ya que otros servidores web como Apache crean un hilo por cada solicitud.
+
+## **Servidor web Nginx** ##
+
+* Tarea 1: Creamos una máquina en el cloud (openstack) con una red pública. Añadimos la clave pública del profesor a la máquina para poder comprobarla por ssh. Instalamos el servidor web nginx en la máquina. Modificamos la página index.html que viene por defecto y accede a ella desde nuestro navegador.
+
+Instalamos Ngingx en nuestra maquina:
+
+Para instalar Nginx vamos a usar el repositorio de Debian, así que lo primero será actualizar la información de paquetes.
+
+~~~
+sudo su
+apt update
+apt upgrade
+~~~
+Instalamos el paquete nginx
+
+~~~
+apt install nginx
+~~~
+
+Modificamos el html y visualizamos nuestro sitio
+
+~~~
+root@servidor-nginx:/var/www/html# nano index.html 
+~~~
 
 * Entrega una captura de pantalla accediendo a ella.
 
@@ -49,14 +78,17 @@ Funcionamiento:
 ### **Virtualhosting** ###
 
 Queremos que nuestro servidor web ofrezca dos sitios web, teniendo en cuenta lo siguiente:
+
 * Cada sitio web tendrá nombres distintos.
+
 * Cada sitio web compartirán la misma dirección IP y el mismo puerto (80).
 Los dos sitios web tendrán las siguientes características:
+
 * El nombre de dominio del primero será www.iesgn.org, su directorio base será /srv/www/iesgn y contendrá una página llamada index.html, donde sólo se verá una bienvenida a la página del Instituto Gonzalo Nazareno.
       
 * En el segundo sitio vamos a crear una página donde se pondrán noticias por parte de los departamento, el nombre de este sitio será departamentos.iesgn.org, y su directorio base será /srv/www/departamentos. En este sitio sólo tendremos una página inicial index.html, dando la bienvenida a la página de los departamentos del instituto.
 
-* Tarea 2: Configura la resolución estática en los clientes y muestra el acceso a cada una de las páginas.*
+* Tarea 2: Configuramos la resolución estática en los clientes y muestra el acceso a cada una de las páginas.
 
 Empezamos haciendo un cp de default para así crear los ficheros de configuración de los dos sitios web y una vez creados los configuramos de la siguiente forma:
 
@@ -395,3 +427,5 @@ Desde fuera de la red interna por el contrario se nos pide autentificacion:
 ![](/nginx/nginx10.png)
 
 ![](/nginx/nginx11.png)
+
+Como vemos en esta practica es muy similar a la anteriormente hecha usando un virtualhost apache debido a que apache y nginx cumplen la misma funcion, salvo que nginx a demostrado tener mejor rendimiento.

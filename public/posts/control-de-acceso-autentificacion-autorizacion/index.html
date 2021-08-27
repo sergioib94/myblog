@@ -13,12 +13,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Control de acceso, autentificacion y autorizacion"/>
-<meta name="twitter:description" content="Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.  Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:
-ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName www."/>
+<meta name="twitter:description" content="Introduccion Haciendo uso de la practica anterior en la que instalamos el virtualhosting apache en vagrant o bien creando un escenario nuesvo en el que instalaremos un servidor dhcp, configuraremos el control de acceso, autentificacion y autorizacion para acceder al sitio web creado.
+Configuración  Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública."/>
 
     <meta property="og:title" content="Control de acceso, autentificacion y autorizacion" />
-<meta property="og:description" content="Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.  Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:
-ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName www." />
+<meta property="og:description" content="Introduccion Haciendo uso de la practica anterior en la que instalamos el virtualhosting apache en vagrant o bien creando un escenario nuesvo en el que instalaremos un servidor dhcp, configuraremos el control de acceso, autentificacion y autorizacion para acceder al sitio web creado.
+Configuración  Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-11T16:13:52&#43;01:00" />
@@ -72,7 +72,10 @@ ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName w
       </div>
     </header>
     <div class="post-content">
-      <ul>
+      <h2 id="introduccion"><strong>Introduccion</strong></h2>
+<p>Haciendo uso de la practica anterior en la que instalamos el virtualhosting apache en vagrant o bien creando un escenario nuesvo en el que instalaremos un servidor dhcp, configuraremos el control de acceso, autentificacion y autorizacion para acceder al sitio web creado.</p>
+<h2 id="configuración"><strong>Configuración</strong></h2>
+<ul>
 <li>Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.</li>
 </ul>
 <p>Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:</p>

@@ -56,9 +56,9 @@ En este caso la maquina dulcinea cuenta con 3 interfaces de red:
       <pubDate>Thu, 11 Mar 2021 16:00:38 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</guid>
-      <description>Firmas electrónicas  Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.  Creamos el fichero firmado:
-sergioib@debian-sergio:~/Descargas$ gpg --output doc.sig --sign Triggers_I.ppt Verificacion de la firma de documento con compañero Lora:
-sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pdf.sig gpg: Firmado el mié 14 oct 2020 13:37:44 CEST gpg: usando RSA clave 9233303D1F5495739A6D2CB4636AE9EBCB7E3294 gpg: Firma correcta de &amp;quot;Manuel Lora Román &amp;lt;manuelloraroman@gmail.com&amp;gt;&amp;quot; [desconocido] gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!</description>
+      <description>Introduccion En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.
+Firmas electrónicas  Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc.</description>
     </item>
     
     <item>

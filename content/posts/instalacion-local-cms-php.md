@@ -6,9 +6,7 @@ categories: [Aplicaciones Web]
 
 ### **Instalación de un servidor LAMP** ###
 
-*  Crea una instancia de vagrant basado en un box debian o ubuntu
-
-Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+Empezamos creando una instancia de vagrant basado en un box debian o ubuntu y una vez creado ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
 	
 Configuración del vagrantfile:
 
@@ -21,9 +19,7 @@ config.vm.define :nodo1 do |nodo1|
 end
 ~~~
 
-Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh 
-
-* Instala en esa maquina virtual toda la pila LAMP
+Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh.
 
 Lo primero que haremos en la maquina sera ejecutar un update y un upgrade. Después de el update y el upgrade, empezaremos a descargar la pila LAMP (apache, mariadb y php): 
 
@@ -47,7 +43,7 @@ apt install php7.3
 
 ### **Instalación de Drupal en el servidor local** ###
 
-* Configura el servidor web con virtual hosting para que el CMS sea accesible desde la dirección: www.nombrealumno-drupal.org.
+* Configuraremos el servidor web con virtual hosting para que el CMS sea accesible desde la dirección: www.nombrealumno-drupal.org.
 
 Configuración en el servidor en drupal.conf:
 
@@ -72,7 +68,7 @@ Configuración en el cliente en etc/hosts:
 172.28.128.16   www.sergioib-drupal.org
 ~~~
 
-* Crea un usuario en la base de datos para trabajar con la base de datos donde se van a guardar los datos del CMS.
+* Creamos un usuario en la base de datos para trabajar con la base de datos donde se van a guardar los datos del CMS.
 
 ~~~
 vagrant@server:~$ sudo mysql -u root -p
@@ -94,7 +90,7 @@ MariaDB [(none)]> grant all on drupalbd.* to drupal identified by 'drupal';
 Query OK, 0 rows affected (0.001 sec)
 ~~~
 
-* Descarga la versión que te parezca más oportuna de Drupal y realiza la instalación.
+* Descargamos la versión que nos parezca más oportuna de Drupal y realiza la instalación.
 
 ~~~
 wget https://www.drupal.org/download-latest/zip
@@ -110,7 +106,7 @@ wget https://ftp.drupal.org/files/translations/all/drupal/drupal-8.9.7.es.po
 
 En el segundo paso elegimos el perfil que vamos a tener, en este caso uno estándar.
 
-En el tercer paso ubo varios problemas con los requistos:
+En el tercer paso hubo varios problemas con los requistos:
 
 ◦ Extensiones php
     ▪ Solucion → sudo apt instal php-gd php-xml
@@ -128,13 +124,13 @@ En el tercer paso ubo varios problemas con los requistos:
 
 En el cuarto introducimos los datos de nuestra base de datos, nombre de la base, usuario que la va a usar y contraseña. Después instalamos el sitio y lo configuramos.
 
-* Realiza una configuración mínima de la aplicación (Cambia la plantilla, crea algún contenido, …)
+* Realizamos una configuración mínima de la aplicación (Cambia la plantilla, crea algún contenido, …)
 
 Apariencia → instalar nuevo tema → pegar enlace donde este el tema → buscarlo y descargarlo
 
-Contenido →Añadir contenido →Elegir contenido a crear (en este caso un articulo) →Guardar los cambios
+Contenido → Añadir contenido → Elegir contenido a crear (en este caso un articulo) → Guardar los cambios
 
-* Instala un módulo para añadir alguna funcionalidad a drupal.
+* Instalamos un módulo para añadir alguna funcionalidad a drupal.
 
 Ampliar → seleccionamos un modulo, en este caso el foro→ instalar, en mi caso como ejemplo instale el modulo forum.
 
@@ -142,13 +138,13 @@ Prueba de funcionamiento de Drupal 9 con las configuraciones ya realizadas:
 
 ### **Configuración multimodo** ###
 
-* Realiza copia de seguridad de la base de datos:
+* Realizamos una copia de seguridad de la base de datos mysql:
 
 ~~~
 mysqldump --user=drupal --password=drupal drupalbd > copiadrupalbd.sql
 ~~~
 
-* Crea otra máquina con vagrant, conectada con una red interna a la anterior y configura un servidor de base de datos.
+* Creamos otra máquina con vagrant, conectada con una red interna a la anterior y configuramos un servidor de base de datos.
 
 Configuración de vagrantfile:
 
@@ -168,15 +164,15 @@ Vagrant.configure("2") do |config|
   end
 ~~~
 
-* Crea un usuario en la base de datos para trabajar con la nueva base de datos.
+* Creamos un usuario en la base de datos para trabajar con la nueva base de datos.
 
-Instalamos mariadb igual que en la tarea1:
+Instalamos mariadb igual que en la maquina anterior:
 
 ~~~
 sudo apt install mariadb-server mariadb-client
 ~~~
 
-Y creamos un usuario igual que en la tarea2:
+Y creamos un usuario igual que en la maquina anterior:
 
 ~~~
 vagrant@server-bd:~$ sudo mysql -u root -p
@@ -193,19 +189,19 @@ MariaDB [(none)]> create user drupal identified by drupal;
 Query OK, 0 rows affected (0.001 sec)
 ~~~
 
-* Restaura la copia de seguridad en el nuevo servidor de base datos.
+* Restauramos la copia de seguridad en el nuevo servidor de base datos.
 
 ~~~
 mysql -u drupal -pdrupal drupalbd < copiadrupaldb.sql
 ~~~
 
-* Desinstala el servidor de base de datos en el servidor principal.
+* Desinstalamos el servidor de base de datos en el servidor principal.
 
 ~~~
 sudo apt purge mariadb-*
 ~~~
 
-* Realiza los cambios de configuración necesario en drupal para que la página funcione.
+* Realizamos los cambios de configuración necesario en drupal para que la página funcione.
 
 Configuración de settings.php
 
@@ -224,7 +220,7 @@ $databases['default']['default'] = array (
 
 ### **Instalación de otro CMS PHP** ###
 
-* Elige otro CMS realizado en PHP y realiza la instalación en tu infraestructura.
+Como segundo cms en instalacion se ha escogido moddle, por lo tanto igual que hemos hecho anteriormente con drupal comenzamos con su instalacion.
 
 Instalación de moodle: 
 
@@ -232,9 +228,9 @@ Instalación de moodle:
 sudo wget https://es.osdn.net/projects/sfnet_moodle/downloads/Moodle/stable38/moodle-latest-38.zip
 ~~~
 
-En este caso no se ha podido descargar de la pagina oficial www.download.moodle.org ya que por algún motivo a la hora de descargarse no se descargaba completa y en ese caso al intentar 	desempaquetar el zip que se descargaba con unzip, no se podía.
+En este caso no se ha podido descargar de la pagina oficial www.download.moodle.org ya que por algún motivo a la hora de descargarse no se descargaba completa y en ese caso al intentar desempaquetar el zip que se descargaba con unzip, no se podía.
 
-* Configura otro virtualhost y elige otro nombre en el mismo dominio.
+* Configuramos otro virtualhost y elegimos otro nombre en el mismo dominio.
 
 Una vez que tengamos la moodle en nuestro equipo empezamos a configurar el virtualhost. Copiamos el fichero drupal.conf en /etc/apache2/sites-availables y creamos un moodle.conf:
 
@@ -280,7 +276,7 @@ MariaDB [(none)]> grant all on moodlebd.* to moodle identified by 'moodle'
 Query OK, 0 rows affected (0.001 sec)
 ~~~
 
-Modificación de permisos /srv ya que a la hora de instalar se creara un directorio moodledata en /srv y no tiene el directorio permisos de escritura  de un fichero config.php en el directorio /srv/www/moodle ya que el script de instalación no fue capaz de generarlo.
+Modificamos de permisos /srv ya que a la hora de instalar se creara un directorio moodledata en /srv y no tiene el directorio permisos de escritura  de un fichero config.php en el directorio /srv/www/moodle ya que el script de instalación no fue capaz de generarlo.
 
 Contenido de config.php:
 
@@ -318,18 +314,16 @@ require_once(__DIR__ . '/lib/setup.php');
 
 Algunos de los fallos saltaron en la instalacion fueron los siguientes:
 
-* dbtype en config.php debía ser cambiado a mariadb.
+* dbtype en config.php debía ser cambiado a mariadb indicando asi el tipo de base de datos que usamos.
 * Es necesaria extensión php-intl
 
 Reiniciamos el servidor y al continuar la instalación, solo faltara poner los datos de administrador para de esa forma tener operativa la moodle. 
 
-*Prueba de funcionamiento de moodle instalada*
-
 ### **Necesidad de otros servicios** ###
 
-* La mayoría de los CMS tienen la posibilidad de mandar correos electrónicos (por ejemplo para notificar una nueva versión, notificar un comentario,…)
+* La mayoría de los CMS tienen la posibilidad de mandar correos electrónicos (por ejemplo para notificar una nueva versión, notificar un comentario, etc…)
 
-* Instala un servidor de correo electrónico en tu servidor. debes configurar un servidor relay de correo, para ello en el fichero /etc/postfix/main.cf, debes poner la siguiente línea:
+Instalaremos un servidor de correo electrónico en tu servidor, por lo que debemos configurar un servidor relay de correo, para ello en el fichero /etc/postfix/main.cf, debemos poner la siguiente línea:
 
 Lo primero que haremos será instalar el paquete postfix
 

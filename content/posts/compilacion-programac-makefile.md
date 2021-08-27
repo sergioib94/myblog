@@ -3,16 +3,19 @@ title: "Compilacion programa C con Makefile"
 date: 2021-03-11T16:10:39+01:00
 categories: [Sistemas]
 ---
+## **Introduccion** ##
+
+En este post a modo de aprendizaje para aprender mas sobre debian y su paqueteria se va a proceder a la compilacion de un paquete escrito en C, en este caso el paquete less para posteriormente ser capaces de compilar nuestro sistema operativo.
 
 ### **Compilacion paquete less** ###
 
-Empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.
+Para dicha compilacion empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.
 
 ~~~
 apt source less
 ~~~
 
-Una vez que se tenga el código en nuestra maquina, lo siguiente sera descomprimirlo ejecutando el comando tar.
+Una vez que se tengamos el código en nuestra maquina, lo siguiente sera descomprimirlo ejecutando el comando tar.
 
 ~~~
 tar xvzf less_487.orig.tar.gz
@@ -50,7 +53,7 @@ checking for library containing regcmp... no
 checking for working terminal libraries... Cannot find terminal libraries - configure failed
 ~~~
 
-./configure nos da un error ya que faltan librerías que deben ser instaladas para que el paquete pueda compilarse. instalamos la librería necesaria en el sistema, que en este caso es libtinfo-dev.. Una vez instala la libreria la salida de ./configure sera la siguiente:
+./configure nos da un error ya que faltan librerías que deben ser instaladas para que el paquete pueda compilarse. Instalamos la librería necesaria en el sistema, que en este caso es libtinfo-dev.. Una vez instala la libreria la salida de ./configure sera la siguiente:
 
 ~~~
 vagrant@compilacion:~/less$ ./configure 
@@ -252,3 +255,5 @@ vagrant@compilacion:~/less$ make distclean
 rm -f *.o core less lesskey lessecho
 rm -f Makefile config.status config.log config.cache defines.h stamp-h
 ~~~
+
+Una vez probada la compilacion de un paquete, podremos ser capaces de compilar nuestro sistema operativo sin provocar errores.

@@ -348,10 +348,8 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
       <pubDate>Thu, 11 Mar 2021 16:43:41 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/servidor-web-nginx/</guid>
-      <description>Tarea 1: Crea una máquina del cloud con una red pública. Añade la clave pública del profesor a la máquina. Instala el servidor web nginx en la máquina. Modifica la página index.html que viene por defecto y accede a ella desde un navegador.
-  Entrega la ip flotante de la máquina para que el profesor pueda acceder a ella.
-  172.22.200.135
- Entrega una captura de pantalla accediendo a ella.</description>
+      <description>Introducción NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar. Ofrece recursos de equilibrio de carga, proxy inverso y streaming, además de gestionar miles de conexiones simultáneas. El resultado de sus aportes es una mayor velocidad y escalabilidad.
+Además de otras tareas, los servidores web son los encargados de la entrega de aplicaciones web, respondiendo a peticiones HTTPS realizadas por usuarios, normalmente desde un navegador web.</description>
     </item>
     
     <item>
@@ -360,8 +358,9 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
       <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/configuracio-clientevpn/</guid>
-      <description>Genera una clave privada RSA 4096  Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
-root@debian-sergio:~# openssl genrsa 4096 &amp;gt; /etc/ssl/private/debian-sergio.ibanez.key Generating RSA private key, 4096 bit long modulus (2 primes) ........................++++ .....................................................................................................................................................................................................................................................................................................................................................................................................................++++ e is 65537 (0x010001)  Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona  Creamos el fichero csr para que sea firmado con el siguiente comando y rellenamos los parámetros necesarios que se nos piden: Country Name, State or Province Name (full name), Locality Name, Organization Name, Organizational Unit Name y Common Name (e.</description>
+      <description>Introducción Teniendo en cuenta que en el instituto y en casa cuentan con redes distintas, se configurara un cliente vpn para poder permitir la conexion entre las distintas redes.
+Configuración del cliente VPN  Empezamos generando una clave privada RSA 4096  Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
+root@debian-sergio:~# openssl genrsa 4096 &amp;gt; /etc/ssl/private/debian-sergio.ibanez.key Generating RSA private key, 4096 bit long modulus (2 primes) ........................++++ .</description>
     </item>
     
     <item>
@@ -381,8 +380,8 @@ Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer
       <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</guid>
-      <description>Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.  Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:
-ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName www.</description>
+      <description>Introduccion Haciendo uso de la practica anterior en la que instalamos el virtualhosting apache en vagrant o bien creando un escenario nuesvo en el que instalaremos un servidor dhcp, configuraremos el control de acceso, autentificacion y autorizacion para acceder al sitio web creado.
+Configuración  Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública.</description>
     </item>
     
     <item>
@@ -391,9 +390,8 @@ ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName w
       <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</guid>
-      <description>Compilacion paquete less Empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.
-apt source less Una vez que se tenga el código en nuestra maquina, lo siguiente sera descomprimirlo ejecutando el comando tar.
-tar xvzf less_487.orig.tar.gz Dentro del directorio less ejecutamos ./configure para comprobar si el paquete esta bien configurado para el sistema.</description>
+      <description>Introduccion En este post a modo de aprendizaje para aprender mas sobre debian y su paqueteria se va a proceder a la compilacion de un paquete escrito en C, en este caso el paquete less para posteriormente ser capaces de compilar nuestro sistema operativo.
+Compilacion paquete less Para dicha compilacion empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.</description>
     </item>
     
     <item>
@@ -402,9 +400,9 @@ tar xvzf less_487.orig.tar.gz Dentro del directorio less ejecutamos ./configure 
       <pubDate>Thu, 11 Mar 2021 16:00:38 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</guid>
-      <description>Firmas electrónicas  Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.  Creamos el fichero firmado:
-sergioib@debian-sergio:~/Descargas$ gpg --output doc.sig --sign Triggers_I.ppt Verificacion de la firma de documento con compañero Lora:
-sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pdf.sig gpg: Firmado el mié 14 oct 2020 13:37:44 CEST gpg: usando RSA clave 9233303D1F5495739A6D2CB4636AE9EBCB7E3294 gpg: Firma correcta de &amp;quot;Manuel Lora Román &amp;lt;manuelloraroman@gmail.com&amp;gt;&amp;quot; [desconocido] gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!</description>
+      <description>Introduccion En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.
+Firmas electrónicas  Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc.</description>
     </item>
     
     <item>
@@ -413,9 +411,9 @@ sergioib@debian-sergio:~/Descargas$ gpg --output lora --decrypt documentolora.pd
       <pubDate>Thu, 11 Mar 2021 10:13:49 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</guid>
-      <description>Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+      <description>Instalación de un servidor LAMP Empezamos creando una instancia de vagrant basado en un box debian o ubuntu y una vez creado ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
 Configuración del vagrantfile:
-Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &amp;quot;debian/buster64&amp;quot; nodo1.vm.hostname = &amp;quot;server&amp;quot; nodo1.vm.network :private_network, type: &amp;quot;dhcp&amp;quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh</description>
+Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &amp;quot;debian/buster64&amp;quot; nodo1.vm.hostname = &amp;quot;server&amp;quot; nodo1.vm.network :private_network, type: &amp;quot;dhcp&amp;quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh.</description>
     </item>
     
     <item>

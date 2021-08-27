@@ -94,9 +94,8 @@ Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con
       <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</guid>
-      <description>Compilacion paquete less Empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.
-apt source less Una vez que se tenga el código en nuestra maquina, lo siguiente sera descomprimirlo ejecutando el comando tar.
-tar xvzf less_487.orig.tar.gz Dentro del directorio less ejecutamos ./configure para comprobar si el paquete esta bien configurado para el sistema.</description>
+      <description>Introduccion En este post a modo de aprendizaje para aprender mas sobre debian y su paqueteria se va a proceder a la compilacion de un paquete escrito en C, en este caso el paquete less para posteriormente ser capaces de compilar nuestro sistema operativo.
+Compilacion paquete less Para dicha compilacion empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.</description>
     </item>
     
     <item>

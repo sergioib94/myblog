@@ -88,9 +88,9 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
       <pubDate>Thu, 11 Mar 2021 10:13:49 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</guid>
-      <description>Instalación de un servidor LAMP  Crea una instancia de vagrant basado en un box debian o ubuntu  Ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+      <description>Instalación de un servidor LAMP Empezamos creando una instancia de vagrant basado en un box debian o ubuntu y una vez creado ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
 Configuración del vagrantfile:
-Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &amp;quot;debian/buster64&amp;quot; nodo1.vm.hostname = &amp;quot;server&amp;quot; nodo1.vm.network :private_network, type: &amp;quot;dhcp&amp;quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh</description>
+Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &amp;quot;debian/buster64&amp;quot; nodo1.vm.hostname = &amp;quot;server&amp;quot; nodo1.vm.network :private_network, type: &amp;quot;dhcp&amp;quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh.</description>
     </item>
     
     <item>

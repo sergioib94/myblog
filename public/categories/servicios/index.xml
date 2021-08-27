@@ -65,10 +65,8 @@ En este fichero lo que haremos sera primero descomentar la linea strict-order pa
       <pubDate>Thu, 11 Mar 2021 16:43:41 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/servidor-web-nginx/</guid>
-      <description>Tarea 1: Crea una máquina del cloud con una red pública. Añade la clave pública del profesor a la máquina. Instala el servidor web nginx en la máquina. Modifica la página index.html que viene por defecto y accede a ella desde un navegador.
-  Entrega la ip flotante de la máquina para que el profesor pueda acceder a ella.
-  172.22.200.135
- Entrega una captura de pantalla accediendo a ella.</description>
+      <description>Introducción NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar. Ofrece recursos de equilibrio de carga, proxy inverso y streaming, además de gestionar miles de conexiones simultáneas. El resultado de sus aportes es una mayor velocidad y escalabilidad.
+Además de otras tareas, los servidores web son los encargados de la entrega de aplicaciones web, respondiendo a peticiones HTTPS realizadas por usuarios, normalmente desde un navegador web.</description>
     </item>
     
     <item>
@@ -88,8 +86,8 @@ Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer
       <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</guid>
-      <description>Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.  Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:
-ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName www.</description>
+      <description>Introduccion Haciendo uso de la practica anterior en la que instalamos el virtualhosting apache en vagrant o bien creando un escenario nuesvo en el que instalaremos un servidor dhcp, configuraremos el control de acceso, autentificacion y autorizacion para acceder al sitio web creado.
+Configuración  Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública.</description>
     </item>
     
     <item>

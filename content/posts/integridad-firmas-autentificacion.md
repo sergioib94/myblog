@@ -3,10 +3,13 @@ title: "Integridad, firmas y autentificacion"
 date: 2021-03-11T16:00:38+01:00
 categories: [Seguridad]
 ---
+## **Introduccion** ##
+
+En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.
 
 ### **Firmas electrónicas** ###
 
-* Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.
+* Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.
 
 Creamos el fichero firmado:
 
@@ -37,17 +40,16 @@ gpg: Firma correcta de "Pepe D <josedom24@gmail.com>" [desconocido]
 
 Significa que aunque la firma este bien al no estar certificada por una firma de confianza, es posible que la persona que nos mande el mensaje no sea la misma con la que queremos contactar, que no sea de confianza. 
 
-* Vamos a crear un anillo de confianza entre los miembros de nuestra clase, para ello.
-* Tu clave pública debe estar en un servidor de claves.
-* Escribe tu fingerprint en un papel y dárselo a tu compañero, para que puede descargarse tu clave pública.
-* Te debes bajar al menos tres claves públicas de compañeros. Firma estas claves.
+* Vamos a crear un anillo de confianza entre los miembros de nuestra clase, para ello nuestra clave pública debe estar en un servidor de claves.
+
+* Te debes bajar al menos tres claves públicas de compañeros y firmamos estas claves.
 
 Proceso de importación de claves:
 
 ~~~
-Clave Juanan:
+Clave de Juanan:
 
-	gpg --keyserver keyserver.ubuntu.com --recv-key 9987B52D
+	gpg --keyserver keyserver.ubuntu.com --recv-key 9987B52D (fingerprint)
 
 Clave Celia:
 
@@ -105,9 +107,7 @@ con su clave: "sergio ibañez <sergio_hd_sony@hotmail.com>" (CFCF1D130D5A52C5)?
 
 En el caso de Alejandro, como a sido la ultima clave que he firmado, he puesto la salida completa del comando, con juanan y celia, solo he puesto el comando.
 
-* Tu te debes asegurar que tu clave pública es firmada por al menos tres compañeros de la clase.
-
-* Una vez que firmes una clave se la tendrás que devolver a su dueño, para que otra persona se la firme.
+* Una vez que firmada la clave se la devolvemos a su dueño, para que otra persona se la firme.
 
 ~~~
 Juanan:
@@ -124,11 +124,9 @@ gpg --export -a Alejandro Gutierrez Valencia > alefirmado.asc
 
 ~~~
 
-* Cuando tengas las tres firmas sube la clave al servidor de claves y rellena tus datos en la tabla Claves públicas PGP 2020-2021.
-
-* Asegúrate que te vuelves a bajar las claves públicas de tus compañeros que tengan las tres firmas.
-
 * Muestra las firmas que tiene tu clave pública.
+
+Volvemos a bajarnos nuestra clave una vez que varias personas la hayan firmado y mostramos el resultado.
 
 ~~~
 sergioib@debian-sergio:~$ gpg --list-sign
@@ -145,7 +143,7 @@ sub   rsa3072 2020-10-06 [E] [caduca: 2022-10-06]
 sig          CFCF1D130D5A52C5 2020-10-06  sergio ibañez <sergio_hd_sony@hotmail.com>
 ~~~
 
-* Comprueba que ya puedes verificar sin “problemas” una firma recibida por una persona en la que confías.
+* Comprobamos que ya puedemos verificar sin “problemas” una firma recibida por una persona en la que confíamos.
 
 ~~~
 sergioib@debian-sergio:~/Descargas$ gpg --output juanan --decrypt saludo.sig
@@ -154,7 +152,7 @@ gpg:                usando RSA clave AD19812061DA946F8DA70E0C4F54B5799987B52D
 gpg: Firma correcta de "Juan Antonio Reifs <initategnat9@gmail.com>" [total]
 ~~~
 
-* Comprueba que puedes verificar con confianza una firma de una persona en las que no confías, pero sin embargo si confía otra persona en la que tu tienes confianza total.
+* Compruebamos que puedes verificar con confianza una firma de una persona en las que no confías, pero sin embargo si confía otra persona en la que tu tienes confianza total.
 
 ~~~
 sergioib@debian-sergio:~/Descargas$ gpg --output verificacion_lora --decrypt documentolora.pdf.sig
@@ -176,13 +174,13 @@ Huellas dactilares de la clave primaria: 9233 303D 1F54 9573 9A6D  2CB4 636A E9E
 
 Ahora vamos a configurar nuestro cliente de correo electrónico para poder mandar correos cifrados, para ello:
 
-* Configura el cliente de correo evolution con tu cuenta de correo habitual
+* Configuramos el cliente de correo evolution con nuestra cuenta de correo habitual.
 
 * Añade a la cuenta las opciones de seguridad para poder enviar correos firmados con tu clave privada o cifrar los mensajes para otros destinatarios.
 
 ![](/static/integracion-firmas-autentificacion/seguridad_correo.png)
 
-* Envía y recibe varios mensajes con tus compañeros y comprueba el funcionamiento adecuado de GPG.
+* Envíamos y recibimos varios mensajes de los compañeros y compruebamos el funcionamiento adecuado de GPG.
 
 Prueba de correo de Celia a mi:
 
@@ -198,7 +196,7 @@ Vamos a descargarnos la ISO de debian, y posteriormente vamos a comprobar su int
 
 * Para validar el contenido de la imagen CD, solo asegúrese de usar la herramienta apropiada para sumas de verificación. Para cada versión publicada existen archivos de suma de comprobación con algoritmos fuertes (SHA256 y SHA512); debería usar las herramientas sha256sum o sha512sum para trabajar con ellos.
 
-* Verifica que el contenido del hash que has utilizado no ha sido manipulado, usando la firma digital que encontrarás en el repositorio. Puedes encontrar una guía para realizarlo en este artículo: How to verify an authenticity of downloaded Debian ISO images.
+* Verificamos que el contenido del hash que hemos utilizado no ha sido manipulado, usando la firma digital que encontrarás en el repositorio. Puedes encontrar una guía para realizarlo en este artículo: How to verify an authenticity of downloaded Debian ISO images.
 
 Para ello nos descargamos los ficheros necesarios en un mismo directorio. Para verificar la firma haremos lo siguiente:
 
