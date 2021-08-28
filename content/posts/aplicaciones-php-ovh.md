@@ -4,13 +4,18 @@ date: 2021-03-12T10:37:20+01:00
 categories: [Aplicaciones Web]
 ---
 
-### **Migración de Drupal** ###
+## **Introduccion** ##
 
-Este drupal que va a migrarse de la maquina local a la maquina virtual alojada en ovh, es el mismo drupal que se creo en la anterior practica "instalacion local de cms php".
+En este post aprenderemos a migrar dos aplicaciones, Drupal y Nextcloud, para ello contamos con un un escenario compuesto por dos maquinas virtuales en redes distintas. La primera maquina virtual estara echa en vagrant y sera la maquina usada en la practica anterior "Instalacion local CMS PHP
+".
 
-* Tarea 1. La aplicación se tendrá que migrar a un nuevo virtualhost al que se accederá con el nombre portal.iesgnXX.es.
+La segunda maquina estara alojada en OVH y es la maquina hecha en la practica anterior "OVH LEMP".
 
-Empezamos creando el virtualhost Portal, para ello accedemos a /etc/nginx/sites-availables/ y ejecutamos un sudo cp default portal:
+Lo que haremos sera instalar la aplicacion Nextcloud en la maquina vagrant local y migrar tanto drupal como nextcloud a la maquina OVH.
+
+### **Preparativos y configuración de migracion** ###
+
+La aplicación se tendrá que migrar a un nuevo virtualhost al que se accederá con el nombre portal.iesgnXX.es por lo que empezamos creando el virtualhost Portal, para ello accedemos a /etc/nginx/sites-availables/ y ejecutamos un sudo cp default portal:
 
 Configuración de portal:
 
@@ -41,7 +46,7 @@ Configuramos en nuestra zona DNS de OVH un nuevo CNAME:
 
 ![zona dns en ovh](/ovh-aplicaciones-php/zona_dns.png)
 
-* Tarea 2. Vamos a nombrar el servicio de base de datos que tenemos en producción. Como es un servicio interno no la vamos a nombrar en la zona DNS, la vamos a nombrar usando resolución estática. El nombre del servicio de base de datos se debe llamar: bd.iesgnXX.es.
+Ahora vamos a nombrar el servicio de base de datos que tenemos en producción. Como es un servicio interno no lo vamos a nombrar en la zona DNS, lo vamos a nombrar usando resolución estática. El nombre del servicio de base de datos se llamara bd.iesgnXX.es (XX sera un numero asignado).
 
 Configuramos el fichero /etc/hosts añadiendo la siguiente linea:
 
@@ -49,7 +54,7 @@ Configuramos el fichero /etc/hosts añadiendo la siguiente linea:
 127.0.0.1 bd.iesgn07.es
 ~~~ 
 
-* Tarea 3. Por lo tanto los recursos que deberás crear en la base de datos serán (respeta los nombres):
+Una vez configurado el nombre del servicio, configuraremos la base de datos con la siguiente informacion, los recursos que se crearan en la base de datos serán los siguientes:
 
 * Dirección de la base de datos: bd.iesgnXX.es
 * Base de datos: bd_drupal
@@ -60,9 +65,7 @@ Creamos el usuario user_drupal y le asignamos contraseña (como usuario root):
 
 ~~~
 create user user_drupal;
-~~~
 
-~~~
 set password for user_drupal = password('pass_drupal');
 ~~~
 
@@ -70,15 +73,15 @@ Creamos la base de datos bd_drupal y le damos los permisos necesarios al usuario
 
 ~~~
 create database bd_drupal;
-~~~
 
-~~~
 grant all on bd_drupal.* to user_drupal identified by 'pass_drupal';
 ~~~
 
-* Tarea 4. Realiza la migración de la aplicación.
+Una vez hecho y configurado todo comenzaremos la migración de la aplicación.
 
-Migramos primero la base de datos de nuestro entorno de desarrollo al entorno de producción:
+## **Migracion de Drupal** ##
+
+Migramos primero la base de datos de nuestro entorno de desarrollo (local) al entorno de producción(ovh):
 
 En desarrollo enviamos la copia de seguridad previamente creada haciendo uso de scp:
 
@@ -92,13 +95,13 @@ Una vez se haya enviado la copia de seguridad, se importan los datos en la base 
 mysql -u user_drupal -p bd_drupal < copiadrupalbd.sql
 ~~~
 
-Una vez que la base de datos este migrada, pasaremos a migrar la aplicación de drupal:
+Despues que la base de datos este migrada, pasaremos a migrar la aplicación de drupal:
 
 ~~~
 scp -r Linux/drupal/ debian@146.59.196.89:/srv/www
 ~~~
 
-Una vez que tenemos el directorio drupal en el nuevo servidor, editamos el fichero settings.php (drupal/sites/default/) de la siguiente forma:
+Luego tenemos el directorio drupal en el nuevo servidor, editamos el fichero settings.php (drupal/sites/default/) de la siguiente forma:
 
 ~~~
 $databases['default']['default'] = array (
@@ -114,7 +117,7 @@ $databases['default']['default'] = array (
 $settings['config_sync_directory'] = 'sites/default/files/config_wGnfMPSoSAYjv-l4ZzdcDPpLHsqA_5AGGtjXvqWd1AafgbBo8fqSjD9SIx7zo6Qhg0OLxY7xvQ/sync';
 ~~~
 
-Después de esto, al entrar en la pagina obtendremos el siguiente error:
+A continuacion de esto, al entrar en la pagina obtendremos el siguiente error:
 
 ![error inicial](/ovh-aplicaciones-php/error_inicial.png)
 
@@ -128,9 +131,9 @@ Cuando estén instalados dichos modulo, comprobamos que realmente funciona y se 
 
 ![drupal](/ovh-aplicaciones-php/proyecto-drupal2.png)
 
-* Tarea 5. Asegúrate que las URL limpias de drupal siguen funcionando en nginx.
+Tendremos que asegurarnos que las URL limpias de drupal siguen funcionando en nginx debido a que en la maquina local no contamos con nginx, sino apache2.
 
-A drupal ahora mismo, tendremos acceso pero pero solo a la pagina principal no podremos usar nada ya que las url no están limpias, para ello volvemos a modificar el fichero de configuración portal añadiendo /index.php?$args
+A drupal ahora mismo, tendremos acceso pero solo a la pagina principal no podremos usar nada ya que las url no están limpias, para ello volvemos a modificar el fichero de configuración portal añadiendo /index.php?$args
 
 ~~~
 server {
@@ -156,17 +159,13 @@ Prueba de funcionamiento al acceder al mismo sitio, el contenido de nuestro drup
 
 ![funcionamiento drupal](/ovh-aplicaciones-php/protyecto-drupal3.png)
 
-* Tarea 6. La aplicación debe estar disponible en la URL: portal.iesgnXX.es (Sin ningún directorio).
-
-Comprobamos que podemos acceder a drupal desde esa url sin ningún directorio:
+La aplicación debe estar disponible en la URL: portal.iesgnXX.es (Sin ningún directorio) por lo que comprobamos que podemos acceder a drupal desde esa url sin ningún directorio:
 
 ![drupal](/ovh-aplicaciones-php/proyecto-drupal2.png)
 
-### **Instalación / migración de la aplicación Nextcloud** ###
+### **Instalación/migración de la aplicación Nextcloud** ###
 
-* Tarea 1. Instala la aplicación web Nextcloud en tu entorno de desarrollo.
-
-Instalamos nextcloud en el entorno de producción haciendo uso de wget:
+Instalamos la aplicación web Nextcloud en nuestra maquina local haciendo uso de wget:
 
 ~~~
 sudo wget https://download.nextcloud.com/server/releases/nextcloud-20.0.1.zip
@@ -242,7 +241,7 @@ Ya tendremos nextcloud operativo, una vez instalado en caso de haber instalado p
 
 Esto se debe a que la cache por defecto no se activa en la instalación. A continuación pasamos a migrar nuestro nextcloud al entorno de producción.
 
-* Tarea 2. Realiza la migración al servidor en producción, para que la aplicación sea accesible en la URL: www.iesgnXX.es/cloud
+Ahora prodremos realizar la migración al servidor en producción, para que la aplicación sea accesible en la URL: www.iesgnXX.es/cloud
 
 Entorno de desarrollo:
 

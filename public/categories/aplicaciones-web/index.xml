@@ -78,8 +78,9 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
       <pubDate>Fri, 12 Mar 2021 10:37:20 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</guid>
-      <description>Migración de Drupal Este drupal que va a migrarse de la maquina local a la maquina virtual alojada en ovh, es el mismo drupal que se creo en la anterior practica &amp;ldquo;instalacion local de cms php&amp;rdquo;.
- Tarea 1. La aplicación se tendrá que migrar a un nuevo virtualhost al que se accederá con el nombre portal.iesgnXX.es.  Empezamos creando el virtualhost Portal, para ello accedemos a /etc/nginx/sites-availables/ y ejecutamos un sudo cp default portal:</description>
+      <description>Introduccion En este post aprenderemos a migrar dos aplicaciones, Drupal y Nextcloud, para ello contamos con un un escenario compuesto por dos maquinas virtuales en redes distintas. La primera maquina virtual estara echa en vagrant y sera la maquina usada en la practica anterior &amp;ldquo;Instalacion local CMS PHP &amp;ldquo;.
+La segunda maquina estara alojada en OVH y es la maquina hecha en la practica anterior &amp;ldquo;OVH LEMP&amp;rdquo;.
+Lo que haremos sera instalar la aplicacion Nextcloud en la maquina vagrant local y migrar tanto drupal como nextcloud a la maquina OVH.</description>
     </item>
     
     <item>

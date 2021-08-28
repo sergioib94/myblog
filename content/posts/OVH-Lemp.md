@@ -6,16 +6,15 @@ categories: [Servicios]
 
 ### **Introduccion** ###
 
-En este post instalaremos un servidor Lemp (Linux (E)nginx Mariadb PHP) en una maquina virtual alojada en OVH.
+En este post instalaremos un servidor Lemp (Linux, (E)nginx, Mariadb y PHP) en una maquina virtual alojada en OVH en la que mas adelante instalaremos varias aplicaciones.
 
-
-* Tarea 1. Instalacion de servidor web nginx
+## **Instalacion de servidor web nginx** ##
 
 ~~~
 sudo apt install nginx
 ~~~
 
-* Tarea 2. Instala un servidor de base de datos MariaDB. Ejecuta el programa necesario para asegurar el servicio, ya que lo vamos a tener corriendo en el entorno de producción.
+## **Instalacion de MariaDB asegurando el servicio, ya que lo vamos a tener corriendo en el entorno de producción** ##
 
 ~~~
 sudo apt install -y mariadb-server mariadb-client
@@ -89,13 +88,13 @@ installation should now be secure.
 Thanks for using MariaDB!
 ~~~
 
-* Tarea 3. Instala un servidor de aplicaciones php php-fpm.
+## **Instalacion de php php-fpm** ##
 
 ~~~
 Sudo apt install php7.3 php-fpm 
 ~~~
 
-* Tarea 4. Crea un virtualhost al que vamos acceder con el nombre www.iesgnXX.es. Recuerda que tendrás que crear un registro CNAME en la zona DNS.
+Creamos un virtualhost al que vamos acceder con el nombre www.iesgnXX.es tendremos que crear un registro CNAME en la zona DNS.
 
 Configuración iesgn:
 
@@ -116,9 +115,9 @@ Server {
 }
 ~~~
 
-A la hora de crear el registro CNAME en la zona DNS sera necesario eliminar o modificar el registro que ya existe (www.iesgn07.es CNAME susano.iesgn.es.) ya que de no hacerlo salta un error.
+A la hora de crear el registro CNAME en la zona DNS sera necesario eliminar o modificar el registro que ya existe (www.iesgn07.es CNAME susano.iesgn.es.) ya que de no hacerlo salta un error. 
 
-* Tarea 5. Cuando se acceda al virtualhost por defecto default nos tiene que redirigir al virtualhost que hemos creado en el punto anterior.
+Cuando se acceda al virtualhost por defecto default nos tiene que redirigir al virtualhost que hemos creado en el punto anterior por lo que para ello lo configuraremos de la siguiente forma.
 
 Configuración de default:
 
@@ -141,7 +140,7 @@ Prueba de funcionamiento:
 
 ![funcionamiento de redireccion](/ovh-lemp/lemp1.png)
 
-* Tarea 6. Cuando se acceda a www.iesgnXX.es se nos redigirá a la página www.iesgnXX.es/principal
+Al acceder a www.iesgnXX.es se nos redigirá a la página www.iesgnXX.es/principal por lo que tendremos que configurar el fichero iesgn.
 
 Configuración de iesgn:
 
@@ -169,15 +168,15 @@ Prueba de funcionamiento:
 
 ![funcionamiento redireccion /principal](/ovh-lemp/lemp2.png)
 
-* Tarea 7. En la página www.iesgnXX.es/principal se debe mostrar una página web estática (utiliza alguna plantilla para que tenga hoja de estilo). En esta página debe aparecer tu nombre, y una lista de enlaces a las aplicaciones que vamos a ir desplegando posteriormente.
+En la página www.iesgnXX.es/principal se mostrara una página web estática. En esta página aparecera nuestro nombre, y una lista de enlaces a las aplicaciones que vamos a ir desplegando posteriormente.
 
-nos descargamos una plantilla html y a través de scp pasamos el fichero zip al directorio principal en /srv/www/iesgn
+Empezamos descargando una plantilla html y a través de scp pasamos el fichero zip al directorio principal en /srv/www/iesgn
 
 Prueba de funcionamiento:
 
 ![funcionamiento del servidor](/ovh-lemp/lemp4.png)
 
-* Tarea 8. Configura el nuevo virtualhost, para que pueda ejecutar PHP. Determina que configuración tiene por defecto php-fpm (socket unix o socket TCP) para configurar nginx de forma adecuada.
+Configuramos el nuevo virtualhost, para que pueda ejecutar PHP y determinamos que configuración tiene por defecto php-fpm (socket unix o socket TCP) para configurar nginx de forma adecuada.
 
 Configuramos iesgn para que use ficheros php de la siguiente forma:
 
@@ -204,15 +203,12 @@ server {
 }
 ~~~
 
-* Tarea 9. Crea un fichero info.php que demuestre que está funcionando el servidor LEMP.
-
-Creamos un fichero info.php en /srv/www/iesg y le añadimos el siguiente contenido:
+Creamos un fichero info.php que demuestre que está funcionando el servidor LEMP en /srv/www/iesg y le añadimos el siguiente contenido:
 
 ~~~
 <?php
 phpinfo();
 ~~~
-
 
 Prueba de funcionamiento:
 

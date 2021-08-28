@@ -178,4 +178,3 @@ En centos7 sera suficiente ejecutando sudo adduser profesor ya que por defecto s
 nano /etc/sudoers
 profesor ALL=(ALL) NOPASSWD: ALL
 ~~~
-

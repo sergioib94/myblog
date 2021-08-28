@@ -55,8 +55,8 @@ En este fichero lo que haremos sera primero descomentar la linea strict-order pa
       <pubDate>Fri, 12 Mar 2021 09:44:16 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/ovh-lemp/</guid>
-      <description>Introduccion En este post instalaremos un servidor Lemp (Linux (E)nginx Mariadb PHP) en una maquina virtual alojada en OVH.
- Tarea 1. Instalacion de servidor web nginx  sudo apt install nginx  Tarea 2. Instala un servidor de base de datos MariaDB. Ejecuta el programa necesario para asegurar el servicio, ya que lo vamos a tener corriendo en el entorno de producción.  sudo apt install -y mariadb-server mariadb-client Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:</description>
+      <description>Introduccion En este post instalaremos un servidor Lemp (Linux, (E)nginx, Mariadb y PHP) en una maquina virtual alojada en OVH en la que mas adelante instalaremos varias aplicaciones.
+Instalacion de servidor web nginx sudo apt install nginx Instalacion de MariaDB asegurando el servicio, ya que lo vamos a tener corriendo en el entorno de producción sudo apt install -y mariadb-server mariadb-client Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:</description>
     </item>
     
     <item>
