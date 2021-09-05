@@ -4,6 +4,8 @@ date: 2021-03-12T13:05:15+01:00
 categories: [Seguridad]
 ---
 
+Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.
+
 * 1. Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.
 
 Explica detenidamente cómo se solicita un certificado en Let's Encrypt. En tu explicación deberás responder a estas preguntas:

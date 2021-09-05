@@ -4,6 +4,10 @@ date: 2021-03-12T14:13:08+01:00
 categories: [Sistemas]
 ---
 
+### **Introducción** ###
+
+Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://
+
 ### **LDAPs** ###
 
 Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .crt de la unidad certificadora, en este caso el IES Gonzalo Nazareno, un .crt firmado por la unidad certificadora y un fichero .key usado para crear un fichero csr que posteriormente se firmará.

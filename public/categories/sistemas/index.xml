@@ -63,18 +63,19 @@ dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top ob
       <pubDate>Fri, 12 Mar 2021 14:13:08 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/ldaps/</guid>
-      <description>LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .crt de la unidad certificadora, en este caso el IES Gonzalo Nazareno, un .crt firmado por la unidad certificadora y un fichero .key usado para crear un fichero csr que posteriormente se firmará.
-Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros .crt) y el fichero .key en /etc/ssl/private/, hay que cambiar las acl con el comando setfacl para agregar los permisos:</description>
+      <description>Introducción Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://
+LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .</description>
     </item>
     
     <item>
-      <title>Instalacion y configuracion OpenLDAP</title>
+      <title>Instalacion y configuracion básica OpenLDAP</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</link>
       <pubDate>Fri, 12 Mar 2021 14:11:19 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</guid>
-      <description>Instalación Ldap sudo apt install slapd Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
-sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno.</description>
+      <description>Introducción En la maquina Freston de Openstack creada y configurada en la practica &amp;ldquo;modificaciones del escenario openstack&amp;rdquo;, se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.
+¿Que es LDAP?
+Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto.</description>
     </item>
     
     <item>
@@ -83,9 +84,9 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
       <pubDate>Fri, 12 Mar 2021 12:52:53 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/actualizacion-centos8/</guid>
-      <description>Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7.
+      <description>Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.
 Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
-[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.9.2009 de centos.</description>
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.</description>
     </item>
     
     <item>

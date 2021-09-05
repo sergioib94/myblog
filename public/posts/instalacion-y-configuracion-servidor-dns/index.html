@@ -13,14 +13,16 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Instalacion y configuracion servidor DNS"/>
-<meta name="twitter:description" content="Servidor DNSmasq  Instala el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.*  Instalación:
-sudo apt install dnsmasq Configuración de dnsmasq (/etc/dnsmasq.conf):
-En este fichero lo que haremos sera primero descomentar la linea strict-order para que de esta forma en el caso de que nuestro dns no sea capaz de resolver una petición, lea el fichero resolv.conf y le pregunte a la maquina que tengamos indicada en el fichero para que ella resuelva la petición."/>
+<meta name="twitter:description" content="Introducción En post a traves de una serie de tareas, configuraremos e instalaremos dos servidores dns para comprobar y ver su funcionamiento, dnsmaq y bind9.
+En nuestra red local tenemos un servidor Web que sirve dos páginas web: www.iesgn.org, departamentos.iesgn.org.
+Instalaremos en nuestra red local un servidor DNS. El nombre del servidor será tunombre.iesgn.org.
+Servidor DNSmasq  Instalamos el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios."/>
 
     <meta property="og:title" content="Instalacion y configuracion servidor DNS" />
-<meta property="og:description" content="Servidor DNSmasq  Instala el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.*  Instalación:
-sudo apt install dnsmasq Configuración de dnsmasq (/etc/dnsmasq.conf):
-En este fichero lo que haremos sera primero descomentar la linea strict-order para que de esta forma en el caso de que nuestro dns no sea capaz de resolver una petición, lea el fichero resolv.conf y le pregunte a la maquina que tengamos indicada en el fichero para que ella resuelva la petición." />
+<meta property="og:description" content="Introducción En post a traves de una serie de tareas, configuraremos e instalaremos dos servidores dns para comprobar y ver su funcionamiento, dnsmaq y bind9.
+En nuestra red local tenemos un servidor Web que sirve dos páginas web: www.iesgn.org, departamentos.iesgn.org.
+Instalaremos en nuestra red local un servidor DNS. El nombre del servidor será tunombre.iesgn.org.
+Servidor DNSmasq  Instalamos el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T12:56:19&#43;01:00" />
@@ -74,9 +76,13 @@ En este fichero lo que haremos sera primero descomentar la linea strict-order pa
       </div>
     </header>
     <div class="post-content">
-      <h3 id="servidor-dnsmasq"><strong>Servidor DNSmasq</strong></h3>
+      <h2 id="introducción"><strong>Introducción</strong></h2>
+<p>En post a traves de una serie de tareas, configuraremos e instalaremos dos servidores dns para comprobar y ver su funcionamiento, dnsmaq y bind9.</p>
+<p>En nuestra red local tenemos un servidor Web que sirve dos páginas web: <a href="http://www.iesgn.org">www.iesgn.org</a>, departamentos.iesgn.org.</p>
+<p>Instalaremos en nuestra red local un servidor DNS. El nombre del servidor será tunombre.iesgn.org.</p>
+<h3 id="servidor-dnsmasq"><strong>Servidor DNSmasq</strong></h3>
 <ul>
-<li>Instala el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.*</li>
+<li>Instalamos el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.*</li>
 </ul>
 <p>Instalación:</p>
 <pre><code>sudo apt install dnsmasq
@@ -89,7 +95,7 @@ listen-address=127.0.0.1
 </code></pre><p>Un vez configurado todo, en el /etc/resolv de nuestro servidor añadimos la ip de nuestro servidor dns.</p>
 <pre><code>nameserver 10.0.0.8
 </code></pre><ul>
-<li>Tarea 1: Modifica los clientes para que utilicen el nuevo servidor dns. Realiza una consulta a <a href="http://www.iesgn.org">www.iesgn.org</a>, y a <a href="http://www.josedomingo.org">www.josedomingo.org</a>. Realiza una prueba de funcionamiento para comprobar que el servidor dnsmasq funciona como cache dns. Muestra el fichero hosts del cliente para demostrar que no estás utilizando resolución estática. Realiza una consulta directa al servidor dnsmasq. ¿Se puede realizar resolución inversa?. Documenta la tarea en redmine.</li>
+<li>Modificaremos los clientes para que utilicen el nuevo servidor dns. Realizaremos una consulta a <a href="http://www.iesgn.org">www.iesgn.org</a>, y a <a href="http://www.josedomingo.org">www.josedomingo.org</a>. Realizaremos una prueba de funcionamiento para comprobar que el servidor dnsmasq funciona como cache dns. Muestra el fichero hosts del cliente para demostrar que no estás utilizando resolución estática. Realizaremos una consulta directa al servidor dnsmasq. ¿Se puede realizar resolución inversa?. Documenta la tarea en redmine.</li>
 </ul>
 <p>Configuración del cliente indicando la ip del servidor - /etc/resolv.conf</p>
 <pre><code>nameserver 10.0.0.8
@@ -220,7 +226,9 @@ playerone.josedomingo.org. 768	IN	A	137.74.161.90
 ;; MSG SIZE  rcvd: 103
 </code></pre><p>Como se puede ver, la resolución de la petición a tardado 0 msec (nada), cuando antes tardo 137 msec, es decir, que funciona como cache dns.</p>
 <h3 id="servidor-dns-bind9"><strong>Servidor DNS bind9</strong></h3>
-<p><em>Desinstala el servidor dnsmasq del ejercicio anterior e instala un servidor dns bind9. Las características del servidor DNS que queremos instalar son las siguientes:</em></p>
+<ul>
+<li>Desinstalamos el servidor dnsmasq del ejercicio anterior e instala un servidor dns bind9. Las características del servidor DNS que queremos instalar son las siguientes:</li>
+</ul>
 <p>Instalación:</p>
 <pre><code>sudo apt install bind9
 </code></pre><p>• El servidor DNS se llama pandora.iesgn.org y por supuesto, va a ser el servidor con autoridad para la zona iesgn.org.
@@ -230,7 +238,7 @@ playerone.josedomingo.org. 768	IN	A	137.74.161.90
 • También hay que nombrar a los virtual hosts de apache: <a href="http://www.iesgn.org">www.iesgn.org</a> y departementos.iesgn.org
 • Se tienen que configurar la zona de resolución inversa.</p>
 <ul>
-<li>Tarea 2 (1 puntos): Realiza la instalación y configuración del servidor bind9 con las características anteriormente señaladas. Entrega las zonas que has definido. Muestra al profesor su funcionamiento.</li>
+<li>Realizamos la instalación y configuración del servidor bind9 con las características anteriormente señaladas. Entrega las zonas que has definido. Muestra al profesor su funcionamiento.</li>
 </ul>
 <p>Empezamos la configuración de bind9 configurando las zonas, para ello modificamos el fichero /etc/bind/named.conf.local añadiendo tanto la información de la zona directa como de la zona inversa.</p>
 <pre><code>zone &quot;iesgn.org&quot; {
@@ -282,7 +290,7 @@ $ORIGIN 0.0.10.in-addr.arpa.
 201     IN      PTR     ftp.iesgn.org
 5       IN      PTR     cliente
 </code></pre><ul>
-<li>Tarea 3: Realiza las consultas dig/nslookup desde los clientes preguntando por los siguientes:*</li>
+<li>Realizamos las consultas dig/nslookup desde los clientes preguntando por los siguientes:</li>
 </ul>
 <p>• Dirección de sergio.iesgn.org, <a href="http://www.iesgn.org">www.iesgn.org</a>, ftp.iesgn.org</p>
 <p>sergio.iesgn.org:</p>
@@ -483,10 +491,10 @@ sergio.iesgn.org.	604800	IN	A	10.0.0.8
 ;; SERVER: 10.0.0.8#53(10.0.0.8)
 ;; WHEN: Thu Dec 03 08:22:57 UTC 2020
 ;; MSG SIZE  rcvd: 147
-</code></pre><p>h2. <em>Servidor DNS esclavo</em></p>
+</code></pre><h2 id="servidor-dns-esclavo"><strong>Servidor DNS esclavo</strong></h2>
 <p>El servidor DNS actual funciona como DNS maestro. Vamos a instalar un nuevo servidor DNS que va a estar configurado como DNS esclavo del anterior, donde se van a ir copiando periódicamente las zonas del DNS maestro. Suponemos que el nombre del servidor DNS esclavo se va llamar afrodita.iesgn.org.</p>
 <ul>
-<li>Tarea 4: Realiza la instalación del servidor DNS esclavo. Documenta los siguientes apartados:</li>
+<li>Realizamos la instalación del servidor DNS esclavo. Documenta los siguientes apartados:</li>
 </ul>
 <p>• Entrega la configuración de las zonas del maestro y del esclavo.</p>
 <p>Configuración del maestro zonas:</p>
@@ -557,7 +565,7 @@ zone &quot;0.0.10.in-addr.arpa&quot; {
         masters {10.0.0.8;};
 };
 </code></pre><p>Con estas configuraciones lo que conseguimos es por parte del maestro indicar que se haga una transferencia de la configuración de las zonas al esclavo, y por parte del esclavo se indica la ip del servidor maestro.</p>
-<p>• Comprueba si las zonas definidas en el maestro tienen algún error con el comando adecuado.</p>
+<p>• Compruebamos si las zonas definidas en el maestro tienen algún error con el comando adecuado.</p>
 <p>zona directa:</p>
 <pre><code>debian@sergio:~$ sudo named-checkzone iesgn.org /var/cache/bind/db.sergio.iesgn.org 
 zone iesgn.org/IN: loaded serial 4
@@ -566,10 +574,10 @@ OK
 <pre><code>debian@sergio:~$ sudo named-checkzone 0.0.10.in-addr.arpa /var/cache/bind/db.10.0.0
 zone 0.0.10.in-addr.arpa/IN: loaded serial 4
 OK
-</code></pre><p>• Comprueba si la configuración de named.conf tiene algún error con el comando adecuado.</p>
+</code></pre><p>• Compruebamos si la configuración de named.conf tiene algún error con el comando adecuado.</p>
 <pre><code>named-checkconf
 </code></pre><p>No nos muestra ningún error.</p>
-<p>• Reinicia los servidores y comprueba en los logs si hay algún error. No olvides incrementar el número de serie en el registro SOA si has modificado la zona en el maestro.</p>
+<p>• Reiniciamos los servidores y comprueba en los logs si hay algún error. No olvides incrementar el número de serie en el registro SOA si has modificado la zona en el maestro.</p>
 <pre><code>debian@sergio:~$ sudo rndc reload
 server reload successful
 debian@sergio:~$ tail /var/log/syslog
@@ -733,12 +741,13 @@ Dec  4 14:28:35 sergio named[5959]: client @0x7f7c300d59b0 10.0.0.6#60715 (iesgn
 Dec  4 14:28:35 sergio named[5959]: client @0x7f7c300d59b0 10.0.0.6#60715 (iesgn.org): transfer of 'iesgn.org/IN': AXFR-style IXFR ended
 Dec  4 14:28:36 sergio named[5959]: managed-keys-zone: Key 20326 for zone . acceptance timer complete: key now trusted
 </code></pre><ul>
-<li>Tarea 5: Documenta los siguientes apartados:</li>
+<li>Configuramos un cliente para que utilice los dos servidores como servidores DNS.</li>
 </ul>
-<p>• Configura un cliente para que utilice los dos servidores como servidores DNS.</p>
 <p>Configuramos el /etc/resolv.conf del cliente añadiendo la ip de nuestro segundo servidor dns.</p>
 <pre><code>nameserver 10.0.0.6
-</code></pre><p>• Realiza una consulta con dig tanto al maestro como al esclavo para comprobar que las respuestas son autorizadas. ¿En qué te tienes que fijar?</p>
+</code></pre><ul>
+<li>Realizamos una consulta con dig tanto al maestro como al esclavo para comprobar que las respuestas son autorizadas. ¿En qué te tienes que fijar?</li>
+</ul>
 <p>Consulta al maestro:</p>
 <pre><code>debian@cliente:~$ dig +norec @10.0.0.8 iesgn.org. soa
 
@@ -802,7 +811,9 @@ afrodita.iesgn.org.	604800	IN	A	10.0.0.6
 ;; WHEN: Fri Dec 04 14:37:28 UTC 2020
 ;; MSG SIZE  rcvd: 183
 </code></pre><p>A la hora de hacer las peticiones nos tenemos que fijar en que el numero de serie sea el mismo en las dos consultas.</p>
-<p>• Solicita una copia completa de la zona desde el cliente ¿qué tiene que ocurrir?. Solicita una copia completa desde el esclavo ¿qué tiene que ocurrir?</p>
+<ul>
+<li>Solicitamos una copia completa de la zona desde el cliente ¿qué tiene que ocurrir?. Solicita una copia completa desde el esclavo ¿qué tiene que ocurrir?</li>
+</ul>
 <p>En el cliente no nos debe salir ningún tipo de información ya que la ip del cliente no esta especificada como allow-transfer en el fichero de configuración de las zonas, por lo que al solicitar la copia obtenemos loo siguiente:</p>
 <pre><code>debian@cliente:~$ dig @10.0.0.8 iesgn.org. axfr
 
@@ -833,9 +844,8 @@ iesgn.org.		604800	IN	SOA	sergio.iesgn.org. root.iesgn.org. 5 604800 86400 24192
 ;; WHEN: Fri Dec 04 14:51:12 UTC 2020
 ;; XFR size: 12 records (messages 1, bytes 355)
 </code></pre><ul>
-<li>Tarea 6: Muestra al profesor el funcionamiento del DNS esclavo:</li>
+<li>Realizamos una consulta desde el cliente y compruebamos que el servidor esclavo está respondiendo.</li>
 </ul>
-<p>• Realiza una consulta desde el cliente y comprueba que servidor está respondiendo.</p>
 <pre><code>debian@cliente:~$ dig departamentos.iesgn.org
 
 ; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5.1+deb10u2-Debian &lt;&lt;&gt;&gt; departamentos.iesgn.org
@@ -866,7 +876,9 @@ afrodita.iesgn.org.	604800	IN	A	10.0.0.6
 ;; WHEN: Fri Dec 04 14:58:01 UTC 2020
 ;; MSG SIZE  rcvd: 170
 </code></pre><p>En este caso esta respondiendo el servidor 10.0.0.8 (sergio.iesgn.org)</p>
-<p>• Posteriormente apaga el servidor maestro y vuelve a realizar una consulta desde el cliente ¿quién responde?</p>
+<ul>
+<li>Posteriormente apagamos el servidor maestro y vuelve a realizar una consulta desde el cliente ¿quién responde?</li>
+</ul>
 <pre><code>debian@cliente:~$ dig departamentos.iesgn.org
 
 ; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5.1+deb10u2-Debian &lt;&lt;&gt;&gt; departamentos.iesgn.org
@@ -906,7 +918,7 @@ Los nombres que vamos a tener en ese subdominio son los siguientes:
 • Vamos a suponer que tenemos un servidor ftp que se llame ftp.informatica.iesgn.org y que está en la misma máquina.
 • Vamos a suponer que tenemos un servidor para recibir los correos que se llame correo.informatica.iesgn.org.</p>
 <ul>
-<li>Tarea 7 (2 puntos): Realiza la instalación y configuración del nuevo servidor dns con las características anteriormente señaladas. Muestra el resultado al profesor.</li>
+<li>Realizamos la instalación y configuración del nuevo servidor dns con las características anteriormente señaladas. Muestra el resultado al profesor.</li>
 </ul>
 <p>En este caso se usara como subdominio el servidor esclavo usado anteriormente, por lo tanto no sera necesario instalar bind9 de nuevo ya que estará instalado.</p>
 <p>Configuración en el servidor maestro (/var/cache/bind/db.sergio.iesgn.org):</p>
@@ -960,7 +972,7 @@ ftp     IN      CNAME   ns
 correo  IN      CNAME   ns
 
 </code></pre><ul>
-<li>Tarea 8: Realiza las consultas dig/neslookup desde los clientes preguntando por los siguientes:</li>
+<li>Realizamos las consultas dig/neslookup desde los clientes preguntando por los siguientes:</li>
 </ul>
 <p>• Dirección de <a href="http://www.informatica.iesgn.org">www.informatica.iesgn.org</a>, ftp.informatica.iesgn.org</p>
 <p><a href="http://www.Informatica.iesgn.org">www.Informatica.iesgn.org</a>:</p>

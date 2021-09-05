@@ -8,7 +8,7 @@ categories: [Aplicaciones Web]
 
 En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
 
-Guacamole permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo. Incluso se pueden utilizar teléfonos móviles o tablets, sin tener que instalar nada. La presencia de un proxy o firewall corporativo no impide el uso de Guacamole.
+Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo. Incluso se pueden utilizar teléfonos móviles o tablets, sin tener que instalar nada. La presencia de un proxy o firewall corporativo no impide el uso de Guacamole.
 
 ### **Instalacion** ###
 
@@ -108,7 +108,7 @@ Comprobamos que guacamole realmente esta funcionando
 
 ![Guacamole server](/guacamole/Guacamole-server.png)
 
-* Realiza la configuración necesaria en apache2 y tomcat (utilizando el protocolo AJP) para que la aplicación sea servida por el servidor web.
+* Una vez instalado guacamole, realizaremos la configuración necesaria en apache2 y tomcat (utilizando el protocolo AJP) para que la aplicación sea servida por el servidor web.
 	
 El protocolo AJP no funciona en guacamole, por lo que en su lugar se creará y configurará un proxy inverso con apache.
 
@@ -139,7 +139,7 @@ Ademas de estas lineas, tendremos que añadir las siguientes al final del ficher
                protocolHeader="x-forwarded-proto" />
 ~~~
 
-Una vez configurado el fichero server.xml, habilitamos los módulos necesarios de apache2 para configurar mas adelante nuestro proxy, estos módulos serán mod_proxy y mod_proxy_http.
+Después de configurar el fichero server.xml, habilitamos los módulos necesarios de apache2 para configurar mas adelante nuestro proxy, estos módulos serán mod_proxy y mod_proxy_http.
 
 ~~~
 sudo a2enmod proxy
@@ -167,7 +167,7 @@ Ahora pasamos a configurar nuestro fichero de configuración en apache, en este 
 
 Reiniciamos el servicio de apache para que los cambios se guarden y añadimos el ServerName al /etc/hosts de la maquina real para comprobar que realmente funciona.
 
-* Entrega una captura de pantalla donde se vea la aplicación funcionando servida por apache2.
+* Comprobamos que la aplicación esta funcionando servida por apache2.
 
 Ponemos en el navegador el nombre que le hemos dado en apache a la aplicacion, en mi caso guacamole.sergio.org y comprobamos que se nos abre la aplicación de guacamole.
 

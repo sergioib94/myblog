@@ -13,10 +13,18 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Modificaciones del escenario Openstack"/>
-<meta name="twitter:description" content="Modificaciones del escenario openstack  Creación de maquina Freston:  Esta maquina se creara igual que las anteriores, mediante un volumen con debian buster y se le agregara una interfaz en la red 10.0.1.0/24. En un principio como en esta red esta deshabilitado el servidor dhcp, esta maquina no recibirá ip ninguna y por lo tanto no se podrá acceder a ella de ningún modo, por lo que lo primero que se hará sera habilitar el dhcp en esta red para que freston obtenga una ip y una vez que se realicen los cambios básicos tales como asignarle una ip dinámica y asignarle al usuario freston una contraseña por si fuese necesario entrar por consola, se volverá a deshabilitar el dhcp."/>
+<meta name="twitter:description" content="Introducción En el siguiente post, haciendo uso del escenario openstack creado en una de las practicas anteriores haremos una serie de modificaciones en dicho escenario.
+Modificaciones:
+  Creación de la red DMZ: Nombre: DMZ de &ldquo;nombre de usuario&rdquo; 10.0.2.0/24
+  Creación de las instancias: freston: Debian Buster sobre volumen de 10GB con sabor m1.mini Conectada a la red interna Accesible indirectamente a través de dulcinea IP estática
+  Modificación de la ubicación de quijote Pasa de la red interna a la DMZ y su direccionamiento tiene que modificarse apropiadamente"/>
 
     <meta property="og:title" content="Modificaciones del escenario Openstack" />
-<meta property="og:description" content="Modificaciones del escenario openstack  Creación de maquina Freston:  Esta maquina se creara igual que las anteriores, mediante un volumen con debian buster y se le agregara una interfaz en la red 10.0.1.0/24. En un principio como en esta red esta deshabilitado el servidor dhcp, esta maquina no recibirá ip ninguna y por lo tanto no se podrá acceder a ella de ningún modo, por lo que lo primero que se hará sera habilitar el dhcp en esta red para que freston obtenga una ip y una vez que se realicen los cambios básicos tales como asignarle una ip dinámica y asignarle al usuario freston una contraseña por si fuese necesario entrar por consola, se volverá a deshabilitar el dhcp." />
+<meta property="og:description" content="Introducción En el siguiente post, haciendo uso del escenario openstack creado en una de las practicas anteriores haremos una serie de modificaciones en dicho escenario.
+Modificaciones:
+  Creación de la red DMZ: Nombre: DMZ de &ldquo;nombre de usuario&rdquo; 10.0.2.0/24
+  Creación de las instancias: freston: Debian Buster sobre volumen de 10GB con sabor m1.mini Conectada a la red interna Accesible indirectamente a través de dulcinea IP estática
+  Modificación de la ubicación de quijote Pasa de la red interna a la DMZ y su direccionamiento tiene que modificarse apropiadamente" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T14:06:50&#43;01:00" />
@@ -70,12 +78,34 @@
       </div>
     </header>
     <div class="post-content">
-      <h3 id="modificaciones-del-escenario-openstack"><strong>Modificaciones del escenario openstack</strong></h3>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>En el siguiente post, haciendo uso del escenario openstack creado en una de las practicas anteriores haremos una serie de modificaciones en dicho escenario.</p>
+<p>Modificaciones:</p>
+<ul>
+<li>
+<p>Creación de la red DMZ:
+Nombre: DMZ de &ldquo;nombre de usuario&rdquo;
+10.0.2.0/24</p>
+</li>
+<li>
+<p>Creación de las instancias:
+freston:
+Debian Buster sobre volumen de 10GB con sabor m1.mini
+Conectada a la red interna
+Accesible indirectamente a través de dulcinea
+IP estática</p>
+</li>
+<li>
+<p>Modificación de la ubicación de quijote
+Pasa de la red interna a la DMZ y su direccionamiento tiene que modificarse apropiadamente</p>
+</li>
+</ul>
+<h3 id="modificaciones-del-escenario-openstack"><strong>Modificaciones del escenario openstack</strong></h3>
 <ul>
 <li>Creación de maquina Freston:</li>
 </ul>
-<p>Esta maquina se creara igual que las anteriores, mediante un volumen con debian buster y se le agregara una interfaz en la red 10.0.1.0/24.
-En un principio como en esta red esta deshabilitado el servidor dhcp, esta maquina no recibirá ip ninguna y por lo tanto no se podrá acceder a ella de ningún modo, por lo que lo primero que se hará sera habilitar el dhcp en esta red para que freston obtenga una ip y una vez que se realicen los cambios básicos tales como asignarle una ip dinámica y asignarle al usuario freston una contraseña por si fuese necesario entrar por consola, se volverá a deshabilitar el dhcp.
+<p>Esta maquina se creara igual que las anteriores, mediante un volumen con debian buster y se le agregara una interfaz en la red 10.0.1.0/24.</p>
+<p>En un principio como en esta red esta deshabilitado el servidor dhcp, esta maquina no recibirá ip ninguna y por lo tanto no se podrá acceder a ella de ningún modo, por lo que lo primero que se hará sera habilitar el dhcp en esta red para que freston obtenga una ip y una vez que se realicen los cambios básicos tales como asignarle una ip dinámica y asignarle al usuario freston una contraseña por si fuese necesario entrar por consola, se volverá a deshabilitar el dhcp.
 Deshabilitamos el servidor dhcp de nuevo y una vez que comprobamos que la maquina freston tiene ip, accedemos a ella de forma remota para comenzar con las configuraciones necesarias.</p>
 <p>Empezamos configurando el nombre de la maquina añadiendo a /etc/host el nombre de freston y a /etc/hosts el nombre freston-sergio.gonzalonazareno.org ademas del nombre y dirección del resto de maquinas del escenario para que freston sea capaz de reconocerlos.</p>
 <p>Creamos el usuario profesor asignándole una password mediante el comando useradd profesor -m -s/bin/bash. En el directorio /home de profesor creamos con mkdir la carpeta .ssh y se añaden las contraseñas de los profesores de modo que tengan acceso.</p>

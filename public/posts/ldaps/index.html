@@ -13,12 +13,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ldaps"/>
-<meta name="twitter:description" content="LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .crt de la unidad certificadora, en este caso el IES Gonzalo Nazareno, un .crt firmado por la unidad certificadora y un fichero .key usado para crear un fichero csr que posteriormente se firmará.
-Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros .crt) y el fichero .key en /etc/ssl/private/, hay que cambiar las acl con el comando setfacl para agregar los permisos:"/>
+<meta name="twitter:description" content="Introducción Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://
+LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado ."/>
 
     <meta property="og:title" content="Ldaps" />
-<meta property="og:description" content="LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .crt de la unidad certificadora, en este caso el IES Gonzalo Nazareno, un .crt firmado por la unidad certificadora y un fichero .key usado para crear un fichero csr que posteriormente se firmará.
-Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros .crt) y el fichero .key en /etc/ssl/private/, hay que cambiar las acl con el comando setfacl para agregar los permisos:" />
+<meta property="og:description" content="Introducción Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://
+LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/ldaps/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T14:13:08&#43;01:00" />
@@ -67,12 +67,14 @@ Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros 
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          2 min read
+          3 min read
         </div>
       </div>
     </header>
     <div class="post-content">
-      <h3 id="ldaps"><strong>LDAPs</strong></h3>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://</p>
+<h3 id="ldaps"><strong>LDAPs</strong></h3>
 <p>Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .crt de la unidad certificadora, en este caso el IES Gonzalo Nazareno, un .crt firmado por la unidad certificadora y un fichero .key usado para crear un fichero csr que posteriormente se firmará.</p>
 <p>Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros .crt) y el fichero .key en /etc/ssl/private/, hay que cambiar las acl con el comando setfacl para agregar los permisos:</p>
 <p>Instalamos el paquete acl:</p>

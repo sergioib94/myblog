@@ -105,7 +105,7 @@ Preparacion del escenario Empezamos creando en nuestro equipo un directorio dond
       <pubDate>Fri, 12 Mar 2021 19:00:38 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/vpn-site-to-site/</guid>
-      <description>Introduccion Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+      <description>Introduccion Configuraremos una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
 Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
 Se utilizarán direcciones de la red 10.</description>
     </item>
@@ -234,18 +234,19 @@ dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top ob
       <pubDate>Fri, 12 Mar 2021 14:13:08 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/ldaps/</guid>
-      <description>LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .crt de la unidad certificadora, en este caso el IES Gonzalo Nazareno, un .crt firmado por la unidad certificadora y un fichero .key usado para crear un fichero csr que posteriormente se firmará.
-Después de crear los certificados y ubicarlos en /etc/ssl/certs/ (los ficheros .crt) y el fichero .key en /etc/ssl/private/, hay que cambiar las acl con el comando setfacl para agregar los permisos:</description>
+      <description>Introducción Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://
+LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .</description>
     </item>
     
     <item>
-      <title>Instalacion y configuracion OpenLDAP</title>
+      <title>Instalacion y configuracion básica OpenLDAP</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</link>
       <pubDate>Fri, 12 Mar 2021 14:11:19 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</guid>
-      <description>Instalación Ldap sudo apt install slapd Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
-sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno.</description>
+      <description>Introducción En la maquina Freston de Openstack creada y configurada en la practica &amp;ldquo;modificaciones del escenario openstack&amp;rdquo;, se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.
+¿Que es LDAP?
+Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto.</description>
     </item>
     
     <item>
@@ -254,7 +255,11 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
       <pubDate>Fri, 12 Mar 2021 14:06:50 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/</guid>
-      <description>Modificaciones del escenario openstack  Creación de maquina Freston:  Esta maquina se creara igual que las anteriores, mediante un volumen con debian buster y se le agregara una interfaz en la red 10.0.1.0/24. En un principio como en esta red esta deshabilitado el servidor dhcp, esta maquina no recibirá ip ninguna y por lo tanto no se podrá acceder a ella de ningún modo, por lo que lo primero que se hará sera habilitar el dhcp en esta red para que freston obtenga una ip y una vez que se realicen los cambios básicos tales como asignarle una ip dinámica y asignarle al usuario freston una contraseña por si fuese necesario entrar por consola, se volverá a deshabilitar el dhcp.</description>
+      <description>Introducción En el siguiente post, haciendo uso del escenario openstack creado en una de las practicas anteriores haremos una serie de modificaciones en dicho escenario.
+Modificaciones:
+  Creación de la red DMZ: Nombre: DMZ de &amp;ldquo;nombre de usuario&amp;rdquo; 10.0.2.0/24
+  Creación de las instancias: freston: Debian Buster sobre volumen de 10GB con sabor m1.mini Conectada a la red interna Accesible indirectamente a través de dulcinea IP estática
+  Modificación de la ubicación de quijote Pasa de la red interna a la DMZ y su direccionamiento tiene que modificarse apropiadamente</description>
     </item>
     
     <item>
@@ -264,7 +269,7 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
       
       <guid>https://sergioib.netlify.app/posts/despliegue-cms-java/</guid>
       <description>Introduccion En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
-Guacamole permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo.</description>
+Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo.</description>
     </item>
     
     <item>
@@ -273,9 +278,9 @@ Guacamole permite acceder a uno o más escritorios desde cualquier lugar de form
       <pubDate>Fri, 12 Mar 2021 13:05:15 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/https-ovh/</guid>
-      <description>Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.    Explica detenidamente cómo se solicita un certificado en Let&amp;rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:
- ¿Qué función tiene el cliente ACME?  El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado.
- ¿Qué configuración se realiza en el servidor web?</description>
+      <description>Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.
+   Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.    Explica detenidamente cómo se solicita un certificado en Let&amp;rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:
+ ¿Qué función tiene el cliente ACME?  El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado.</description>
     </item>
     
     <item>
@@ -284,9 +289,10 @@ Guacamole permite acceder a uno o más escritorios desde cualquier lugar de form
       <pubDate>Fri, 12 Mar 2021 12:56:19 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</guid>
-      <description>Servidor DNSmasq  Instala el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.*  Instalación:
-sudo apt install dnsmasq Configuración de dnsmasq (/etc/dnsmasq.conf):
-En este fichero lo que haremos sera primero descomentar la linea strict-order para que de esta forma en el caso de que nuestro dns no sea capaz de resolver una petición, lea el fichero resolv.conf y le pregunte a la maquina que tengamos indicada en el fichero para que ella resuelva la petición.</description>
+      <description>Introducción En post a traves de una serie de tareas, configuraremos e instalaremos dos servidores dns para comprobar y ver su funcionamiento, dnsmaq y bind9.
+En nuestra red local tenemos un servidor Web que sirve dos páginas web: www.iesgn.org, departamentos.iesgn.org.
+Instalaremos en nuestra red local un servidor DNS. El nombre del servidor será tunombre.iesgn.org.
+Servidor DNSmasq  Instalamos el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.</description>
     </item>
     
     <item>
@@ -295,9 +301,9 @@ En este fichero lo que haremos sera primero descomentar la linea strict-order pa
       <pubDate>Fri, 12 Mar 2021 12:52:53 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/actualizacion-centos8/</guid>
-      <description>Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7.
+      <description>Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.
 Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
-[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.9.2009 de centos.</description>
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.</description>
     </item>
     
     <item>
@@ -318,7 +324,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv prac
       
       <guid>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</guid>
       <description>Introduccion En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
-  Tarea 1: Creación de la red interna: ◦ Nombre red interna de &amp;lt;sergio.ibañez&amp;gt; ◦ 10.0.1.0/24
+Creacion del escenario   Tarea 1: Creación de la red interna: ◦ Nombre red interna de &amp;lt;sergio.ibañez&amp;gt; ◦ 10.0.1.0/24
   Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20.</description>
     </item>
     

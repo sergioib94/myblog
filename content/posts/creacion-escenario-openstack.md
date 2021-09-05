@@ -8,6 +8,8 @@ categories: [Cloud]
 
 En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
 
+## **Creacion del escenario** ##
+
 * Tarea 1: Creación de la red interna:
         ◦ Nombre red interna de <sergio.ibañez>
         ◦ 10.0.1.0/24

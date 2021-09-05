@@ -14,11 +14,11 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Despliegue CMS Java"/>
 <meta name="twitter:description" content="Introduccion En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
-Guacamole permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo."/>
+Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo."/>
 
     <meta property="og:title" content="Despliegue CMS Java" />
 <meta property="og:description" content="Introduccion En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
-Guacamole permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo." />
+Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/despliegue-cms-java/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T13:49:27&#43;01:00" />
@@ -74,7 +74,7 @@ Guacamole permite acceder a uno o más escritorios desde cualquier lugar de form
     <div class="post-content">
       <h3 id="introduccion"><strong>Introduccion</strong></h3>
 <p>En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.</p>
-<p>Guacamole permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo. Incluso se pueden utilizar teléfonos móviles o tablets, sin tener que instalar nada. La presencia de un proxy o firewall corporativo no impide el uso de Guacamole.</p>
+<p>Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo. Incluso se pueden utilizar teléfonos móviles o tablets, sin tener que instalar nada. La presencia de un proxy o firewall corporativo no impide el uso de Guacamole.</p>
 <h3 id="instalacion"><strong>Instalacion</strong></h3>
 <p>Comenzamos instalando tomcat:</p>
 <pre><code>sudo apt install tomcat9
@@ -131,7 +131,7 @@ sudo chown tomcat:tomcat /etc/guacamole/user-mapping.xml
 <p>Comprobamos que guacamole realmente esta funcionando</p>
 <p><img src="/guacamole/Guacamole-server.png" alt="Guacamole server"></p>
 <ul>
-<li>Realiza la configuración necesaria en apache2 y tomcat (utilizando el protocolo AJP) para que la aplicación sea servida por el servidor web.</li>
+<li>Una vez instalado guacamole, realizaremos la configuración necesaria en apache2 y tomcat (utilizando el protocolo AJP) para que la aplicación sea servida por el servidor web.</li>
 </ul>
 <p>El protocolo AJP no funciona en guacamole, por lo que en su lugar se creará y configurará un proxy inverso con apache.</p>
 <p>Empezamos instalando apache2 en nuestro servidor</p>
@@ -148,7 +148,7 @@ sudo chown tomcat:tomcat /etc/guacamole/user-mapping.xml
                remoteIpHeader=&quot;x-forwarded-for&quot;
                remoteIpProxiesHeader=&quot;x-forwarded-by&quot;
                protocolHeader=&quot;x-forwarded-proto&quot; /&gt;
-</code></pre><p>Una vez configurado el fichero server.xml, habilitamos los módulos necesarios de apache2 para configurar mas adelante nuestro proxy, estos módulos serán mod_proxy y mod_proxy_http.</p>
+</code></pre><p>Después de configurar el fichero server.xml, habilitamos los módulos necesarios de apache2 para configurar mas adelante nuestro proxy, estos módulos serán mod_proxy y mod_proxy_http.</p>
 <pre><code>sudo a2enmod proxy
 sudo a2enmod proxy_http
 </code></pre><p>Ahora pasamos a configurar nuestro fichero de configuración en apache, en este caso como fichero de configuración se ha usado el fichero por defecto 000.default.conf, añadiendo en el las siguientes lineas.</p>
@@ -168,7 +168,7 @@ sudo a2enmod proxy_http
 &lt;/VirtualHost&gt;
 </code></pre><p>Reiniciamos el servicio de apache para que los cambios se guarden y añadimos el ServerName al /etc/hosts de la maquina real para comprobar que realmente funciona.</p>
 <ul>
-<li>Entrega una captura de pantalla donde se vea la aplicación funcionando servida por apache2.</li>
+<li>Comprobamos que la aplicación esta funcionando servida por apache2.</li>
 </ul>
 <p>Ponemos en el navegador el nombre que le hemos dado en apache a la aplicacion, en mi caso guacamole.sergio.org y comprobamos que se nos abre la aplicación de guacamole.</p>
 <p><img src="/guacamole/guacamole_inicio.png" alt="guacamole inicio"></p>

@@ -13,12 +13,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vpn Site to Site"/>
-<meta name="twitter:description" content="Introduccion Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+<meta name="twitter:description" content="Introduccion Configuraremos una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
 Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
 Se utilizarán direcciones de la red 10."/>
 
     <meta property="og:title" content="Vpn Site to Site" />
-<meta property="og:description" content="Introduccion Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+<meta property="og:description" content="Introduccion Configuraremos una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
 Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
 Se utilizarán direcciones de la red 10." />
 <meta property="og:type" content="article" />
@@ -69,37 +69,56 @@ Se utilizarán direcciones de la red 10." />
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          2 min read
+          3 min read
         </div>
       </div>
     </header>
     <div class="post-content">
       <h3 id="introduccion">Introduccion</h3>
-<p>Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:</p>
+<p>Configuraremos una conexión VPN sitio a sitio entre dos equipos del cloud openstack:</p>
 <p>Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.</p>
 <p>Se utilizarán direcciones de la red 10.99.99.0/24 para las direcciones virtuales de la VPN.
 Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.</p>
 <h3 id="vpn-sitio-a-sitio-con-openvpn-y-certificados-x509"><strong>VPN sitio a sitio con OpenVPN y certificados x509</strong></h3>
-<p>Escenario Propio:</p>
-<p>Servidor -&gt; 192.168.100.2
-Cliente -&gt; 192.168.100.10</p>
-<p>Escenario compañera Celia:</p>
-<p>Servidor -&gt; 192.168.200.8
-Cliente -&gt; 192.168.200.4</p>
-<p>En este caso mi servidor hace de cliente del servidor de celia.</p>
-<p>Fichero de configuracion sergio:</p>
+<ul>
+<li>Servidor 1: vpn_server</li>
+</ul>
+<p>Red común 172.22.201.64
+Red 10.0.0.8
+Red1 192.168.100.2</p>
+<ul>
+<li>
+<p>Maquina de la red local 1: lan
+Red1 192.168.100.10</p>
+</li>
+<li>
+<p>Servidor 2: vpn_server2</p>
+</li>
+</ul>
+<p>Red común 172.22.201.33
+Red 10.0.0.13
+Red2 192.168.200.8</p>
+<ul>
+<li>Maquina de la red local 1: lan2</li>
+</ul>
+<p>Red2 192.168.200.4</p>
+<p>Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.</p>
+<p>Cabe decir que tenemos instalado en las 4 máquinas el paquete openvpn.</p>
+<h3 id="configuración"><strong>Configuración</strong></h3>
+<p>En este caso mi servidor hace de cliente del servidor del servidor de mi compañera celia.</p>
+<p>Fichero de configuracion de mi maquina que hara de cliente:</p>
 <pre><code>#### Fichero de sit-to-site vpn ####
 #Dispositivo de túnel
 dev tun
 
 #IP del servidor
-remote 172.22.201.33
+remote 172.22.201.33 (ip del servidor interno)
 
 #Encaminamiento
 ifconfig 10.99.99.2 10.99.99.1
 
 # Subred remota
-route 192.168.200.0 255.255.255.0
+route 192.168.200.0 255.255.255.0 (ip externa del servidor)
 
 #Rol de cliente
 tls-client
@@ -123,7 +142,8 @@ keepalive 10 60
 verb 3
 
 log /var/log/vpn.log
-</code></pre><p>Fichero Servidor celia:</p>
+</code></pre><p>Para ello mi compañera celia a tenido que pasarme los certificados y claves necesarias para que la conexion se establezca de forma corracta.</p>
+<p>Fichero Servidor celia:</p>
 <pre><code># Use a dynamic TUN device
 dev tun
 
@@ -131,7 +151,7 @@ dev tun
 ifconfig 10.99.99.1 10.99.99.2
 
 # Local subnet
-route 192.168.100.0 255.255.255.0
+route 192.168.100.0 255.255.255.0 (ruta de mi maquina que hace de cliente)
 
 # Enable TLS and assume server role
 tls-server
@@ -158,7 +178,8 @@ keepalive 10 60
 verb 3
 
 log /var/log/office1.log
-</code></pre><p><img src="/site-to-site/Pueba_ping.jpeg" alt="Pueba de ping"></p>
+</code></pre><p>Una vez establecido el tunel vpn comprobamos que tanto servidor como cliente en ambas redes tienen conexion ejecutando un ping por ejemplo.</p>
+<p><img src="/site-to-site/Pueba_ping.jpeg" alt="Pueba de ping"></p>
 
     </div>
     <div class="post-footer">

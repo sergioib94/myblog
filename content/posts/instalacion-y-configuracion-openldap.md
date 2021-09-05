@@ -1,8 +1,18 @@
 ---
-title: "Instalacion y configuracion OpenLDAP"
+title: "Instalacion y configuracion básica OpenLDAP"
 date: 2021-03-12T14:11:19+01:00
 categories: [Sistemas]
 ---
+
+### **Introducción** ###
+
+En la maquina Freston de Openstack creada y configurada en la practica "modificaciones del escenario openstack", se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.
+
+**¿Que es LDAP?**
+
+Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto.
+
+Un directorio remoto es un conjunto de objetos que están organizados de forma jerárquica, tales como nombre claves direcciones, etc. Estos objetos estarán disponibles por una serie de cliente conectados mediante una red, normalmente interna o LAN, y proporcionarán las identidades y permisos para esos usuarios que los utilicen.
 
 ### **Instalación Ldap** ###
 
@@ -10,7 +20,7 @@ categories: [Sistemas]
 sudo apt install slapd
 ~~~
 
-Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
+Por defecto nuestro DN (nombre de dominio) será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
 
 ~~~
 sudo dpkg-reconfigure -plow slapd
@@ -18,7 +28,7 @@ sudo dpkg-reconfigure -plow slapd
 
 Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno.
 
-Crea dos unidades organizativas, una para personas y otra para grupos
+Crearemos dos unidades organizativas, una para personas y otra para grupos
 
 Para crear estas unidades, necesitamos un fichero.ldif por lo que creamos uno en el directorio home, en este caso llamado ou.ldif con el siguiente contenido:
 

@@ -3,12 +3,31 @@ title: "Modificaciones del escenario Openstack"
 date: 2021-03-12T14:06:50+01:00
 categories: [Cloud]
 ---
+### **Introducción** ###
+
+En el siguiente post, haciendo uso del escenario openstack creado en una de las practicas anteriores haremos una serie de modificaciones en dicho escenario.
+
+Modificaciones:
+
+* Creación de la red DMZ:
+    Nombre: DMZ de "nombre de usuario"
+    10.0.2.0/24
+
+* Creación de las instancias:
+    freston:
+        Debian Buster sobre volumen de 10GB con sabor m1.mini
+        Conectada a la red interna
+        Accesible indirectamente a través de dulcinea
+        IP estática
+* Modificación de la ubicación de quijote
+    Pasa de la red interna a la DMZ y su direccionamiento tiene que modificarse apropiadamente
 
 ### **Modificaciones del escenario openstack** ###
 
 * Creación de maquina Freston:
 
-Esta maquina se creara igual que las anteriores, mediante un volumen con debian buster y se le agregara una interfaz en la red 10.0.1.0/24. 
+Esta maquina se creara igual que las anteriores, mediante un volumen con debian buster y se le agregara una interfaz en la red 10.0.1.0/24.
+
 En un principio como en esta red esta deshabilitado el servidor dhcp, esta maquina no recibirá ip ninguna y por lo tanto no se podrá acceder a ella de ningún modo, por lo que lo primero que se hará sera habilitar el dhcp en esta red para que freston obtenga una ip y una vez que se realicen los cambios básicos tales como asignarle una ip dinámica y asignarle al usuario freston una contraseña por si fuese necesario entrar por consola, se volverá a deshabilitar el dhcp.
 Deshabilitamos el servidor dhcp de nuevo y una vez que comprobamos que la maquina freston tiene ip, accedemos a ella de forma remota para comenzar con las configuraciones necesarias.
 

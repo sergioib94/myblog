@@ -6,7 +6,7 @@ categories: [Sistemas]
 
 ### **Introduccion** ###
 
-Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7.
+Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.
 
 ### **Actualizacion de Centos 7 a Centos 8 en la maquina quijote** ###
 

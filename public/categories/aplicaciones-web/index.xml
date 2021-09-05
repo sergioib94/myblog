@@ -58,7 +58,7 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezz
       
       <guid>https://sergioib.netlify.app/posts/despliegue-cms-java/</guid>
       <description>Introduccion En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
-Guacamole permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo.</description>
+Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo.</description>
     </item>
     
     <item>

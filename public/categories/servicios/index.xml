@@ -44,9 +44,10 @@ acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0
       <pubDate>Fri, 12 Mar 2021 12:56:19 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</guid>
-      <description>Servidor DNSmasq  Instala el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.*  Instalación:
-sudo apt install dnsmasq Configuración de dnsmasq (/etc/dnsmasq.conf):
-En este fichero lo que haremos sera primero descomentar la linea strict-order para que de esta forma en el caso de que nuestro dns no sea capaz de resolver una petición, lea el fichero resolv.conf y le pregunte a la maquina que tengamos indicada en el fichero para que ella resuelva la petición.</description>
+      <description>Introducción En post a traves de una serie de tareas, configuraremos e instalaremos dos servidores dns para comprobar y ver su funcionamiento, dnsmaq y bind9.
+En nuestra red local tenemos un servidor Web que sirve dos páginas web: www.iesgn.org, departamentos.iesgn.org.
+Instalaremos en nuestra red local un servidor DNS. El nombre del servidor será tunombre.iesgn.org.
+Servidor DNSmasq  Instalamos el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.</description>
     </item>
     
     <item>

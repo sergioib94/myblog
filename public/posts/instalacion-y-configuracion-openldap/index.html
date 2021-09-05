@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>Instalacion y configuracion OpenLDAP // El rincon del admin</title>
+    <title>Instalacion y configuracion básica OpenLDAP // El rincon del admin</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.81.0" />
@@ -12,13 +12,15 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Instalacion y configuracion OpenLDAP"/>
-<meta name="twitter:description" content="Instalación Ldap sudo apt install slapd Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
-sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno."/>
+<meta name="twitter:title" content="Instalacion y configuracion básica OpenLDAP"/>
+<meta name="twitter:description" content="Introducción En la maquina Freston de Openstack creada y configurada en la practica &ldquo;modificaciones del escenario openstack&rdquo;, se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.
+¿Que es LDAP?
+Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto."/>
 
-    <meta property="og:title" content="Instalacion y configuracion OpenLDAP" />
-<meta property="og:description" content="Instalación Ldap sudo apt install slapd Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:
-sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno." />
+    <meta property="og:title" content="Instalacion y configuracion básica OpenLDAP" />
+<meta property="og:description" content="Introducción En la maquina Freston de Openstack creada y configurada en la practica &ldquo;modificaciones del escenario openstack&rdquo;, se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.
+¿Que es LDAP?
+Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T14:11:19&#43;01:00" />
@@ -53,7 +55,7 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Instalacion y configuracion OpenLDAP</h1>
+      <h1 class ="post-title">Instalacion y configuracion básica OpenLDAP</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -72,12 +74,17 @@ sudo dpkg-reconfigure -plow slapd Indicando primero cual sera el nuevo nombre de
       </div>
     </header>
     <div class="post-content">
-      <h3 id="instalación-ldap"><strong>Instalación Ldap</strong></h3>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>En la maquina Freston de Openstack creada y configurada en la practica &ldquo;modificaciones del escenario openstack&rdquo;, se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.</p>
+<p><strong>¿Que es LDAP?</strong></p>
+<p>Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto.</p>
+<p>Un directorio remoto es un conjunto de objetos que están organizados de forma jerárquica, tales como nombre claves direcciones, etc. Estos objetos estarán disponibles por una serie de cliente conectados mediante una red, normalmente interna o LAN, y proporcionarán las identidades y permisos para esos usuarios que los utilicen.</p>
+<h3 id="instalación-ldap"><strong>Instalación Ldap</strong></h3>
 <pre><code>sudo apt install slapd
-</code></pre><p>Por defecto nuestro dn será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:</p>
+</code></pre><p>Por defecto nuestro DN (nombre de dominio) será dc=gonzalonazareno,dc=org por lo que se cambiara la configuración básica de slapd de forma que coja como dn el nombre completo de nuestro servidor, que en mi caso es freston-sergio.gonzalonazareno.org, este cambio lo hacemos ejecutando:</p>
 <pre><code>sudo dpkg-reconfigure -plow slapd
 </code></pre><p>Indicando primero cual sera el nuevo nombre de dominio que usara ldap y después cambiando el nombre de la organización a IES Gonzalo Nazareno.</p>
-<p>Crea dos unidades organizativas, una para personas y otra para grupos</p>
+<p>Crearemos dos unidades organizativas, una para personas y otra para grupos</p>
 <p>Para crear estas unidades, necesitamos un fichero.ldif por lo que creamos uno en el directorio home, en este caso llamado ou.ldif con el siguiente contenido:</p>
 <pre><code>dn: ou=People,dc=freston-sergio,dc=gonzalonazareno,dc=org
 ou: People

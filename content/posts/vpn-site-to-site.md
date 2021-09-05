@@ -6,7 +6,7 @@ categories: [Seguridad]
 
 ### Introduccion ###
 
-Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+Configuraremos una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
 
 Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
 
@@ -15,19 +15,34 @@ Tras el establecimiento de la VPN, una máquina de cada red detrás de cada serv
 
 ### **VPN sitio a sitio con OpenVPN y certificados x509** ###
 
-Escenario Propio:
+* Servidor 1: vpn_server
 
-Servidor -> 192.168.100.2
-Cliente -> 192.168.100.10
+Red común 172.22.201.64
+Red 10.0.0.8
+Red1 192.168.100.2
 
-Escenario compañera Celia:
+* Maquina de la red local 1: lan
+Red1 192.168.100.10
 
-Servidor -> 192.168.200.8
-Cliente -> 192.168.200.4
+* Servidor 2: vpn_server2
 
-En este caso mi servidor hace de cliente del servidor de celia.
+Red común 172.22.201.33
+Red 10.0.0.13
+Red2 192.168.200.8
 
-Fichero de configuracion sergio:
+* Maquina de la red local 1: lan2
+
+Red2 192.168.200.4
+
+Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.
+
+Cabe decir que tenemos instalado en las 4 máquinas el paquete openvpn.
+
+### **Configuración** ###
+
+En este caso mi servidor hace de cliente del servidor del servidor de mi compañera celia.
+
+Fichero de configuracion de mi maquina que hara de cliente:
 
 ~~~
 #### Fichero de sit-to-site vpn ####
@@ -35,13 +50,13 @@ Fichero de configuracion sergio:
 dev tun
 
 #IP del servidor
-remote 172.22.201.33
+remote 172.22.201.33 (ip del servidor interno)
 
 #Encaminamiento
 ifconfig 10.99.99.2 10.99.99.1
 
 # Subred remota
-route 192.168.200.0 255.255.255.0
+route 192.168.200.0 255.255.255.0 (ip externa del servidor)
 
 #Rol de cliente
 tls-client
@@ -67,6 +82,8 @@ verb 3
 log /var/log/vpn.log
 ~~~
 
+Para ello mi compañera celia a tenido que pasarme los certificados y claves necesarias para que la conexion se establezca de forma corracta.
+
 Fichero Servidor celia:
 
 ~~~
@@ -77,7 +94,7 @@ dev tun
 ifconfig 10.99.99.1 10.99.99.2
 
 # Local subnet
-route 192.168.100.0 255.255.255.0
+route 192.168.100.0 255.255.255.0 (ruta de mi maquina que hace de cliente)
 
 # Enable TLS and assume server role
 tls-server
@@ -105,5 +122,7 @@ verb 3
 
 log /var/log/office1.log
 ~~~
+
+Una vez establecido el tunel vpn comprobamos que tanto servidor como cliente en ambas redes tienen conexion ejecutando un ping por ejemplo.
 
 ![Pueba de ping](/site-to-site/Pueba_ping.jpeg)
