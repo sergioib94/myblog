@@ -17,22 +17,23 @@ Tras el establecimiento de la VPN, una máquina de cada red detrás de cada serv
 
 * Servidor 1: vpn_server
 
-Red común 172.22.201.64
-Red 10.0.0.8
-Red1 192.168.100.2
+    * Red común 172.22.201.64
+    * Red 10.0.0.8
+    * Red1 192.168.100.2
 
 * Maquina de la red local 1: lan
-Red1 192.168.100.10
+
+    * Red1 192.168.100.10
 
 * Servidor 2: vpn_server2
 
-Red común 172.22.201.33
-Red 10.0.0.13
-Red2 192.168.200.8
+    * Red común 172.22.201.33
+    * Red 10.0.0.13
+    * Red2 192.168.200.8
 
 * Maquina de la red local 1: lan2
 
-Red2 192.168.200.4
+    * Red2 192.168.200.4
 
 Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.
 
