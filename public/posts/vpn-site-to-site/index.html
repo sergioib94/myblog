@@ -81,27 +81,35 @@ Se utilizarán direcciones de la red 10." />
 Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.</p>
 <h3 id="vpn-sitio-a-sitio-con-openvpn-y-certificados-x509"><strong>VPN sitio a sitio con OpenVPN y certificados x509</strong></h3>
 <ul>
-<li>Servidor 1: vpn_server</li>
-</ul>
-<p>Red común 172.22.201.64
-Red 10.0.0.8
-Red1 192.168.100.2</p>
-<ul>
 <li>
-<p>Maquina de la red local 1: lan
-Red1 192.168.100.10</p>
+<p>Servidor 1: vpn_server</p>
+<ul>
+<li>Red común 172.22.201.64</li>
+<li>Red 10.0.0.8</li>
+<li>Red1 192.168.100.2</li>
+</ul>
+</li>
+<li>
+<p>Maquina de la red local 1: lan</p>
+<ul>
+<li>Red1 192.168.100.10</li>
+</ul>
 </li>
 <li>
 <p>Servidor 2: vpn_server2</p>
+<ul>
+<li>Red común 172.22.201.33</li>
+<li>Red 10.0.0.13</li>
+<li>Red2 192.168.200.8</li>
+</ul>
+</li>
+<li>
+<p>Maquina de la red local 1: lan2</p>
+<ul>
+<li>Red2 192.168.200.4</li>
+</ul>
 </li>
 </ul>
-<p>Red común 172.22.201.33
-Red 10.0.0.13
-Red2 192.168.200.8</p>
-<ul>
-<li>Maquina de la red local 1: lan2</li>
-</ul>
-<p>Red2 192.168.200.4</p>
 <p>Tras el establecimiento de la VPN, una máquina de cada red detrás de cada servidor VPN debe ser capaz de acceder a una máquina del otro extremo.</p>
 <p>Cabe decir que tenemos instalado en las 4 máquinas el paquete openvpn.</p>
 <h3 id="configuración"><strong>Configuración</strong></h3>

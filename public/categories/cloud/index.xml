@@ -34,20 +34,21 @@ Preparacion del escenario Empezamos creando en nuestro equipo un directorio dond
       <pubDate>Fri, 12 Mar 2021 18:44:37 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/iscsi/</guid>
-      <description>Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
-En el servidor, empezamos instalando los paquetes tgt y lvm2.
-apt install tgt lvm2 Mientras en el cliente debian instalamos el paquete iscsi
-apt install open-iscsi Preparamos los discos para el uso de ISCSI LUN (en el server), usando lvm2 creamos los volúmenes físicos:</description>
+      <description>Introducción ISCSI es un estándar que permite el uso del protocolo SCSI sobre redes TCP/IP. iSCSI es un protocolo de la capa de transporte definido en las especificaciones SCSI-3.
+Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
+Instalación y configuración En el servidor, empezamos instalando los paquetes tgt y lvm2.
+apt install tgt lvm2 Mientras en el cliente debian instalamos el paquete iscsi</description>
     </item>
     
     <item>
-      <title>Instalacion y configuracion basica Vmware ESXI</title>
+      <title>Instalación y configuración basica Vmware ESXI</title>
       <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</link>
       <pubDate>Fri, 12 Mar 2021 14:24:08 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</guid>
-      <description>La instalación inicialmente es bastante sencilla, haciendo uso de un usb con la iso de vmware 5.5 lo conectamos en el servidor y nos aseguramos de que este configurado en bios para que arranque por usb y no por otro medio.
-Una vez que comience la instalación, lo primero sera confirmar dicha instalación y mas adelante tendremos que elegir el disco donde se instalara vmware. En este caso al haber una instalacion vmware anterior, tendremos que reinstalar vmware.</description>
+      <description>Introducción ¿Que es Vmware?
+Vmware, es una de las herramientas más populares que se utilizan a la hora de virtualizar. La virtualización es el proceso a través del cual se emula un recurso, como por ejemplo puede ser un sistema operativo, a través de una herramienta de software. Este software en este caso, sería Vmware.
+Con Vmware tenemos la posibilidad de ejecutar un sistema operativo, de la misma forma que si estuviera instalado en un servidor físico, pero sin llegar a estarlo, ya que estos sistemas operativos se encuentran corriendo dentro de otros sistemas, que son conocidos como el host.</description>
     </item>
     
     <item>

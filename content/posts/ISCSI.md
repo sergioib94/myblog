@@ -3,8 +3,13 @@ title: "ISCSI"
 date: 2021-03-12T18:44:37+01:00
 categories: [Cloud]
 ---
+### **Introducción** ###
+
+ISCSI es un estándar que permite el uso del protocolo SCSI sobre redes TCP/IP. iSCSI es un protocolo de la capa de transporte definido en las especificaciones SCSI-3.
 
 Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
+
+### **Instalación y configuración** ###
 
 En el servidor, empezamos instalando los paquetes tgt y lvm2.
 
@@ -190,7 +195,7 @@ systemctl enable iscsi.mount
 
 Reiniciamos y comprobamos si se automonta:
 
-### **Windows** ###
+### **Configuración Windows** ###
 
 Para windows vamos a utilizar los dos volumenes que sobran, sdc y sdd, empezamos al igual que antes creando los volúmenes lógicos en el servidor:
 

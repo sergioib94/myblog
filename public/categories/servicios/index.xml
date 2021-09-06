@@ -33,9 +33,9 @@ global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 12
       <pubDate>Fri, 12 Mar 2021 14:18:01 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</guid>
-      <description>Configuración bind con vistas:    En la maquina de Freston empezamos instalando el servidor dns:
-sudo apt install bind9 Una vez instalado bind9, lo primero sera configurar las vistas en /etc/bind/named.conf.local:
-acl interna { 10.0.1.0/24; }; acl DMZ { 10.0.2.0/24; }; acl externa { 172.22.0.0/15; }; view interna { match-clients { interna; }; allow-recursion { any; }; zone &amp;quot;gonzalonazareno.org&amp;quot; { type master; file &amp;quot;db.interna.gonzalonazareno.org&amp;quot;; }; zone &amp;quot;1.</description>
+      <description>Introducción Haciendo uso de nuestro escenario openstack creado en practicas anteriores instalaremos y configuraremos los siguientes servidores en los distintos nodos del escenario:
+Servidor DNS
+Vamos a instalar un servidor dns en freston que nos permita gestionar la resolución directa e inversa de nuestros nombres. Tendremos un servidor dns con autoridad sobre un subdominio de nuestro dominio principal gonzalonazareno.org, que se llamará tu_nombre.gonzalonazareno.org. A partir de este momento no será necesario la resolución estática en los servidores.</description>
     </item>
     
     <item>

@@ -4,7 +4,47 @@ date: 2021-03-12T14:18:01+01:00
 categories: [Servicios]
 ---
 
-* 1. Configuración bind con vistas:
+### **Introducción** ###
+
+Haciendo uso de nuestro escenario openstack creado en practicas anteriores instalaremos y configuraremos los siguientes servidores en los distintos nodos del escenario:
+
+**Servidor DNS**
+
+Vamos a instalar un servidor dns en freston que nos permita gestionar la resolución directa e inversa de nuestros nombres. Tendremos un servidor dns con autoridad sobre un subdominio de nuestro dominio principal gonzalonazareno.org, que se llamará tu_nombre.gonzalonazareno.org. A partir de este momento no será necesario la resolución estática en los servidores.
+
+Tendremos que determinar la regla DNAT en dulcinea para que podamos hacer consultas DNS desde el exterior.
+
+Configuraremos de forma adecuada todas las máquinas para que usen como servidor DNS a freston.
+
+Comprobaremos que los servidores tienen configurados el nuevo nombre de dominio de forma adecuada después de volver a reiniciar el servidor (o tomar una nueva configuración DHCP). Para que el servidor tenga el FQDN debemos tener configurado de forma correcta el parámetro domain y el parámetro search en el fichero /etc/resolv.conf, además debemos evitar que este fichero se sobreescriba con los datos que manda el servidor DHCP de OpenStack.
+
+El servidor DNS se va a configurar en un principio de la siguiente manera:
+
+* El servidor DNS se llama freston.tu_nombre.gonzalonazareno.org y va a ser el servidor con autoridad para la zona tu_nombre.gonzalonazareno.org.
+
+* El servidor debe resolver el nombre de todas las máquinas.
+* El servidor debe resolver los distintos servicios (virtualhosh, servidor de base de datos, servido ldap, ...).
+
+Debemos determinar cómo vas a nombrar a dulcinea, para que seamos capaz de resolver la ip flotante y la ip fija. Para ello vamos a usar vistas en bind9.
+
+Debemos considerar la posibilidad de hacer tres zonas de resolución inversa: para las redes 10.0.0.0/24, 10.0.1.0/24 y 10.0.2.0/24. (No vamos a crear la zona inversa para la red externa de ip flotantres). para resolver ip fijas y flotantes del cloud.
+
+Realizaremos las siguientes consultas desde un cliente interno a nuestra red y otro externo:
+
+* El servidor DNS con autoridad sobre la zona del dominio tu_nombre.gonzalonazareno.org
+* La dirección IP de dulcinea.
+* Una resolución de www.
+* Un resolución inversa de IP fija en cada una de las redes. (Esta consulta sólo funcionará desde una máquina interna).
+
+**Servidor Web**
+
+En quijote (CentOs)(Servidor que está en la DMZ) vamos a instalar un servidor web apache. Configuraremos el servidor para que sea capaz de ejecutar código php (para ello vamos a usar un servidor de aplicaciones php-fpm). Como prueba de funcionamiento accederemos a www.tunombre.gonzalonazareno.org/info.php donde se vea la salida del fichero info.php. 
+
+**Servidor de base de datos**
+
+En sancho (Ubuntu) vamos a instalar un servidor de base de datos mariadb (bd.tu_nombre.gonzalonazareno.org). Haremos una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde quijote
+
+### **Configuración bind con vistas** ###
 
 En la maquina de Freston empezamos instalando el servidor dns:
 
@@ -198,16 +238,14 @@ include "/etc/bind/named.conf.local";
 //include "/etc/bind/named.conf.default-zones";
 ~~~
 
-* 2. Regla DNAT en dulcinea para redirigir trafico DNS a freston
-
-En la maquina dulcinea, agregamos las siguientes reglas iptables para permitir que el trafico DNS llegue a freston:
+Una vez configurado el servidor DNS configuraremos la regla DNAT en dulcinea para redirigir trafico DNS a freston.
 
 ~~~
 iptables -A OUTPUT -o eth1 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i eth1 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
 ~~~
 
-* 3. Probar bind con clientes en distintas redes
+Hacemos una prueba de funcionamiento usando bind con clientes en distintas redes.
 
 Prueba de funcionamiento desde la red 10.0.1.0/24:
 
@@ -268,7 +306,7 @@ gonzalonazareno.org.	604800	IN	SOA	freston.sergio.gonzalonazareno.org. root.iesg
 ;; MSG SIZE  rcvd: 141
 ~~~
 
-* 4. Asegurar que /etc/resolv.conf tiene domain, search, nameserver bien configurado, después del reinicio. Hostname -f
+Una vez hecho lo anterior nos aseguraremos que /etc/resolv.conf tiene domain, search, nameserver bien configurado, después del reinicio. Hostname -f
 
 Freston:
 
@@ -336,27 +374,25 @@ domain quijote.sergio.gonzalonazareno.org
 
 Para que estos cambios permanezcan después de un reinicio, sera necesario desactivar cloud-init:
 
-Para desactivar cloud-init en las máquinas debian, tendremos que configurar el fichero /etc/cloud/cloud.cfg modificando la linea manage_etc_hosts cambiando su valor a false.
+* Para desactivar cloud-init en las máquinas debian, tendremos que configurar el fichero /etc/cloud/cloud.cfg modificando la linea manage_etc_hosts cambiando su valor a false.
 
-Para hacerlo en la máquina ubuntu, creamos el siguiente fichero /etc/cloud/cloud-init.disabled.
+* Para hacerlo en la máquina ubuntu, creamos el siguiente fichero /etc/cloud/cloud-init.disabled.
 
-Para hacerlo en la máquina centos, al igual que en ubuntu, creamos el siguiente fichero /etc/cloud/cloud-init.disabled, pero en este caso con el siguiente contenido cloud-init=disabled, indicando de esta forma que en momento del arranque, el valor de cloud-init sea disabled.
+* Para hacerlo en la máquina centos, al igual que en ubuntu, creamos el siguiente fichero /etc/cloud/cloud-init.disabled, pero en este caso con el siguiente contenido cloud-init=disabled, indicando de esta forma que en momento del arranque, el valor de cloud-init sea disabled.
 
-* 5. Delegar la zona: decir subdominio e ip flotante
+Delegamos la zona: es decir subdominio e ip flotante.
 
 Nombre de subdominio: sergio.gonzalonazareno.org
 
 ip flotante: 172.22.200.151
 
-* 6. probar que se puede resolver vuestros nombres (vista exterior) preguntando a papion
-
-* 7. instalar apache2 en quijote (CentOs)(SELinux)
+### **Instalamos apache2 en quijote (CentOs)(SELinux)** ###
 
 ~~~
 sudo dnf install httpd
 ~~~
 
-* 8. instalar php-fpm y configurar php-fpm
+Instalamos tambien php-fpm y configuramos php-fpm
 
 ~~~
 sudo dnf install php-fpm
@@ -373,7 +409,7 @@ De forma que si accedemos a quijote a través del navegador obtengamos algo como
 
 ![info.php](/servidor-web-bbdd-y-dns/info.php.png)
 
-* 9. regla dnat para acceder al puerto 80,443 a quijote
+Añadimos la regla dnat en dulcinea para acceder al puerto 80,443 a quijote.
 
 ~~~
 sudo iptables -A OUTPUT -o eth2 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
@@ -381,7 +417,7 @@ sudo iptables -A OUTPUT -o eth2 -p tcp -m multiport --dports 80,443 -m state --s
 sudo iptables -A INPUT -i eth2 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
 ~~~
 
-* 10. instala mariadb en sancho
+### **Instalamos mariadb en sancho** ###
 
 Instalación:
 
@@ -454,7 +490,7 @@ installation should now be secure.
 Thanks for using MariaDB!
 ~~~
 
-* 11. configurar para hacer acceso desde quijote.
+Configuraremos la base de datos para tener acceso desde quijote.
 
 Modificamos el fichero /etc/mysql/mariadb.conf.d/50-server.cnf cambiando la linea bind-address de 127.0.0.1 a 0.0.0.0 o bien a 10.0.2.5 que sera nuestra ip de quijote.
 

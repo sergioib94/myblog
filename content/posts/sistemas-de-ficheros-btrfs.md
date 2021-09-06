@@ -4,7 +4,15 @@ date: 2021-03-12T17:50:31+01:00
 categories: [Sistemas]
 ---
 
-• Crea un escenario que incluya una máquina y varios discos asociados a ella.
+### **Introducción** ###
+
+Btrfs es un sistema de archivos copy-on-write anunciado por Oracle Corporation para GNU/Linux.
+
+Su objetivo es sustituir al actual sistema de archivos ext4, eliminando el mayor número de sus limitaciones, en especial con el tamaño máximo de los ficheros; además de la adopción de nuevas tecnologías no soportadas por ext3. Se afirma también que se "centrará en la tolerancia a fallos, reparación y fácil administración".
+
+En este post crearemos un escenario vagrant con una maquina que incluya varios discos y a traves de varias pruebas comprobaremos el funcionamiento y rendimiento de btrfs.
+
+### **Escenario** ###
 
 El escenario con el que contamos para esta practica es el de una maquina virtual con sistema operativo debían 10 creada con vagrant con 4 discos adicionales en el que se instalara un Raid5 usando los 3 primeros discos, y el ultimo disco se dejara para posteriormente comprobar sustituciones de discos simulando fallos.
 
@@ -21,15 +29,15 @@ sdd
 sde                 
 ~~~ 
 
-• Instala si es necesario el software de ZFS/Btrfs
+* Instalamos Btrfs.
 
 ~~~
 sudo apt install btrfs-tools
 ~~~
 
-• Gestiona los discos adicionales con ZFS/Btrfs
+### **Pruebas con Btrfs** ###
 
-Gestión de un solo disco btrfs:
+* Gestión de un solo disco btrfs:
 
 Creamos un sistema de ficheros btrfs sobre un solo disco (también se puede hacer sobre una partición):
 
@@ -74,7 +82,7 @@ sdd
 sde                                                                    
 ~~~ 
 
-Gestión de múltiples discos (pool de almacenamiento)
+* Gestión de múltiples discos (pool de almacenamiento)
 
 ~~~
 mkfs.btrfs /dev/sdb /dev/sdc
@@ -132,7 +140,7 @@ tmpfs            49M     0   49M   0% /run/user/1000
 
 Cuando gestionamos varios discos, las capacidades de estos se agregan formando un pool de almacenamiento, es decir que si contamos con un disco de 2 GB y uno de 4 GB, obtendremos un pool de 6 GB.
 
-• Configura los discos en RAID, haciendo pruebas de fallo de algún disco y sustitución, restauración del RAID. Comenta ventajas e inconvenientes respecto al uso de RAID software con mdadm.
+* Configuramos los discos en RAID, haciendo pruebas de fallo de algún disco y haciendo sustitución y restauración del RAID comparando las ventajas e inconvenientes respecto al uso de RAID software con mdadm.
 
 Una de las ventajas que tiene el uso de un raid con btrfs respecto a mdadm, es que btrfs gestiona el uso de almacenamiento lo que permite que no se desperdicie espacio en disco, al contrario que con mdadm que en el caso de tener distintos discos con distintas capacidades, limita la capacidad de almacenaje a la del disco mas pequeño, es decir si tenemos un disco de 1GB y dos de 2GB con mdadm solo seremos capaces de almacenar un máximo de 1GB por lo que en los otros discos estamos desaprovechando espacio.
 
@@ -287,7 +295,7 @@ tmpfs            49M     0   49M   0% /run/user/1000
 /dev/sdb        4.0G   17M  3.4G   1% /mnt
 ~~~
 
-4- balanceo de datos → Para cuando agregamos un disco nuevo y queremos distribuir la información existente entre todos los discos.
+4- Balanceo de datos → Para cuando agregamos un disco nuevo y queremos distribuir la información existente entre todos los discos.
 
 ~~~
 vagrant@Btrfs:~$ sudo btrfs balance start --full-balance /mnt/
@@ -302,11 +310,11 @@ Label: none  uuid: 0ad6fabb-6a4b-4f2b-ba33-54086764dba1
 
 Como podemos comprobar, el disco sde ya no tiene 0B, sino 368MB.
 
-• Realiza ejercicios con pruebas de funcionamiento de las principales funcionalidades: compresión, cow, deduplicación, cifrado, etc.
+### **Funcionamiento de las principales funcionalidades btrfs** ###
 
-Compresión al vuelo:
+* Compresión al vuelo:
 
-Con la compresión activa, los bloques se comprimen antes de escribirse y se descomprimen de manera automática en las lecturas, de este modo las aplicaciones simplemente se dedican a escribir/leer en el sistema de archivos pero se ahorra espacio en disco. La desventaja que tiene esta funcionalidad es que ahorramos espacio, pero sin embargo aumentamos el uso de CPU.
+Con la compresión activa o al vuelo, los bloques se comprimen antes de escribirse y se descomprimen de manera automática en las lecturas, de este modo las aplicaciones simplemente se dedican a escribir/leer en el sistema de archivos pero se ahorra espacio en disco. La desventaja que tiene esta funcionalidad es que ahorramos espacio, pero sin embargo aumentamos el uso de CPU.
 
 ~~~
 vagrant@Btrfs:~$ sudo mount -o compress=zlib /dev/sde /mnt/
@@ -332,7 +340,7 @@ Label: none  uuid: 0ad6fabb-6a4b-4f2b-ba33-54086764dba1
 	devid    4 size 1.00GiB used 1023.00MiB path /dev/sde
 ~~~
 
-CoW (copy on write):
+* CoW (copy on write):
 
 Nos permite tener varios ficheros iguales pero solo ocupando el espacio de uno, esto se produce porque al ser ficheros exactamente iguales las copias del original están referenciadas al original, pero si se produce un cambio, la copia ocupa el tamaño del original más el cambio.
 
@@ -352,7 +360,7 @@ tmpfs            49M     0   49M   0% /run/user/1000
 /dev/sdb        4.0G  1.8G  1.1G  64% /mnt
 ~~~
 
-Snapshots de subvolumenes:
+* Snapshots de subvolumenes:
 
 Para usar las snapshots, previamente hemos tenido que crear subvolumenes, en este caso como ejemplo, se han creado 4:
 
@@ -431,13 +439,13 @@ drwxr-xr-x 1 root root          0 Jan 16 12:06 subv3
 drwxr-xr-x 1 root root          0 Jan 16 12:07 subv4
 ~~~
 
-Cifrado → no incorporado actualmente.
+* Cifrado (no incorporado actualmente).
 
-Checksum:
+* Checksum:
 
 Cada bloque, de datos o metadatos, está protegido mediante una suma de verificación CRC32C (en el futuro está planeado añadir otros algoritmos). En cada lectura se comprueba la integridad del bloque y si se detecta un error automáticamente se busca una copia alternativa. Este mecanismo protege la corrupción de bloques particulares.
 
-Fragmentación:
+* Fragmentación:
 
 Uno de los problemas con los que cuenta btrfs es la fragmentacion, por ello es necesario desfragmentar, esto lo hacemos ejecutando el siguiente comando:
 
@@ -445,7 +453,7 @@ Uno de los problemas con los que cuenta btrfs es la fragmentacion, por ello es n
 vagrant@Btrfs:~$ sudo btrfs filesystem defrag /mnt/subv1/
 ~~~
 
-Redimensionar discos:
+* Redimensionar discos:
 
 Btrfs permite redimensionar los discos en caliente, de forma que podemos tanto aumentar como reducir el tamaño de un disco:
 
@@ -458,7 +466,7 @@ Label: none  uuid: 203319dd-9732-49e7-920f-f8019bc30d4a
 	devid    3 size 4.00GiB used 485.75MiB path /dev/sdd
 ~~~
 
-Reducir:
+	* Reducir:
 
 ~~~
 vagrant@Btrfs:~$ sudo btrfs filesystem resize -500m /mnt/
@@ -471,7 +479,7 @@ Label: none  uuid: 203319dd-9732-49e7-920f-f8019bc30d4a
 	devid    3 size 4.00GiB used 485.75MiB path /dev/sdd
 ~~~
 
-Aumentar:
+	* Aumentar:
 
 ~~~
 vagrant@Btrfs:~$ sudo btrfs filesystem resize +350m /mnt/

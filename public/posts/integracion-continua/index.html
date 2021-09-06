@@ -13,16 +13,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Introduccion a la Integracion Continua"/>
-<meta name="twitter:description" content="Integración continua de aplicación Django (test &#43; deploy) Vamos a trabajar con el repositorio de la aplicación django_tutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.
-Para ejecutar las pruebas unitarias, ejecutamos la instrucción python3 manage.py test.
-Clonamos nuestro repositorio github en nuestro entorno virtual:
-(IC) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/IC$ git clone git@github.com:sergioib94/django_tutorial.git Clonando en &#39;django_tutorial&#39;... remote: Enumerating objects: 51, done. remote: Counting objects: 100% (51/51), done."/>
+<meta name="twitter:description" content="Introducción La integración continua es una práctica de desarrollo de software mediante la cual los desarrolladores combinan los cambios en el código en un repositorio central de forma periódica, tras lo cual se ejecutan versiones y pruebas automáticas.
+Los objetivos clave de la integración continua consisten en encontrar y arreglar errores con mayor rapidez, mejorar la calidad del software y reducir el tiempo que se tarda en validar y publicar nuevas actualizaciones de software."/>
 
     <meta property="og:title" content="Introduccion a la Integracion Continua" />
-<meta property="og:description" content="Integración continua de aplicación Django (test &#43; deploy) Vamos a trabajar con el repositorio de la aplicación django_tutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.
-Para ejecutar las pruebas unitarias, ejecutamos la instrucción python3 manage.py test.
-Clonamos nuestro repositorio github en nuestro entorno virtual:
-(IC) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/IC$ git clone git@github.com:sergioib94/django_tutorial.git Clonando en &#39;django_tutorial&#39;... remote: Enumerating objects: 51, done. remote: Counting objects: 100% (51/51), done." />
+<meta property="og:description" content="Introducción La integración continua es una práctica de desarrollo de software mediante la cual los desarrolladores combinan los cambios en el código en un repositorio central de forma periódica, tras lo cual se ejecutan versiones y pruebas automáticas.
+Los objetivos clave de la integración continua consisten en encontrar y arreglar errores con mayor rapidez, mejorar la calidad del software y reducir el tiempo que se tarda en validar y publicar nuevas actualizaciones de software." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/integracion-continua/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T18:12:40&#43;01:00" />
@@ -76,7 +72,10 @@ Clonamos nuestro repositorio github en nuestro entorno virtual:
       </div>
     </header>
     <div class="post-content">
-      <h3 id="integración-continua-de-aplicación-django-test--deploy"><strong>Integración continua de aplicación Django (test + deploy)</strong></h3>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>La integración continua es una práctica de desarrollo de software mediante la cual los desarrolladores combinan los cambios en el código en un repositorio central de forma periódica, tras lo cual se ejecutan versiones y pruebas automáticas.</p>
+<p>Los objetivos clave de la integración continua consisten en encontrar y arreglar errores con mayor rapidez, mejorar la calidad del software y reducir el tiempo que se tarda en validar y publicar nuevas actualizaciones de software.</p>
+<h3 id="integración-continua-de-aplicación-django-test--deploy"><strong>Integración continua de aplicación Django (test + deploy)</strong></h3>
 <p>Vamos a trabajar con el repositorio de la aplicación django_tutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.</p>
 <p>Para ejecutar las pruebas unitarias, ejecutamos la instrucción python3 manage.py test.</p>
 <p>Clonamos nuestro repositorio github en nuestro entorno virtual:</p>
@@ -100,7 +99,7 @@ Collecting sqlparse==0.4.1 (from -r requirements.txt (line 4))
   Using cached https://files.pythonhosted.org/packages/14/05/6e8eb62ca685b10e34051a80d7ea94b7137369d8c0be5c3b9d9b6e3f5dae/sqlparse-0.4.1-py3-none-any.whl
 Installing collected packages: asgiref, pytz, sqlparse, Django
 Successfully installed Django-3.1.3 asgiref-3.3.0 pytz-2020.4 sqlparse-0.4.1
-</code></pre><p>testeo de django tutorial:</p>
+</code></pre><p>Testeo de django tutorial:</p>
 <pre><code>(IC) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/IC/django_tutorial$ python3 manage.py test
 Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
@@ -111,7 +110,7 @@ Ran 10 tests in 0.027s
 OK
 Destroying test database for alias 'default'...
 </code></pre><p>Estudia las distintas pruebas que se han realizado, y modifica el código de la aplicación (debes modificar el fichero views.py o los templates, no debes cambiar el fichero tests.py para que al menos una de ella no se ejecute de manera exitosa.</p>
-<p>En /django_tutorial/polls/templates/polls/index.html eliminamos la linea <!-- raw HTML omitted -->No polls are available.<!-- raw HTML omitted --> y comprobamos que nos salta el error.</p>
+<p>En /django_tutorial/polls/templates/polls/index.html eliminamos la linea &ldquo;No polls are available&rdquo; y comprobamos que nos salta el error.</p>
 <pre><code>Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
 ..F.F.....
@@ -234,9 +233,9 @@ jobs:
       run: python3 manage.py test
 </code></pre><p>Por ultimo editamos el fichero settings.py añadiendo al principio la siguiente linea:</p>
 <pre><code>import os
-</code></pre><p>y al final la siguiente linea:</p>
+</code></pre><p>Y al final la siguiente linea:</p>
 <pre><code>STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-</code></pre><p>y hacemos un git push para comprobar la integracion continua en heroku.</p>
+</code></pre><p>Y hacemos un git push para comprobar la integracion continua en heroku.</p>
 
     </div>
     <div class="post-footer">

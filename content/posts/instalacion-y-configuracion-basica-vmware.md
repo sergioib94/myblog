@@ -1,10 +1,20 @@
 ---
-title: "Instalacion y configuracion basica Vmware ESXI"
+title: "Instalación y configuración basica Vmware ESXI"
 date: 2021-03-12T14:24:08+01:00
 categories: [Cloud]
 ---
 
-La instalación inicialmente es bastante sencilla, haciendo uso de un usb con la iso de vmware 5.5 lo conectamos en el servidor y nos aseguramos de que este configurado en bios para que arranque por usb y no por otro medio.
+### **Introducción** ###
+
+**¿Que es Vmware?**
+
+Vmware, es una de las herramientas más populares que se utilizan a la hora de virtualizar. La virtualización es el proceso a través del cual se emula un recurso, como por ejemplo puede ser un sistema operativo, a través de una herramienta de software. Este software en este caso, sería Vmware.
+
+Con Vmware tenemos la posibilidad de ejecutar un sistema operativo, de la misma forma que si estuviera instalado en un servidor físico, pero sin llegar a estarlo, ya que estos sistemas operativos se encuentran corriendo dentro de otros sistemas, que son conocidos como el host.
+
+### **Instalación y configuración** ###
+
+La instalación inicialmente es bastante sencilla, haciendo uso de un usb con la iso de vmware 5.5 lo conectamos en el servidor y nos aseguramos de que este configurado en bios para que arranque por usb y no por otro medio (en este caso se esta instalando Vmware en un servidor fisico).
 
 Una vez que comience la instalación, lo primero sera confirmar dicha instalación y mas adelante tendremos que elegir el disco donde se instalara vmware. En este caso al haber una instalacion vmware anterior, tendremos que reinstalar vmware.
 

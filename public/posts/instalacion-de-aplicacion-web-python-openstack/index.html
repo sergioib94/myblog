@@ -13,16 +13,14 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Instalacion de Mezzanine en Openstack"/>
-<meta name="twitter:description" content="• Instala el CMS en el entorno de desarrollo. Debes utilizar un entorno virtual.
-Entorno de desarrollo Creamos el entorno virtual:
-sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezzanine sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ source mezzanine/bin/activate Instalamos mezzanine:
-(mezzanine) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/mezzanine$ pip install mezzanine Collecting mezzanine Downloading https://files.pythonhosted.org/packages/7f/cf/0f2cbd27edfc9568c7fad26ca217e02d209031e0298562a29040e2b75a5e/Mezzanine-4.3.1-py2.py3-none-any.whl (5.9MB) 100% |████████████████████████████████| 5.9MB 188kB/s Collecting tzlocal&gt;=1.0 (from mezzanine) Downloading https://files.pythonhosted.org/packages/5d/94/d47b0fd5988e6b7059de05720a646a2930920fff247a826f61674d436ba4/tzlocal-2.1-py2.py3-none-any.whl Collecting grappelli-safe&gt;=0.5.0 (from mezzanine) Downloading https://files.pythonhosted.org/packages/3e/af/10804d792cfe4eb0029959c55169086e2d4ab02b99d88bd4d85281f48245/grappelli_safe-0.5.2-py2.py3-none-any.whl (163kB) 100% |████████████████████████████████| 163kB 745kB/s Collecting django-contrib-comments (from mezzanine) Downloading https://files.pythonhosted.org/packages/67/45/1c55c21d5151e8c39c7991b351bb4fae152ce863bb4b6a1ed35e88f31511/django_contrib_comments-2.0.0-py3-none-any.whl (414kB) 100% |████████████████████████████████| 419kB 739kB/s Collecting future&gt;=0."/>
+<meta name="twitter:description" content="Introducción En este post vamos a desplegar un CMS python basado en django, en este caso se ha elegido Mezzanine.
+Para ello contaremos conn dos entornos de trabajo, uno sera el entorno de desarrollo que sera mi propia maquina con un entorno virtual, y por otro lado el entorno de produccion que sera el nodo Quijote del entorno openstack creado y la practica de &ldquo;Creacion de escenario Openstack&rdquo;.
+Entorno de desarrollo Creamos el entorno virtual:"/>
 
     <meta property="og:title" content="Instalacion de Mezzanine en Openstack" />
-<meta property="og:description" content="• Instala el CMS en el entorno de desarrollo. Debes utilizar un entorno virtual.
-Entorno de desarrollo Creamos el entorno virtual:
-sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezzanine sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ source mezzanine/bin/activate Instalamos mezzanine:
-(mezzanine) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/mezzanine$ pip install mezzanine Collecting mezzanine Downloading https://files.pythonhosted.org/packages/7f/cf/0f2cbd27edfc9568c7fad26ca217e02d209031e0298562a29040e2b75a5e/Mezzanine-4.3.1-py2.py3-none-any.whl (5.9MB) 100% |████████████████████████████████| 5.9MB 188kB/s Collecting tzlocal&gt;=1.0 (from mezzanine) Downloading https://files.pythonhosted.org/packages/5d/94/d47b0fd5988e6b7059de05720a646a2930920fff247a826f61674d436ba4/tzlocal-2.1-py2.py3-none-any.whl Collecting grappelli-safe&gt;=0.5.0 (from mezzanine) Downloading https://files.pythonhosted.org/packages/3e/af/10804d792cfe4eb0029959c55169086e2d4ab02b99d88bd4d85281f48245/grappelli_safe-0.5.2-py2.py3-none-any.whl (163kB) 100% |████████████████████████████████| 163kB 745kB/s Collecting django-contrib-comments (from mezzanine) Downloading https://files.pythonhosted.org/packages/67/45/1c55c21d5151e8c39c7991b351bb4fae152ce863bb4b6a1ed35e88f31511/django_contrib_comments-2.0.0-py3-none-any.whl (414kB) 100% |████████████████████████████████| 419kB 739kB/s Collecting future&gt;=0." />
+<meta property="og:description" content="Introducción En este post vamos a desplegar un CMS python basado en django, en este caso se ha elegido Mezzanine.
+Para ello contaremos conn dos entornos de trabajo, uno sera el entorno de desarrollo que sera mi propia maquina con un entorno virtual, y por otro lado el entorno de produccion que sera el nodo Quijote del entorno openstack creado y la practica de &ldquo;Creacion de escenario Openstack&rdquo;.
+Entorno de desarrollo Creamos el entorno virtual:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T16:01:48&#43;01:00" />
@@ -71,12 +69,14 @@ sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezz
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          9 min read
+          10 min read
         </div>
       </div>
     </header>
     <div class="post-content">
-      <p>• Instala el CMS en el entorno de desarrollo. Debes utilizar un entorno virtual.</p>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>En este post vamos a desplegar un CMS python basado en django, en este caso se ha elegido Mezzanine.</p>
+<p>Para ello contaremos conn dos entornos de trabajo, uno sera el entorno de desarrollo que sera mi propia maquina con un entorno virtual, y por otro lado el entorno de produccion que sera el nodo Quijote del entorno openstack creado y la practica de &ldquo;Creacion de escenario Openstack&rdquo;.</p>
 <h3 id="entorno-de-desarrollo"><strong>Entorno de desarrollo</strong></h3>
 <p>Creamos el entorno virtual:</p>
 <pre><code>sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv mezzanine
@@ -269,22 +269,19 @@ January 17, 2021 - 13:04:43
 Django version 1.11.29, using settings 'cmspython.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-</code></pre><ul>
-<li>Personaliza la página (cambia el nombre al blog y pon tu nombre) y añade contenido (algún artículo con alguna imagen).</li>
-</ul>
-<p>En la pagina de administración en el menú de configuración(settings) podemos cambiar de nombre nuestro blog mientras que el articulo con la imagen lo podemos añadir en el apartado blog posts.</p>
+</code></pre><p>Una vez instalado personalizaremos la página cambiando por ejemplo el nombre al blog y añadimos contenido (algún artículo con alguna imagen por ejemplo).</p>
+<p>En la página de administración en el menú de configuración(settings) podemos cambiar de nombre nuestro blog mientras que el articulo con la imagen lo podemos añadir en el apartado blog posts.</p>
 <p>Ejemplo de nombre:</p>
 <p><img src="/mezzanine/mezzanine1.png" alt="mezzanine"></p>
 <p>Ejemplo de post:</p>
 <p><img src="/mezzanine/mezzanine2.png" alt="mezzanine"></p>
 <p><img src="/mezzanine/mezzanine_post.png" alt="mezzanine post"></p>
-<p>• Guarda los ficheros generados durante la instalación en un repositorio github. Guarda también en ese repositorio la copia de seguridad de la bese de datos. Ten en cuenta que en el entorno de desarrollo vas a tener una base de datos sqlite, y en el entorno de producción una mariadb, por lo tanto es recomendable para hacer la copia de seguridad y recuperarla los comandos: python manage.py dumpdata y python manage.py loaddata.</p>
+<p>Guardamos los ficheros generados durante la instalación en un repositorio github. Guardaremos también en ese repositorio la copia de seguridad de la bese de datos.</p>
+<p>Por otro lado hay que tener en cuenta que en el entorno de desarrollo voy a tener una base de datos sqlite mientras que en el entorno de producción base de datos una mariadb, por lo tanto es recomendable para hacer la copia de seguridad y recuperarla los comandos: python manage.py dumpdata y python manage.py loaddata.</p>
 <p>Copiamos la base de datos en un fichro .json</p>
 <pre><code>(mezzanine) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/mezzanine$ python3 cmspython/manage.py dumpdata &gt; cmspython/copiabd.json
 </code></pre><p>Se sube todo a github</p>
-<ul>
-<li>Realiza el despliegue de la aplicación en tu entorno de producción (servidor web y servidor de base de datos en el cloud). Utiliza un entorno virtual. Como servidor de aplicación puedes usar gunicorn o uwsgi (crea una unidad systemd para gestionar este servicio). El contenido estático debe servirlo el servidor web. La aplicación será accesible en la url python.tunombre.gonzalonazareno.org.</li>
-</ul>
+<p>Realizamos el despliegue de la aplicación en el entorno de producción (servidor web y servidor de base de datos en el cloud). Utilizamos un entorno virtual. Como servidor de aplicación puedes usar gunicorn o uwsgi (creando una unidad systemd para gestionar este servicio). El contenido estático debe servirlo el servidor web. La aplicación será accesible en la url python.tunombre.gonzalonazareno.org.</p>
 <h3 id="entorno-de-produccion-centos8"><strong>Entorno de produccion (centos8)</strong></h3>
 <p>Clonamos el directorio github dentro del documentroot.</p>
 <pre><code>[centos@quijote www]$ sudo git clone https://github.com/sergioib94/cmspython.git
@@ -443,7 +440,7 @@ Successfully installed uwsgi-2.0.19.1
         &quot;PORT&quot;: &quot;&quot;,
     }
 }
-</code></pre><p>ejecutamos un migrate para mandar los datos de nuestra aplicación mezzanine a la base de datos</p>
+</code></pre><p>Ejecutamos un migrate para mandar los datos de nuestra aplicación mezzanine a la base de datos</p>
 <pre><code>(mezzanine) [centos@quijote cmspython]$ python3 manage.py migrate
 </code></pre><p>Una vez se haya hecho el migrate, ejecutamos python3 loaddata migrate</p>
 <p>Creamos los ficheros .conf en /etc/httpd/sites-aviables:</p>

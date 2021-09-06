@@ -42,9 +42,9 @@ Para poder montar la pila completa sera necesario que la maquina que aloje las t
       <pubDate>Fri, 12 Mar 2021 17:50:31 +0100</pubDate>
       
       <guid>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</guid>
-      <description>• Crea un escenario que incluya una máquina y varios discos asociados a ella.
-El escenario con el que contamos para esta practica es el de una maquina virtual con sistema operativo debían 10 creada con vagrant con 4 discos adicionales en el que se instalara un Raid5 usando los 3 primeros discos, y el ultimo disco se dejara para posteriormente comprobar sustituciones de discos simulando fallos.
-vagrant@Btrfs:~$ lsblk -f NAME FSTYPE LABEL UUID FSAVAIL FSUSE% MOUNTPOINT sda ├─sda1 ext4 983742b1-65a8-49d1-a148-a3865ea09e24 16.</description>
+      <description>Introducción Btrfs es un sistema de archivos copy-on-write anunciado por Oracle Corporation para GNU/Linux.
+Su objetivo es sustituir al actual sistema de archivos ext4, eliminando el mayor número de sus limitaciones, en especial con el tamaño máximo de los ficheros; además de la adopción de nuevas tecnologías no soportadas por ext3. Se afirma también que se &amp;ldquo;centrará en la tolerancia a fallos, reparación y fácil administración&amp;rdquo;.
+En este post crearemos un escenario vagrant con una maquina que incluya varios discos y a traves de varias pruebas comprobaremos el funcionamiento y rendimiento de btrfs.</description>
     </item>
     
     <item>

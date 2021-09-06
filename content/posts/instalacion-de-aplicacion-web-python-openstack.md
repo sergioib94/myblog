@@ -4,7 +4,11 @@ date: 2021-03-12T16:01:48+01:00
 categories: [Aplicaciones Web]
 ---
 
-• Instala el CMS en el entorno de desarrollo. Debes utilizar un entorno virtual.
+### **Introducción** ###
+
+En este post vamos a desplegar un CMS python basado en django, en este caso se ha elegido Mezzanine.
+
+Para ello contaremos conn dos entornos de trabajo, uno sera el entorno de desarrollo que sera mi propia maquina con un entorno virtual, y por otro lado el entorno de produccion que sera el nodo Quijote del entorno openstack creado y la practica de "Creacion de escenario Openstack".
 
 ### **Entorno de desarrollo** ###
 
@@ -189,7 +193,6 @@ Running migrations:
 
 Creamos el superusuario:
 
-
 ~~~
 (mezzanine) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/mezzanine$ python3 cmspython/manage.py createsuperuser
 Username (leave blank to use 'sergioib'): sergioib
@@ -225,9 +228,9 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ~~~
 
-* Personaliza la página (cambia el nombre al blog y pon tu nombre) y añade contenido (algún artículo con alguna imagen).
+Una vez instalado personalizaremos la página cambiando por ejemplo el nombre al blog y añadimos contenido (algún artículo con alguna imagen por ejemplo).
 
-En la pagina de administración en el menú de configuración(settings) podemos cambiar de nombre nuestro blog mientras que el articulo con la imagen lo podemos añadir en el apartado blog posts.
+En la página de administración en el menú de configuración(settings) podemos cambiar de nombre nuestro blog mientras que el articulo con la imagen lo podemos añadir en el apartado blog posts.
 
 Ejemplo de nombre:
 
@@ -239,7 +242,9 @@ Ejemplo de post:
 
 ![mezzanine post](/mezzanine/mezzanine_post.png)
 
-• Guarda los ficheros generados durante la instalación en un repositorio github. Guarda también en ese repositorio la copia de seguridad de la bese de datos. Ten en cuenta que en el entorno de desarrollo vas a tener una base de datos sqlite, y en el entorno de producción una mariadb, por lo tanto es recomendable para hacer la copia de seguridad y recuperarla los comandos: python manage.py dumpdata y python manage.py loaddata.
+Guardamos los ficheros generados durante la instalación en un repositorio github. Guardaremos también en ese repositorio la copia de seguridad de la bese de datos. 
+
+Por otro lado hay que tener en cuenta que en el entorno de desarrollo voy a tener una base de datos sqlite mientras que en el entorno de producción base de datos una mariadb, por lo tanto es recomendable para hacer la copia de seguridad y recuperarla los comandos: python manage.py dumpdata y python manage.py loaddata.
 
 Copiamos la base de datos en un fichro .json
 
@@ -249,7 +254,7 @@ Copiamos la base de datos en un fichro .json
 
 Se sube todo a github
 
-* Realiza el despliegue de la aplicación en tu entorno de producción (servidor web y servidor de base de datos en el cloud). Utiliza un entorno virtual. Como servidor de aplicación puedes usar gunicorn o uwsgi (crea una unidad systemd para gestionar este servicio). El contenido estático debe servirlo el servidor web. La aplicación será accesible en la url python.tunombre.gonzalonazareno.org.
+Realizamos el despliegue de la aplicación en el entorno de producción (servidor web y servidor de base de datos en el cloud). Utilizamos un entorno virtual. Como servidor de aplicación puedes usar gunicorn o uwsgi (creando una unidad systemd para gestionar este servicio). El contenido estático debe servirlo el servidor web. La aplicación será accesible en la url python.tunombre.gonzalonazareno.org.
 
 ### **Entorno de produccion (centos8)** ###
 
@@ -446,7 +451,7 @@ DATABASES = {
 }
 ~~~
 
-ejecutamos un migrate para mandar los datos de nuestra aplicación mezzanine a la base de datos
+Ejecutamos un migrate para mandar los datos de nuestra aplicación mezzanine a la base de datos
 
 ~~~
 (mezzanine) [centos@quijote cmspython]$ python3 manage.py migrate

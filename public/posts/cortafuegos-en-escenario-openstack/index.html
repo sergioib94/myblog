@@ -13,12 +13,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cortafuegos en escenario Openstack"/>
-<meta name="twitter:description" content="Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
+<meta name="twitter:description" content="Introducción Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
 En este caso la maquina dulcinea cuenta con 3 interfaces de red:
  eth0: interfaz al exterior eth1: interfaz de la red interna donde estan alojadas las maquinas freston(servidor ldap y de correos) y sancho (servidor base de datos y de copias de seguridad) eth2: interfaz a red dmz donde esta la maquina quijote (servidor web)  Política por defecto"/>
 
     <meta property="og:title" content="Cortafuegos en escenario Openstack" />
-<meta property="og:description" content="Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
+<meta property="og:description" content="Introducción Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
 En este caso la maquina dulcinea cuenta con 3 interfaces de red:
  eth0: interfaz al exterior eth1: interfaz de la red interna donde estan alojadas las maquinas freston(servidor ldap y de correos) y sancho (servidor base de datos y de copias de seguridad) eth2: interfaz a red dmz donde esta la maquina quijote (servidor web)  Política por defecto" />
 <meta property="og:type" content="article" />
@@ -69,12 +69,13 @@ En este caso la maquina dulcinea cuenta con 3 interfaces de red:
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          15 min read
+          16 min read
         </div>
       </div>
     </header>
     <div class="post-content">
-      <p>Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.</p>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.</p>
 <p>En este caso la maquina dulcinea cuenta con 3 interfaces de red:</p>
 <ul>
 <li>eth0: interfaz al exterior</li>
@@ -83,7 +84,7 @@ En este caso la maquina dulcinea cuenta con 3 interfaces de red:
 </ul>
 <p>Política por defecto</p>
 <p>La política por defecto que vamos a configurar en nuestro cortafuegos será de tipo DROP.</p>
-<h3 id="nat"><strong>NAT</strong></h3>
+<h3 id="configuraciones-de-reglas-nat"><strong>Configuraciones de reglas NAT</strong></h3>
 <ol>
 <li>Configura de manera adecuada las reglas NAT para que todas las máquinas de nuestra red tenga acceso al exterior.</li>
 </ol>
@@ -99,17 +100,23 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to 10.0.2.5
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 25 -j DNAT --to 10.0.1.3
 </code></pre><h3 id="reglas-iptables"><strong>Reglas iptables</strong></h3>
 <p>Para cada configuración, hay que mostrar las reglas que se han configurado y una prueba de funcionamiento de la misma:</p>
-<h3 id="ping"><strong>ping</strong></h3>
+<h3 id="reglas-ping"><strong>Reglas ping</strong></h3>
 <ol>
 <li>Todas las máquinas de las dos redes pueden hacer ping entre ellas.</li>
 </ol>
-<p><strong>Dulcinea → LAN</strong></p>
+<ul>
+<li>Dulcinea → LAN</li>
+</ul>
 <pre><code>	iptables -A OUTPUT -o eth1 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
 	iptables -A INPUT -i eth1 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-</code></pre><p><strong>Dulcinea → DMZ</strong></p>
+</code></pre><ul>
+<li>Dulcinea → DMZ</li>
+</ul>
 <pre><code>	iptables -A OUTPUT -o eth2 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
 	iptables -A INPUT -i eth2 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-</code></pre><p><strong>Prueba</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>root@dulcinea:/home/debian# ping sancho
 PING sancho.sergio.gonzalonazareno.org (10.0.1.8) 56(84) bytes of data.
 64 bytes from sancho.sergio.gonzalonazareno.org (10.0.1.8): icmp_seq=1 ttl=64 time=1.31 ms
@@ -132,10 +139,14 @@ PING quijote.sergio.gonzalonazareno.org (10.0.2.5) 56(84) bytes of data.
 --- quijote.sergio.gonzalonazareno.org ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 61ms
 rtt min/avg/max/mdev = 0.453/0.662/1.165/0.257 ms
-</code></pre><p><strong>DMZ → LAN</strong></p>
+</code></pre><ul>
+<li>DMZ → LAN</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth2 -o eth1 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
 	iptables -A FORWARD -i eth1 -o eth2 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>	[centos@quijote ~]$ ping sancho
 PING sancho.sergio.gonzalonazareno.org (10.0.1.8) 56(84) bytes of data.
 64 bytes from sancho.sergio.gonzalonazareno.org (10.0.1.8): icmp_seq=1 ttl=63 time=1.83 ms
@@ -145,10 +156,14 @@ PING sancho.sergio.gonzalonazareno.org (10.0.1.8) 56(84) bytes of data.
 --- sancho.sergio.gonzalonazareno.org ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 5ms
 rtt min/avg/max/mdev = 1.376/1.626/1.827/0.190 ms
-</code></pre><p><strong>LAN → DMZ</strong></p>
+</code></pre><ul>
+<li>LAN → DMZ</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth1 -o eth2 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
 	iptables -A FORWARD -i eth2 -o eth1 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionaiento:</li>
+</ul>
 <pre><code>	debian@freston:~$ ping quijote
 PING quijote.sergio.gonzalonazareno.org (10.0.2.5) 56(84) bytes of data.
 64 bytes from quijote.sergio.gonzalonazareno.org (10.0.2.5): icmp_seq=1 ttl=63 time=1.86 ms
@@ -162,10 +177,14 @@ rtt min/avg/max/mdev = 1.183/1.416/1.859/0.265 ms
 </code></pre><ol start="2">
 <li>Todas las máquinas pueden hacer ping a una máquina del exterior.</li>
 </ol>
-<p><strong>LAN → EXT</strong></p>
+<ul>
+<li>LAN → EXT</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth1 -o eth0 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
 	iptables -A FORWARD -i eth0 -o eth1 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>	debian@freston:~$ ping 8.8.8.8
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=44.6 ms
@@ -176,10 +195,14 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 --- 8.8.8.8 ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 8ms
 rtt min/avg/max/mdev = 42.922/43.716/44.595/0.715 ms
-</code></pre><p><strong>DMZ → EXT</strong></p>
-<pre><code>	iptables -A FORWARD -i eth2 -o eth0 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
-	iptables -A FORWARD -i eth0 -o eth2 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+</code></pre><ul>
+<li>DMZ → EXT</li>
+</ul>
+<pre><code>iptables -A FORWARD -i eth2 -o eth0 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
+iptables -A FORWARD -i eth0 -o eth2 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>	[centos@quijote ~]$ ping 8.8.8.8
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=63.10 ms
@@ -193,9 +216,11 @@ rtt min/avg/max/mdev = 42.864/73.079/142.492/40.984 ms
 </code></pre><ol start="3">
 <li>Desde el exterior se puede hacer ping a dulcinea.</li>
 </ol>
-<pre><code>	iptables -A OUTPUT -o eth0 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-	iptables -A INPUT -i eth0 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+<pre><code>iptables -A OUTPUT -o eth0 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
+iptables -A INPUT -i eth0 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>sergioib@debian-sergio:~$ ping 172.22.200.151
 PING 172.22.200.151 (172.22.200.151) 56(84) bytes of data.
 64 bytes from 172.22.200.151: icmp_seq=1 ttl=61 time=180 ms
@@ -207,10 +232,14 @@ PING 172.22.200.151 (172.22.200.151) 56(84) bytes of data.
 </code></pre><ol start="4">
 <li>A dulcinea se le puede hacer ping desde la DMZ, pero desde la LAN se le debe rechazar la conexión (REJECT).</li>
 </ol>
-<p><strong>DMZ → Dulcinea</strong></p>
-<pre><code>	iptables -A OUTPUT -o eth2 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
-	iptables -A INPUT -i eth2 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+<ul>
+<li>DMZ → Dulcinea</li>
+</ul>
+<pre><code>iptables -A OUTPUT -o eth2 -p icmp -m icmp --icmp-type echo-reply -j ACCEPT
+iptables -A INPUT -i eth2 -p icmp -m icmp --icmp-type echo-request -j ACCEPT
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>[centos@quijote ~]$ ping dulcinea
 PING dulcinea.sergio.gonzalonazareno.org (10.0.2.3) 56(84) bytes of data.
 64 bytes from dulcinea.sergio.gonzalonazareno.org (10.0.2.3): icmp_seq=1 ttl=64 time=0.608 ms
@@ -221,10 +250,14 @@ PING dulcinea.sergio.gonzalonazareno.org (10.0.2.3) 56(84) bytes of data.
 --- dulcinea.sergio.gonzalonazareno.org ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 90ms
 rtt min/avg/max/mdev = 0.608/0.683/0.730/0.057 ms
-</code></pre><p><strong>LAN → Dulcinea</strong></p>
-<pre><code>	iptables -A INPUT -i eth1 -p icmp -m icmp --icmp-type echo-request -j REJECT --reject-with icmp-port-unreachable
-	iptables -A OUTPUT -o eth1 -p icmp -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+</code></pre><ul>
+<li>LAN → Dulcinea</li>
+</ul>
+<pre><code>iptables -A INPUT -i eth1 -p icmp -m icmp --icmp-type echo-request -j REJECT --reject-with icmp-port-unreachable
+iptables -A OUTPUT -o eth1 -p icmp -j ACCEPT
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>debian@freston:~$ ping 10.0.1.5
 PING 10.0.1.5 (10.0.1.5) 56(84) bytes of data.
 From 10.0.1.5 icmp_seq=1 Destination Port Unreachable
@@ -233,20 +266,28 @@ From 10.0.1.5 icmp_seq=3 Destination Port Unreachable
 ^C
 --- 10.0.1.5 ping statistics ---
 3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 4ms
-</code></pre><p><strong>ssh</strong></p>
+</code></pre><h3 id="reglas-ssh"><strong>Reglas ssh</strong></h3>
 <ol>
 <li>Podemos acceder por ssh a todas las máquinas.</li>
 </ol>
-<p><strong>DMZ → LAN</strong></p>
+<ul>
+<li>DMZ → LAN</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth2 -o eth1 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A FORWARD -i eth1 -o eth2 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>LAN → DMZ</strong></p>
+</code></pre><ul>
+<li>LAN → DMZ</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth1 -o eth2 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A FORWARD -i eth2 -o eth1 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>Dulcinea → LAN</strong></p>
+</code></pre><ul>
+<li>Dulcinea → LAN</li>
+</ul>
 <pre><code>	iptables -A OUTPUT -o eth1 -p tcp -m tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A INPUT -i eth1 -p tcp -m tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>root@dulcinea:/home/debian# ssh -i .ssh/2asir.pem ubuntu@sancho
 Welcome to Ubuntu 20.04.1 LTS (GNU/Linux 5.4.0-54-generic x86_64)
 
@@ -274,33 +315,47 @@ To see these additional updates run: apt list --upgradable
 *** System restart required ***
 Last login: Fri Jan 29 08:29:29 2021 from 10.0.1.5
 ubuntu@sancho:~$
-</code></pre><p><strong>Dulcinea → DMZ</strong></p>
+</code></pre><ul>
+<li>Dulcinea → DMZ</li>
+</ul>
 <pre><code>	iptables -A OUTPUT -o eth2 -p tcp -m tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A INPUT -i eth2 -p tcp -m tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>Prueba de funcionamiento:</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>root@dulcinea:/home/debian# ssh -i .ssh/2asir.pem centos@quijote
 Last login: Tue Jan 26 14:20:42 2021 from 10.0.2.3
 [centos@quijote ~]$
 </code></pre><ol start="2">
 <li>Todas las máquinas pueden hacer ssh a máquinas del exterior.</li>
 </ol>
-<p><strong>LAN → EXT</strong></p>
+<ul>
+<li>LAN → EXT</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth1 -o eth0 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A FORWARD -i eth0 -o eth1 -p tcp --dport 22 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>DMZ → EXT</strong></p>
+</code></pre><ul>
+<li>DMZ → EXT</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth2 -o eth0 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A FORWARD -i eth0 -o eth2 -p tcp --dport 22 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>dns</strong></p>
+</code></pre><h3 id="reglas-dns"><strong>Reglas DNS</strong></h3>
 <ol>
 <li>El único dns que pueden usar los equipos de las dos redes es freston, no pueden utilizar un DNS externo.</li>
 </ol>
-<p><strong>Freston → EXT</strong></p>
-<pre><code>iptables -A FORWARD -s 10.0.1.3 -d 0.0.0.0/0 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -s 0.0.0.0/0 -d 10.0.1.3 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>DMZ → Freston</strong></p>
+<ul>
+<li>Freston → EXT</li>
+</ul>
+<pre><code>	iptables -A FORWARD -s 10.0.1.3 -d 0.0.0.0/0 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A FORWARD -s 0.0.0.0/0 -d 10.0.1.3 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
+</code></pre><ul>
+<li>DMZ → Freston</li>
+</ul>
 <pre><code>	iptables -A FORWARD -s 10.0.2.0/24 -d 10.0.1.3 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
   	iptables -A FORWARD -s 10.0.1.3 -d 10.0.2.0/24 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>prueba</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>[centos@quijote ~]$ dig dulcinea.sergio.gonzalonazareno.org
 
 ; &lt;&lt;&gt;&gt; DiG 9.11.20-RedHat-9.11.20-5.el8 &lt;&lt;&gt;&gt; dulcinea.sergio.gonzalonazareno.org
@@ -331,24 +386,30 @@ freston.sergio.gonzalonazareno.org. 604800 IN A	10.0.1.3
 </code></pre><ol start="2">
 <li>Dulcinea puede usar cualquier servidor DNS.</li>
 </ol>
-<p><strong>Dulcinea → Freston</strong></p>
+<ul>
+<li>Dulcinea → Freston</li>
+</ul>
 <pre><code>	iptables -A OUTPUT -d 10.0.1.3 -p udp --sport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A INPUT -s 10.0.1.3 -d 10.0.1.5 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>Dulcinea → Cualquiera</strong></p>
-<pre><code>iptables -A OUTPUT -o eth0 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A INPUT -i eth0 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
+</code></pre><ul>
+<li>Dulcinea → Cualquier red</li>
+</ul>
+<pre><code>	iptables -A OUTPUT -o eth0 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A INPUT -i eth0 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
 </code></pre><ol start="3">
 <li>Tenemos que permitir consultas dns desde el exterior a freston, para que, por ejemplo, papion-dns pueda preguntar.</li>
 </ol>
-<pre><code>iptables -A FORWARD -i eth0 -o eth1 -s 0.0.0.0/0 -d 10.0.1.3 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i eth1 -o eth0 -s 10.0.1.3 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>Base de datos</strong></p>
+<pre><code>	iptables -A FORWARD -i eth0 -o eth1 -s 0.0.0.0/0 -d 10.0.1.3 -p udp --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A FORWARD -i eth1 -o eth0 -s 10.0.1.3 -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
+</code></pre><h3 id="reglas-base-de-datos"><strong>Reglas Base de datos</strong></h3>
 <ol>
 <li>A la base de datos de sancho sólo pueden acceder las máquinas de la DMZ.</li>
 </ol>
 <pre><code>	iptables -A FORWARD -i eth2 -o eth1 -p tcp --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT 
 	iptables -A FORWARD -i eth1 -o eth2 -p tcp --sport 3306 -m state --state ESTABLISHED -j ACCEPT	
-</code></pre><p><strong>prueba de funcionamiento:</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>[centos@quijote ~]$ mysql --host=sancho --protocol=tcp --port=3306 mysql -p
 Enter password: 
 Reading table information for completion of table and column names
@@ -367,39 +428,52 @@ owners.
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql&gt; 
-</code></pre><p><strong>Web</strong></p>
+</code></pre><h3 id="reglas-web"><strong>Reglas Web</strong></h3>
 <ol>
 <li>Las páginas web de quijote (80, 443) pueden ser accedidas desde todas las máquinas de nuestra red y desde el exterior.</li>
 </ol>
-<pre><code>iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dports 80,443 -j DNAT --to 10.0.2.3
-</code></pre><p><strong>DMZ ↔ EXT</strong></p>
-<pre><code>iptables -A FORWARD -i eth2 -o eth0 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i eth0 -o eth2 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
+<pre><code>	iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dports 80,443 -j DNAT --to 10.0.2.3
+</code></pre><ul>
+<li>DMZ ↔ EXT</li>
+</ul>
+<pre><code>	iptables -A FORWARD -i eth2 -o eth0 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A FORWARD -i eth0 -o eth2 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
 </code></pre><p><img src="/cortafuegos/prueba_web_externa.png" alt="prueba web externa"></p>
-<p><strong>LAN ↔ EXT</strong></p>
-<pre><code>iptables -A FORWARD -i eth1 -o eth0 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i eth0 -o eth1 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>Dulcinea → EXT</strong></p>
-<pre><code>iptables -A OUTPUT -o eth0 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A INPUT -i eth0 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>LAN ↔ Quijote</strong></p>
-<pre><code>iptables -A FORWARD -i eth1 -o eth2 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i eth2 -o eth1 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>Quijote ↔ EXT</strong></p>
-<pre><code>iptables -A FORWARD -i eth0 -o eth2 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i eth2 -o eth0 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>Dulcinea → Quijote</strong></p>
-<pre><code>iptables -A OUTPUT -o eth2 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A INPUT -i eth2 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
+<ul>
+<li>LAN ↔ EXT</li>
+</ul>
+<pre><code>	iptables -A FORWARD -i eth1 -o eth0 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A FORWARD -i eth0 -o eth1 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
+</code></pre><ul>
+<li>Dulcinea → EXT</li>
+</ul>
+<pre><code>	iptables -A OUTPUT -o eth0 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A INPUT -i eth0 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
+</code></pre><ul>
+<li>LAN ↔ Quijote</li>
+</ul>
+<pre><code>	iptables -A FORWARD -i eth1 -o eth2 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A FORWARD -i eth2 -o eth1 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
+</code></pre><ul>
+<li>Quijote ↔ EXT</li>
+</ul>
+<pre><code>	iptables -A FORWARD -i eth0 -o eth2 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A FORWARD -i eth2 -o eth0 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
+</code></pre><ul>
+<li>Dulcinea → Quijote</li>
+</ul>
+<pre><code>	iptables -A OUTPUT -o eth2 -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A INPUT -i eth2 -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT
 </code></pre><p><strong>Más servicios</strong></p>
 <ol>
 <li>Configura de manera adecuada el cortafuegos, para otros servicios que tengas instalado en tu red (ldap, correo, …)</li>
 </ol>
-<p><strong>Correo</strong></p>
 <p><strong>envios desde dulcinea</strong></p>
 <pre><code>iptables -A OUTPUT -o eth1 -p tcp --dport 25 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i eth1 -p tcp --sport 25 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>prueba de funcionamiento</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>root@dulcinea:/home/debian# telnet 10.0.1.3 25
 Trying 10.0.1.3...
 Connected to 10.0.1.3.
@@ -423,8 +497,9 @@ Escape character is '^]'.
 quit
 221 2.0.0 Bye
 Connection closed by foreign host.
-</code></pre><p><strong>LDAP</strong></p>
-<p><strong>DMZ → LAN</strong></p>
+</code></pre><ul>
+<li>DMZ → LAN</li>
+</ul>
 <pre><code>iptables -A FORWARD -i eth2 -o eth1 -p tcp -m multiport --dports 389,636 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i eth1 -o eth2 -p tcp -m multiport --sports 389,636 -m state --state ESTABLISHED -j ACCEPT
 </code></pre><p><strong>prueba de funcionamiento</strong></p>
@@ -438,7 +513,9 @@ Connection closed by foreign host.
 Trying 10.0.1.3...
 Connected to 10.0.1.3.
 Escape character is '^]'.
-</code></pre><p><strong>Dulcinea → LAN</strong></p>
+</code></pre><ul>
+<li>Dulcinea → LAN</li>
+</ul>
 <pre><code>iptables -A OUTPUT -o eth1 -p tcp -m multiport --dports 389,636 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i eth1 -p tcp -m multiport --sports 389,636 -m state --state ESTABLISHED -j ACCEPT
 </code></pre><p><strong>prueba de funcionamiento</strong></p>
@@ -452,14 +529,18 @@ Trying 10.0.1.3...
 Connected to 10.0.1.3.
 Escape character is '^]'.
 ^Cquit
-</code></pre><p><strong>BACULA</strong></p>
-<p><strong>LAN (Sancho) ↔ DMZ</strong></p>
+</code></pre><h3 id="reglas-bacula"><strong>Reglas Bacula</strong></h3>
+<ul>
+<li>LAN (Sancho) ↔ DMZ</li>
+</ul>
 <pre><code>	iptables -A FORWARD -i eth2 -o eth1 -p tcp --dport 9101:9103 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A FORWARD -i eth1 -o eth2 -p tcp --sport 9101:9103 -m state --state ESTABLISHED -j ACCEPT
 
 	iptables -A FORWARD -i eth1 -o eth2 -p tcp --dport 9101:9103 -m state --state NEW,ESTABLISHED -j ACCEPT
 	iptables -A FORWARD -i eth2 -o eth1 -p tcp --sport 9101:9103 -m state --state ESTABLISHED -j ACCEPT
-</code></pre><p><strong>prueba de funcionamiento:</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>ubuntu@sancho:~$ sudo bconsole
 Connecting to Director 10.0.1.8:9101
 1000 OK: 103 sancho-dir Version: 9.4.2 (04 February 2019)
@@ -499,12 +580,16 @@ Terminated Jobs:
     19  Incr          28    849.8 K  OK       28-Jan-21 23:59 Quijote
 ====
 You have messages.
-</code></pre><p><strong>LAN (Sancho) ↔ Dulcinea</strong></p>
+</code></pre><ul>
+<li>LAN (Sancho) ↔ Dulcinea</li>
+</ul>
 <pre><code>	iptables -A OUTPUT -d 10.0.1.8 -p tcp -m multiport --dports 9101:9103 -j ACCEPT
 	iptables -A INPUT -s 10.0.1.8 -p tcp -m multiport --sports 9101:9103 -j ACCEPT
 	iptables -A OUTPUT -d 10.0.1.8 -p tcp -m multiport --sports 9101:9103 -j ACCEPT
 	iptables -A INPUT -s 10.0.1.8 -p tcp -m multiport --dports 9101:9103 -j ACCEPT
-</code></pre><p><strong>prueba de funcionamiento</strong></p>
+</code></pre><ul>
+<li>Prueba de funcionamiento:</li>
+</ul>
 <pre><code>*status
 Status available for:
      1: Director
@@ -541,7 +626,9 @@ Terminated Jobs:
     13  Incr         11    60.87 K  OK       26-Jan-21 23:59 Dulcinea
     17  Incr         45    736.3 K  OK       27-Jan-21 23:59 Dulcinea
     21  Incr         45    752.3 K  OK       28-Jan-21 23:59 Dulcinea
-</code></pre><p><strong>LAN → EXT</strong></p>
+</code></pre><ul>
+<li>LAN → EXT</li>
+</ul>
 <pre><code>iptables -A FORWARD -i eth0 -o eth1 -p tcp --dport 9101:9103 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i eth1 -o eth0 -p tcp --sport 9101:9103 -m state --state ESTABLISHED -j ACCEPT
 

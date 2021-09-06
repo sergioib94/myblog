@@ -4,6 +4,12 @@ date: 2021-03-12T18:12:40+01:00
 categories: [Aplicaciones Web]
 ---
 
+### **Introducción** ###
+
+La integración continua es una práctica de desarrollo de software mediante la cual los desarrolladores combinan los cambios en el código en un repositorio central de forma periódica, tras lo cual se ejecutan versiones y pruebas automáticas. 
+
+Los objetivos clave de la integración continua consisten en encontrar y arreglar errores con mayor rapidez, mejorar la calidad del software y reducir el tiempo que se tarda en validar y publicar nuevas actualizaciones de software.
+
 ### **Integración continua de aplicación Django (test + deploy)** ###
 
 Vamos a trabajar con el repositorio de la aplicación django_tutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.
@@ -39,7 +45,7 @@ Installing collected packages: asgiref, pytz, sqlparse, Django
 Successfully installed Django-3.1.3 asgiref-3.3.0 pytz-2020.4 sqlparse-0.4.1
 ~~~
 
-testeo de django tutorial:
+Testeo de django tutorial:
 
 ~~~
 (IC) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/IC/django_tutorial$ python3 manage.py test
@@ -55,7 +61,7 @@ Destroying test database for alias 'default'...
 
 Estudia las distintas pruebas que se han realizado, y modifica el código de la aplicación (debes modificar el fichero views.py o los templates, no debes cambiar el fichero tests.py para que al menos una de ella no se ejecute de manera exitosa.
 
-En /django_tutorial/polls/templates/polls/index.html eliminamos la linea <p>No polls are available.</p> y comprobamos que nos salta el error.
+En /django_tutorial/polls/templates/polls/index.html eliminamos la linea "No polls are available" y comprobamos que nos salta el error.
 
 ~~~
 Creating test database for alias 'default'...
@@ -205,10 +211,10 @@ Por ultimo editamos el fichero settings.py añadiendo al principio la siguiente 
 import os
 ~~~
 
-y al final la siguiente linea:
+Y al final la siguiente linea:
 
 ~~~
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ~~~
 
-y hacemos un git push para comprobar la integracion continua en heroku.
+Y hacemos un git push para comprobar la integracion continua en heroku.

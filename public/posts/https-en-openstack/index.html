@@ -13,12 +13,16 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="HTTPS en Openstack"/>
-<meta name="twitter:description" content="El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.
- Explica los pasos fundamentales para la creación del certificado. Especificando los campos que has rellenado en el fichero CSR.  Instalamos openssl sudo apt install openssl Se crea la clave"/>
+<meta name="twitter:description" content="Introducción El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.
+Instalamos openssl para crear nuestro certificado sudo apt install openssl Se crea la clave
+openssl genrsa 4096 &gt; /etc/ssl/private/sergio.ibanez.key Se crea el fichero csr
+openssl req -new -key /etc/ssl/private/sergio."/>
 
     <meta property="og:title" content="HTTPS en Openstack" />
-<meta property="og:description" content="El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.
- Explica los pasos fundamentales para la creación del certificado. Especificando los campos que has rellenado en el fichero CSR.  Instalamos openssl sudo apt install openssl Se crea la clave" />
+<meta property="og:description" content="Introducción El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.
+Instalamos openssl para crear nuestro certificado sudo apt install openssl Se crea la clave
+openssl genrsa 4096 &gt; /etc/ssl/private/sergio.ibanez.key Se crea el fichero csr
+openssl req -new -key /etc/ssl/private/sergio." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sergioib.netlify.app/posts/https-en-openstack/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-12T15:52:50&#43;01:00" />
@@ -72,11 +76,9 @@
       </div>
     </header>
     <div class="post-content">
-      <p>El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.</p>
-<ul>
-<li>Explica los pasos fundamentales para la creación del certificado. Especificando los campos que has rellenado en el fichero CSR.</li>
-</ul>
-<h3 id="instalamos-openssl"><strong>Instalamos openssl</strong></h3>
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.</p>
+<h3 id="instalamos-openssl-para-crear-nuestro-certificado"><strong>Instalamos openssl para crear nuestro certificado</strong></h3>
 <pre><code>sudo apt install openssl
 </code></pre><p>Se crea la clave</p>
 <pre><code>openssl genrsa 4096 &gt; /etc/ssl/private/sergio.ibanez.key
@@ -95,9 +97,7 @@ L → Localidad/Ciudad
 O → Nombre de la organización
 OU → Nombre de la unidad organizativa a la que se le pide el certificado.
 CN → Nombre del dominio para el que se hará el certificado, en este caso usamos * para que dicho certificado pueda usarse en cualquier maquina con el dominio sergio.gonzalonazareno.org.</p>
-<ul>
-<li>Debes hacer una redirección para forzar el protocolo https (en centos).</li>
-</ul>
+<p>Debemos hacer una redirección para forzar el protocolo https (en centos).</p>
 <p>Para hacer la redirección sera necesario instalar el modulo ssl y reiniciamos httpd para habilitarlo:</p>
 <pre><code>[centos@quijote ~]$ sudo dnf -y install mod_ssl
 </code></pre><p>Activamos el puerto 443 en centos:</p>
@@ -140,20 +140,17 @@ SSLCertificateKeyFile /etc/pki/tls/private/sergio.ibanez.key
 <pre><code>sudo ln -s /etc/httpd/sites-available/inicio.conf /etc/httpd/sites-enabled/
 sudo ln -s /etc/httpd/sites-available/inicio_https.conf /etc/httpd/sites-enabled/
 </code></pre><p>Hay que indicarle a selinux que debe permitir a apache para que pueda acceder al directorio que contiene la clave y el certificado que hemos creado.</p>
-<ul>
-<li>Investiga la regla DNAT en el cortafuego para abrir el puerto 443.</li>
-</ul>
-<p>En dulcinea abrimos los puertos tanto el 80 como 443 añadiendo la siguientes reglas iptable:</p>
+<p>Configuraremos una regla DNAT en el cortafuego de la maquina Dulcinea para abrir el puerto 443 y el 80 haciendo uso de iptable.</p>
 <pre><code>iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 10.0.2.5
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to 10.0.2.5
 </code></pre><ul>
-<li>Instala el certificado del AC Gonzalo Nazareno en tu navegador para que se pueda verificar tu certificado.</li>
+<li>Instalamos el certificado del AC Gonzalo Nazareno en tu navegador para comprobar que se pueda verificar tu certificado.</li>
 </ul>
 <p>Instalamos el certificado en nuestro navegador, por ejemplo en Mozilla Firefox, para ello entramos en Preferencias -&gt; Privacidad &amp; Seguridad -&gt; Certificados -&gt; Ver certificados -&gt; Importar.</p>
 <p><img src="/https-openstack/certificado.png" alt="certificado"></p>
 <p>Probamos a acceder al fichero info.php que tenemos ya en nuestro servidor web:</p>
 <p><img src="/https-openstack/prueba_https.png" alt="prueba https"></p>
-<p>Como se ve en la imagen, nos aparece el candado, aunque nos sale como sitio seguro, esto puede deberse a que a la hora de crear el fichero csr, el dato OU es ta mal y por lo tanto no queda validado correctamente (se puso informatica cuando debe ser informática).</p>
+<p>Como se ve en la imagen, nos aparece el candado, aunque nos sale como sitio seguro, esto puede deberse a que a la hora de crear el fichero csr, el dato OU esta mal y por lo tanto no queda validado correctamente (se puso informatica cuando debe ser informática).</p>
 
     </div>
     <div class="post-footer">

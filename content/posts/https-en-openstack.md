@@ -4,11 +4,11 @@ date: 2021-03-12T15:52:50+01:00
 categories: [Seguridad]
 ---
 
-El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad "gestiona".
+### **Introducción** ###
 
-* Explica los pasos fundamentales para la creación del certificado. Especificando los campos que has rellenado en el fichero CSR.
+El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad "gestiona".
 
-### **Instalamos openssl** ###
+### **Instalamos openssl para crear nuestro certificado** ###
 
 ~~~
 sudo apt install openssl
@@ -40,7 +40,7 @@ O → Nombre de la organización
 OU → Nombre de la unidad organizativa a la que se le pide el certificado.
 CN → Nombre del dominio para el que se hará el certificado, en este caso usamos * para que dicho certificado pueda usarse en cualquier maquina con el dominio sergio.gonzalonazareno.org.
 
-* Debes hacer una redirección para forzar el protocolo https (en centos).
+Debemos hacer una redirección para forzar el protocolo https (en centos).
 
 Para hacer la redirección sera necesario instalar el modulo ssl y reiniciamos httpd para habilitarlo:
 
@@ -118,16 +118,14 @@ sudo ln -s /etc/httpd/sites-available/inicio_https.conf /etc/httpd/sites-enabled
 
 Hay que indicarle a selinux que debe permitir a apache para que pueda acceder al directorio que contiene la clave y el certificado que hemos creado.
 
-* Investiga la regla DNAT en el cortafuego para abrir el puerto 443.
-
-En dulcinea abrimos los puertos tanto el 80 como 443 añadiendo la siguientes reglas iptable:
+Configuraremos una regla DNAT en el cortafuego de la maquina Dulcinea para abrir el puerto 443 y el 80 haciendo uso de iptable.
 
 ~~~
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 10.0.2.5
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to 10.0.2.5
 ~~~
 
-* Instala el certificado del AC Gonzalo Nazareno en tu navegador para que se pueda verificar tu certificado.
+* Instalamos el certificado del AC Gonzalo Nazareno en tu navegador para comprobar que se pueda verificar tu certificado.
 
 Instalamos el certificado en nuestro navegador, por ejemplo en Mozilla Firefox, para ello entramos en Preferencias -> Privacidad & Seguridad -> Certificados -> Ver certificados -> Importar.
 
@@ -137,4 +135,4 @@ Probamos a acceder al fichero info.php que tenemos ya en nuestro servidor web:
 
 ![prueba https](/https-openstack/prueba_https.png)
 
-Como se ve en la imagen, nos aparece el candado, aunque nos sale como sitio seguro, esto puede deberse a que a la hora de crear el fichero csr, el dato OU es ta mal y por lo tanto no queda validado correctamente (se puso informatica cuando debe ser informática).
+Como se ve en la imagen, nos aparece el candado, aunque nos sale como sitio seguro, esto puede deberse a que a la hora de crear el fichero csr, el dato OU esta mal y por lo tanto no queda validado correctamente (se puso informatica cuando debe ser informática).
