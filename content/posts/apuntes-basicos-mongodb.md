@@ -4,13 +4,13 @@ date: 2021-04-03T13:25:45+02:00
 categories: [Base de Datos]
 ---
 
-### Introduccion ###
+### Introducción ###
 
 En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD. 
 
 Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university).
 
-### Instalacion de mongodb (debian 10) ###
+### Instalación de mongodb (debian 10) ###
 
 Para descargar mongodb en debian, necesitaremos tener instalado el paquete gnupg, por lo que si no  lo tenemos, tendremos que instalarlo.
 

@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Introduccion a las Bases De Datos (Oracle) // El rincon del admin</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introduccion a las Bases De Datos (Oracle)"/>
+<meta name="twitter:description" content="Tipos de sentencias en oracle   DDL → nos permitirá crear,modificar o eliminar los objetos de la base de datos. Las instrucciones serian Create, Alter (modificar), Drop (eliminar objetos).
+  DML → permite manipular los datos. Esto se hace con las siguientes instrucciones: Insert, Update, Delete (elimina datos) y Select.
+  DCL → tiene las siguientes instrucciones: Commit (guardar), Rollback (deshacer hasta el ultimo commit), grant (para dar permisos a un usuario) y revoke (quitar permisos a un usuario)."/>
+
+    <meta property="og:title" content="Introduccion a las Bases De Datos (Oracle)" />
+<meta property="og:description" content="Tipos de sentencias en oracle   DDL → nos permitirá crear,modificar o eliminar los objetos de la base de datos. Las instrucciones serian Create, Alter (modificar), Drop (eliminar objetos).
+  DML → permite manipular los datos. Esto se hace con las siguientes instrucciones: Insert, Update, Delete (elimina datos) y Select.
+  DCL → tiene las siguientes instrucciones: Commit (guardar), Rollback (deshacer hasta el ultimo commit), grant (para dar permisos a un usuario) y revoke (quitar permisos a un usuario)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-07T11:33:23&#43;02:00" />
+<meta property="article:modified_time" content="2021-09-07T11:33:23&#43;02:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>El rincon del admin</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administracion y variedades informaticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Introduccion a las Bases De Datos (Oracle)</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Sep 7, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          10 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="tipos-de-sentencias-en-oracle"><strong>Tipos de sentencias en oracle</strong></h3>
+<ul>
+<li>
+<p>DDL → nos permitirá crear,modificar o eliminar los objetos de la base de datos. Las instrucciones serian Create, Alter (modificar), Drop (eliminar objetos).</p>
+</li>
+<li>
+<p>DML → permite manipular los datos. Esto se hace con las siguientes instrucciones: Insert, Update, Delete (elimina datos) y Select.</p>
+</li>
+<li>
+<p>DCL → tiene las siguientes instrucciones: Commit (guardar), Rollback (deshacer hasta el ultimo commit), grant (para dar permisos a un usuario) y revoke (quitar permisos a un usuario).</p>
+</li>
+</ul>
+<p>SQL es un lenguaje navegacional, no hay que decirle los pasos a dar, sino decirle el objetivo final y sql da los pasos hasta el final.</p>
+<h3 id="modelo-ansisparc"><strong>Modelo ansi/sparc</strong></h3>
+<ul>
+<li>
+<p>Nivel físico de la base de datos (administradores)→ discos donde nosotros guardamos la información de la base de datos.</p>
+</li>
+<li>
+<p>Nivel conceptual (programadores)→ la base de datos es un conjunto de tablas, no debería importar como estén repartidas las tablas en los distintos discos.</p>
+</li>
+<li>
+<p>Nivel Externo → tenemos distintos usuarios, cada usuario tiene una lista de la base de datos, por lo que un usuario solo vera las tablas que necesita.</p>
+</li>
+</ul>
+<p>Esquema de usuario es el conjunto de objetos que tiene un usuario.</p>
+<p>Diccionario de datos es la base de datos con información de mi base de datos (usuarios que hay, que tablas hay, su contenido…).</p>
+<h3 id="tipos-de-roles"><strong>Tipos de Roles</strong></h3>
+<ul>
+<li>Rol connect → te permite conectarte a una base de datos, crear tablas&hellip;empezar a trabajar.</li>
+<li>Rol Resource → te permite crear funciones, procedimientos, etc.</li>
+<li>Rol DBA → te permite asignar a un usuario permisos de administrados (no sera necesario con sys y system).</li>
+</ul>
+<h3 id="tipos-de-datos-en-oracle"><strong>Tipos de datos en Oracle</strong></h3>
+<ul>
+<li>varchar2 (tamaño) → cadenas de longitud variable.</li>
+<li>Char (tamaño) → cadena de longitud fija.</li>
+<li>Number (precision, escala) → precision(numero entero), escala(los decimales que tendra). Ej:number(4,1): maximo numero 999,9.</li>
+<li>long → cadenas con logitud variable</li>
+<li>date → fechas y horas.</li>
+<li>RAW(tamaño) → cadenas de bytes (para imagenes por ejemplo).</li>
+<li>long raw → graficos,sonidos.</li>
+<li>rowid → cadena hexadecimal, direccion de fila en tabla.</li>
+<li>Clob, nclob, blob → objetos binarios de mas de 2 Gb.</li>
+</ul>
+<h3 id="operadores-de-oracle"><strong>Operadores de Oracle</strong></h3>
+<ul>
+<li>
+<p>Aritméticos → + - * /</p>
+</li>
+<li>
+<p>Comparación → = &gt; &lt; &gt;= &lt;= &lt;&gt; !=</p>
+</li>
+<li>
+<p>Logicos → AND, OR, NOT.</p>
+</li>
+<li>
+<p>Comparación de cadenas con comodines→ like (% → sustituye cualquier cadena y _ sustituye los caracteres individuales).</p>
+</li>
+<li>
+<p>Regexp_Like (nombre,’ expresión regular’) → compara el primer parámetro con la 	expresión regular, si esta bien devolverá un True. Es mas lento que like.</p>
+</li>
+<li>
+<p>La pertenencia a un conjunto → in. Ej: nombre in (‘pepe’,’juan’,’ana’) si nombre pertenece a pepe,juan o ana devolvera un True. Se puede usar con NOT.</p>
+</li>
+<li>
+<p>La pertenencia a un rango → between(con los extremos incluidos). Ej: edad between 16 and 65.</p>
+</li>
+</ul>
+<h3 id="funciones-en-oracle"><strong>Funciones en Oracle</strong></h3>
+<p>Trozo de código que ha hecho alguien y que puede usarse,debes saber su nombre, que se va a mandar y que se va a devolver. A los valores de una funcion se les llama parametros, y devuelven un resultado.</p>
+<ul>
+<li>
+<p><strong>Aritmeticas:</strong></p>
+<ul>
+<li>abs → devuelve el valor absoluto.</li>
+<li>Ceil → redondea hacia arriba.</li>
+<li>Floor → redondea hacia abajo.</li>
+<li>Mod → resto de la division entera.</li>
+<li>Nvl(valor,expresion) → sustituye valor nulo por otro valor. Por ejemplo para sustituir una columna vacia por 0. se usa solo con numeros enteros (en multiplicaciones se sustituye por 1).</li>
+<li>power → calcula la potencia de un numero.</li>
+<li>Round → redondea numeros con los decimales que se le indiquen. Ej round(76’345,2) → 76’34. se puede usar con numeros negativos. Ej: round(17698’43,-2) → 176’9843.</li>
+<li>sign → indica el signo del valor (1 si es positivo, -1 si en negatvo).</li>
+<li>Sqtr → devuelve la raiz cuadrada.</li>
+<li>trunc → trunca los numeros.</li>
+<li>Variance → devuelve varianza de un conjunto de valores.</li>
+</ul>
+<p>Para probar expresiones → select abs (-15) from dual (tabla por defecto para probar expresiones y funciones); .</p>
+<ul>
+<li>AVG → calcula la media ignorando los nulos.</li>
+<li>Max → devuelve el maximo.</li>
+<li>Min → devuelve el minimo.</li>
+<li>Sum → obtiene la suma de los valores.</li>
+<li>Count → cuenta las filas de una tabla. O bien los valores no nulos de una tabla.</li>
+</ul>
+</li>
+<li>
+<p>Alter user scott account unlock → desbloquea un usuario oracle.</p>
+</li>
+<li>
+<p>Alter user scott identified by tiger → cambiar contraseña de usuarios.</p>
+</li>
+<li>
+<p><strong>Funciones de cadenas</strong></p>
+<ul>
+<li>chr(n) → devuelve el carácter ascii de un numero.</li>
+<li>Concat (cad1,cad2) → concatena 2 cadenas. Hay un operador que concatena las cadenas (||),se suele usar el operador.</li>
+<li>Lower (cad) → devuelve la cadena en minúsculas.</li>
+<li>Upper (cad) → devuelve la cadena en mayúscula.</li>
+<li>Initcap → convierte cadena en titulo(iniciales de las palabras en mayusculas).</li>
+<li>Lpad → añade caracteres a la izquierda de la cadena hasta cierta longitud.</li>
+<li>Rpad → añade caracteres a la derecha de la cadena hasta cierta longitud.
+Se suelen usar en listados, para que quede bien.</li>
+<li>Ltrim → suprime un conjunto de elementos a la izquierda.</li>
+<li>Rtrim → suprime un conjunto de elementos a la derecha.</li>
+<li>Replace → sustituye un carácter o caracteres con 0 o mas caracteres.</li>
+<li>Substr → obtiene parte de una cadena.</li>
+<li>Ascii → se le manda un ascii y se devuelve el carácter.</li>
+<li>Instr → permite ver en que posición esta una subcadena en una cadena.</li>
+<li>Length → devuelve el numero de caracteres de la cadena.</li>
+</ul>
+</li>
+</ul>
+<p>Ejemplo convertir ‘Ruiz Padilla, Raul’ → ‘Raul Ruiz Padilla’ (se pueden usar concat, substr, instr)</p>
+<pre><code>select instr(‘Ruiz Padilla, Raul’,’,’) from dual; → cojemos la coma
+substr (‘Ruiz Padilla, Raul’,instr(‘Ruiz Padilla, Raul’,’,’) + 2) → extraemos el nombre
+substr (‘Ruiz Padilla, Raul’, 1, instr(‘Ruiz Padilla, Raul’,’,’) - 1) → extraemos los apellidos
+
+select substr (‘Ruiz Padilla, Raul’,instr(‘Ruiz Padilla, Raul’,’,’) + 2), ‘  ‘ || substr (‘Ruiz Padilla, Raul’, 1, instr(‘Ruiz Padilla, Raul’,’,’) - 1) from dual;
+</code></pre><ul>
+<li>
+<p><strong>Funciones de fechas</strong></p>
+<ul>
+<li>Sysdate → devuelve la fecha del sistema</li>
+</ul>
+<ul>
+<li>Add_months → devuelve la fecha incrementada en n meses.</li>
+<li>months between → meses que hay entre dos fechas. Tambien se puede hacer con la funcion interval.</li>
+<li>Last day → devuelve ultimo dia del mes de la fecha introducida.</li>
+<li>Next day → devuelve el primer dia de la semana indicando por una fecha.</li>
+</ul>
+<p>Se pueden hacer operaciones aritmeticas logicas (sumar y restar dias) con las fechas.</p>
+</li>
+<li>
+<p><strong>Funciones de conversión</strong></p>
+<ul>
+<li>to_char → transforma una fecha o number en una cadena</li>
+<li>to_date → transforma un number o char en date</li>
+<li>to_number → transforma la cadena de caracteres en number</li>
+</ul>
+</li>
+<li>
+<p><strong>Función sobrecargada</strong> → una funcion que puede recibir parámetros diferentes y dependiendo de los tipos de parámetros, la función funcionan de forma distinta.</p>
+<ul>
+<li>
+<p>Hiredate → fecha de contratacion.</p>
+</li>
+<li>
+<p>Mon → mes abreviado(diciembre → dic)</p>
+</li>
+<li>
+<p>ddd → dia (4 diciembre → dia 338)</p>
+</li>
+<li>
+<p>horas → HH</p>
+</li>
+<li>
+<p>minutos → MI</p>
+</li>
+<li>
+<p>segundos → SS</p>
+</li>
+<li>
+<p>nls date format → variable de entorno que muestra la fecha por defecto</p>
+</li>
+<li>
+<p>alter session set nls date format → cambiar configuracion de esa sesion una variable de entorno por defecto.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tablas"><strong>Tablas</strong></h3>
+<ul>
+<li>Mostrar tablas de un usuario → select * from cat;</li>
+<li>Mostrar columnas de las tablas → desc “nombre de la tabla”</li>
+</ul>
+<p>Los tipos number se usan en dos casos: si usamos operaciones aritmeticas o si es importante que se ordenen los numeros de forma alfabetica es decir (10,11,8,9,…)</p>
+<ul>
+<li>Crear tabla → create table “nombre de la tabla”</li>
+</ul>
+<pre><code>(
+columna	tipo(),
+);
+</code></pre><ul>
+<li>
+<p>Eliminar tabla → drop table “nombre de la tabla”</p>
+</li>
+<li>
+<p>user_tables → sinónimo de cat (para saber que tablas tiene un usuario)</p>
+</li>
+<li>
+<p>all_tables → todas las tablas en las que tiene permiso un usuario</p>
+</li>
+<li>
+<p>dba_tables(admin) → ves todas las tablas, de quienes son, etc.</p>
+</li>
+</ul>
+<p>Integridad de datos → que los datos tengan valores lógicos.
+Integridad referencial → impide que en una tabla se introduzca un valor que no tenga su correspondencia en la tabla.</p>
+<p>A las restricciones hay que darles un nombre, no pueden existir dos restricciones con el mismo nombre.</p>
+<h3 id="restricciones"><strong>Restricciones</strong></h3>
+<ul>
+<li>
+<p>Clave primaria (a nivel de tabla) → constraint “nombre de la restricción” primary key(“columna”)</p>
+</li>
+<li>
+<p>Claves primarias compuestas:
+◦ A nivel de columna no se puede hacer, a nivel de tabla si.
+◦ Constraint “nombre de la restriccion” Primary Key (clave1,clave2)</p>
+</li>
+<li>
+<p>Claves ajenas → se pueden poner tantas como sea necesario siempre que existan en la otra tabla.
+◦ Nivel de columna → constraint “nombre de la restricción” references (tabla)</p>
+</li>
+<li>
+<p>Añadir una clave primaria que se haya olvidado meter</p>
+</li>
+<li>
+<p>alter table (tabla)</p>
+</li>
+<li>
+<p>add constraint “nombre de restriccion” primary key (clave/tabla)</p>
+<p>◦ Nivel de tabla → constraint “nombre de restriccion”	foreign key (clave) references (tabla)</p>
+<p>En el caso de claves compuestas es recomendable poner el nombre de los campos de la tabla despues de poner el nombre.</p>
+</li>
+<li>
+<p>On delete cascade → cada vez que se borre una clave, borra los atributos para asegurarse no tener datos sueltos, ej: si borro un alumno, se borraran todas las notas del alumno.</p>
+</li>
+<li>
+<p><strong>Obligatoriedad</strong> → la columna no puede estar en blanco.</p>
+<ul>
+<li>
+<p>A nivel de columna → Constraint “nombre de restriccion” not null</p>
+</li>
+<li>
+<p>A nivel de tabla → Constraint “nombre de restriccion” check(nombre is not null)</p>
+</li>
+<li>
+<p>check → comprueba que se cumple una restriccion obligaroria siempre. Ej:</p>
+<p>El precio debe estar entre 10 y 1200 → constraint “nombre” check(precio between 10 and 1200)</p>
+<p>El código de un producto debe tener 6 caracteres → constraint “nombre” check(length(codigo)=6)</p>
+<p>El tipo de producto debe ser micro,memoria o disco → constraint “nombre” check(tipo in (‘micro’,’memoria’,’disco’)</p>
+<p>El codigo de producto debe tener dos letras y cuatro números → constraint “nombre” check(regexp_like(codigo,’^[A-Za-z]{2}[0-9]{4}$’))</p>
+<p>El nombre esta en mayuscula → constraint “nombre” check(nombre=upper(nombre))</p>
+<p>Primera letra del nombre en mayuscula → constraint “nombre” check(substr(nombre,1,1) between ‘A’ and ‘Z’</p>
+<p>Productos se hacen en 2019 → constraint “nombre” check(to_char(fechacreacion, ‘YYYY’)=’2019’)</p>
+<p>Productos se crean en primavera→constraint “nombre” check(to_char(fechacreacion,’MM/DD’) between ‘04/21’ and ‘06/20’)</p>
+</li>
+<li>
+<p>Triger → programa que va comprobando si se van dando varias restricciones, se usa cuando se quieren validar restricciones complejas que dependen unas condiciones de otras. El check solo valida restricciones simples.</p>
+</li>
+<li>
+<p>Meter datos en una tabla → insert into “nombre de tabla”
+values(filas)</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>	insert into “nombre de tabla” (campos)
+	values(filas)
+</code></pre><pre><code>* Los campos que no esten especificados se quedan en blanco.
+
+* default → pone un valor por defecto, no llevan nombre. incompatible con not null. (No puede ponerse a nivel de tabla, sino a nivel de columna)
+
+* Unicidad 
+    ◦ Unique→ columna que se sabe que no se deba repetir (una clave candidata), ej: telefono.
+</code></pre>
+<h3 id="consultas-al-diccionario-de-datos"><strong>Consultas al diccionario de datos</strong></h3>
+<p>Oracle almacena la información de las restricciones en el diccionario de datos. En ocasiones se necesitara saber de que va una restriccion por lo que se hacen consultas al diccionario de datos.</p>
+<ul>
+<li>Para ver la información de una tabla → select * from “nombre de la tabla”;</li>
+<li>Para saber todas las restricciones → select * from users_constraints;</li>
+<li>Para saber restricciones de una tabla concreta → select * from users_constraints where table_name=”nombre de la tabla”;</li>
+</ul>
+<p>constraint_name, constraint_type(c → check, p → primary key, r → foreing key, u → unique), search condition → para que muestre el nombre,tipo y condicion de la restriccion.</p>
+<pre><code>* Users_constraints → restricciones que el usuario a creado
+* All constraints → todas las restricciones que existen para un usuario(tus tablas y las que tienes permisos)
+
+* Dba_constraints → todas las restricciones de todos las tablas
+</code></pre>
+<h3 id="alter-table"><strong>Alter table</strong></h3>
+<ul>
+<li>ALTER TABLE nombre_tabla</li>
+</ul>
+<p><strong>{ADD (columna)</strong> → añade columnas en una tabla.
+* Si la tabla esta rellena no se puede añadir una columna vacia y ponerla como not null, se tendría que rellenar la columna previamente.</p>
+<p><strong>[MODIFY (colum [….])]</strong> → modifica columnas</p>
+<p><strong>[DROP COLUMN (colum…..)]</strong> → borra columnas
+* no permite borrar claves primarias refereciadas a claves ajenas
+* no borra ultimas columnas de las tablas</p>
+<p><strong>[ADD CONSTRAINT restricción]</strong> → añade restricciones
+* Solo pueden añadirse y borrarse primary key, foreing keys, check, unique y not null</p>
+<p><strong>[DROP CONSTRAINT restricción]</strong> → elimina restricciones
+* cada usuario puede borrar sus propias tablas
+* cascade constraint, elimina las restricciones de integridad referencial que remitan a la clave primaria de una tabla borrada.
+* El dba o usuarios con privilegos drop any table, pueden eliminar cualquier tabla</p>
+<p><strong>[DISABLE CONSTRAINT restricción]</strong> → desactiva una restriccion
+<strong>[ENABLE CONSTRAINT restriccion]</strong> → activa una restriccion</p>
+<p>Se activan y desactivan cuando se importa información desde otra base de datos que cuenta con las mismas restricciones, para evitar comprobar restricciones que ya se saben que están bien.</p>
+<p>Se puede ver el estado de las restricciones usando Status.</p>
+<ul>
+<li>
+<p>Truncate table → elimina las filas de la tabla y además libera el espacio asociado, es decir, que la tabla sigue existiendo y el espacio se libera, solo elimina los datos, la tabla sigue existiendo en el diccionario de datos. El truncate no se puede deshacer.</p>
+</li>
+<li>
+<p>Purge recyclebin; → elimina el contenido de la papelera de reciclaje de la base de datos.</p>
+</li>
+</ul>
+<p>Insertar valor nulo en tabla</p>
+<p>insert into nombre de tabla (columnas que se van a rellenar)
+values</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

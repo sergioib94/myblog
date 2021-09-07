@@ -6,7 +6,16 @@
     <description>Recent content in Categories on El rincon del admin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Jun 2021 16:43:19 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Sep 2021 11:33:23 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Base de Datos</title>
+      <link>https://sergioib.netlify.app/categories/base-de-datos/</link>
+      <pubDate>Tue, 07 Sep 2021 11:33:23 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/base-de-datos/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Apuntes</title>
       <link>https://sergioib.netlify.app/categories/apuntes/</link>
@@ -22,15 +31,6 @@
       <pubDate>Sun, 23 May 2021 15:28:17 +0200</pubDate>
       
       <guid>https://sergioib.netlify.app/categories/sistemas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Base de Datos</title>
-      <link>https://sergioib.netlify.app/categories/base-de-datos/</link>
-      <pubDate>Sat, 03 Apr 2021 13:25:45 +0200</pubDate>
-      
-      <guid>https://sergioib.netlify.app/categories/base-de-datos/</guid>
       <description></description>
     </item>
     
