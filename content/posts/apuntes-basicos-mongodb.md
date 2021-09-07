@@ -1,7 +1,7 @@
 ---
 title: "Conceptos Basicos de Mongodb"
 date: 2021-04-03T13:25:45+02:00
-categories: [Base de Datos]
+categories: [Base de Datos, Apuntes]
 ---
 
 ### Introducción ###
