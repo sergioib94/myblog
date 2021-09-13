@@ -6,7 +6,20 @@
     <description>Recent content in Apuntes on El rincon del admin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Sep 2021 11:33:23 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/apuntes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Sep 2021 12:36:20 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/apuntes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducción a PLSQL (Oracle)</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</link>
+      <pubDate>Mon, 13 Sep 2021 12:36:20 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</guid>
+      <description>Introducción   Características
+  Es una extensión de SQL con características de lenguaje de programación.
+  Se ejecuta en el lado del servidor y los procedimientos y funciones se almacenan en la BD.
+  Las sentencias SQL de consulta y manipulación de datos pueden ser incluidas en unidades procedurales de código, pero no pueden usarse instrucciones DDL ni DCL.
+  No tiene instrucciones de entrada por teclado o salida por pantalla.</description>
+    </item>
+    
     <item>
       <title>Introduccion a las Bases De Datos (Oracle)</title>
       <link>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</link>

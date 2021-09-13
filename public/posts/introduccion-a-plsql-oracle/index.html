@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Introducción a PLSQL (Oracle) // El rincon del admin</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introducción a PLSQL (Oracle)"/>
+<meta name="twitter:description" content="Introducción   Características
+  Es una extensión de SQL con características de lenguaje de programación.
+  Se ejecuta en el lado del servidor y los procedimientos y funciones se almacenan en la BD.
+  Las sentencias SQL de consulta y manipulación de datos pueden ser incluidas en unidades procedurales de código, pero no pueden usarse instrucciones DDL ni DCL.
+  No tiene instrucciones de entrada por teclado o salida por pantalla."/>
+
+    <meta property="og:title" content="Introducción a PLSQL (Oracle)" />
+<meta property="og:description" content="Introducción   Características
+  Es una extensión de SQL con características de lenguaje de programación.
+  Se ejecuta en el lado del servidor y los procedimientos y funciones se almacenan en la BD.
+  Las sentencias SQL de consulta y manipulación de datos pueden ser incluidas en unidades procedurales de código, pero no pueden usarse instrucciones DDL ni DCL.
+  No tiene instrucciones de entrada por teclado o salida por pantalla." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-13T12:36:20&#43;02:00" />
+<meta property="article:modified_time" content="2021-09-13T12:36:20&#43;02:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>El rincon del admin</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administracion y variedades informaticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Introducción a PLSQL (Oracle)</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Sep 13, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<ul>
+<li>
+<p><strong>Características</strong></p>
+<ul>
+<li>
+<p>Es una extensión de SQL con características de lenguaje de programación.</p>
+</li>
+<li>
+<p>Se ejecuta en el lado del servidor y los procedimientos y funciones se almacenan en la BD.</p>
+</li>
+<li>
+<p>Las sentencias SQL de consulta y manipulación de datos pueden ser incluidas en unidades procedurales de código, pero no pueden usarse instrucciones DDL ni DCL.</p>
+</li>
+<li>
+<p>No tiene instrucciones de entrada por teclado o salida por pantalla. Truco para mostrar por pantalla -&gt; Usando la instrucción para depurar programas.</p>
+</li>
+<li>
+<p>Incluye los tipos de datos y operadores de SQL.</p>
+</li>
+<li>
+<p>Los programas se pueden compilar desde SQL*Plus (comando /) o usar SQL Developer u otros IDEs.</p>
+</li>
+<li>
+<p>Los comentarios comienzan por &ldquo;&ndash;&rdquo; o se colocan entre &ldquo;/<em>&rdquo; y &ldquo;</em>/&rdquo;.</p>
+</li>
+<li>
+<p>Trae unas librerías con funciones predefinidas, se llaman paquetes.</p>
+</li>
+<li>
+<p>Para ejecutar los procedimientos almacenados desde SQL*Plus se usa el comando exec.</p>
+</li>
+<li>
+<p>Es solo es propietario de Oracle, en mariadb(SQL/PSM) y Postgres(PG/SQL). Mariadb no es necesario aprenderlo.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="estructura-de-un-bloque"><strong>Estructura de un bloque</strong></h3>
+<p>Tienen 3 partes:</p>
+<ul>
+<li><strong>Declare (opcional)</strong> → cuando se declaran cosas: variables, cursores (guardar resultado de una select), excepciones (posibles errores a lo largo del programa) definidas por el usuario.</li>
+</ul>
+<pre><code>	v_usuario 	VARCHAR2(10); 
+	v_fecha 	DATE;
+</code></pre><ul>
+<li><strong>Begin (obligatorio)</strong> → sentencias SQL sentencias de control PL/SQL (while, for, case, if&hellip;).</li>
+</ul>
+<pre><code>	SELECT user_id, fecha 
+	INTO v_usuario, v_fecha 
+	FROM tabla;
+</code></pre><ul>
+<li>Exception (opcional) → acciones a realizar cuando se producen errores.</li>
+</ul>
+<pre><code>	WHEN nombre_excepcion then
+</code></pre><ul>
+<li>End; (obligatorio) → para cerrar el programa una ver hecho.</li>
+</ul>
+<h3 id="tipos-de-bloques-de-código"><strong>Tipos de bloques de código</strong></h3>
+<ul>
+<li>
+<p><strong>Bloques anónimos:</strong> No se almacenan en la BD. Se ejecutan tras escribirlos (para hacer pruebas).</p>
+</li>
+<li>
+<p><strong>Procedimientos:</strong> Se almacenan en la BD y son invocados. Pueden recibir y devolver múltiples parámetros.</p>
+</li>
+<li>
+<p><strong>Funciones:</strong> Se almacenan en el BD y son invocados. Pueden recibir parámetros y devuelven un valor “en su nombre”. Solo devuelven un parámetro.</p>
+</li>
+<li>
+<p><strong>Triggers:</strong> Se almacenan en la BD y se ejecutan automáticamente cuando ocurre algún evento.</p>
+</li>
+</ul>
+<h3 id="operaciones-básicas"><strong>Operaciones básicas</strong></h3>
+<ul>
+<li><strong>Declaración de variables (nombre tipo)</strong></li>
+</ul>
+<p>Oracle recomienda que el nombre de las variables empiece por v y el de los procedimientos por por para distinguir estos procesos de algunos nombres como de tablas por ejemplo.</p>
+<p>Además de variables, pueden declararse constantes. Las constantes pueden ser útiles por ejemplo en un programa que calcule áreas geométricas y tenga que utilizar un valor constante como puede ser el valor de pi, en lugar de repetir varias veces el valor de pi se declara como constante para poder usarse varias veces dicha constante para asi mejorar la legibilidad del código.</p>
+<p>A la hora de definir una variable podemos usar dos atributos: %type y %rowtype:</p>
+<ul>
+<li>Type sirve para declarar una variable basándonos en otras declaradas previamente o en una columna de la base de datos, es decir, declárame esta variable como esta otra que ya existe.</li>
+</ul>
+<p>Por lo que antes de %type se puede poner tanto un nombre de tabla como un nombre de columna de una base de datos o el nombre de una variable definida previamente de forma que se copiara para la nueva variable el nuevo dato del dato anterior.</p>
+<ul>
+<li>Rowtype para tipos de datos compuestos, un tipo de dato compuesto es cuando necesitas guardar varios datos en una variable, es decir, a esto se le llama una variable registro o compuesta, es una variable que esta divididas en distintas casillas con las distintas informaciones.</li>
+</ul>
+<p><strong>Asignación de valores a variables → variable := expresión</strong></p>
+<p>Ejemplos:</p>
+<pre><code>v_fecha := ‘31-oct-2003’
+v_apellido := ‘lopez’
+</code></pre><p>Se puede asignar un valor desde una consulta de la siguiente forma:</p>
+<pre><code>select sal * 0.10 into v_comision
+from emp
+where empno =7082;
+</code></pre><p>De esta forma estaremos guardando el 10% del salario en la variable comisión del empleado 7082. hay que hacerlo con cuidado porque si devuelve varios valores no se podra guardar en una unica variable number, para ello usaremos los cursores, si devuelve solo uno si se podra guardar en la variable.</p>
+<ul>
+<li><strong>Mostrar por pantalla una variable</strong></li>
+</ul>
+<p>Para ello usamos el paquete dbms_output, nosotros usaremos la función put_line (solo puede recibir un parámetro). Este método se creo para poder depurar el código, pero lo usaremos para mostrar por pantalla. Ejemplo de uso:</p>
+<pre><code>begin
+dbms_output.put_line (‘Mi 1º bloque pl/sql diseñado por ’ || user || ‘el dia ’ || sysdate ||);
+end;
+</code></pre><p>Como put_line solo muestra una cosa, en el caso de tener que mostrar más de una deberemos usar el  operador de concatenación(||) como en el ejemplo de arriba.</p>
+<ul>
+<li><strong>Recuperar datos de una BD con select</strong></li>
+</ul>
+<pre><code>select lista columnas
+into {v_nombre[…]… | nombre_registro}
+from nombre_tabla
+where condicion
+</code></pre><ul>
+<li><strong>Inserción de datos</strong></li>
+</ul>
+<p>Por ejemplo: añadir información sobre un nuevo empleado en la tabla emp.</p>
+<pre><code>Begin
+
+insert into emp(empno, ename, job, deptno)
+values(empno_sequence.nextval, ‘HARDING’,’CLERK’,10):
+
+end;
+</code></pre><ul>
+<li><strong>Actualizar datos</strong></li>
+</ul>
+<p>Por ejemplo: aumenta el salario de todos los empleados de la tabla emp que son analistas.</p>
+<pre><code>Declare
+	v_incre_sal	emp.sal%type := 2000;
+Begin
+	update emp
+	set sal = sal + v_incre_sal
+	where job = ‘ANALYST’;
+End;
+</code></pre><ul>
+<li><strong>Borrar datos</strong></li>
+</ul>
+<p>Por ejemplo: suprimir los empleados que trabajan en el dpto 10.</p>
+<pre><code>Declare
+	v_deptno	dept.deptno%type;
+Begin
+	delete from emp
+	where deptno = v_deptno;
+End;
+</code></pre><ul>
+<li>
+<p><strong>Estructuras de control</strong></p>
+</li>
+<li>
+<p><strong>Sentencia if</strong></p>
+</li>
+</ul>
+<p>Sintaxis:</p>
+<pre><code>if condicion then
+	instrucciones;
+[elsif condicion then
+	instrucciones];
+[else
+	instrucciones];
+end if;
+</code></pre><p>Se pueden tener if anidados como en python.</p>
+<ul>
+<li><strong>Sentencia case</strong></li>
+</ul>
+<p>Sintaxis</p>
+<pre><code>case [expresion]
+when [condicion|valor] then
+	instrucciones;
+when [condicion|valor] then
+	instrucciones;
+….
+else
+	instrucciones que se ejecuta si no se simple ninguna condición anterior
+end case;
+</code></pre><p>También es posible usar case con una variable como ejemplo de un menú. Por ejemplo:</p>
+<pre><code>case tipo
+when 1 then
+	procesar_pedido_local;
+when 2 then
+	procesar_pedido_domicilio;
+when 3 then
+	procesar_pedido_extranjero
+else
+	procesar_pedido_normal;
+end case;
+</code></pre><ul>
+<li><strong>Sentencia for</strong></li>
+</ul>
+<p>Se usa cuando se sabe las vueltas que dara el bucle. Si no se sabe el numero de vueltas, se usara while.</p>
+<p>Sintaxis</p>
+<pre><code>for indice in [reverse] valor_inicial...valor_final loop
+	instruciones;
+….
+end loop;
+</code></pre><p>El índice se declara de manera implícita, en el momento que se sale del bucle for la variable índice ya no existe.</p>
+<p>En mitad del bucle no se debe cambiar el valor de indice.</p>
+<p>Ejemplo: inserta las 10 primeras filas del pedido 601.</p>
+<pre><code>Declare
+v_id	prueba.id%type := 601;
+Begin
+….
+for i in 1 .. 10 loop
+	insert into prueba(id, contador)
+	values (v_id, i);
+end loop;
+…
+end;
+</code></pre><ul>
+<li><strong>Sentencia while</strong></li>
+</ul>
+<pre><code>while condicion loop
+	instrucciones;
+…
+end loop;
+</code></pre><h3 id="funciones-y-procedimientos"><strong>Funciones y Procedimientos</strong></h3>
+<ul>
+<li>
+<p>Para ver errores de compilacion → show err</p>
+</li>
+<li>
+<p>Para ejecutar programa → exec nombre del programa (parametros)</p>
+</li>
+<li>
+<p>Para mostrar por pantalla → set serveroutput on (solo sirve hasta que se cierre la sesion)</p>
+</li>
+<li>
+<p>Para crear un procedimiento siempre utilizamos create or replace para empezar, si no existe lo crea y si ya existe lo reemplaza por el nuevo valor.</p>
+</li>
+</ul>
+<p>Si el trozo de codigo debe devolver una sola cosa, se usa una funcion, si no tiene porque devolver nada, se usara un procedimiento.</p>
+<p>Ejemplo: procedimiento que muestre el nombre del empleado 7082</p>
+<pre><code>create or replace procedure MostrarNom7082
+is
+	v_nombre	emp.ename%type;
+begin
+	select ename input v_nombre
+	from emp
+	where emptno = 7082
+	dbms_output.put_line(v_nombre)
+end MostrarNom7082;
+</code></pre><ul>
+<li><strong>Programación modular</strong></li>
+</ul>
+<p>La programación modular es dividir un programa grande, en varios trozos mas pequeños de forma cada trozo resuelva una parte del problema (cada trozo preferiblemente debe ser de 12 lineas) de forma que se vea fácilmente el funcionamiento del programa.</p>
+<p>La programación modular usa parámetros, los parámetros pueden ser de entrada o salida. De entrada, a un código llega un parámetro de entrada</p>
+<ul>
+<li>bloques anónimos</li>
+<li>procedimientos</li>
+<li>funciones</li>
+<li>triggers</li>
+</ul>
+<h3 id="cursores"><strong>Cursores</strong></h3>
+<p>PL/SQL utiliza cursores para gestionar las instrucciones select. Un cursor es un conjunto de registros devueltos por una instrucción select. Hay dos tipos de cursores, los cursores implícitos y los explícitos.</p>
+<ul>
+<li>
+<p><strong>Cursores implícitos</strong> → se utiliza para operaciones select into. Se usa cuando la consulta devuelve un único registro.</p>
+</li>
+<li>
+<p><strong>Cursores explícitos</strong> → se utilizan cuando la consulta devuelve un conjunto de registros, aunque también pueden ser usados para consultas que devuelven un único registro ya que de esta forma forma la consulta es mas rápida.</p>
+</li>
+</ul>
+<p>Los cursores explícitos se declaran como cualquier otra variable de pl/sql, sin embargo los cursores implícitos no son necesario declararlos. Ej:</p>
+<pre><code>declare
+ 	cursor c_paises is
+ 	SELECT CO_PAIS, DESCRIPCION
+ 	FROM PAISES;
+begin
+	/* Sentencias del bloque ...*/
+end;
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
