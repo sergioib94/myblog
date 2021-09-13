@@ -30,7 +30,7 @@ Las unidaddes organizativas (OU) son contenedores de Active Diretory dentro de u
 
 ![jerarquia active directory](/Active-Directory/jerarquia.png)
 
-### Instalacion (En windows server 2012) ###
+### Instalacion (En windows server 2016) ###
 
 1. Nos dirigimos al Administrador de Servidor o Server Manager y hacemos clic en Agregar roles o características.
 
@@ -149,3 +149,46 @@ En el centro de administración de Active Directory podemos gestionar otras func
 * Elevar el nivel funcional del dominio: da la posibilidad de elevar la funcionalidad de nuestro dominio.
 
 * Habilitar la papelera de reciclaje: permite recuperar objetos eliminados en AD
+
+### **Creación y administración de OUs (unidades organizacioneales)** ###
+
+Dentro de nuestro dominios podemos crear Unidades Organizacionales para tener un control más específico de los usuarios u objetos, así mismo podemos crear diferentes perfiles para cada OU. 
+
+Para ello abrimos el Centro de administración de Active Directory desde el menú Herramientas y elegiremos del panel lateral derecho la opción Nuevo / Unidad Organizativa.
+
+Allí debemos especificar el nombre de la OU (en este caso usemos Pruebas) y podemos agregar comentarios y en la opción superior derecha Crear en: podemos definir en qué parte de nuestro Árbol vamos a crear dicha OU.
+
+Podríamos incluir Pruebas dentro de la OU:
+
+Ingresamos los datos en la ventana del Centro de administración:
+
+Podremos ver que nuestra OU Pruebas ha sido creada correctamente dentro de nuestro árbol:
+
+### **Creación y administración de grupos en AD** ###
+
+Cuando un usuario inicia sesión en el dominio, Active Directory crea un token o una especie de identidad que indica automáticamente en que grupos está incluido este usuario; Un grupo puede crearse para fines distintos, por ejemplo, para acceder a ciertas rutas, para poder imprimir, para que le lleguen determinados correos etc.
+
+Existen básicamente dos tipos de grupos:
+    
+* Distribución: Son creados básicamente para el envío de información a una o más personas
+* Seguridad: Son creados para garantizar el acceso a los recursos de la organización.
+
+Para crear nuestro grupo realizaremos el siguiente proceso, primero nos dirigimos al Centro de administración de Active Directory, en el panel derecho elegimos Nuevo y luego Grupo. A continuación se desplegará la siguiente ventana donde elegiremos el tipo de grupo, ingresar nombre, entre otros parámetros (En nuestro caso elegiremos un grupo de Seguridad con ámbito global):
+
+En este menú también podremos elegir la ubicación de nuestro grupo y damos clic en Aceptar. 
+
+Las principales diferencias entre los diferentes ámbitos de grupos: 
+
+**Dominio Local**
+
+Pueden incluir miembros de los siguientes tipos: Usuarios, equipos, grupos globales, grupos universales y grupos de dominio local que estén dentro del mismo dominio.
+ 
+**Universal**
+
+Pueden albergar: Usuarios, equipos, grupos globales y otros grupos universales.
+ 
+**Global**
+
+Pueden albergar Usuarios, equipos y otros grupos globales dentro del mismo dominio.
+
+

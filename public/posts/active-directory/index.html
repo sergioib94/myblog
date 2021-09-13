@@ -67,7 +67,7 @@ La estructura de los datos permite encontrar los detalles de los recursos conect
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          6 min read
+          8 min read
         </div>
       </div>
     </header>
@@ -85,7 +85,7 @@ La estructura de los datos permite encontrar los detalles de los recursos conect
 <p><strong>Unidad Organizativa</strong></p>
 <p>Las unidaddes organizativas (OU) son contenedores de Active Diretory dentro de un dominio con los que podemos agrupar para organizar multitud de objetos de active directory como pueden ser: usuarios de dominios, grupos de dominios, equipos e incluso otras unidades organizativas.</p>
 <p><img src="/Active-Directory/jerarquia.png" alt="jerarquia active directory"></p>
-<h3 id="instalacion-en-windows-server-2012">Instalacion (En windows server 2012)</h3>
+<h3 id="instalacion-en-windows-server-2016">Instalacion (En windows server 2016)</h3>
 <ol>
 <li>Nos dirigimos al Administrador de Servidor o Server Manager y hacemos clic en Agregar roles o características.</li>
 </ol>
@@ -208,6 +208,31 @@ La estructura de los datos permite encontrar los detalles de los recursos conect
 <p>Habilitar la papelera de reciclaje: permite recuperar objetos eliminados en AD</p>
 </li>
 </ul>
+<h3 id="creación-y-administración-de-ous-unidades-organizacioneales"><strong>Creación y administración de OUs (unidades organizacioneales)</strong></h3>
+<p>Dentro de nuestro dominios podemos crear Unidades Organizacionales para tener un control más específico de los usuarios u objetos, así mismo podemos crear diferentes perfiles para cada OU.</p>
+<p>Para ello abrimos el Centro de administración de Active Directory desde el menú Herramientas y elegiremos del panel lateral derecho la opción Nuevo / Unidad Organizativa.</p>
+<p>Allí debemos especificar el nombre de la OU (en este caso usemos Pruebas) y podemos agregar comentarios y en la opción superior derecha Crear en: podemos definir en qué parte de nuestro Árbol vamos a crear dicha OU.</p>
+<p>Podríamos incluir Pruebas dentro de la OU:</p>
+<p>Ingresamos los datos en la ventana del Centro de administración:</p>
+<p>Podremos ver que nuestra OU Pruebas ha sido creada correctamente dentro de nuestro árbol:</p>
+<h3 id="creación-y-administración-de-grupos-en-ad"><strong>Creación y administración de grupos en AD</strong></h3>
+<p>Cuando un usuario inicia sesión en el dominio, Active Directory crea un token o una especie de identidad que indica automáticamente en que grupos está incluido este usuario; Un grupo puede crearse para fines distintos, por ejemplo, para acceder a ciertas rutas, para poder imprimir, para que le lleguen determinados correos etc.</p>
+<p>Existen básicamente dos tipos de grupos:</p>
+<ul>
+<li>Distribución: Son creados básicamente para el envío de información a una o más personas</li>
+<li>Seguridad: Son creados para garantizar el acceso a los recursos de la organización.</li>
+</ul>
+<p>Para crear nuestro grupo realizaremos el siguiente proceso, primero nos dirigimos al Centro de administración de Active Directory, en el panel derecho elegimos Nuevo y luego Grupo. A continuación se desplegará la siguiente ventana donde elegiremos el tipo de grupo, ingresar nombre, entre otros parámetros (En nuestro caso elegiremos un grupo de Seguridad con ámbito global):</p>
+<p>En este menú también podremos elegir la ubicación de nuestro grupo y damos clic en Aceptar.</p>
+<p>Las principales diferencias entre los diferentes ámbitos de grupos:</p>
+<p><strong>Dominio Local</strong></p>
+<p>Pueden incluir miembros de los siguientes tipos: Usuarios, equipos, grupos globales, grupos universales y grupos de dominio local que estén dentro del mismo dominio.
+ 
+<strong>Universal</strong></p>
+<p>Pueden albergar: Usuarios, equipos, grupos globales y otros grupos universales.
+ 
+<strong>Global</strong></p>
+<p>Pueden albergar Usuarios, equipos y otros grupos globales dentro del mismo dominio.</p>
 
     </div>
     <div class="post-footer">
