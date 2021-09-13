@@ -179,15 +179,15 @@ En este menú también podremos elegir la ubicación de nuestro grupo y damos cl
 
 Las principales diferencias entre los diferentes ámbitos de grupos: 
 
-**Dominio Local**
+* **Dominio Local**
 
 Pueden incluir miembros de los siguientes tipos: Usuarios, equipos, grupos globales, grupos universales y grupos de dominio local que estén dentro del mismo dominio.
  
-**Universal**
+* **Universal**
 
 Pueden albergar: Usuarios, equipos, grupos globales y otros grupos universales.
  
-**Global**
+* **Global**
 
 Pueden albergar Usuarios, equipos y otros grupos globales dentro del mismo dominio.
 
