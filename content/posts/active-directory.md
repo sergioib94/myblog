@@ -116,13 +116,13 @@ En caso de que necesitemos borrar un controlador de dominio de nuestra estructur
 
 Podemos crear un usuario a través de diferentes herramientas como lo son: Los asistentes de la consola de AD DS, el comando DSADD.EXE, PowerShell entre otros, en nuestro ejemplo usaremos el asistente de AD DS. Para ello vamos a realizar los siguientes pasos:
 
-Ingresamos a Administre el servidor, elegimos en el menú Herramientas la opción Centro de administración de Active Directory:
+* Ingresamos al administrador del servidor, elegimos en el menú Herramientas la opción "Centro de administración de Active Directory".
 
-Se desplegará la consola del centro de administración de AD.
+* Se desplegará la consola del centro de administración de AD.
 
-Al seleccionar nuestro servidor en el panel lateral izquierdo podremos ver que se despliegan una serie de opciones, como por ejemplo, equipos, usuarios, sistema, dispositivos TPM entre otros.
+* Seleccionamos nuestro servidor en el panel lateral izquierdo podremos ver que se despliegan una serie de opciones, como por ejemplo, equipos, usuarios, sistema, dispositivos TPM entre otros.
 
-En el panel lateral derecho, en la parte inferior veremos que se abren las opciones referentes al objeto Users:
+* En el panel lateral derecho, en la parte inferior veremos que se abren las opciones referentes al objeto Users.
 
 Allí podremos elegir lo que deseemos crear, usuarios, equipos, grupos, etc. Elegimos Usuario y podremos ver cómo cambia la estructura de creación comparada con versiones anteriores (a nivel de apariencia).
 
