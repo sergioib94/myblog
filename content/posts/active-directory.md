@@ -160,9 +160,13 @@ Allí debemos especificar el nombre de la OU (en este caso usemos Pruebas) y pod
 
 Podríamos incluir Pruebas dentro de la OU:
 
-Ingresamos los datos en la ventana del Centro de administración:
+* Ingresamos los datos en la ventana del Centro de administración:
 
-Podremos ver que nuestra OU Pruebas ha sido creada correctamente dentro de nuestro árbol:
+![](/Active-Directory/ad-6.png)
+
+* Podremos ver que nuestra OU Pruebas ha sido creada correctamente dentro de nuestro árbol:
+
+![](/Active-Directory/ad-7.png)
 
 ### **Creación y administración de grupos en AD** ###
 
