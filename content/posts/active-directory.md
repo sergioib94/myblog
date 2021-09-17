@@ -178,13 +178,13 @@ Una vez estemos en la ventana de usuarios y equipos de active directory podremos
 
 Cuando se nos abra la ventana para crearnos el usuarios e introduzcamos los datos, tendremos que ponerle una contraseña (la contraseña que se pone incialmente suele ser una contraseña temporal) aunque tendremos varias opciones de configuracion de la cuenta:
 
-    * La primera opción que encontramos es la que nos permite que el usuario cambie la contraseña por la que el quiera al loguearse ya que la contraseña con la que el admin creo su cuenta seria temporal y de un solo uso.
+* La primera opción que encontramos es la que nos permite que el usuario cambie la contraseña por la que el quiera al loguearse ya que la contraseña con la que el admin creo su cuenta seria temporal y de un solo uso.
 
-    * La segunda opción es para que el usuario no pueda cambiar la contraseña aunque esta expire, por lo que solo el admin tendra autoridad para cambiarla.
+* La segunda opción es para que el usuario no pueda cambiar la contraseña aunque esta expire, por lo que solo el admin tendra autoridad para cambiarla.
 
-    * La tercera opción hace que las contraseñas no expiren.
+* La tercera opción hace que las contraseñas no expiren.
 
-    * La ultima opción que encontramos es para indicar que la cuenta del usuario esta deshabilitada, por ejemplo si estamos en una empresa y ese empleado a dejado el trabajo.
+* La ultima opción que encontramos es para indicar que la cuenta del usuario esta deshabilitada, por ejemplo si estamos en una empresa y ese empleado a dejado el trabajo.
 
 Una vez creados los usuario lo siguiente sera agregar dichos usuarios a los grupos apropiados en caso de que sea necesario.
 
@@ -202,9 +202,9 @@ En el caso de que la cuenta haya sido bloqueada por algun motivo y el suaurio no
 
 Por otro lado en el caso de que la cuenta no este bloqueada sino que se haya olvidado la contraseña y haya que restablecerla, se haria lo siguiente:
 
-    * Comprobar primero que el usuario al que vamos a resyablecerle la contraseña es el usuario correcto ya que en entornos empresariales por ejemplo es probable encontrar a uno o varios empleados que se llamen igual (para ello podemos hacer uso de la busqueda de usuarios, contactos y grupos).
-
-    * Cuando estemos sehuro del usuario al que restablecer la contraseña, lo que hacemos es hacer clic en el y elegir la opción de restablecer contraseña lo cual nos permitirá indicar una contraseña nueva con la opción de que el usuario deba cambiarla una vez logeado.
+* Comprobar primero que el usuario al que vamos a resyablecerle la contraseña es el usuario correcto ya que en entornos empresariales por ejemplo es probable encontrar a uno o varios empleados que se llamen igual (para ello podemos hacer uso de la busqueda de usuarios, contactos y grupos).
+    
+* Cuando estemos sehuro del usuario al que restablecer la contraseña, lo que hacemos es hacer clic en el y elegir la opción de restablecer contraseña lo cual nos permitirá indicar una contraseña nueva con la opción de que el usuario deba cambiarla una vez logeado.
 
 * **Eliminacion de cuenta de usuario**
 
@@ -218,22 +218,22 @@ Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y h
 
 Los ámbitos de grupos son los sigientes: 
 
-    * Dominio Local
+* Dominio Local
 
 Es el grupo mas restrictivo ya que solo sera accesible por usuarios que esten en el mismo dominio.
  
-    * Global
+* Global
 
 En este caso el grupo global permite que el grupo sea accesible por cuelaquier dominio siempre y cuando esten dentro del mismo bosque.
 
-    * Universal
+* Universal
 
 Este es el tipo menos restrictivo ya que permite el acceso a cualquier dominio de cualquier bosque, es decir acceso a todo el mundo.
 
 Por otro lado tenemos dos tipos de grupos:
     
-    * Distribución: Son creados básicamente para el envío de información a una o más personas.
-    * Seguridad: Son creados para garantizar el acceso a los recursos de la organización (permitir/restringir acceso a archivos otorgandoles permisos a usuarios concretos).
+* Distribución: Son creados básicamente para el envío de información a una o más personas.
+* Seguridad: Son creados para garantizar el acceso a los recursos de la organización (permitir/restringir acceso a archivos otorgandoles permisos a usuarios concretos).
 
 * **Configurar ficheros compartidos**
 
