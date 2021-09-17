@@ -168,9 +168,9 @@ Podríamos incluir Pruebas dentro de la OU:
 
 ![](/Active-Directory/ad-7.png)
 
-### **Tareas Active Directory** ###
+## **Tareas Active Directory** ##
 
-* **Crear cuentas de usuario**
+* #### **Crear cuentas de usuario** ####
 
 Esta vez crearemos un usuario de forma distinta al creado anteriormente. Esta vez entramos en el administrador del servidor y accedemos a las herramientas, pero esta vez no elegiremos la opcion de configuracion de administracion de active directory, sino que elegiremos la opcion de usuarios y equipos de active directory.
 
@@ -188,13 +188,13 @@ Cuando se nos abra la ventana para crearnos el usuarios e introduzcamos los dato
 
 Una vez creados los usuario lo siguiente sera agregar dichos usuarios a los grupos apropiados en caso de que sea necesario.
 
-* **Agregar usuarios a grupos**
+* #### **Agregar usuarios a grupos** ####
 
 Para ello hacemos clic en el usuario que se haya creado y abrimos las propiedades del usuario. Una vez se nos habra la ventana de propiedades, vamos a la pestaña "miembro de" y hacemos clic en agregar.
 
 Después de agregar tendremos que indicar a que grupo se agregara el usuario, por ejemplo si mi dominio se llama Pruebas y en la empresa sera uno de los administradores, seria Pruebas Admin (para ello debe existir previamente el grupo que especifiquemos sino obviamente no podremos agregar ningun usuario).
 
-* **Restablecer cuentas de usuario**
+* #### **Restablecer cuentas de usuario** ####
 
 Esta opción es bastante util ya que a la gente se les suele olvidar a menudo la contraseña, al quedarse la centa bloqueada, el admin puede restablecer la contraseña por defecto para que asi el usuario pueda volver a tener acceso con otra contraseña.
 
@@ -206,11 +206,11 @@ Por otro lado en el caso de que la cuenta no este bloqueada sino que se haya olv
     
 * Cuando estemos sehuro del usuario al que restablecer la contraseña, lo que hacemos es hacer clic en el y elegir la opción de restablecer contraseña lo cual nos permitirá indicar una contraseña nueva con la opción de que el usuario deba cambiarla una vez logeado.
 
-* **Eliminacion de cuenta de usuario**
+* #### **Eliminacion de cuenta de usuario** ####
 
 Basicamente la eliminacion de una cuenta de usuario es batante simple ya que basta con hacer clic en el usuario y elegir la opcion de eliminar cuenta.
 
-* **Crear grupos**
+* #### **Crear grupos** ####
 
 Cuando un usuario inicia sesión en el dominio, Active Directory crea un token o una especie de identidad que indica automáticamente en que grupos está incluido este usuario; Un grupo puede crearse para fines distintos, por ejemplo, para acceder a ciertas rutas, para poder imprimir, para que le lleguen determinados correos etc.
 
@@ -218,15 +218,15 @@ Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y h
 
 Los ámbitos de grupos son los sigientes: 
 
-* Dominio Local
+* **Dominio Local**
 
 Es el grupo mas restrictivo ya que solo sera accesible por usuarios que esten en el mismo dominio.
  
-* Global
+* **Global**
 
 En este caso el grupo global permite que el grupo sea accesible por cuelaquier dominio siempre y cuando esten dentro del mismo bosque.
 
-* Universal
+* **Universal**
 
 Este es el tipo menos restrictivo ya que permite el acceso a cualquier dominio de cualquier bosque, es decir acceso a todo el mundo.
 
@@ -235,7 +235,7 @@ Por otro lado tenemos dos tipos de grupos:
 * Distribución: Son creados básicamente para el envío de información a una o más personas.
 * Seguridad: Son creados para garantizar el acceso a los recursos de la organización (permitir/restringir acceso a archivos otorgandoles permisos a usuarios concretos).
 
-* **Configurar ficheros compartidos**
+* #### **Configurar ficheros compartidos** ####
 
 Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y haciendo clic derecho elegimos la opción "nuevo" y despues la opción "objeto".
 
