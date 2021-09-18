@@ -77,7 +77,7 @@ La estructura de los datos permite encontrar los detalles de los recursos conect
 <p>La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente.</p>
 <p><strong>Bosque</strong></p>
 <p>Es el nivel mas alto de organizacion en active directory. Un bosque es un grupo de dominios, cuando múltiples árboles se agrupan juntos se convierten en un bosque.</p>
-<p><strong>Arbol</strong></p>
+<p><strong>Árbol</strong></p>
 <p>El árbol es una entidad con un solo dominio o grupo de objetos seguido por dominios secundarios. Los distintos arboles en un bosque se conectan entre si a traves de una relación de confianza (la confianza entre los distintos dominios se hara de forma automatica) que permite que los distintos dominios compartan la información.</p>
 <p><strong>Dominios</strong></p>
 <p>Un dominio de Active Directory es un contenedor lógico utilizado para administrar usuarios, grupos y computadoras entre otros objetos.</p>
@@ -231,13 +231,18 @@ La estructura de los datos permite encontrar los detalles de los recursos conect
 <li>Podremos ver que nuestra OU Pruebas ha sido creada correctamente dentro de nuestro árbol:</li>
 </ul>
 <p><img src="/Active-Directory/ad-7.png" alt=""></p>
-<h3 id="tareas-active-directory"><strong>Tareas Active Directory</strong></h3>
+<h2 id="tareas-active-directory"><strong>Tareas Active Directory</strong></h2>
 <ul>
-<li><strong>Crear cuentas de usuario</strong></li>
+<li>
+<h4 id="crear-cuentas-de-usuario"><strong>Crear cuentas de usuario</strong></h4>
+</li>
 </ul>
 <p>Esta vez crearemos un usuario de forma distinta al creado anteriormente. Esta vez entramos en el administrador del servidor y accedemos a las herramientas, pero esta vez no elegiremos la opcion de configuracion de administracion de active directory, sino que elegiremos la opcion de usuarios y equipos de active directory.</p>
 <p>Una vez estemos en la ventana de usuarios y equipos de active directory podremos crear un usuario haciendo clic derecho en cualquier lugar de la ventana y eligiendo la opción &ldquo;nuevo&rdquo; y despues la opcion de &ldquo;usuario&rdquo;. Por ejemplo en mi caso si quiero crear un usuario dentro de mi dominio de pruebas lo que haria seria hacer clic en el nombre de mi dominio para que al crear el usuario, se crease el usuario dentro del dominio. Ej:</p>
+<p><img src="/Active-Directory/usuario1.png" alt=""></p>
+<p><img src="/Active-Directory/usuario2.png" alt=""></p>
 <p>Cuando se nos abra la ventana para crearnos el usuarios e introduzcamos los datos, tendremos que ponerle una contraseña (la contraseña que se pone incialmente suele ser una contraseña temporal) aunque tendremos varias opciones de configuracion de la cuenta:</p>
+<p><img src="/Active-Directory/usuario3.png" alt=""></p>
 <ul>
 <li>
 <p>La primera opción que encontramos es la que nos permite que el usuario cambie la contraseña por la que el quiera al loguearse ya que la contraseña con la que el admin creo su cuenta seria temporal y de un solo uso.</p>
@@ -254,12 +259,47 @@ La estructura de los datos permite encontrar los detalles de los recursos conect
 </ul>
 <p>Una vez creados los usuario lo siguiente sera agregar dichos usuarios a los grupos apropiados en caso de que sea necesario.</p>
 <ul>
-<li><strong>Agregar usuarios a grupos</strong></li>
+<li>
+<h4 id="crear-grupos"><strong>Crear grupos</strong></h4>
+</li>
+</ul>
+<p>Cuando un usuario inicia sesión en el dominio, Active Directory crea un token o una especie de identidad que indica automáticamente en que grupos está incluido este usuario; Un grupo puede crearse para fines distintos, por ejemplo, para acceder a ciertas rutas, para poder imprimir, para que le lleguen determinados correos etc.</p>
+<p>Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y haciendo clic derecho elegimos la opción &ldquo;nuevo&rdquo; y despues la opción &ldquo;grupo&rdquo;. Una vez que se nos abra la ventana para crear el grupo tendremos que asignarle un nombre asi como elegir el ambito y el tipo de grupo que será. Ej:</p>
+<p><img src="/Active-Directory/grupos1.png" alt=""></p>
+<p>Los ámbitos de grupos son los sigientes:</p>
+<ul>
+<li><strong>Dominio Local</strong></li>
+</ul>
+<p>Es el grupo mas restrictivo ya que solo sera accesible por usuarios que esten en el mismo dominio.
+ </p>
+<ul>
+<li><strong>Global</strong></li>
+</ul>
+<p>En este caso el grupo global permite que el grupo sea accesible por cuelaquier dominio siempre y cuando esten dentro del mismo bosque.</p>
+<ul>
+<li><strong>Universal</strong></li>
+</ul>
+<p>Este es el tipo menos restrictivo ya que permite el acceso a cualquier dominio de cualquier bosque, es decir acceso a todo el mundo.</p>
+<p>Por otro lado tenemos dos tipos de grupos:</p>
+<ul>
+<li>Distribución: Son creados básicamente para el envío de información a una o más personas.</li>
+<li>Seguridad: Son creados para garantizar el acceso a los recursos de la organización (permitir/restringir acceso a archivos otorgandoles permisos a usuarios concretos).</li>
+</ul>
+<p>En este ejemplo para tener mejor organizados los grupos, he creado una Unidad Organizativa (OU), llamada grupo donde estan alojados varios grupos (como si fuese una empresa real):</p>
+<p><img src="/Active-Directory/grupos2.png" alt=""></p>
+<p><img src="/Active-Directory/grupos3.png" alt=""></p>
+<ul>
+<li>
+<h4 id="agregar-usuarios-a-grupos"><strong>Agregar usuarios a grupos</strong></h4>
+</li>
 </ul>
 <p>Para ello hacemos clic en el usuario que se haya creado y abrimos las propiedades del usuario. Una vez se nos habra la ventana de propiedades, vamos a la pestaña &ldquo;miembro de&rdquo; y hacemos clic en agregar.</p>
-<p>Después de agregar tendremos que indicar a que grupo se agregara el usuario, por ejemplo si mi dominio se llama Pruebas y en la empresa sera uno de los administradores, seria Pruebas Admin (para ello debe existir previamente el grupo que especifiquemos sino obviamente no podremos agregar ningun usuario).</p>
+<p>Después de agregar tendremos que indicar a que grupo se agregara el usuario, por ejemplo si mi dominio se llama Pruebas y en la empresa sera uno de los administradores, seria Admin (para ello debe existir previamente el grupo que especifiquemos sino obviamente no podremos agregar ningun usuario). Ej:</p>
+<p><img src="/Active-Directory/ug1.png" alt=""></p>
 <ul>
-<li><strong>Restablecer cuentas de usuario</strong></li>
+<li>
+<h4 id="restablecer-cuentas-de-usuario"><strong>Restablecer cuentas de usuario</strong></h4>
+</li>
 </ul>
 <p>Esta opción es bastante util ya que a la gente se les suele olvidar a menudo la contraseña, al quedarse la centa bloqueada, el admin puede restablecer la contraseña por defecto para que asi el usuario pueda volver a tener acceso con otra contraseña.</p>
 <p>En el caso de que la cuenta haya sido bloqueada por algun motivo y el suaurio no puede acceder a ella la solución seria bastante facil ya que lo unico que habria que hacer es abrir las propiedades de la cuenta de usuario y en la pestaña &ldquo;cuenta/account&rdquo; seleccionar la opción desbloquear cuenta.</p>
@@ -272,39 +312,13 @@ La estructura de los datos permite encontrar los detalles de los recursos conect
 <p>Cuando estemos sehuro del usuario al que restablecer la contraseña, lo que hacemos es hacer clic en el y elegir la opción de restablecer contraseña lo cual nos permitirá indicar una contraseña nueva con la opción de que el usuario deba cambiarla una vez logeado.</p>
 </li>
 <li>
-<p><strong>Eliminacion de cuenta de usuario</strong></p>
+<h4 id="eliminacion-de-cuenta-de-usuario"><strong>Eliminacion de cuenta de usuario</strong></h4>
 </li>
 </ul>
 <p>Basicamente la eliminacion de una cuenta de usuario es batante simple ya que basta con hacer clic en el usuario y elegir la opcion de eliminar cuenta.</p>
 <ul>
-<li><strong>Crear grupos</strong></li>
-</ul>
-<p>Cuando un usuario inicia sesión en el dominio, Active Directory crea un token o una especie de identidad que indica automáticamente en que grupos está incluido este usuario; Un grupo puede crearse para fines distintos, por ejemplo, para acceder a ciertas rutas, para poder imprimir, para que le lleguen determinados correos etc.</p>
-<p>Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y haciendo clic derecho elegimos la opción &ldquo;nuevo&rdquo; y despues la opción &ldquo;grupo&rdquo;. Una vez que se nos abra la ventana para crear el grupo tendremos que asignarle un nombre asi como elegir el ambito y el tipo de grupo que será.</p>
-<p>Los ámbitos de grupos son los sigientes:</p>
-<ul>
-<li>Dominio Local</li>
-</ul>
-<p>Es el grupo mas restrictivo ya que solo sera accesible por usuarios que esten en el mismo dominio.
- </p>
-<ul>
-<li>Global</li>
-</ul>
-<p>En este caso el grupo global permite que el grupo sea accesible por cuelaquier dominio siempre y cuando esten dentro del mismo bosque.</p>
-<ul>
-<li>Universal</li>
-</ul>
-<p>Este es el tipo menos restrictivo ya que permite el acceso a cualquier dominio de cualquier bosque, es decir acceso a todo el mundo.</p>
-<p>Por otro lado tenemos dos tipos de grupos:</p>
-<ul>
 <li>
-<p>Distribución: Son creados básicamente para el envío de información a una o más personas.</p>
-</li>
-<li>
-<p>Seguridad: Son creados para garantizar el acceso a los recursos de la organización (permitir/restringir acceso a archivos otorgandoles permisos a usuarios concretos).</p>
-</li>
-<li>
-<p><strong>Configurar ficheros compartidos</strong></p>
+<h4 id="configurar-ficheros-compartidos"><strong>Configurar ficheros compartidos</strong></h4>
 </li>
 </ul>
 <p>Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y haciendo clic derecho elegimos la opción &ldquo;nuevo&rdquo; y despues la opción &ldquo;objeto&rdquo;.</p>
