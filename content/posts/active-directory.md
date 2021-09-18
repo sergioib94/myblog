@@ -176,7 +176,13 @@ Esta vez crearemos un usuario de forma distinta al creado anteriormente. Esta ve
 
 Una vez estemos en la ventana de usuarios y equipos de active directory podremos crear un usuario haciendo clic derecho en cualquier lugar de la ventana y eligiendo la opción "nuevo" y despues la opcion de "usuario". Por ejemplo en mi caso si quiero crear un usuario dentro de mi dominio de pruebas lo que haria seria hacer clic en el nombre de mi dominio para que al crear el usuario, se crease el usuario dentro del dominio. Ej:
 
+![](/Active-Directory/usuario1.png)
+
+![](/Active-Directory/usuario2.png)
+
 Cuando se nos abra la ventana para crearnos el usuarios e introduzcamos los datos, tendremos que ponerle una contraseña (la contraseña que se pone incialmente suele ser una contraseña temporal) aunque tendremos varias opciones de configuracion de la cuenta:
+
+![](/Active-Directory/usuario3.png)
 
 * La primera opción que encontramos es la que nos permite que el usuario cambie la contraseña por la que el quiera al loguearse ya que la contraseña con la que el admin creo su cuenta seria temporal y de un solo uso.
 
@@ -188,33 +194,13 @@ Cuando se nos abra la ventana para crearnos el usuarios e introduzcamos los dato
 
 Una vez creados los usuario lo siguiente sera agregar dichos usuarios a los grupos apropiados en caso de que sea necesario.
 
-* #### **Agregar usuarios a grupos** ####
-
-Para ello hacemos clic en el usuario que se haya creado y abrimos las propiedades del usuario. Una vez se nos habra la ventana de propiedades, vamos a la pestaña "miembro de" y hacemos clic en agregar.
-
-Después de agregar tendremos que indicar a que grupo se agregara el usuario, por ejemplo si mi dominio se llama Pruebas y en la empresa sera uno de los administradores, seria Pruebas Admin (para ello debe existir previamente el grupo que especifiquemos sino obviamente no podremos agregar ningun usuario).
-
-* #### **Restablecer cuentas de usuario** ####
-
-Esta opción es bastante util ya que a la gente se les suele olvidar a menudo la contraseña, al quedarse la centa bloqueada, el admin puede restablecer la contraseña por defecto para que asi el usuario pueda volver a tener acceso con otra contraseña.
-
-En el caso de que la cuenta haya sido bloqueada por algun motivo y el suaurio no puede acceder a ella la solución seria bastante facil ya que lo unico que habria que hacer es abrir las propiedades de la cuenta de usuario y en la pestaña "cuenta/account" seleccionar la opción desbloquear cuenta.
-
-Por otro lado en el caso de que la cuenta no este bloqueada sino que se haya olvidado la contraseña y haya que restablecerla, se haria lo siguiente:
-
-* Comprobar primero que el usuario al que vamos a resyablecerle la contraseña es el usuario correcto ya que en entornos empresariales por ejemplo es probable encontrar a uno o varios empleados que se llamen igual (para ello podemos hacer uso de la busqueda de usuarios, contactos y grupos).
-    
-* Cuando estemos sehuro del usuario al que restablecer la contraseña, lo que hacemos es hacer clic en el y elegir la opción de restablecer contraseña lo cual nos permitirá indicar una contraseña nueva con la opción de que el usuario deba cambiarla una vez logeado.
-
-* #### **Eliminacion de cuenta de usuario** ####
-
-Basicamente la eliminacion de una cuenta de usuario es batante simple ya que basta con hacer clic en el usuario y elegir la opcion de eliminar cuenta.
-
 * #### **Crear grupos** ####
 
 Cuando un usuario inicia sesión en el dominio, Active Directory crea un token o una especie de identidad que indica automáticamente en que grupos está incluido este usuario; Un grupo puede crearse para fines distintos, por ejemplo, para acceder a ciertas rutas, para poder imprimir, para que le lleguen determinados correos etc.
 
-Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y haciendo clic derecho elegimos la opción "nuevo" y despues la opción "grupo". Una vez que se nos abra la ventana para crear el grupo tendremos que asignarle un nombre asi como elegir el ambito y el tipo de grupo que será.
+Hacemos clic en la raíz de nuestro dominio, en mi caso el dominio Practicas y haciendo clic derecho elegimos la opción "nuevo" y despues la opción "grupo". Una vez que se nos abra la ventana para crear el grupo tendremos que asignarle un nombre asi como elegir el ambito y el tipo de grupo que será. Ej:
+
+![](/Active-Directory/grupos1.png)
 
 Los ámbitos de grupos son los sigientes: 
 
@@ -234,6 +220,36 @@ Por otro lado tenemos dos tipos de grupos:
     
 * Distribución: Son creados básicamente para el envío de información a una o más personas.
 * Seguridad: Son creados para garantizar el acceso a los recursos de la organización (permitir/restringir acceso a archivos otorgandoles permisos a usuarios concretos).
+
+En este ejemplo para tener mejor organizados los grupos, he creado una Unidad Organizativa (OU), llamada grupo donde estan alojados varios grupos (como si fuese una empresa real):
+
+![](/Active-Directory/grupos2.png)
+
+![](/Active-Directory/grupos3.png)
+
+* #### **Agregar usuarios a grupos** ####
+
+Para ello hacemos clic en el usuario que se haya creado y abrimos las propiedades del usuario. Una vez se nos habra la ventana de propiedades, vamos a la pestaña "miembro de" y hacemos clic en agregar.
+
+Después de agregar tendremos que indicar a que grupo se agregara el usuario, por ejemplo si mi dominio se llama Pruebas y en la empresa sera uno de los administradores, seria Admin (para ello debe existir previamente el grupo que especifiquemos sino obviamente no podremos agregar ningun usuario). Ej:
+
+![](/Active-Directory/ug1.png)
+
+* #### **Restablecer cuentas de usuario** ####
+
+Esta opción es bastante util ya que a la gente se les suele olvidar a menudo la contraseña, al quedarse la centa bloqueada, el admin puede restablecer la contraseña por defecto para que asi el usuario pueda volver a tener acceso con otra contraseña.
+
+En el caso de que la cuenta haya sido bloqueada por algun motivo y el suaurio no puede acceder a ella la solución seria bastante facil ya que lo unico que habria que hacer es abrir las propiedades de la cuenta de usuario y en la pestaña "cuenta/account" seleccionar la opción desbloquear cuenta.
+
+Por otro lado en el caso de que la cuenta no este bloqueada sino que se haya olvidado la contraseña y haya que restablecerla, se haria lo siguiente:
+
+* Comprobar primero que el usuario al que vamos a resyablecerle la contraseña es el usuario correcto ya que en entornos empresariales por ejemplo es probable encontrar a uno o varios empleados que se llamen igual (para ello podemos hacer uso de la busqueda de usuarios, contactos y grupos).
+    
+* Cuando estemos sehuro del usuario al que restablecer la contraseña, lo que hacemos es hacer clic en el y elegir la opción de restablecer contraseña lo cual nos permitirá indicar una contraseña nueva con la opción de que el usuario deba cambiarla una vez logeado.
+
+* #### **Eliminacion de cuenta de usuario** ####
+
+Basicamente la eliminacion de una cuenta de usuario es batante simple ya que basta con hacer clic en el usuario y elegir la opcion de eliminar cuenta.
 
 * #### **Configurar ficheros compartidos** ####
 
