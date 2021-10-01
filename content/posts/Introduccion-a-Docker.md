@@ -713,3 +713,61 @@ docker volume inspect "nombre del volumen"
 
 ### **Docker Compose** ###
 
+Docker-Compose es una herramienta soluciona el problema de tener que repetir cada comando al levantar nuestro contenedores, ya que parte de un fichero YML en el que estan indicados todos los elementos que necesita Docker para montar nuestros escenarios de multicontenedor. Es importante el orden en el que se escriben los parámetros.
+
+Ejemplo de uso:
+
+Vamos ha hacer una prueba de instalación, instalando como ejemplo un contenedor docker con drupal que use una base de datos mysql.
+
+Para ello crearemos una carpeta deply donde guardaremos nuestro docker compose, a diferencia de con dockerfile que lo guardabamos todo lo relacionado con la instalacion del contenedor en un directorio buil (no es necesaria esta distincion entre directorio build y directorio deploy, es solo para que se entienda mejor).
+
+Nuestro fichero docker compose sera el siguiente:
+
+~~~
+version: "3.1"
+
+services:
+  db:
+    container_name: servidor_mysql_drupal
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: drupal_admin
+    volumes:
+      - /home/sergio/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/vol-maria:/var/lib/mysql
+
+  drupal:
+    container_name: drupal
+    image: sergioib94/drupal:v1
+    restart: always
+    ports:
+      - 8083:80
+    volumes:
+      - /home/sergio/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/vol-app:/var/log/apache2
+~~~
+
+En este ejemplo estamos creando dos contenedores, uno al que llamamos db que alojara la base de datos de mariadb y otro contenedor en el que se desplegará drupal.
+
+En el contenedor de mariadb, indicamos tanto la imagen que se usará, asi como las variables de entorno necesarias para que dicha base de datos funcione correctamente (nombre de la base de datos, usuario, contraseña, contraseña de administrador) y querer que permanezcan persistentes los datos de nuestra base de datos, creamos un volumen persistente haciendo uso de bind mount.
+
+Por otro lado al contenedor de drupal solo sera necesario indicar la imagen que en este caso es una imagen drupal configurada por mi ya que la configuración por defecto daba error a la hora de instarse, indicamos los puertos a usar (en mi caso el puerto 8083 ya que los puertos 82, 81 y 80 los tengo ocupados con otros contenedores).
+
+Desplegamos el docker compose ejecutando el siguiente comando en el directorio donde este el fichero:
+
+~~~
+sergioib@debian-sergio:~/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/deploy$ docker-compose up -d
+Creating servidor_mysql_drupal ... done
+Creating drupal                ... done
+
+sergioib@debian-sergio:~$ docker ps
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS              PORTS                     NAMES
+205d30bcee2f        mariadb                       "docker-entrypoint.s…"   10 minutes ago      Up About a minute   3306/tcp                  servidor_mysql_drupal
+b18afffe8d15        sergioib94/drupal:v1          "/usr/sbin/apache2ct…"   7 months ago        Up About a minute   0.0.0.0:8083->80/tcp      drupal
+                    0.0.0.0:8083->80/tc
+~~~
+
+Una vez desplegado, comenzaremos con la instalación y comprobaremos que funciona correctamente, para ello en nuestro navegador accedemos al puerto indicado anteriormente, es decir a localhost:8083.
+
