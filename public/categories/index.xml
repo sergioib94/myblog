@@ -6,11 +6,20 @@
     <description>Recent content in Categories on El rincon del admin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Sep 2021 12:36:20 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Sep 2021 13:14:06 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aplicaciones Web</title>
+      <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>
+      <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/aplicaciones-web/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Apuntes</title>
       <link>https://sergioib.netlify.app/categories/apuntes/</link>
-      <pubDate>Mon, 13 Sep 2021 12:36:20 +0200</pubDate>
+      <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
       
       <guid>https://sergioib.netlify.app/categories/apuntes/</guid>
       <description></description>
@@ -31,15 +40,6 @@
       <pubDate>Sun, 23 May 2021 15:28:17 +0200</pubDate>
       
       <guid>https://sergioib.netlify.app/categories/sistemas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Aplicaciones Web</title>
-      <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>
-      <pubDate>Sun, 14 Mar 2021 13:26:35 +0100</pubDate>
-      
-      <guid>https://sergioib.netlify.app/categories/aplicaciones-web/</guid>
       <description></description>
     </item>
     

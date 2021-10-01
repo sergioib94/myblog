@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://sergioib.netlify.app/categories/aplicaciones-web/</loc>
+    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
+  </url><url>
     <loc>https://sergioib.netlify.app/categories/apuntes/</loc>
-    <lastmod>2021-09-13T12:36:20+02:00</lastmod>
+    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/categories/</loc>
+    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/</loc>
+    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/introduccion-a-docker/</loc>
+    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/</loc>
+    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/categories/base-de-datos/</loc>
     <lastmod>2021-09-13T12:36:20+02:00</lastmod>
   </url><url>
-    <loc>https://sergioib.netlify.app/categories/</loc>
-    <lastmod>2021-09-13T12:36:20+02:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/</loc>
-    <lastmod>2021-09-13T12:36:20+02:00</lastmod>
-  </url><url>
     <loc>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</loc>
-    <lastmod>2021-09-13T12:36:20+02:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/posts/</loc>
     <lastmod>2021-09-13T12:36:20+02:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</loc>
@@ -34,9 +40,6 @@
   </url><url>
     <loc>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</loc>
     <lastmod>2021-04-03T13:25:45+02:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/categories/aplicaciones-web/</loc>
-    <lastmod>2021-03-14T13:26:35+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/</loc>
     <lastmod>2021-03-14T13:26:35+01:00</lastmod>

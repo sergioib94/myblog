@@ -5,7 +5,7 @@ categories: [Aplicaciones web]
 ---
 ### Introduccion ###
 
-En esta practica haciendo usao de docker, vamos a desplegar distintas aplicaciones en contenedores, en los primeros ejercicios se trabajara con bookmedik (aplicacion para organizar citas medicas) y en las dos ultimas se usara drupal y joomla.
+En esta practica haciendo uso de docker, vamos a desplegar distintas aplicaciones en contenedores, en los primeros ejercicios se trabajara con bookmedik (aplicacion para organizar citas medicas) y en las dos ultimas se usara drupal y joomla.
 
 La forma de trabajar sera la siguiente, en nuestro equipo tendremos un directorio con todo lo necesario para los distintos ejercicios y dentro de este directorio habra otros dos (en los casos que sea necesario), tendremos un directorio buil donde tendremos tanto el directorio de la aplicacion con los ficheros necesarios para su ejecucion, un dockerfile que usaremos para crear los contenedores y un fichero script ue modificara y añadira los datos necesario en los contenedores.
 
