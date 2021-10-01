@@ -1,6 +1,6 @@
 baseURL = "https://sergioib.netlify.app/"
 languageCode = "en-us"
-title = "El rincon del admin"
+title = "Blog de Sergioib"
 theme = "m10c"
 
 [menu]

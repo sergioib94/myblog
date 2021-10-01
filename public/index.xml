@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>El rincon del admin</title>
+    <title>Blog de Sergioib</title>
     <link>https://sergioib.netlify.app/</link>
-    <description>Recent content on El rincon del admin</description>
+    <description>Recent content on Blog de Sergioib</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Sep 2021 13:14:06 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduccion a Docker</title>
+      <title>Introducción a Docker</title>
       <link>https://sergioib.netlify.app/posts/introduccion-a-docker/</link>
       <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
       
