@@ -778,3 +778,57 @@ Comenzamos con la instalación y comprobamos que podemos usar drupal:
 ![Comenzamos la instalación](/intro-docker/instalacion.png)
 
 ![Drupal](/intro-docker/drupal.png)
+
+### **Instalación de Docker en Windows** ###
+
+Aunque el proyecto de docker inicialmente era para uso de sistemas Linux, actualmente tambien es posible usarlo en sistemas operativos de windows siempre que nuestro windows cumpla con algunos requisitos:
+
+* Windows 10 versión Professional o Enterprise.
+* Virtualización activada en nuestro equipo.
+* Windows actualizado.
+
+La instalación de docker al igual que la mayoria de instalaciones en windows es bastante simple, lo descargamos [aqui](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe). En mi caso la version de docker que tengo es la 4.1.0.
+
+Una vez descargado, ejecutamos el fichero .exe y comenzara el proceso de instalación.
+
+![instalación docker](/intro-docker/docker1.png)
+
+Cuando la instalación finalice, debera reiniciarse el equipo para que docker pueda poder usarse (en algunos casos se iniciará y abrirá sin necesidad de reinicio).
+
+A la hora de empezar a usar docker por primera vez, es posible que nos salga un error parecido al siguiente:
+
+![error wls2](/intro-docker/docker-error.png)
+
+Este error se debe a que docker detecta que nuestra versión de WLS (Windows Subsystem for Linux) es antigua por lo que deberemos instalar la version actual que seria la versión 2 que es la que ahoramismo esta sustituyendo tanto el uso de Hyper-v y VirtualBox en el uso de docker.
+
+Para reparar este error podemos hacer dos cosas, o bien actualizar a WSL2 o utilizar Hyper-V en lugar de WLS2 (Esta última opción en mi caso no ha funcionado con mi version de docker la 4.1.0):
+
+* Actualizando WLS2:
+
+Empezamos descargandonos la actualización [aqui](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi) (link valido para equipos x64).
+
+Una vez descargado WLS2, ejecutamos el instalador y acabar la instalacion reiniciamos docker.
+
+![instalación docker](/intro-docker/docker3.png)
+
+Probamos a crear un par de contenedores a traves de la cmd:
+
+![creación de contenedores](/intro-docker/docker4.png)
+
+Podemos ver que en windows podemos trabajar tanto por linea de comandos como por entorno gráfico.
+
+![docker desktop](/intro-docker/docker5.png)
+
+* Usando Hyper-V:
+
+Vamos a la configuración de windows:
+
+~~~
+Inicio > Configuración > Aplicaciones > Características Opcionales
+~~~
+
+Marcamos "Hyper-V" y damos click en "Aceptar" para reiniciar Windows.
+
+![instalación Hyper-V](/intro-docker/docker3.png)
+
+Después de reiniciar vamos a la configuración de docker, desmarcamos la opción de "Use the WSL 2 Based engine" y damos click en "Save & Restart".
