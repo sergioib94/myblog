@@ -771,3 +771,10 @@ b18afffe8d15        sergioib94/drupal:v1          "/usr/sbin/apache2ct…"   7 m
 
 Una vez desplegado, comenzaremos con la instalación y comprobaremos que funciona correctamente, para ello en nuestro navegador accedemos al puerto indicado anteriormente, es decir a localhost:8083.
 
+Comenzamos con la instalación y comprobamos que podemos usar drupal:
+
+![Elección de idioma](/intro-docker/idioma.png)
+
+![Comenzamos la instalación](/intro-docker/instalacion.png)
+
+![Drupal](/intro-docker/drupal.png)
