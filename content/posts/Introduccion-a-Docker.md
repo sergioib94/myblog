@@ -829,6 +829,6 @@ Inicio > Configuración > Aplicaciones > Características Opcionales
 
 Marcamos "Hyper-V" y damos click en "Aceptar" para reiniciar Windows.
 
-![instalación Hyper-V](/intro-docker/docker3.png)
+![instalación Hyper-V](/intro-docker/docker2.png)
 
 Después de reiniciar vamos a la configuración de docker, desmarcamos la opción de "Use the WSL 2 Based engine" y damos click en "Save & Restart".
