@@ -517,7 +517,7 @@ En mi caso la version esta un poco desactualizada ya que actualmente si no me eq
 
 ### **Creación de imágenes** ###
 
-**Modificando una imagen**
+#### **Modificando una imagen** ####
 
 Con Docker tenemos la posibilidad de crear una imagen personalizada a partir de una imagen ya existente modificando el contenedor de la siguiente forma:
 
@@ -545,7 +545,7 @@ docker push sergioib94/drupal:v1
 
 De esta forma cualquier usuario de docker hub puede descargarse nuestra imagen y trabajar con ella ejecutando un docker pull.
 
-**Haciendo uso de un fichero dockerfile**
+#### **Haciendo uso de un fichero dockerfile** ####
 
 Esta que hemos visto es una forma de crear una imagen personalizada en docker, pero lo abitual es crearla haciendo uso de un fichero dockerfile.
 
@@ -677,7 +677,7 @@ Para mantener la informacion de los contenedores tendremos varias opciones:
 * Volumenes docker
 * Bind mounts
 
-**Volumenes docker**
+#### **Volumenes docker** ####
 
 Para gestionar los volumenes docker podemos ejecutar los siguientes comandos:
 
@@ -711,9 +711,48 @@ docker volume prune
 docker volume inspect "nombre del volumen"
 ~~~
 
+Como ejemplo se va a crear un contenedor con una imagen base de debian haciendo uso de la opción -v para asi indicar la ubicación de nuestro volumen creado.
+
+~~~
+#Creamos primero un volumen que usaremos de prueba.
+
+sergioib@debian-sergio:~$ docker volume create prueba
+prueba
+
+#Ejecutamos el contenedor indicando tanto el nombre del contenedor, donde se ubicara el volumen y la imagen a usar.
+
+sergioib@debian-sergio:~$ docker run -d --name debian-prueba -v prueba:/usr/share/prueba debian
+905c1a3bac1bdce990d459aa9668e90d55135fc29f080a2056286c66b4a2c037
+
+#Comprobamos que se ha creado.
+
+sergioib@debian-sergio:~$ docker ps -a
+CONTAINER ID        IMAGE                         COMMAND                  CREATED              STATUS                          PORTS                     NAMES                          prueba-mdb
+905c1a3bac1b        debian                        "bash"                   3 minutes ago        UP 3 minutes ago                                  debian-prueba
+~~~
+
+#### **Bind mounts** ####
+
+Con el método bind mount hacemos la información persistente y estará gestionada por nosotros mismos, a diferencia de los volúmenes Docker que requieren permisos. Este sistema es muy parecido ya que se trata de montar una parte del sistema de ficheros en el contenedor.
+
+Para poner en practica este método, empezaremos creando un directorio donde se alojara nuestra información. Este volumen se usara más adelante como ejemplo a la hora de usar docker compose, en este caso se ha creado el directorio en la siguiente ruta "docker-bookmedik/Tarea4/".
+
 ### **Docker Compose** ###
 
 Docker-Compose es una herramienta soluciona el problema de tener que repetir cada comando al levantar nuestro contenedores, ya que parte de un fichero YML en el que estan indicados todos los elementos que necesita Docker para montar nuestros escenarios de multicontenedor. Es importante el orden en el que se escriben los parámetros.
+
+Para hacer uso de docker compose, lo primero sera instalarlo:
+
+~~~
+# Añadimos la clave GPG
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+# Buscamos el paquete 
+sudo apt-cache policy docker-compose
+
+# Lo instalamos
+sudo apt-get install docker-compose
+~~~
 
 Ejemplo de uso:
 

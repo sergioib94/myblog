@@ -41,7 +41,7 @@ Los contenedores son una forma de virtulización del sistema opertaivo, son como
           
           <a class="app-header-menu-item" href="/categories/">Categories</a>
       </nav>
-      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administracion y variedades informaticas</p>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
       <div class="app-header-social">
         
           <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
@@ -71,7 +71,7 @@ Los contenedores son una forma de virtulización del sistema opertaivo, son como
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          17 min read
+          18 min read
         </div>
       </div>
     </header>
@@ -520,7 +520,7 @@ README.txt   bin	    cli    configuration.php  images	    index.php  layouts	 me
 Docker version 18.09.1, build 4c52b90
 </code></pre><p>En mi caso la version esta un poco desactualizada ya que actualmente si no me equivoco la version actual es la 20.10.</p>
 <h3 id="creación-de-imágenes"><strong>Creación de imágenes</strong></h3>
-<p><strong>Modificando una imagen</strong></p>
+<h4 id="modificando-una-imagen"><strong>Modificando una imagen</strong></h4>
 <p>Con Docker tenemos la posibilidad de crear una imagen personalizada a partir de una imagen ya existente modificando el contenedor de la siguiente forma:</p>
 <ol>
 <li>Arrancamos un contenedor artiendo de una imagen como base:</li>
@@ -542,7 +542,7 @@ b18afffe8d15        sergioib94/drupal:v1          &quot;/usr/sbin/apache2ct…&q
 </code></pre><p>En mi caso por ejemplo cuento con una imagen modificada por mi de un contenedor que cuenta con un drupal, en este caso si quiero subir este drupal mio a docker hub tendria que loguarme con docker login y una vez logueado subir la imagen con docker push:</p>
 <pre><code>docker push sergioib94/drupal:v1
 </code></pre><p>De esta forma cualquier usuario de docker hub puede descargarse nuestra imagen y trabajar con ella ejecutando un docker pull.</p>
-<p><strong>Haciendo uso de un fichero dockerfile</strong></p>
+<h4 id="haciendo-uso-de-un-fichero-dockerfile"><strong>Haciendo uso de un fichero dockerfile</strong></h4>
 <p>Esta que hemos visto es una forma de crear una imagen personalizada en docker, pero lo abitual es crearla haciendo uso de un fichero dockerfile.</p>
 <p>¿Que es un fichero dockerfile? este es un fichero de texto plano que contiene una serie de instrucciones, necesarias para crear una imagen que posteriormente, se convertirá en una aplicacion.</p>
 <p>Unos ejemplos sobre el uso de dockerfile los podemos encontrar en el post <a href="https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/">aplicaciones web php en docker</a> en el que a traves de unos ejercicios hacemos uso de una imagen de la aplicacion bookmedic y la personalizamos.</p>
@@ -654,7 +654,7 @@ daeb4ba11558        host                host                local
 <li>Volumenes docker</li>
 <li>Bind mounts</li>
 </ul>
-<p><strong>Volumenes docker</strong></p>
+<h4 id="volumenes-docker"><strong>Volumenes docker</strong></h4>
 <p>Para gestionar los volumenes docker podemos ejecutar los siguientes comandos:</p>
 <ul>
 <li>Creacion de volumenes:</li>
@@ -676,9 +676,37 @@ daeb4ba11558        host                host                local
 <li>Mostrar detalles sobre los volumenes:</li>
 </ul>
 <pre><code>docker volume inspect &quot;nombre del volumen&quot;
-</code></pre><h3 id="docker-compose"><strong>Docker Compose</strong></h3>
+</code></pre><p>Como ejemplo se va a crear un contenedor con una imagen base de debian haciendo uso de la opción -v para asi indicar la ubicación de nuestro volumen creado.</p>
+<pre><code>#Creamos primero un volumen que usaremos de prueba.
+
+sergioib@debian-sergio:~$ docker volume create prueba
+prueba
+
+#Ejecutamos el contenedor indicando tanto el nombre del contenedor, donde se ubicara el volumen y la imagen a usar.
+
+sergioib@debian-sergio:~$ docker run -d --name debian-prueba -v prueba:/usr/share/prueba debian
+905c1a3bac1bdce990d459aa9668e90d55135fc29f080a2056286c66b4a2c037
+
+#Comprobamos que se ha creado.
+
+sergioib@debian-sergio:~$ docker ps -a
+CONTAINER ID        IMAGE                         COMMAND                  CREATED              STATUS                          PORTS                     NAMES                          prueba-mdb
+905c1a3bac1b        debian                        &quot;bash&quot;                   3 minutes ago        UP 3 minutes ago                                  debian-prueba
+</code></pre><h4 id="bind-mounts"><strong>Bind mounts</strong></h4>
+<p>Con el método bind mount hacemos la información persistente y estará gestionada por nosotros mismos, a diferencia de los volúmenes Docker que requieren permisos. Este sistema es muy parecido ya que se trata de montar una parte del sistema de ficheros en el contenedor.</p>
+<p>Para poner en practica este método, empezaremos creando un directorio donde se alojara nuestra información. Este volumen se usara más adelante como ejemplo a la hora de usar docker compose, en este caso se ha creado el directorio en la siguiente ruta &ldquo;docker-bookmedik/Tarea4/&rdquo;.</p>
+<h3 id="docker-compose"><strong>Docker Compose</strong></h3>
 <p>Docker-Compose es una herramienta soluciona el problema de tener que repetir cada comando al levantar nuestro contenedores, ya que parte de un fichero YML en el que estan indicados todos los elementos que necesita Docker para montar nuestros escenarios de multicontenedor. Es importante el orden en el que se escriben los parámetros.</p>
-<p>Ejemplo de uso:</p>
+<p>Para hacer uso de docker compose, lo primero sera instalarlo:</p>
+<pre><code># Añadimos la clave GPG
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+# Buscamos el paquete 
+sudo apt-cache policy docker-compose
+
+# Lo instalamos
+sudo apt-get install docker-compose
+</code></pre><p>Ejemplo de uso:</p>
 <p>Vamos ha hacer una prueba de instalación, instalando como ejemplo un contenedor docker con drupal que use una base de datos mysql.</p>
 <p>Para ello crearemos una carpeta deply donde guardaremos nuestro docker compose, a diferencia de con dockerfile que lo guardabamos todo lo relacionado con la instalacion del contenedor en un directorio buil (no es necesaria esta distincion entre directorio build y directorio deploy, es solo para que se entienda mejor).</p>
 <p>Nuestro fichero docker compose sera el siguiente:</p>
@@ -754,7 +782,7 @@ b18afffe8d15        sergioib94/drupal:v1          &quot;/usr/sbin/apache2ct…&q
 <p>Vamos a la configuración de windows:</p>
 <pre><code>Inicio &gt; Configuración &gt; Aplicaciones &gt; Características Opcionales
 </code></pre><p>Marcamos &ldquo;Hyper-V&rdquo; y damos click en &ldquo;Aceptar&rdquo; para reiniciar Windows.</p>
-<p><img src="/intro-docker/docker3.png" alt="instalación Hyper-V"></p>
+<p><img src="/intro-docker/docker2.png" alt="instalación Hyper-V"></p>
 <p>Después de reiniciar vamos a la configuración de docker, desmarcamos la opción de &ldquo;Use the WSL 2 Based engine&rdquo; y damos click en &ldquo;Save &amp; Restart&rdquo;.</p>
 
     </div>
