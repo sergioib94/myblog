@@ -6,7 +6,17 @@
     <description>Recent content on Blog de Sergioib</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Sep 2021 13:14:06 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Dec 2021 13:44:30 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducción SoftEther VPN</title>
+      <link>https://sergioib.netlify.app/posts/softether-vpn/</link>
+      <pubDate>Tue, 21 Dec 2021 13:44:30 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/softether-vpn/</guid>
+      <description>Introducción Softether VPN es uno de los softwares VPN multiprotocolo mas potentes y rápido del mundo actualmente. Funciona en sistemas Windows, Solaris, Mac, FreeBSD y algunas distribuciones de Linux. Ademas de ser de software libre, también es una alternativa muy buena a openvpn y a los servidores VPN de microsoft.
+Una de las funciones con las que cuenta este software es la de clonación de openvpn server, mediante la cual si se tiene un server openvpn, este se puede convertir rápidamente en un server Softether.</description>
+    </item>
+    
     <item>
       <title>Introducción a Docker</title>
       <link>https://sergioib.netlify.app/posts/introduccion-a-docker/</link>

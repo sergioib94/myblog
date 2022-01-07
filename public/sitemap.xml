@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://sergioib.netlify.app/</loc>
+    <lastmod>2021-12-21T13:44:30+01:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/categories/</loc>
+    <lastmod>2021-12-21T13:44:30+01:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/softether-vpn/</loc>
+    <lastmod>2021-12-21T13:44:30+01:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/posts/</loc>
+    <lastmod>2021-12-21T13:44:30+01:00</lastmod>
+  </url><url>
+    <loc>https://sergioib.netlify.app/categories/seguridad/</loc>
+    <lastmod>2021-12-21T13:44:30+01:00</lastmod>
+  </url><url>
     <loc>https://sergioib.netlify.app/categories/aplicaciones-web/</loc>
     <lastmod>2021-09-21T13:14:06+02:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/categories/apuntes/</loc>
     <lastmod>2021-09-21T13:14:06+02:00</lastmod>
   </url><url>
-    <loc>https://sergioib.netlify.app/</loc>
-    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/categories/</loc>
-    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
-  </url><url>
     <loc>https://sergioib.netlify.app/posts/introduccion-a-docker/</loc>
-    <lastmod>2021-09-21T13:14:06+02:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/posts/</loc>
     <lastmod>2021-09-21T13:14:06+02:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/categories/base-de-datos/</loc>
@@ -64,9 +70,6 @@
   </url><url>
     <loc>https://sergioib.netlify.app/posts/kubernetes-lets-chat/</loc>
     <lastmod>2021-03-13T12:13:11+01:00</lastmod>
-  </url><url>
-    <loc>https://sergioib.netlify.app/categories/seguridad/</loc>
-    <lastmod>2021-03-12T19:00:38+01:00</lastmod>
   </url><url>
     <loc>https://sergioib.netlify.app/posts/vpn-site-to-site/</loc>
     <lastmod>2021-03-12T19:00:38+01:00</lastmod>
