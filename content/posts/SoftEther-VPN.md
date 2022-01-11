@@ -35,7 +35,7 @@ Una de las funciones con las que cuenta este software es la de clonación de ope
 
 Es el tipo más simple de autenticación de usuario. Si existe un usuario configurado mediante autenticación anónima para Virtual Hub, cualquier persona que conozca el nombre de usuario puede conectarse a Virtual Hub y realizar una comunicación VPN.
 
-Este tipo de autentificación es la usada en los servidores públicos https://www.vpngate.net/en/.
+Este tipo de autentificación es la usada en los [servidores públicos](https://www.vpngate.net/en/).
 
 * Radius:
 
@@ -420,6 +420,43 @@ PING 219.100.37.165 (219.100.37.165) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 6ms
 rtt min/avg/max/mdev = 265.728/273.468/288.916/9.097 ms
 ~~~
+
+### Caso 1: Acceso Remoto (Windows) ###
+
+En el caso de windows (en mi caso windows 7), una vez instalado Softether-Client, lo abrimos y se nos mostrará una pantalla como la siguiente:
+
+![inicio](/softether/inicio.png)
+
+Este caso en Windows se hace igual que en linux, en dos sencillos pasos: primero creamos el adaptador virtual y después configuramos la conexión remota.
+
+El adaptador virtual de red lo haremos de la siguiente forma: Virtual Adapter -> New Virtual Network Adapter
+
+![creación de adaptador](/softether/creacion_adaptador.png)
+
+Una vez le demos un nombre al adaptador de red virtual se empezará a crear de forma automática.
+
+Por otro lado la conexión la crearemos y configuraremos de la siguiente forma: Connect -> New VPN Connection Setting
+
+![creación de conexión](/softether/creacion_conexion.png)
+
+Una vez ahi ponemos los datos de configuración de la conexión como el nombre de host de destino, su puerto, el hub al que se conectará, el usuario y contraseña del usuario que se conectará al servidor.
+
+![configuración de conexión](/softether/configuracion_conexion.png)
+
+Por último conectamos con el servidor y comprobamos que obtenemos una direccion ip del servidor:
+
+Conexión
+
+![establecer conexión](/softether/establecer_conexion.png)
+![estableciendo conexión](/softether/estableciendo_conexxion.png)
+
+Comprobación
+
+![ip pública antes de activar VPN](/softether/ip_publica.png)
+![ip pública con VPN](/softether/ip_publica_vpn.png)
+
+![ip antes de activar VPN](/softether/ip.png)
+![ip con VPN](/softether/ip_vpn.png)
 
 ### Caso 2: Site to site ###
 

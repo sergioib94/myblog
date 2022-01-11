@@ -99,7 +99,7 @@ Una de las funciones con las que cuenta este software es la de clonación de ope
 <li>Anónima:</li>
 </ul>
 <p>Es el tipo más simple de autenticación de usuario. Si existe un usuario configurado mediante autenticación anónima para Virtual Hub, cualquier persona que conozca el nombre de usuario puede conectarse a Virtual Hub y realizar una comunicación VPN.</p>
-<p>Este tipo de autentificación es la usada en los servidores públicos <a href="https://www.vpngate.net/en/">https://www.vpngate.net/en/</a>.</p>
+<p>Este tipo de autentificación es la usada en los <a href="https://www.vpngate.net/en/">servidores públicos</a>.</p>
 <ul>
 <li>Radius:</li>
 </ul>
@@ -497,7 +497,27 @@ PING 219.100.37.165 (219.100.37.165) 56(84) bytes of data.
 --- 219.100.37.165 ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 6ms
 rtt min/avg/max/mdev = 265.728/273.468/288.916/9.097 ms
-</code></pre><h3 id="caso-2-site-to-site">Caso 2: Site to site</h3>
+</code></pre><h3 id="caso-1-acceso-remoto-windows">Caso 1: Acceso Remoto (Windows)</h3>
+<p>En el caso de windows (en mi caso windows 7), una vez instalado Softether-Client, lo abrimos y se nos mostrará una pantalla como la siguiente:</p>
+<p><img src="/softether/inicio.png" alt="inicio"></p>
+<p>Este caso en Windows se hace igual que en linux, en dos sencillos pasos: primero creamos el adaptador virtual y después configuramos la conexión remota.</p>
+<p>El adaptador virtual de red lo haremos de la siguiente forma: Virtual Adapter -&gt; New Virtual Network Adapter</p>
+<p><img src="/softether/creacion_adaptador.png" alt="creación de adaptador"></p>
+<p>Una vez le demos un nombre al adaptador de red virtual se empezará a crear de forma automática.</p>
+<p>Por otro lado la conexión la crearemos y configuraremos de la siguiente forma: Connect -&gt; New VPN Connection Setting</p>
+<p><img src="/softether/creacion_conexion.png" alt="creación de conexión"></p>
+<p>Una vez ahi ponemos los datos de configuración de la conexión como el nombre de host de destino, su puerto, el hub al que se conectará, el usuario y contraseña del usuario que se conectará al servidor.</p>
+<p><img src="/softether/configuracion_conexion.png" alt="configuración de conexión"></p>
+<p>Por último conectamos con el servidor y comprobamos que obtenemos una direccion ip del servidor:</p>
+<p>Conexión</p>
+<p><img src="/softether/establecer_conexion.png" alt="establecer conexión">
+<img src="/softether/estableciendo_conexxion.png" alt="estableciendo conexión"></p>
+<p>Comprobación</p>
+<p><img src="/softether/ip_publica.png" alt="ip pública antes de activar VPN">
+<img src="/softether/ip_publica_vpn.png" alt="ip pública con VPN"></p>
+<p><img src="/softether/ip.png" alt="ip antes de activar VPN">
+<img src="/softether/ip_vpn.png" alt="ip con VPN"></p>
+<h3 id="caso-2-site-to-site">Caso 2: Site to site</h3>
 <h4 id="instalación-y-configuración-de-server-vpn-ubuntu-xenial">Instalación y configuración de Server VPN (Ubuntu Xenial)</h4>
 <p>Lo primero que haremos en nuestro servidor sera actualizarlo:</p>
 <pre><code>root@server-vpn:/home/vagrant# apt update
