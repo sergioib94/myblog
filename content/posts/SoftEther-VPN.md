@@ -64,18 +64,18 @@ Autentificacion haciendo uso de un certificado creado en el propio servidor soft
 
 ### Diferencias con Open VPN y Wireguard ###
 
-                                 |   OpenVPN       |      Wireguard          |     SoftEther
----------------------------------|-----------------|-------------------------|---------------------------
-Rendimiento                      |   100 mbps      |      900 mbps (aprox)   |     1 Gbps
-(velocidad de conexión)          |                 |                         |
----------------------------------|-----------------|-------------------------|---------------------------
-Configuración                    |   sencilla      |      sencilla           |     sencilla
----------------------------------|-----------------|-------------------------|---------------------------
-Seguridad                        |   baja          |      media-alta         |     alta
----------------------------------|-----------------|-------------------------|---------------------------
-Estabilidad                      |   buena         |      buena              |     buena
----------------------------------|-----------------|-------------------------|---------------------------
-Transmisión de contenido         |   medio         |      alto               |     alto
+|                                 |   OpenVPN       |      Wireguard          |     SoftEther      | 
+|---------------------------------|-----------------|-------------------------|--------------------|
+| Rendimiento                     |   100 mbps      |      900 mbps (aprox)   |     1 Gbps         |
+| (velocidad de conexión)         |                 |                         |                    |
+|---------------------------------|-----------------|-------------------------|--------------------|
+| Configuración                   |   sencilla      |      sencilla           |     sencilla       |
+|---------------------------------|-----------------|-------------------------|--------------------|
+| Seguridad                       |   baja          |      media-alta         |     alta           |
+|---------------------------------|-----------------|-------------------------|--------------------|
+| Estabilidad                     |   buena         |      buena              |     buena          |
+|---------------------------------|-----------------|-------------------------|--------------------|
+| Transmisión de contenido        |   medio         |      alto               |     alto           |
 
 ### Casos prácticos ###
 
@@ -1149,7 +1149,7 @@ Iniciamos el cliente:
 root@cliente-vpn:/usr/local/vpnclient# ./vpnclient start
 ~~~
 
-Empezamos con la configuración del cliente:
+#### Configuración del cliente ####
 
 Creamos un adaptador virtual:
 
@@ -1294,7 +1294,7 @@ Vemos que nos da la ip 192.168.30.10, esto se debe a que securenat por defecto d
 
 Si en nuestro servidor hacemos un dhclient al igual que en el cliente de la interfaz tap, comprobamos que al servidor la ip 192.168.30.11. Al estar ambas máquinas en la misma red de forma local esta configuración no sirve de nada, sin embargo, esto quiere decir que de forma remota ya se pueden conectar equipos sin ningún problema por lo que ahora se probará a poner Softether en práctica creando otras dos máquinas, una que configurará como cliente y otra que se configurará como puente entre el cliente2 y el servidor, de forma que cuando el cliente2 solicite una ip con dhclient, aun estando en redes distintas podrá interactuar con el cliente1 como si estuviese en la misma red.
 
-Configuracion Site to Site:
+#### Configuración Site to Site ####
 
 Antes de nada accedemos por ssh al cliente2 y comprobamos que no puede acceso a las maquinas de la red1:
 
@@ -1542,7 +1542,7 @@ root@puente-vpn:/usr/local/vpnbridge#
 
 Cuando tengamos el puente instalado, lo primero sera crear una conexión de puente local entre algún cliente y el puente y por último se creará la conexión del puente al servidor. Para dicha conexión primero en el lado del servidor creamos un nuevo Hub al que se conectara el puente a traves de una conexión en cascada.
 
-Cliente2:
+#### Configuración del Cliente2 ####
 
 ~~~
 root@cliente2-vpn:/home/vagrant# apt update
@@ -1749,16 +1749,7 @@ The command completed successfully.
 
 ~~~
 
-Dispositivos Android/IOS
-
-Con respecto a los dispositivos moviles, pueden hacer muy facilmente uso de la vpn de softether. Para que esta conexion sea posible solo necesitaria una unica cosa y es tener configurada la opcion IPsec/L2TP en la maquina del servidor.
-
-Una vez configurada esa opcion lo unico que hay que hacer para usar la vpn, entramos en los ajustes > conexion > VPN > Añadir VPN.
-
-Hay introducimos el nombre de la conexion, la direccion del servidor, el tipo de conexion (L2TP/IPsec PSK) y por ultimo las credenciales para poder acceder a dicha VPN.
-
-
-Configuracion para el puente:
+#### Configuración para el puente ####
 
 ~~~
 root@puente-vpn:/home/vagrant# ip a
@@ -2047,3 +2038,11 @@ rtt min/avg/max/mdev = 1.358/1.368/1.379/0.038 ms
 ~~~
 
 Podemos ver que el puente puede hacerle ping al cliente de la red1 sin problemas.
+
+#### Dispositivos Android/IOS ####
+
+Con respecto a los dispositivos moviles, pueden hacer muy facilmente uso de la vpn de softether. Para que esta conexion sea posible solo necesitaria una unica cosa y es tener configurada la opcion IPsec/L2TP en la maquina del servidor.
+
+Una vez configurada esa opcion lo unico que hay que hacer para usar la vpn, entramos en los ajustes > conexion > VPN > Añadir VPN.
+
+Hay introducimos el nombre de la conexion, la direccion del servidor, el tipo de conexion (L2TP/IPsec PSK) y por ultimo las credenciales para poder acceder a dicha VPN.
