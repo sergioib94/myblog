@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>site to site on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/site-to-site/</link>
+    <description>Recent content in site to site on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 19:00:38 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/site-to-site/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vpn Site to Site</title>
+      <link>https://sergioib.netlify.app/posts/vpn-site-to-site/</link>
+      <pubDate>Fri, 12 Mar 2021 19:00:38 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/vpn-site-to-site/</guid>
+      <description>Introduccion Configura una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
+Se utilizarán direcciones de la red 10.</description>
+    </item>
+    
+  </channel>
+</rss>

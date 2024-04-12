@@ -1,0 +1,25 @@
+baseURL = "https://sergioib.netlify.app/"
+languageCode = "en-us"
+title = "Blog de Sergioib"
+theme = "m10c"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories/"
+
+[params]
+  author = "Sergio Ibañez"
+  description = "Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas"
+  
+  [[params.social]]
+    icon = "github"
+    name = "Github"
+    url = "https://github.com/sergioib94"

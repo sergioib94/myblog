@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Servidor DHCP Linux // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Servidor DHCP Linux"/>
+<meta name="twitter:description" content="Funcionamiento de un servidor DHCP El cliente al iniciarse se encuentra en estado init, sin saber sus parámetros ip en ese momento envía un mensaje DHCPDiscover a la dirección de broadcast para saber si algún servidor dhcp le puede ofrecer una ip. El cliente espera un tiempo entre 1 y 10 seg al enviar este dhcpdiscover para evitar posibles colisiones con otras peticiones de otros clientes.
+Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en la que recibira las dhcpoffer de los servidores dhcp."/>
+
+    <meta property="og:title" content="Servidor DHCP Linux" />
+<meta property="og:description" content="Funcionamiento de un servidor DHCP El cliente al iniciarse se encuentra en estado init, sin saber sus parámetros ip en ese momento envía un mensaje DHCPDiscover a la dirección de broadcast para saber si algún servidor dhcp le puede ofrecer una ip. El cliente espera un tiempo entre 1 y 10 seg al enviar este dhcpdiscover para evitar posibles colisiones con otras peticiones de otros clientes.
+Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en la que recibira las dhcpoffer de los servidores dhcp." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/servidor-dhcp-linux/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-11T09:33:55&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-11T09:33:55&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Servidor DHCP Linux</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 11, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          8 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="funcionamiento-de-un-servidor-dhcp"><strong>Funcionamiento de un servidor DHCP</strong></h3>
+<p>El cliente al iniciarse se encuentra en estado init, sin saber sus parámetros ip en ese momento envía un mensaje DHCPDiscover a la dirección de broadcast para saber si algún servidor dhcp le puede ofrecer una ip. El cliente espera un tiempo entre 1 y 10 seg al enviar este dhcpdiscover para evitar posibles colisiones con otras peticiones de otros clientes.</p>
+<p>Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en la que recibira las dhcpoffer de los servidores dhcp. En el caso de que un cliente reciba varios dhcpoffer, elegirá una de las ofertas indicándoselo al servidor con un dhcprequest y este servidor le responderá con un dhcpack. En el caso de que la ip ofrecida en el servidor ya este en uso en la red, el cliente responde al dhcpack con un dhcpdecline, rechazando así la oferta del servidor y volviendo así al estado de init.</p>
+<p>En el caso de que el cliente acepte la ip que le ofrece el servidor, al cliente pasara a un estado de bound o asociado en el que recibirá un T1,T2 y T3:</p>
+<ul>
+<li>T1 → Tiempo en el que una ip ofrecida se renueva.</li>
+<li>T2 → Tiempo de reenganche, es decir, el tiempo que tarda en volver a recibir una ip cuando el servido se apaga por ejemplo.</li>
+<li>T3 → Tiempo que tendrá la ip ofrecida el cliente.</li>
+</ul>
+<p>Cuando expira el T1, el cliente pasa a estado de renovación en el que negocia de nuevo con el servidor una nueva ip. En el caso de que el servidor por algún motivo no renueve la ip del cliente, este volverá al estado init en el que volverá a solicitar una nueva ip. En el caso de que el servidor si responda, recibirá el cliente un dhcpack con la ip, y la nueva duración.</p>
+<p>Si el T2 expira mientras el cliente está esperando en el estado renewing, el cliente pasará al estado rebinding en el que envía de nuevo un DHCPrequest a cualquier servidor, ya que por el servidor original no estaría disponible. Si un servidor contesta con un dhcpack, el cliente renueva su ip y sus temporizadores y pasa al estado bound.</p>
+<p>Al expirar T3 el cliente devuelve su ip y deja de usarla en la red, pero el cliente no necesita esperar a que expire el tiempo de alquiler para dejar de usar la ip, también puede renunciar a ella.</p>
+<h3 id="preparación-de-escenario"><strong>Preparación de escenario</strong></h3>
+<p>Nuestro escenario vagrant contara con dos nodos, el node server y el cliente:
+• Servidor: Tiene dos tarjetas de red (una pública y una privada que se conectan a la red local).
+• nodo_lan1: Un cliente conectado a la red local.</p>
+<p>El Vagrantfile empleado para la creacion del escenarios es el siguiente:</p>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+  config.vm.define :nodo1 do |nodo1|
+      nodo1.vm.box = &quot;debian/buster64&quot;
+      nodo1.vm.hostname = &quot;server&quot;
+      nodo1.vm.network :public_network,:bridge=&gt;&quot;wlo1&quot;
+      nodo1.vm.network :private_network, ip: &quot;192.168.100.1/24&quot;, virtualbox__intnet: &quot;Red1&quot;
+  end
+  config.vm.define :nodo2 do |nodo2|
+      nodo2.vm.box = &quot;debian/buster64&quot;
+      nodo2.vm.hostname = &quot;nodo1&quot;
+      nodo2.vm.network :private_network, type: &quot;dhcp&quot;, virtualbox__intnet: &quot;Red1&quot;
+  end
+</code></pre><p>Instala un servidor dhcp en el ordenador “servidor” que de servicio a los ordenadores de red local, teniendo en cuenta que el tiempo de concesión sea 12 horas y que la red local tiene el direccionamiento 192.168.100.0/24.</p>
+<ul>
+<li>Tarea 3: Muestra el fichero de configuración del servidor, la lista de concesiones, la modificación en la configuración que has hecho en el cliente para que tome la configuración de forma automática y muestra la salida del comando &ldquo;ip address&rdquo;.</li>
+</ul>
+<p>Configuraciones en el servidos dhcp en /etc/dhcp/dhcpd.conf:</p>
+<pre><code>Tiempo de concesión:
+default-lease-time 600;
+max-lease-time 43200;
+
+Rango de Ips que el servidos va a servir:
+subnet 192.168.100.0 netmask 255.255.255.0 {
+  range 192.168.100.50 192.168.100.100;
+}
+</code></pre><p>Ip a del cliente</p>
+<pre><code>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:8d:c0:4d brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
+       valid_lft 86294sec preferred_lft 86294sec
+    inet6 fe80::a00:27ff:fe8d:c04d/64 scope link 
+       valid_lft forever preferred_lft forever
+
+3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:5c:a2:a9 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.100.50/24 brd 192.168.100.255 scope global dynamic eth1
+       valid_lft 495sec preferred_lft 495sec
+    inet6 fe80::a00:27ff:fe5c:a2a9/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre><ul>
+<li>Tarea 4: Configura el servidor para que funcione como router y NAT, de esta forma los clientes tengan internet.</li>
+</ul>
+<p>Configuración de enrutamiento:</p>
+<pre><code>sudo ip r del default
+sudo ip r add default via 192.168.1.1
+</code></pre><p>Quitamos la ruta ip por defecto (eth0) y ponemos por defecto la eth1 que es la interfaz por la que accederemos a internet.</p>
+<p>Añadimos la linea iptable al fichero /etc/network/interfaces de forma que indicamos la interfaz por la que haremos nat.</p>
+<pre><code>up iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o eth1 -j MASQUERADE
+</code></pre><p>-A → añade una regla a postrouting
+Postrouting → Permite modificar paquetes justo antes de que salgan del equipo.
+-s → se aplica a la dirección de origen, en este caso nuestra red interna
+-o → se indica la interfaz por la que saldrán los paquetes, eth1
+-J MASQUERADE → cambia la dirección origen por la que tenga la interfaz de salida
+De forma que al hacer un ip route show o ip r deberíamos tener algo asi:</p>
+<pre><code>vagrant@nodo1:~$ ip route show
+default via 192.168.1.1 dev eth1 
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 
+192.168.1.0/24 dev eth1 proto kernel scope link src 192.168.1.50 
+192.168.100.0/24 dev eth2 proto kernel scope link src 192.168.100.1
+</code></pre><ul>
+<li>Tarea 5: Realizar una captura, desde el servidor usando tcpdump, de los cuatro paquetes que corresponden a una concesión: DISCOVER, OFFER, REQUEST, ACK.</li>
+</ul>
+<pre><code>vagrant@nodo1:~$ sudo tcpdump -i eth2
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth2, link-type EN10MB (Ethernet), capture size 262144 bytes
+15:02:53.325447 IP 192.168.100.50.bootpc &gt; 192.168.100.1.bootps: BOOTP/DHCP, Request from 08:00:27:a4:37:9b (oui Unknown), length 300
+15:02:53.338628 IP 192.168.100.1.bootps &gt; 192.168.100.50.bootpc: BOOTP/DHCP, Reply, length 300
+15:02:58.391241 ARP, Request who-has 192.168.100.1 tell 192.168.100.50, length 46
+15:02:58.391311 ARP, Reply 192.168.100.1 is-at 08:00:27:8f:2b:27 (oui Unknown), length 28
+15:02:58.490871 ARP, Request who-has 192.168.100.50 tell 192.168.100.1, length 28
+15:02:58.491611 ARP, Reply 192.168.100.50 is-at 08:00:27:a4:37:9b (oui Unknown), length 46
+</code></pre><ul>
+<li>Tarea 8: Indica las modificaciones realizadas en los ficheros de configuración y entrega una comprobación de que el cliente ha tomado esa dirección.*</li>
+</ul>
+<p>Añadimos la siguiente configuración a /etc/dhcp/dhcpd.conf:</p>
+<pre><code>host nodo2 {
+hardware ethernet 08:00:27:a4:37:9b;
+fixed-address 192.168.100.100;
+}
+</code></pre><p>De esta forma, una vez que se reinicie el servicio, y el tiempo de concesión de nuestro cliente pase, se cambiara de forma automática la ip por la 192.168.100.100</p>
+<p>Cliente antes:</p>
+<pre><code>vagrant@nodo2:~$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:8d:c0:4d brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
+       valid_lft 85888sec preferred_lft 85888sec
+    inet6 fe80::a00:27ff:fe8d:c04d/64 scope link 
+       valid_lft forever preferred_lft forever
+
+3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:a4:37:9b brd ff:ff:ff:ff:ff:ff
+    inet 192.168.100.50/24 brd 192.168.100.255 scope global dynamic eth1
+       valid_lft 45sec preferred_lft 45sec
+    inet6 fe80::a00:27ff:fea4:379b/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre><p>Cliente ahora:</p>
+<pre><code>vagrant@nodo2:~$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:8d:c0:4d brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
+       valid_lft 85864sec preferred_lft 85864sec
+    inet6 fe80::a00:27ff:fe8d:c04d/64 scope link 
+       valid_lft forever preferred_lft forever
+
+3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:a4:37:9b brd ff:ff:ff:ff:ff:ff
+    inet 192.168.100.100/24 brd 192.168.100.255 scope global dynamic eth1
+       valid_lft 50sec preferred_lft 50sec
+    inet6 fe80::a00:27ff:fea4:379b/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre><p>Uso de varios ámbitos</p>
+<p>Modifica el escenario Vagrant para añadir una nueva red local y un nuevo nodo:</p>
+<pre><code>• Servidor: En el servidor hay que crear una nueva interfaz
+• nodo_lan2: Un cliente conectado a la segunda red local.
+</code></pre>
+<p>Configura el servidor dhcp en el ordenador “servidor” para que de servicio a los ordenadores de la nueva red local, teniendo en cuenta que el tiempo de concesión sea 24 horas y que la red local tiene el direccionamiento 192.168.200.0/24.</p>
+<ul>
+<li>Tarea 9: Entrega el nuevo fichero Vagrantfile que define el escenario.</li>
+</ul>
+<p>En este caso he añadido una maquina windows ya existente y la he conectado a la red del server y el nodo1 por lo que el fichero vagrant file no ha sido modificado.</p>
+<ul>
+<li>Tarea 10: Explica las modificaciones que has hecho en los distintos ficheros de configuración. Entrega las comprobaciones necesarias de que los dos ámbitos están funcionando.*</li>
+</ul>
+<p>Configuracion en /etc/dhcp/dhcpd.conf</p>
+<pre><code>option domain-name &quot;example.org&quot;;
+option domain-name-servers ns1.example.org, ns2.example.org;
+default-lease-time 60;
+max-lease-time 60;
+ddns-update-style none;
+
+#Rango de direcciones
+
+subnet 192.168.100.0 netmask 255.255.255.0 {
+  range 192.168.100.50 192.168.100.100;
+}
+
+#Reservas IP
+
+host nodo2 {
+hardware ethernet 08:00:27:a4:37:9b;
+fixed-address 192.168.200.100;
+}
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

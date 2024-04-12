@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seguridad on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/seguridad/</link>
+    <description>Recent content in Seguridad on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Dec 2021 13:44:30 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducción SoftEther VPN</title>
+      <link>https://sergioib.netlify.app/posts/softether-vpn/</link>
+      <pubDate>Tue, 21 Dec 2021 13:44:30 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/softether-vpn/</guid>
+      <description>Introducción Softether VPN es uno de los softwares VPN multiprotocolo mas potentes y rápido del mundo actualmente. Funciona en sistemas Windows, Solaris, Mac, FreeBSD y algunas distribuciones de Linux. Ademas de ser de software libre, también es una alternativa muy buena a openvpn y a los servidores VPN de microsoft.
+Una de las funciones con las que cuenta este software es la de clonación de openvpn server, mediante la cual si se tiene un server openvpn, este se puede convertir rápidamente en un server Softether.</description>
+    </item>
+    
+    <item>
+      <title>Vpn Site to Site</title>
+      <link>https://sergioib.netlify.app/posts/vpn-site-to-site/</link>
+      <pubDate>Fri, 12 Mar 2021 19:00:38 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/vpn-site-to-site/</guid>
+      <description>Introduccion Configuraremos una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
+Se utilizarán direcciones de la red 10.</description>
+    </item>
+    
+    <item>
+      <title>Cortafuegos en escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 17:53:20 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</guid>
+      <description>Introducción Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
+En este caso la maquina dulcinea cuenta con 3 interfaces de red:
+ eth0: interfaz al exterior eth1: interfaz de la red interna donde estan alojadas las maquinas freston(servidor ldap y de correos) y sancho (servidor base de datos y de copias de seguridad) eth2: interfaz a red dmz donde esta la maquina quijote (servidor web)  Política por defecto</description>
+    </item>
+    
+    <item>
+      <title>HTTPS en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/https-en-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 15:52:50 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/https-en-openstack/</guid>
+      <description>Introducción El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &amp;ldquo;gestiona&amp;rdquo;.
+Instalamos openssl para crear nuestro certificado sudo apt install openssl Se crea la clave
+openssl genrsa 4096 &amp;gt; /etc/ssl/private/sergio.ibanez.key Se crea el fichero csr
+openssl req -new -key /etc/ssl/private/sergio.</description>
+    </item>
+    
+    <item>
+      <title>HTTPS en OVH</title>
+      <link>https://sergioib.netlify.app/posts/https-ovh/</link>
+      <pubDate>Fri, 12 Mar 2021 13:05:15 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/https-ovh/</guid>
+      <description>Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.
+   Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.    Explica detenidamente cómo se solicita un certificado en Let&amp;rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:
+ ¿Qué función tiene el cliente ACME?  El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado.</description>
+    </item>
+    
+    <item>
+      <title>Integridad, firmas y autentificacion</title>
+      <link>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:00:38 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</guid>
+      <description>Introduccion En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.
+Firmas electrónicas  Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc.</description>
+    </item>
+    
+    <item>
+      <title>Cifrado Asimetrico GPG Y Openssl</title>
+      <link>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</link>
+      <pubDate>Thu, 11 Mar 2021 09:15:13 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</guid>
+      <description>Tarea 1: Generación de claves  Genera un par de claves (pública y privada). ¿En que directorio se guarda las claves de un usuario?  gpg --gen-key Se nos piden algunos datos como nombre y apellidos, correo y contraseña y una vez introducida la información, se ve que la clave se nos crea en un directorio oculto .gnupg
+ gpg: clave CFCF1D130D5A52C5 marcada como de confianza absoluta gpg: creado el directorio &#39;/home/sergioib/.</description>
+    </item>
+    
+  </channel>
+</rss>

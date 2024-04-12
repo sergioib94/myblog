@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/cloud/</link>
+    <description>Recent content in Cloud on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Mar 2021 13:08:14 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalacion Openstack con Kolla Ansible</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/</link>
+      <pubDate>Sat, 13 Mar 2021 13:08:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/</guid>
+      <description>Introduccion Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:
+ Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. Master (sistema ubuntu) Compute (sistema ubuntu)  El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Letschat</title>
+      <link>https://sergioib.netlify.app/posts/kubernetes-lets-chat/</link>
+      <pubDate>Sat, 13 Mar 2021 12:13:11 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/kubernetes-lets-chat/</guid>
+      <description>Introduccion En este post, lo que haremos sera primero crear un cluster de kubernetes, para lo cual nuestro equipo debe de contar con al menos 4 o 5 Gb de ram al menos ya se van a crear 3 maquinas virtuales, un nodo master o controlador y 2 nodos secundarios.
+En este escenario credo haciendo uso de vagrant, desplegaremos una aplicacion llamada letschat usando kubeadm.
+Preparacion del escenario Empezamos creando en nuestro equipo un directorio donde almacenaremos nuestro escenario vagrant.</description>
+    </item>
+    
+    <item>
+      <title>ISCSI</title>
+      <link>https://sergioib.netlify.app/posts/iscsi/</link>
+      <pubDate>Fri, 12 Mar 2021 18:44:37 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/iscsi/</guid>
+      <description>Introducción ISCSI es un estándar que permite el uso del protocolo SCSI sobre redes TCP/IP. iSCSI es un protocolo de la capa de transporte definido en las especificaciones SCSI-3.
+Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
+Instalación y configuración En el servidor, empezamos instalando los paquetes tgt y lvm2.
+apt install tgt lvm2 Mientras en el cliente debian instalamos el paquete iscsi</description>
+    </item>
+    
+    <item>
+      <title>Instalación y configuración basica Vmware ESXI</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</link>
+      <pubDate>Fri, 12 Mar 2021 14:24:08 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</guid>
+      <description>Introducción ¿Que es Vmware?
+Vmware, es una de las herramientas más populares que se utilizan a la hora de virtualizar. La virtualización es el proceso a través del cual se emula un recurso, como por ejemplo puede ser un sistema operativo, a través de una herramienta de software. Este software en este caso, sería Vmware.
+Con Vmware tenemos la posibilidad de ejecutar un sistema operativo, de la misma forma que si estuviera instalado en un servidor físico, pero sin llegar a estarlo, ya que estos sistemas operativos se encuentran corriendo dentro de otros sistemas, que son conocidos como el host.</description>
+    </item>
+    
+    <item>
+      <title>Modificaciones del escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 14:06:50 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/</guid>
+      <description>Introducción En el siguiente post, haciendo uso del escenario openstack creado en una de las practicas anteriores haremos una serie de modificaciones en dicho escenario.
+Modificaciones:
+  Creación de la red DMZ: Nombre: DMZ de &amp;ldquo;nombre de usuario&amp;rdquo; 10.0.2.0/24
+  Creación de las instancias: freston: Debian Buster sobre volumen de 10GB con sabor m1.mini Conectada a la red interna Accesible indirectamente a través de dulcinea IP estática
+  Modificación de la ubicación de quijote Pasa de la red interna a la DMZ y su direccionamiento tiene que modificarse apropiadamente</description>
+    </item>
+    
+    <item>
+      <title>Creacion de escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 11:43:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</guid>
+      <description>Introduccion En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
+Creacion del escenario   Tarea 1: Creación de la red interna: ◦ Nombre red interna de &amp;lt;sergio.ibañez&amp;gt; ◦ 10.0.1.0/24
+  Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20.</description>
+    </item>
+    
+    <item>
+      <title>Configuracion cliente VPN con certificado x509</title>
+      <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
+      <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracio-clientevpn/</guid>
+      <description>Introducción Teniendo en cuenta que en el instituto y en casa cuentan con redes distintas, se configurara un cliente vpn para poder permitir la conexion entre las distintas redes.
+Configuración del cliente VPN  Empezamos generando una clave privada RSA 4096  Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
+root@debian-sergio:~# openssl genrsa 4096 &amp;gt; /etc/ssl/private/debian-sergio.ibanez.key Generating RSA private key, 4096 bit long modulus (2 primes) ........................++++ .</description>
+    </item>
+    
+  </channel>
+</rss>

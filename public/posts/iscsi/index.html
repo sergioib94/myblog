@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>ISCSI // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ISCSI"/>
+<meta name="twitter:description" content="Introducción ISCSI es un estándar que permite el uso del protocolo SCSI sobre redes TCP/IP. iSCSI es un protocolo de la capa de transporte definido en las especificaciones SCSI-3.
+Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
+Instalación y configuración En el servidor, empezamos instalando los paquetes tgt y lvm2.
+apt install tgt lvm2 Mientras en el cliente debian instalamos el paquete iscsi"/>
+
+    <meta property="og:title" content="ISCSI" />
+<meta property="og:description" content="Introducción ISCSI es un estándar que permite el uso del protocolo SCSI sobre redes TCP/IP. iSCSI es un protocolo de la capa de transporte definido en las especificaciones SCSI-3.
+Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
+Instalación y configuración En el servidor, empezamos instalando los paquetes tgt y lvm2.
+apt install tgt lvm2 Mientras en el cliente debian instalamos el paquete iscsi" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/iscsi/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T18:44:37&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T18:44:37&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">ISCSI</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>ISCSI es un estándar que permite el uso del protocolo SCSI sobre redes TCP/IP. iSCSI es un protocolo de la capa de transporte definido en las especificaciones SCSI-3.</p>
+<p>Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.</p>
+<h3 id="instalación-y-configuración"><strong>Instalación y configuración</strong></h3>
+<p>En el servidor, empezamos instalando los paquetes tgt y lvm2.</p>
+<pre><code>apt install tgt lvm2
+</code></pre><p>Mientras en el cliente debian instalamos el paquete iscsi</p>
+<pre><code>apt install open-iscsi
+</code></pre><p>Preparamos los discos para el uso de ISCSI LUN (en el server), usando lvm2 creamos los volúmenes físicos:</p>
+<pre><code>root@ISCSI:/home/vagrant# pvcreate /dev/sdb
+  Physical volume &quot;/dev/sdb&quot; successfully created.
+</code></pre><p>Creamos el grupo de volúmenes:</p>
+<pre><code>root@ISCSI:/home/vagrant# vgcreate iscsi /dev/sdb
+  Volume group &quot;iscsi&quot; successfully created
+</code></pre><p>Creamos el volumen logico:</p>
+<pre><code>root@ISCSI:/home/vagrant# lvcreate -L 950M -n vol-iscsi iscsi
+  Rounding up size to full physical extent 952.00 MiB
+  Logical volume &quot;vol-iscsi&quot; created.
+</code></pre><p>Comprobamos que se haya creado correctamente con el comando lvs</p>
+<pre><code>root@ISCSI:/home/vagrant# lvs
+  LV        VG    Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  vol-iscsi iscsi -wi-a----- 952.00m
+</code></pre><p>Una vez creado el volumen lógico, pasemos a crear el LUN que sera el dispositivo al que el iniciador se conectara, para ello modificamos (/etc/tgt/targets.conf):</p>
+<pre><code>&lt;target iqn.2020-21.com:tgiscsi&gt;
+     backing-store /dev/iscsi/vol-iscsi
+&lt;/target&gt;
+</code></pre><p>Reiniciamos el servivio tgt:</p>
+<pre><code>systemctl restart tgt
+</code></pre><p>Comprobamos que el target este bien creado:</p>
+<pre><code>root@ISCSI:/home/vagrant# tgtadm --mode target --op show
+Target 1: iqn.2020-21.com:tgiscsi
+    System information:
+        Driver: iscsi
+        State: ready
+    I_T nexus information:
+    LUN information:
+        LUN: 0
+            Type: controller
+            SCSI ID: IET     00010000
+            SCSI SN: beaf10
+            Size: 0 MB, Block size: 1
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: null
+            Backing store path: None
+            Backing store flags: 
+        LUN: 1
+            Type: disk
+            SCSI ID: IET     00010001
+            SCSI SN: beaf11
+            Size: 998 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/iscsi/vol-iscsi
+            Backing store flags: 
+    Account information:
+    ACL information:
+        ALL
+</code></pre><h3 id="configuración-de-cliente-debian"><strong>Configuración de cliente Debian</strong></h3>
+<p>Configuramos el fichero (/etc/iscsi/iscsid.conf):</p>
+<pre><code>iscsid.startup = automatic
+
+node.startup = automatic
+</code></pre><p>Reiniciamos el servicio:</p>
+<pre><code>systemctl restart open-iscsi.service
+</code></pre><p>Comunicamos al cliente con el target:</p>
+<pre><code>root@cliente:/home/vagrant# iscsiadm -m discovery -t st -p 192.168.43.23
+192.168.43.23:3260,1 iqn.2020-21.com:tgiscsi
+</code></pre><p>Buscamos los servcios disponibles dentro de la red:</p>
+<pre><code>iscsiadm -m discovery -t sendtargets -p ip serrver
+</code></pre><p>Hacemos un login al target que se nos ha mostrado anteriormente:</p>
+<pre><code>root@cliente:/home/vagrant# iscsiadm --m node --targetname &quot;iqn.2020-21.com:tgiscsi&quot; -p &quot;192.168.43.23:3260&quot; --login
+iscsiadm: default: 1 session requested, but 1 already present.
+iscsiadm: Could not log into all portals
+</code></pre><p>Una vez hecho esto, le damos formato y lo montamos para comprobar que se pueda escribir en el:</p>
+<pre><code>mkfs.ext4 /dev/sdb
+
+mkdir /mnt/iscsi
+
+mount /dev/sdb1 /mnt/iscsi
+</code></pre><p>Montamos el login de iscsi en el servidor para comprobar que el fichero creado por el cliente se haya creado correctamente:</p>
+<pre><code>mount /dev/iscsi/vol-iscsi iscsi/
+
+Comprobamos que el fichero creado por el cliente existe:
+
+root@ISCSI:/mnt# cat iscsi/fichero_iscsi.txt
+practica iscsi
+</code></pre><p>Automontaje del volumen en el cliente:</p>
+<p>Creamos el automontaje en /etc/systemd/system/iscsi.mount con la siguiente configuración:</p>
+<pre><code>[Unit]
+Description=ISCSI
+
+[Mount]
+What=/dev/sdb
+Where=/mnt/iscsi
+Type=ext4
+Options=_netdev
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>Recargamos el demonio y habilitamos el automontaje:</p>
+<pre><code>systemctl daemon-reload
+systemctl enable iscsi.mount
+</code></pre><p>Reiniciamos y comprobamos si se automonta:</p>
+<h3 id="configuración-windows"><strong>Configuración Windows</strong></h3>
+<p>Para windows vamos a utilizar los dos volumenes que sobran, sdc y sdd, empezamos al igual que antes creando los volúmenes lógicos en el servidor:</p>
+<pre><code>root@ISCSI:/home/vagrant# pvcreate /dev/sdc
+  Physical volume &quot;/dev/sdc&quot; successfully created.
+root@ISCSI:/home/vagrant# vgcreate win1 /dev/sdc
+  Volume group &quot;win1&quot; successfully created
+root@ISCSI:/home/vagrant# lvcreate -L 950M -n vol-win1 win1
+  Rounding up size to full physical extent 952.00 MiB
+  Logical volume &quot;vol-win1&quot; created.
+</code></pre><p>Repetimos lo mismo con el otro disco:</p>
+<pre><code>root@ISCSI:/home/vagrant# pvcreate /dev/sdd
+  Physical volume &quot;/dev/sdd&quot; successfully created.
+root@ISCSI:/home/vagrant# vgcreate win2 /dev/sdd
+  Volume group &quot;win2&quot; successfully created
+root@ISCSI:/home/vagrant# lvcreate -L 950M -n vol-win2 win2
+  Rounding up size to full physical extent 952.00 MiB
+  Logical volume &quot;vol-win2&quot; created.
+</code></pre><p>Creamos los dos LUN en /etc/tgt/targets.conf modificando el fichero de la siguiente forma:</p>
+<pre><code>&lt;target iqn.2020-02.com:tgwindows&gt;
+        backing-store /dev/win1/vol-win1
+        backing-store /dev/win2/vol-win2
+        incominguser sergioib 123456654321
+&lt;/target&gt;
+</code></pre><p>En este caso para crear el LUN de windows tenemos que añadir una autentificacion CHAP que debe tener tanto un usuario como una contraseña de entre 12 y 15 caracteres.</p>
+<p>Reiniciamos el servicio igual que antes y comprobamos que se hayan creado:</p>
+<pre><code>root@ISCSI:/home/vagrant# tgtadm --mode target --op show
+Target 1: iqn.2020-02.com:tgwindows
+    System information:
+        Driver: iscsi
+        State: ready
+    I_T nexus information:
+    LUN information:
+        LUN: 0
+            Type: controller
+            SCSI ID: IET     00010000
+            SCSI SN: beaf10
+            Size: 0 MB, Block size: 1
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: null
+            Backing store path: None
+            Backing store flags: 
+        LUN: 1
+            Type: disk
+            SCSI ID: IET     00010001
+            SCSI SN: beaf11
+            Size: 998 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/win1/vol-win1
+            Backing store flags: 
+        LUN: 2
+            Type: disk
+            SCSI ID: IET     00010002
+            SCSI SN: beaf12
+            Size: 998 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/win2/vol-win2
+            Backing store flags: 
+    Account information:
+        sergioib
+    ACL information:
+        ALL
+</code></pre><h3 id="cliente-windows"><strong>Cliente windows</strong></h3>
+<p>Conectamos el iscsi al cliente windows:</p>
+<p>Panel de control &gt; herramientas administrativas &gt; iniciador iscsi &gt; propiedades &gt; detección &gt; detectar portal</p>
+<p>Ponemos la ip del servidor y nos deberán salir los targets creados anteriormente.</p>
+<p>Le damos a conectar y vamos a las opciones avanzadas y habilitamos el inicio de sesión por chap donde añadimos el usuario y contraseña creados anteriormente.</p>
+<p>Aceptamos y ya tendremos iscsi conectado a nuestra maquina windows1</p>
+<p><img src="/ISCSI/iscsi_windows.png" alt="iscsi"></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

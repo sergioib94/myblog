@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>control de accesos on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/control-de-accesos/</link>
+    <description>Recent content in control de accesos on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Mar 2021 16:13:52 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/control-de-accesos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Control De Acceso Autentificacion Autorizacion</title>
+      <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</guid>
+      <description>Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.  Empezamos modificando el fichero departamentos.conf en /etc/apache2/sites-available de la siguiente forma:
+ServerAdmin webmaster@localhost DocumentRoot /srv/www/departamentos ServerName www.</description>
+    </item>
+    
+  </channel>
+</rss>

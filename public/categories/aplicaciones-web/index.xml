@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aplicaciones Web on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>
+    <description>Recent content in Aplicaciones Web on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Sep 2021 13:14:06 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/aplicaciones-web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducción a Docker</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-docker/</link>
+      <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-docker/</guid>
+      <description>¿Que es Docker? Docker es un proyecto de software libre que permite automatizar el despliegue de aplicaciones dentro de contenedores.
+Docker nos permite de forma sencilla crear contenedores ligeros y faciles de mover donde ejecutar nuestras aplicaciones software sobre cualquier máquina con Docker instalado, independientemente del sistema operativo que la máquina tenga, facilitando así también los despliegues.
+¿Que son los contenedores?
+Los contenedores son una forma de virtulización del sistema opertaivo, son como maquinas virtuales aisladas en los que podemos ejecutar cualquier cosa como por ejemplo microservicios, aplicaciones, etc&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Aplicaciones web PHP en Docker</title>
+      <link>https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/</link>
+      <pubDate>Sun, 14 Mar 2021 13:26:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/</guid>
+      <description>Introduccion En esta practica haciendo uso de docker, vamos a desplegar distintas aplicaciones en contenedores, en los primeros ejercicios se trabajara con bookmedik (aplicacion para organizar citas medicas) y en las dos ultimas se usara drupal y joomla.
+La forma de trabajar sera la siguiente, en nuestro equipo tendremos un directorio con todo lo necesario para los distintos ejercicios y dentro de este directorio habra otros dos (en los casos que sea necesario), tendremos un directorio buil donde tendremos tanto el directorio de la aplicacion con los ficheros necesarios para su ejecucion, un dockerfile que usaremos para crear los contenedores y un fichero script ue modificara y añadira los datos necesario en los contenedores.</description>
+    </item>
+    
+    <item>
+      <title>Creacion blog Pelican</title>
+      <link>https://sergioib.netlify.app/posts/creacion-blog-pelican/</link>
+      <pubDate>Sat, 13 Mar 2021 22:18:18 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-blog-pelican/</guid>
+      <description>Instalacion de Pelican Para poder instalar este gestor de paginas web, ejecutamos apt install pelican y una vez instalado ejecutamos apt install markdown, que es el idioma en el que se escribirán los artículos del blog. Una vez instalados pelican y markdown en nuestro entorno de desarrollo (nuestra máquina) estará listo para usarse.
+apt install pelican apt install markdown Configuracion de un sitio web Para comenzar la configuracion de nuestro sitio web, lo primero sera ejecutar el comando pelican-quickstart donde empezaran a salir preguntas sobre la configuracion que deberan responderse:</description>
+    </item>
+    
+    <item>
+      <title>Introduccion a la Integracion Continua</title>
+      <link>https://sergioib.netlify.app/posts/integracion-continua/</link>
+      <pubDate>Fri, 12 Mar 2021 18:12:40 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integracion-continua/</guid>
+      <description>Introducción La integración continua es una práctica de desarrollo de software mediante la cual los desarrolladores combinan los cambios en el código en un repositorio central de forma periódica, tras lo cual se ejecutan versiones y pruebas automáticas.
+Los objetivos clave de la integración continua consisten en encontrar y arreglar errores con mayor rapidez, mejorar la calidad del software y reducir el tiempo que se tarda en validar y publicar nuevas actualizaciones de software.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion de Mezzanine en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 16:01:48 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</guid>
+      <description>Introducción En este post vamos a desplegar un CMS python basado en django, en este caso se ha elegido Mezzanine.
+Para ello contaremos conn dos entornos de trabajo, uno sera el entorno de desarrollo que sera mi propia maquina con un entorno virtual, y por otro lado el entorno de produccion que sera el nodo Quijote del entorno openstack creado y la practica de &amp;ldquo;Creacion de escenario Openstack&amp;rdquo;.
+Entorno de desarrollo Creamos el entorno virtual:</description>
+    </item>
+    
+    <item>
+      <title>Despliegue CMS Java</title>
+      <link>https://sergioib.netlify.app/posts/despliegue-cms-java/</link>
+      <pubDate>Fri, 12 Mar 2021 13:49:27 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/despliegue-cms-java/</guid>
+      <description>Introduccion En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
+Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo.</description>
+    </item>
+    
+    <item>
+      <title>Despliegue de aplicaciones python</title>
+      <link>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</link>
+      <pubDate>Fri, 12 Mar 2021 12:22:28 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</guid>
+      <description>Tarea 1: Entorno de desarrollo  Vamos a desarrollar la aplicación del tutorial de django 3.1. Vamos a configurar tu equipo como entorno de desarrollo para trabajar con la aplicación, para ello:
+ Realiza un fork del repositorio de GitHub: https://github.com/josedom24/django_tutorial. Crea un entorno virtual de python3 e instala las dependencias necesarias para que funcione el proyecto (fichero requirements.txt).  Creamos el entorno virtual:
+sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv practica_despliegue Clonamos el repositorio de django-tutorial en el entorno virtual:</description>
+    </item>
+    
+    <item>
+      <title>Aplicaciones PHP en OVH</title>
+      <link>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</link>
+      <pubDate>Fri, 12 Mar 2021 10:37:20 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</guid>
+      <description>Introduccion En este post aprenderemos a migrar dos aplicaciones, Drupal y Nextcloud, para ello contamos con un un escenario compuesto por dos maquinas virtuales en redes distintas. La primera maquina virtual estara echa en vagrant y sera la maquina usada en la practica anterior &amp;ldquo;Instalacion local CMS PHP &amp;ldquo;.
+La segunda maquina estara alojada en OVH y es la maquina hecha en la practica anterior &amp;ldquo;OVH LEMP&amp;rdquo;.
+Lo que haremos sera instalar la aplicacion Nextcloud en la maquina vagrant local y migrar tanto drupal como nextcloud a la maquina OVH.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion local CMS PHP</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</link>
+      <pubDate>Thu, 11 Mar 2021 10:13:49 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</guid>
+      <description>Instalación de un servidor LAMP Empezamos creando una instancia de vagrant basado en un box debian o ubuntu y una vez creado ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+Configuración del vagrantfile:
+Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &amp;quot;debian/buster64&amp;quot; nodo1.vm.hostname = &amp;quot;server&amp;quot; nodo1.vm.network :private_network, type: &amp;quot;dhcp&amp;quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh.</description>
+    </item>
+    
+    <item>
+      <title>Creacion blog Hugo</title>
+      <link>https://sergioib.netlify.app/posts/creacion-blog-hugo/</link>
+      <pubDate>Thu, 11 Mar 2021 08:07:44 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-blog-hugo/</guid>
+      <description>Introducción En este post se hablara de como ha sido creado este blog usando hugo donde se van a ir publicando trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR) ademas de apuntes o documentacion de interes y ademas la configuracion continua que se hara a traves de Github y Netlify.
+Creación del blog Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian 10.</description>
+    </item>
+    
+  </channel>
+</rss>

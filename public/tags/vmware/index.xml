@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vmware on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/vmware/</link>
+    <description>Recent content in vmware on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 14:24:08 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/vmware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalacion Y Configuracion Basica Vmware ESXI</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</link>
+      <pubDate>Fri, 12 Mar 2021 14:24:08 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</guid>
+      <description>La instalación inicialmente es bastante sencilla, haciendo uso de un usb con la iso de vmware 5.5 lo conectamos en el servidor y nos aseguramos de que este configurado en bios para que arranque por usb y no por otro medio.
+Una vez que comience la instalación, lo primero sera confirmar dicha instalación y mas adelante tendremos que elegir el disco donde se instalara vmware. En este caso al haber una instalacion vmware anterior, tendremos que reinstalar vmware.</description>
+    </item>
+    
+  </channel>
+</rss>

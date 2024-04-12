@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>HTTPS en Openstack // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTTPS en Openstack"/>
+<meta name="twitter:description" content="Introducción El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.
+Instalamos openssl para crear nuestro certificado sudo apt install openssl Se crea la clave
+openssl genrsa 4096 &gt; /etc/ssl/private/sergio.ibanez.key Se crea el fichero csr
+openssl req -new -key /etc/ssl/private/sergio."/>
+
+    <meta property="og:title" content="HTTPS en Openstack" />
+<meta property="og:description" content="Introducción El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.
+Instalamos openssl para crear nuestro certificado sudo apt install openssl Se crea la clave
+openssl genrsa 4096 &gt; /etc/ssl/private/sergio.ibanez.key Se crea el fichero csr
+openssl req -new -key /etc/ssl/private/sergio." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/https-en-openstack/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T15:52:50&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T15:52:50&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">HTTPS en Openstack</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p>El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &ldquo;gestiona&rdquo;.</p>
+<h3 id="instalamos-openssl-para-crear-nuestro-certificado"><strong>Instalamos openssl para crear nuestro certificado</strong></h3>
+<pre><code>sudo apt install openssl
+</code></pre><p>Se crea la clave</p>
+<pre><code>openssl genrsa 4096 &gt; /etc/ssl/private/sergio.ibanez.key
+</code></pre><p>Se crea el fichero csr</p>
+<pre><code>openssl req -new -key /etc/ssl/private/sergio.ibanez.key -out /root/sergio.ibanez.csr
+
+C=ES
+ST=Sevilla
+L=Dos Hermanas
+O=IES Gonzalo Nazareno
+OU=Informatica
+CN = *.sergio.gonzalonazareno.org
+</code></pre><p>C → Country Name, en este caso como el dominio esta en España ponemos ES.
+ST → Estado/Provincia
+L → Localidad/Ciudad
+O → Nombre de la organización
+OU → Nombre de la unidad organizativa a la que se le pide el certificado.
+CN → Nombre del dominio para el que se hará el certificado, en este caso usamos * para que dicho certificado pueda usarse en cualquier maquina con el dominio sergio.gonzalonazareno.org.</p>
+<p>Debemos hacer una redirección para forzar el protocolo https (en centos).</p>
+<p>Para hacer la redirección sera necesario instalar el modulo ssl y reiniciamos httpd para habilitarlo:</p>
+<pre><code>[centos@quijote ~]$ sudo dnf -y install mod_ssl
+</code></pre><p>Activamos el puerto 443 en centos:</p>
+<pre><code>[centos@quijote ~]$ sudo firewall-cmd --zone=public --permanent --add-service=https
+success
+[centos@quijote ~]$ sudo firewall-cmd --reload
+success
+</code></pre><p>Movemos los certificados a /etc/pki/tls/certs y la clave a /etc/pki/tls/private y una vez movidos, modificamos el fichero /etc/httpd/conf.d/ssl.conf modificando las siguientes lineas dejandolas de la siguiente forma:</p>
+<pre><code>SSLEngine on
+SSLCertificateFile /etc/pki/tls/certs/sergio.ibanez.crt   
+SSLCertificateKeyFile /etc/pki/tls/private/sergio.ibanez.key
+</code></pre><p>Recargamos httpd:</p>
+<pre><code>sudo systemctl reload httpd
+</code></pre><p>Para que funcionen los ficheros pki, ejecutamos el siguiente comando de forma que se permitirá la restauración de los ficheros en selinux:</p>
+<pre><code>restorecon -RvF /etc/pki
+</code></pre><p>Se añaden las siguientes lineas en el fichero nuevo una vez puestos los certificados en sus respectivos sitios.</p>
+<p>Fichero inicio_https.conf:</p>
+<pre><code>&lt;VirtualHost *:443&gt; 
+	ServerName www.sergio.gonzalonazareno.org
+	DocumentRoot /var/www/sergio
+
+	ErrorLog /var/www/sergio/log/error.log
+    	CustomLog /var/www/sergio/log/requests.log combined
+
+    	SSLEngine on
+    	SSLCertificateFile /etc/pki/tls/certs/sergio.ibanez.crt
+    	SSLCertificateKeyFile /etc/pki/tls/private/sergio.ibanez.key
+&lt;/VirtualHost&gt;
+</code></pre><p>Fichero inicio.conf:</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+	ServerName www.sergio.gonzalonazareno.org
+	DocumentRoot /var/www/html
+
+        Redirect 301 / https://www.sergio.gonzalonazareno.org
+
+        ErrorLog /var/www/sergio/log/error.log
+        CustomLog /var/www/sergio/log/requests.log combined
+&lt;/VirtualHost&gt;
+</code></pre><p>Creamos los enlaces simbólicos:</p>
+<pre><code>sudo ln -s /etc/httpd/sites-available/inicio.conf /etc/httpd/sites-enabled/
+sudo ln -s /etc/httpd/sites-available/inicio_https.conf /etc/httpd/sites-enabled/
+</code></pre><p>Hay que indicarle a selinux que debe permitir a apache para que pueda acceder al directorio que contiene la clave y el certificado que hemos creado.</p>
+<p>Configuraremos una regla DNAT en el cortafuego de la maquina Dulcinea para abrir el puerto 443 y el 80 haciendo uso de iptable.</p>
+<pre><code>iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 10.0.2.5
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to 10.0.2.5
+</code></pre><ul>
+<li>Instalamos el certificado del AC Gonzalo Nazareno en tu navegador para comprobar que se pueda verificar tu certificado.</li>
+</ul>
+<p>Instalamos el certificado en nuestro navegador, por ejemplo en Mozilla Firefox, para ello entramos en Preferencias -&gt; Privacidad &amp; Seguridad -&gt; Certificados -&gt; Ver certificados -&gt; Importar.</p>
+<p><img src="/https-openstack/certificado.png" alt="certificado"></p>
+<p>Probamos a acceder al fichero info.php que tenemos ya en nuestro servidor web:</p>
+<p><img src="/https-openstack/prueba_https.png" alt="prueba https"></p>
+<p>Como se ve en la imagen, nos aparece el candado, aunque nos sale como sitio seguro, esto puede deberse a que a la hora de crear el fichero csr, el dato OU esta mal y por lo tanto no queda validado correctamente (se puso informatica cuando debe ser informática).</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

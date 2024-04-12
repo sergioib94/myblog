@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lemp on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/lemp/</link>
+    <description>Recent content in lemp on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 09:44:16 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/lemp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OVH Lemp</title>
+      <link>https://sergioib.netlify.app/posts/ovh-lemp/</link>
+      <pubDate>Fri, 12 Mar 2021 09:44:16 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/ovh-lemp/</guid>
+      <description>Introduccion En este post instalaremos un servidor Lemp (Linux (E)nginx Mariadb PHP) en una maquina virtual alojada en OVH.
+ Tarea 1. Instalacion de servidor web nginx  sudo apt install nginx  Tarea 2. Instala un servidor de base de datos MariaDB. Ejecuta el programa necesario para asegurar el servicio, ya que lo vamos a tener corriendo en el entorno de producción.  sudo apt install -y mariadb-server mariadb-client Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sistemas on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/sistemas/</link>
+    <description>Recent content in Sistemas on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 May 2021 15:28:17 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/sistemas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Active Directory</title>
+      <link>https://sergioib.netlify.app/posts/active-directory/</link>
+      <pubDate>Sun, 23 May 2021 15:28:17 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/active-directory/</guid>
+      <description>¿Que es? Active Directory es un servicio de directorio que almacena objetos de datos en su entorno de red local. El servicio registra datos en los usuarios, dispositivos, aplicaciones, grupos, y dispositivos en una estructura jerárquica.
+La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente.</description>
+    </item>
+    
+    <item>
+      <title>Bacula</title>
+      <link>https://sergioib.netlify.app/posts/bacula/</link>
+      <pubDate>Sun, 14 Mar 2021 12:08:28 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/bacula/</guid>
+      <description>Introduccion Bacula es un sistema de copias de seguridad que funciona como cliente y servidor. Este sistema de copias de seguridad va a ser instalado en una de las maquinas virtuales de nuestro escenario openstack que hemos creado en posts anteriores, mas concretamente como bacula necesita de una base de datos mariadb, se usara nuestra maquina Sancho (servidor de base de datos del escenario openstack) como servidor de copias de seguridad y las demas maquinas haran de clientes.</description>
+    </item>
+    
+    <item>
+      <title>Montaje de pila ELK</title>
+      <link>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</link>
+      <pubDate>Fri, 12 Mar 2021 18:22:23 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</guid>
+      <description>¿Que es una pila ELK? Es un conjunto de herramientas de gran potencial de código abierto que se combinan para crear una herramienta de administración de registros permitiendo la monitorización, consolidación y análisis de logs generados en múltiples servidores, estas herramientas son:ElasticSearch, Logstash y Kibana.
+Para poder montar la pila completa sera necesario que la maquina que aloje las tres maquinas tenga mas de 2Gb de ram. Tambien es posible instalar estas herramientas en equipos distintos, sin embarlo la maquina donde se instale elasticsearch necesitara un minimo de 2gb.</description>
+    </item>
+    
+    <item>
+      <title>Sistemas de ficheros Btrfs</title>
+      <link>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</link>
+      <pubDate>Fri, 12 Mar 2021 17:50:31 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</guid>
+      <description>Introducción Btrfs es un sistema de archivos copy-on-write anunciado por Oracle Corporation para GNU/Linux.
+Su objetivo es sustituir al actual sistema de archivos ext4, eliminando el mayor número de sus limitaciones, en especial con el tamaño máximo de los ficheros; además de la adopción de nuevas tecnologías no soportadas por ext3. Se afirma también que se &amp;ldquo;centrará en la tolerancia a fallos, reparación y fácil administración&amp;rdquo;.
+En este post crearemos un escenario vagrant con una maquina que incluya varios discos y a traves de varias pruebas comprobaremos el funcionamiento y rendimiento de btrfs.</description>
+    </item>
+    
+    <item>
+      <title>Usuarios, grupos y ACLs en Ldap</title>
+      <link>https://sergioib.netlify.app/posts/usuarios-grupos-y-acls-en-ldap/</link>
+      <pubDate>Fri, 12 Mar 2021 14:14:51 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/usuarios-grupos-y-acls-en-ldap/</guid>
+      <description>Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.  Para crear estos usuarios, creamos un fichero .ldif llamado por ejemplo usuarios con el siguiente contenido:
+dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Sergio Ibañez uid: sergio uidNumber: 2000 gidNumber: 2000 homeDirectory: /home/sergio loginShell: /bin/bash userPassword: {SSHA}PkyDS12f+fo6sR3uHGsY25CvUjMrmrVy sn: ibañez dn: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Manuel Lora uid: manuel uidNumber: 2001 gidNumber: 2001 homeDirectory: /home/lora loginShell: /bin/bash userPassword: {SSHA}ODN7zIXBS0rDW+Uf9Z1J1/GUcBXhtrS/ sn: lora dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Antonio uid: juanan uidNumber: 2002 gidNumber: 2002 homeDirectory: /home/juanan loginShell: /bin/bash userPassword: {SSHA}V+mrXKnbB/ReYwrdQ7Gh85ZQZw1A2iqs sn: reifs dn: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Fran Madueño uid: fran uidNumber: 2003 gidNumber: 2003 homeDirectory: /home/fran loginShell: /bin/bash userPassword: {SSHA}RnYnua1fD3L1UCc4arAfVrfNWrokHsoF sn: madueño dn: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alejando Gutierrez uid: alejandro uidNumber: 2004 gidNumber: 2004 homeDirectory: /home/alejandro loginShell: /bin/bash userPassword: {SSHA}H4js7CR0IjdgRIYJFtHA7zkq7+9gWNff sn: gutierrez dn: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Jose Miguel uid: calderon uidNumber: 2005 gidNumber: 2005 homeDirectory: /home/calderon loginShell: /bin/bash userPassword: {SSHA}ioP7oyy5KXGXmTQE8sLajhSTPV0bUyVk sn: calderon dn: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Adrian Jaramillo uid: adrian uidNumber: 2006 gidNumber: 2006 homeDirectory: /home/adrian loginShell: /bin/bash userPassword: {SSHA}jGxqVD3yK9yRm8qtWVuFW7du/I75p9Qv sn: jaramillo dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Celia Garcia uid: celia uidNumber: 2007 gidNumber: 2007 homeDirectory: /home/celia loginShell: /bin/bash userPassword: {SSHA}WQ8IgcfkrrAz5sNwfqsdJhBtNXHJ1OyQ sn: garcia dn: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alvaro Vaca uid: alvaro uidNumber: 2008 gidNumber: 2008 homeDirectory: /home/alvaro loginShell: /bin/bash userPassword: {SSHA}W0XxEk1ojVDliy4jIN3IyZ4RVqFwiLxi sn: vaca dn: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Luis uid: juanlu uidNumber: 2009 gidNumber: 2009 homeDirectory: /home/juanlu loginShell: /bin/bash userPassword: {SSHA}u+yL9u8EiUlYVKHvsD+j+Ww7iOGaNOBW sn: millan En este fichero, la estructura con la que se van a crear los usuarios es la misma:</description>
+    </item>
+    
+    <item>
+      <title>Ldaps</title>
+      <link>https://sergioib.netlify.app/posts/ldaps/</link>
+      <pubDate>Fri, 12 Mar 2021 14:13:08 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/ldaps/</guid>
+      <description>Introducción Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://
+LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .</description>
+    </item>
+    
+    <item>
+      <title>Instalacion y configuracion básica OpenLDAP</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</link>
+      <pubDate>Fri, 12 Mar 2021 14:11:19 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</guid>
+      <description>Introducción En la maquina Freston de Openstack creada y configurada en la practica &amp;ldquo;modificaciones del escenario openstack&amp;rdquo;, se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.
+¿Que es LDAP?
+Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto.</description>
+    </item>
+    
+    <item>
+      <title>Actualizacion de Centos7 a Centos8</title>
+      <link>https://sergioib.netlify.app/posts/actualizacion-centos8/</link>
+      <pubDate>Fri, 12 Mar 2021 12:52:53 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/actualizacion-centos8/</guid>
+      <description>Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.
+Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.</description>
+    </item>
+    
+    <item>
+      <title>Compilacion programa C con Makefile</title>
+      <link>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</link>
+      <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</guid>
+      <description>Introduccion En este post a modo de aprendizaje para aprender mas sobre debian y su paqueteria se va a proceder a la compilacion de un paquete escrito en C, en este caso el paquete less para posteriormente ser capaces de compilar nuestro sistema operativo.
+Compilacion paquete less Para dicha compilacion empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion de Debian10</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-debian10/</link>
+      <pubDate>Wed, 10 Mar 2021 21:20:45 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-debian10/</guid>
+      <description>Instacacion Debian 10 Introducción En un portátil (HP pavilion 15) con 1TB de disco se crearan particiones LVM donde se instalara un sistema debían 10. En el caso de mi disco ya tiene dos particiones en disco dedicadas a Windows 10 y otros, por lo que como Windows no es compatible con LVM, esas dos particiones no se van a tocar y la partición para Linux ocupara 500GB.
+Ventajas de instalar el sistema en particiones lvm   Permite un almacenamiento mas flexible de archivos que haciendo particiones normales, ya que si a lo largo del tiempo se acaba el espacio de la partición puede redimensionarse e incluso añadir discos adicionales para aumentar el tamaño.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Bacula // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bacula"/>
+<meta name="twitter:description" content="Introduccion Bacula es un sistema de copias de seguridad que funciona como cliente y servidor. Este sistema de copias de seguridad va a ser instalado en una de las maquinas virtuales de nuestro escenario openstack que hemos creado en posts anteriores, mas concretamente como bacula necesita de una base de datos mariadb, se usara nuestra maquina Sancho (servidor de base de datos del escenario openstack) como servidor de copias de seguridad y las demas maquinas haran de clientes."/>
+
+    <meta property="og:title" content="Bacula" />
+<meta property="og:description" content="Introduccion Bacula es un sistema de copias de seguridad que funciona como cliente y servidor. Este sistema de copias de seguridad va a ser instalado en una de las maquinas virtuales de nuestro escenario openstack que hemos creado en posts anteriores, mas concretamente como bacula necesita de una base de datos mariadb, se usara nuestra maquina Sancho (servidor de base de datos del escenario openstack) como servidor de copias de seguridad y las demas maquinas haran de clientes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/bacula/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-14T12:08:28&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-14T12:08:28&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Bacula</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 14, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introduccion">Introduccion</h3>
+<p>Bacula es un sistema de copias de seguridad que funciona como cliente y servidor. Este sistema de copias de seguridad va a ser instalado en una de las maquinas virtuales de nuestro escenario openstack que hemos creado en posts anteriores, mas concretamente como bacula necesita de una base de datos mariadb, se usara nuestra maquina Sancho (servidor de base de datos del escenario openstack) como servidor de copias de seguridad y las demas maquinas haran de clientes.</p>
+<h3 id="instalación-en-el-servidor">Instalación en el servidor</h3>
+<pre><code>sudo apt install bacula bacula-client bacula-common-mysql bacula-director-mysql bacula-server
+
+Postfix-configuration → En este caso No configuration.
+Password para bacula → backup.
+</code></pre><p>Configuracion del director (/etc/bacula/bacula-dir.conf):</p>
+<pre><code>Director {                            # define myself
+  Name = sancho-dir
+  DIRport = 9101                # where we listen for UA connections
+  QueryFile = &quot;/etc/bacula/scripts/query.sql&quot;
+  WorkingDirectory = &quot;/var/lib/bacula&quot;
+  PidDirectory = &quot;/run/bacula&quot;
+  Maximum Concurrent Jobs = 20
+  Password = &quot;backup&quot;         # Console password
+  Messages = Daemon
+  DirAddress = 10.0.1.8		#tambien podemos poner localhost
+}
+</code></pre><ul>
+<li>Name → nombre del director.</li>
+<li>DIRport → puerto por el que el director va a escuchar las peticiones de bacula.</li>
+<li>QueryFile → ruta del directorio y el fichero usador por el director.</li>
+<li>WorkingDirectory → ruta donde se colocan los ficheros estaticos.</li>
+<li>PidDirectory → el directorio en el que el Director colocará los ficheros de id de los procesos.</li>
+<li>Maximum concurrent jobs → numero máximo de trabajos que el director puede correr.</li>
+<li>Password → contraseña de la consola backula.</li>
+<li>Messages → especifica donde tiene que entregar el DIrector los mensajes que no están asociados con un trabajo especifico.</li>
+<li>DirAddress → especifica los puertos y las direcciones IP donde escuchará el Director por conexiones Bacula mediante consola.</li>
+</ul>
+<pre><code>JobDefs {
+  Name = &quot;Backups&quot;
+  Type = Backup
+  Level = Incremental
+  Client = sancho-fd
+  FileSet = &quot;Full Set&quot;
+  Schedule = &quot;semanal&quot;
+  Storage = File
+  Messages = Standard
+  Pool = File
+  SpoolAttributes = yes
+  Priority = 10
+  Write Bootstrap = &quot;/var/lib/bacula/%c.bsr&quot;
+}
+
+#Jobs openstack
+
+Job {
+ Name = &quot;Sancho&quot;
+ JobDefs = &quot;Backups&quot;
+ Client = &quot;sancho-fd&quot;
+}
+
+Job {
+ Name = &quot;Quijote&quot;
+ JobDefs = &quot;Backups&quot;
+ Client = &quot;quijote-fd&quot;
+}
+
+Job {
+ Name = &quot;Freston&quot;
+ JobDefs = &quot;Backups&quot;
+ Client = &quot;freston-fd&quot;
+}
+
+Job {
+ Name = &quot;Dulcinea&quot;
+ JobDefs = &quot;Backups&quot;
+ Client = &quot;dulcinea-fd&quot;
+}
+
+# Restauracion openstack
+
+Job {
+ Name = &quot;Restore-Sancho&quot;
+ Type = Restore
+ Client=sancho-fd
+ FileSet=&quot;Full Set&quot;
+ Storage = File
+ Pool = File
+ Messages = Standard
+}
+
+Job {
+ Name = &quot;Restore-Quijote&quot;
+ Type = Restore
+ Client=quijote-fd
+ FileSet=&quot;Full Set&quot;
+ Storage = File
+ Pool = File
+ Messages = Standard
+}
+
+Job {
+ Name = &quot;Restore-Freston&quot;
+ Type = Restore
+ Client=freston-fd
+ FileSet=&quot;Full Set&quot;
+ Storage = File
+ Pool = File
+ Messages = Standard
+}
+
+Job {
+ Name = &quot;Restore-Dulcinea&quot;
+ Type = Restore
+ Client=dulcinea-fd
+ FileSet=&quot;Full Set&quot;
+ Storage = File
+ Pool = File
+ Messages = Standard
+}
+
+#Ficheros de backup
+
+FileSet {
+ Name = &quot;Full Set&quot;
+ Include {
+ Options {
+ signature = MD5
+ compression = GZIP
+ }
+ File = /home
+ File = /etc
+ File = /var
+ }
+ Exclude {
+ File = /var/lib/bacula
+ File = /nonexistant/path/to/file/archive/dir
+ File = /proc
+ File = /var/cache
+ File = /var/tmp
+ File = /tmp
+ File = /sys
+ File = /.journal
+ File = /.fsck
+ }
+}
+
+#ciclo backup semanal
+
+Schedule {
+ Name = semanal
+ Run = Level=Full sun at 23:59
+ Run = Level=Incremental mon-sat at 23:59
+}
+
+#clientes bacula
+
+Client {
+ Name = sancho-fd
+ Address = 10.0.1.8
+ FDPort = 9102
+ Catalog = MyCatalog
+ Password = &quot;bacula&quot; # password for FileDaemon
+ File Retention = 60 days # 60 days
+ Job Retention = 6 months # six months
+ AutoPrune = yes # Prune expired Jobs/Files
+}
+
+Client {
+ Name = quijote-fd
+ Address = 10.0.2.5
+ FDPort = 9102
+ Catalog = MyCatalog
+ Password = &quot;bacula&quot; # password for FileDaemon 2
+ File Retention = 60 days # 60 days
+ Job Retention = 6 months # six months
+ AutoPrune = yes # Prune expired Jobs/Files
+}
+
+Client {
+ Name = freston-fd
+ Address = 10.0.1.3
+ FDPort = 9102
+ Catalog = MyCatalog
+ Password = &quot;bacula&quot; # password for FileDaemon 2
+ File Retention = 60 days # 60 days
+ Job Retention = 6 months # six months
+ AutoPrune = yes # Prune expired Jobs/Files
+}
+
+Client {
+ Name = dulcinea-fd
+ Address = 10.0.1.5
+ FDPort = 9102
+ Catalog = MyCatalog
+ Password = &quot;bacula&quot; # password for FileDaemon 2
+ File Retention = 60 days # 60 days
+ Job Retention = 6 months # six months
+ AutoPrune = yes # Prune expired Jobs/Files
+}
+
+#Almacenamiento
+
+Storage {
+ Name = File
+# Do not use &quot;localhost&quot; here
+ Address = 10.0.1.8 # N.B. Use a fully qualified name here
+ SDPort = 9103
+ Password = &quot;bacula&quot;
+ Device = FileChgr1
+ Media Type = File
+ Maximum Concurrent Jobs = 10 # run up to 10 jobs a the same time
+}
+
+#acceso a base de datos
+
+Catalog {
+  Name = MyCatalog
+  dbname = &quot;bacula&quot;; DB Address = &quot;localhost&quot;; dbuser = &quot;bacula&quot;; dbpassword = &quot;bacula&quot;
+}
+
+#pool
+
+Pool {
+ Name = File
+ Pool Type = Backup
+ Recycle = yes # Bacula can automatically recycle Volumes
+ AutoPrune = yes # Prune expired volumes
+ Volume Retention = 365 days # one year
+ Maximum Volume Bytes = 50G # Limit Volume size to something reasonable
+ Maximum Volumes = 100 # Limit number of Volumes in Pool
+ Label Format = &quot;Remoto&quot; # Auto label
+}
+
+Modificación bacula-sd (/etc/bacula/bacula-sd.conf):
+
+Storage {                             # definition of myself
+  Name = sancho-sd
+  SDPort = 9103                  # Director's port
+  WorkingDirectory = &quot;/var/lib/bacula&quot;
+  Pid Directory = &quot;/run/bacula&quot;
+  Plugin Directory = &quot;/usr/lib/bacula&quot;
+  Maximum Concurrent Jobs = 20
+  SDAddress = 10.0.1.8
+}
+
+Director {
+  Name = sancho-dir
+  Password = &quot;backup&quot;
+}
+
+Director {
+  Name = sancho-mon
+  Password = &quot;backup&quot;
+  Monitor = yes
+}
+
+Autochanger {
+  Name = FileChgr1
+  Device = FileStorage
+  Changer Command = &quot;&quot;
+  Changer Device = /dev/null
+}
+
+Device {
+  Name = FileStorage
+  Media Type = File
+  Archive Device = /backup
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  Maximum Concurrent Jobs = 7
+}
+</code></pre><p>Configuración de consola (/etc/bacula/bconsole.conf):</p>
+<pre><code>Director {
+  Name = sancho-dir
+  DIRport = 9101
+  address = 10.0.1.8
+  Password = &quot;backup&quot;
+}
+</code></pre><h3 id="configuracion-de-los-clientes">Configuracion de los clientes</h3>
+<p>Configuración de clientes (/etc/bacula/bacula-fd.conf):</p>
+<pre><code>sudo apt install bacula-client
+</code></pre><p>Sancho:</p>
+<pre><code>Director {
+  Name = sancho-dir
+  Password = &quot;backup&quot;
+}
+
+Director {
+  Name = sancho-mon
+  Password = &quot;backup&quot;
+  Monitor = yes
+}
+
+FileDaemon {                          # this is me
+  Name = sancho-fd
+  FDport = 9102                  # where we listen for the director
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /run/bacula
+  Maximum Concurrent Jobs = 20
+  Plugin Directory = /usr/lib/bacula
+  FDAddress = 10.0.1.8
+}
+
+Messages {
+  Name = Standard
+  director = sancho-dir = all, !skipped, !restored
+}
+</code></pre><p>Freston:</p>
+<pre><code>Director {
+  Name = sancho-dir
+  Password = &quot;backup&quot;
+}
+
+Director {
+  Name = sancho-mon
+  Password = &quot;backup&quot;
+  Monitor = yes
+}
+
+FileDaemon {                          # this is me
+  Name = freston-fd
+  FDport = 9102                  # where we listen for the director
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /run/bacula
+  Maximum Concurrent Jobs = 20
+  Plugin Directory = /usr/lib/bacula
+  FDAddress = 10.0.1.3
+}
+
+Messages {
+  Name = Standard
+  director = sancho-dir = all, !skipped, !restored
+}
+</code></pre><p>Dulcinea:</p>
+<pre><code>Director {
+  Name = sancho-dir
+  Password = &quot;backup&quot;
+}
+
+Director {
+  Name = sancho-mon
+  Password = &quot;backup&quot;
+  Monitor = yes
+}
+
+FileDaemon {                          # this is me
+  Name = dulcinea-fd
+  FDport = 9102                  # where we listen for the director
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /run/bacula
+  Maximum Concurrent Jobs = 20
+  Plugin Directory = /usr/lib/bacula
+  FDAddress = 10.0.1.5
+}
+
+Messages {
+  Name = Standard
+  director = sancho-dir = all, !skipped, !restored
+}
+</code></pre><p>Quijote:</p>
+<pre><code>Director {
+  Name = sancho-dir
+  Password = &quot;backup&quot;
+}
+
+Director {
+  Name = sancho-mon
+  Password = &quot;backup&quot;
+  Monitor = yes
+}
+
+FileDaemon {                          # this is me
+  Name = quijote-fd
+  FDport = 9102                  # where we listen for the director
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /run/bacula
+  Maximum Concurrent Jobs = 20
+  Plugin Directory = /usr/lib/bacula
+  FDAddress = 10.0.2.4
+}
+
+Messages {
+  Name = Standard
+  director = sancho-dir = all, !skipped, !restored
+}
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

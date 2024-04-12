@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Actualizacion de Centos7 a Centos8 // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Actualizacion de Centos7 a Centos8"/>
+<meta name="twitter:description" content="Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.
+Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7."/>
+
+    <meta property="og:title" content="Actualizacion de Centos7 a Centos8" />
+<meta property="og:description" content="Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.
+Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/actualizacion-centos8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T12:52:53&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T12:52:53&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Actualizacion de Centos7 a Centos8</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introduccion"><strong>Introduccion</strong></h3>
+<p>Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.</p>
+<h3 id="actualizacion-de-centos-7-a-centos-8-en-la-maquina-quijote"><strong>Actualizacion de Centos 7 a Centos 8 en la maquina quijote</strong></h3>
+<p>Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:</p>
+<pre><code>[centos@quijote ~]$ cat /etc/centos-release
+CentOS Linux release 7.9.2009 (Core)
+</code></pre><p>En este caso comenzaremos con la version 7.9.2009 de centos.</p>
+<p>Instalamos el repositorio epel en nuestro centos 7:</p>
+<pre><code>sudo yum install -y epel-release.noarch
+</code></pre><p>Creamos una cache para el repositorio epel (opcional):</p>
+<pre><code>sudo yum makecache fast
+</code></pre><p>Mediante este comando crearemos una cache de forma manual, haciendo que acciones como instalar o actualizar se hagan mucho mas rápido, pero sin embargo con la desventaja de poder almacenar un menor numero de repositorios.</p>
+<p>Instalamos los paquetes requeridos en centos 7:</p>
+<pre><code>sudo yum install -y yum-utils rpmconf
+</code></pre><p>Eliminación de paquetes duplicados/no usados:</p>
+<pre><code>sudo rpmconf -a
+</code></pre><p>Listamos tanto los paquetes innecesarios como los paquetes huerfanos:</p>
+<pre><code>sudo package-cleanup --leaves
+sudo package-cleanup --orphans
+</code></pre><p>Eliminamos los paquetes resultado de los comandos anteriores, en mi caso los siguientes:</p>
+<pre><code>sudo yum remove -y \ 
+	&gt; libndp-1.2-9.el7.x86_64 \ 
+	&gt; libsysfs-2.1.0-16.el7.x86_64 \ 
+	&gt; kernel-3.10.0-1127.el7.x86_64
+</code></pre><p>También podemos eliminar estos paquetes ejecutando simplemente yum remove package-cleanup &ndash;leaves y yum remove package-cleanup &ndash;orphans.</p>
+<p>Actualizamos el administrador de paquetes pasando de yum a dnf (el que usa centos 8):</p>
+<pre><code>sudo yum install -y dnf
+</code></pre><p>Eliminamos yum de nuestro sistema ya que al tener dnf ya no sera necesario:</p>
+<pre><code>sudo dnf remove -y yum yum-metadata-parser
+</code></pre><p>Eliminamos cualquier configuración de yum existente:</p>
+<pre><code>sudo rm -Rf /etc/yum
+</code></pre><p>Creamos una cache para repositorios dnf (opcional):</p>
+<pre><code>sudo dnf makecache
+</code></pre><p>Actualizamos los paquetes para empezar con la actualización:</p>
+<pre><code>sudo dnf upgrade -y
+</code></pre><p>Actualizamos centos-release:</p>
+<pre><code>sudo dnf upgrade -y http://mirror.centos.org/centos/8/BaseOS/x86_64/os/Packages/{centos-release-8.2-2.2004.0.2.el8.x86_64.rpm,centos-gpg-keys-8.2-2.2004.0.2.el8.noarch.rpm,centos-repos-8.2-2.2004.0.2.el8.x86_64.rpm}
+</code></pre><p>Actualizamos el repositorio de EPEL 7 a 8:</p>
+<pre><code>sudo dnf upgrade -y epel-release
+</code></pre><p>Creamos cache para todos los repositorios (opcional):</p>
+<pre><code>sudo dnf makecache
+</code></pre><p>Eliminamos los núcleos instalados:</p>
+<pre><code>sudo rpm -e rpm -q kernel
+</code></pre><p>Eliminamos los paquetes que pueden ocasionar conflictos (en este caso no salio ningún paquete):</p>
+<pre><code>sudo rpm -e --nodeps sysvinit-tools
+</code></pre><p>Iniciamos la actualización del sistema operativo:</p>
+<pre><code>sudo dnf -y --releasever=8 --allowerasing --setopt=deltarpm=false distro-sync
+</code></pre><p>En caso de algún error en algún paquete sera necesarios eliminarlo puesto que si se queda en el sistema posterior mente causara conflicto con los paquetes de centos 8. En este caso había problemas de conflicto con python36-rpmconf-1.0.22-1.el7.noarch por lo que se elimino haciendo uso de sudo dnf remove y se volvio a ejecutar sudo dnf -y &ndash;releasever=8 &ndash;allowerasing &ndash;setopt=deltarpm=false distro-sync.</p>
+<p>Instalamos el nuevo kernel para centos 8:</p>
+<pre><code>sudo dnf install -y kernel-core
+</code></pre><p>Si da problemas por no haber eliminado anteriormente los paquetes conflictivos ejecutaremos el siguiente comando para solucionarlo:</p>
+<pre><code>sudo dnf install -y --allowerasing kernel-core
+</code></pre><p>Instalamos los grupos de paquete “core” y “minimal install”:</p>
+<pre><code>sudo dnf -y groupupdate &quot;Core&quot; &quot;Minimal Install&quot;
+</code></pre><p>Reiniciamos el sistema para comprobar si la actualización a sido un éxito:</p>
+<p>Comprobamos que realmente la maquina a sido actualizada a centos 8:</p>
+<p>Comprobación del kernel</p>
+<pre><code>[centos@quijote ~]$ uname -r
+4.18.0-193.28.1.el8_2.x86_64
+</code></pre><p>Comprobación del sistema</p>
+<pre><code>[centos@quijote ~]$ cat /etc/centos-release
+CentOS Linux release 8.2.2004 (Core) 
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

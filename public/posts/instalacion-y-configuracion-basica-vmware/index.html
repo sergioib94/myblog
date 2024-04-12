@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Instalación y configuración basica Vmware ESXI // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Instalación y configuración basica Vmware ESXI"/>
+<meta name="twitter:description" content="Introducción ¿Que es Vmware?
+Vmware, es una de las herramientas más populares que se utilizan a la hora de virtualizar. La virtualización es el proceso a través del cual se emula un recurso, como por ejemplo puede ser un sistema operativo, a través de una herramienta de software. Este software en este caso, sería Vmware.
+Con Vmware tenemos la posibilidad de ejecutar un sistema operativo, de la misma forma que si estuviera instalado en un servidor físico, pero sin llegar a estarlo, ya que estos sistemas operativos se encuentran corriendo dentro de otros sistemas, que son conocidos como el host."/>
+
+    <meta property="og:title" content="Instalación y configuración basica Vmware ESXI" />
+<meta property="og:description" content="Introducción ¿Que es Vmware?
+Vmware, es una de las herramientas más populares que se utilizan a la hora de virtualizar. La virtualización es el proceso a través del cual se emula un recurso, como por ejemplo puede ser un sistema operativo, a través de una herramienta de software. Este software en este caso, sería Vmware.
+Con Vmware tenemos la posibilidad de ejecutar un sistema operativo, de la misma forma que si estuviera instalado en un servidor físico, pero sin llegar a estarlo, ya que estos sistemas operativos se encuentran corriendo dentro de otros sistemas, que son conocidos como el host." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T14:24:08&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T14:24:08&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Instalación y configuración basica Vmware ESXI</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="introducción"><strong>Introducción</strong></h3>
+<p><strong>¿Que es Vmware?</strong></p>
+<p>Vmware, es una de las herramientas más populares que se utilizan a la hora de virtualizar. La virtualización es el proceso a través del cual se emula un recurso, como por ejemplo puede ser un sistema operativo, a través de una herramienta de software. Este software en este caso, sería Vmware.</p>
+<p>Con Vmware tenemos la posibilidad de ejecutar un sistema operativo, de la misma forma que si estuviera instalado en un servidor físico, pero sin llegar a estarlo, ya que estos sistemas operativos se encuentran corriendo dentro de otros sistemas, que son conocidos como el host.</p>
+<h3 id="instalación-y-configuración"><strong>Instalación y configuración</strong></h3>
+<p>La instalación inicialmente es bastante sencilla, haciendo uso de un usb con la iso de vmware 5.5 lo conectamos en el servidor y nos aseguramos de que este configurado en bios para que arranque por usb y no por otro medio (en este caso se esta instalando Vmware en un servidor fisico).</p>
+<p>Una vez que comience la instalación, lo primero sera confirmar dicha instalación y mas adelante tendremos que elegir el disco donde se instalara vmware. En este caso al haber una instalacion vmware anterior, tendremos que reinstalar vmware.</p>
+<p><img src="/vmware/1.jpg" alt="confirmamos instalacion"></p>
+<p><img src="/vmware/2.jpg" alt="instalamos"></p>
+<p><img src="/vmware/3.jpg" alt="seleccionamos almacenamiento"></p>
+<p>Ya seleccionado el disco, el siguiente paso sera ponerle contraseña al usuario root, en este caso una tan simple como “usuario”.</p>
+<p><img src="/vmware/4.jpg" alt="contraseña de root"></p>
+<p>Después de esto, terminara la instalación y comenzara a configurarse de forma automática, de forma que al acabar vmware obtendrá una dirección por dhcp de forma que desde un navegador se podrá administrar, en este caso la ip 172.22.8.130.</p>
+<p><img src="/vmware/5.jpg" alt="instalacion completa"></p>
+<p><img src="/vmware/6.jpg" alt="carga de vmware"></p>
+<p><img src="/vmware/7.jpg" alt="vmware"></p>
+<p>Al acceder a la ip de vmware en el navegador, entramos en la pagina de inicio, donde podremos administrar las maquinas virtuales que se vayan a crear accediendo al cliente host de vmware.</p>
+<p><img src="/vmware/vmware1.png" alt="inicio vmware"></p>
+<p>Creación de la maquina virtuales</p>
+<p>Para ello hacemos click en “nueva maquina virtual” y después a crear nueva maquina virtual.</p>
+<p><img src="/vmware/vmware2.png" alt="creacion de la maquina"></p>
+<p>Luego le damos un nombre y seleccionamos el tipo de sistema operativo que tendrá.</p>
+<p><img src="/vmware/vmware3.png" alt="nombre y sistema de la maquina"></p>
+<p>Seleccionamos donde se almacenara, en este caso en nuestro disco.</p>
+<p><img src="/vmware/vmware4.png" alt="almacenamiento"></p>
+<p>Personalizamos la configuracion:</p>
+<p><img src="/vmware/vmware6.png" alt="configuracion"></p>
+<p>Una vez creada la maquina virtual, necesitaremos instalar la consola remota vmware, para ello en la pagina de vmware nos descargamos el fichero VMWare Remote Console 12.0.0 for linux. Después de haberlo descargado, lo instalamos en nuestra maquina mediante el comando sh y comenzara la instalación de la herramienta:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Y una vez ya está instalado, accedemos mediante dicha herramienta a la máquina para su instalación. Una vez instalado el sistema, comprobamos que funciona y que tiene salida a la red:</p>
+<p><img src="/vmware/vmware_final.png" alt="funcionamiento de la maquina"></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

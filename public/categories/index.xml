@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/</link>
+    <description>Recent content in Categories on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Dec 2021 13:44:30 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Seguridad</title>
+      <link>https://sergioib.netlify.app/categories/seguridad/</link>
+      <pubDate>Tue, 21 Dec 2021 13:44:30 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/seguridad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aplicaciones Web</title>
+      <link>https://sergioib.netlify.app/categories/aplicaciones-web/</link>
+      <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/aplicaciones-web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Apuntes</title>
+      <link>https://sergioib.netlify.app/categories/apuntes/</link>
+      <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/apuntes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Base de Datos</title>
+      <link>https://sergioib.netlify.app/categories/base-de-datos/</link>
+      <pubDate>Mon, 13 Sep 2021 12:36:20 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/base-de-datos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sistemas</title>
+      <link>https://sergioib.netlify.app/categories/sistemas/</link>
+      <pubDate>Sun, 23 May 2021 15:28:17 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/sistemas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud</title>
+      <link>https://sergioib.netlify.app/categories/cloud/</link>
+      <pubDate>Sat, 13 Mar 2021 13:08:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Servicios</title>
+      <link>https://sergioib.netlify.app/categories/servicios/</link>
+      <pubDate>Sat, 13 Mar 2021 12:44:43 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/categories/servicios/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Montaje de pila ELK // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Montaje de pila ELK"/>
+<meta name="twitter:description" content="¿Que es una pila ELK? Es un conjunto de herramientas de gran potencial de código abierto que se combinan para crear una herramienta de administración de registros permitiendo la monitorización, consolidación y análisis de logs generados en múltiples servidores, estas herramientas son:ElasticSearch, Logstash y Kibana.
+Para poder montar la pila completa sera necesario que la maquina que aloje las tres maquinas tenga mas de 2Gb de ram. Tambien es posible instalar estas herramientas en equipos distintos, sin embarlo la maquina donde se instale elasticsearch necesitara un minimo de 2gb."/>
+
+    <meta property="og:title" content="Montaje de pila ELK" />
+<meta property="og:description" content="¿Que es una pila ELK? Es un conjunto de herramientas de gran potencial de código abierto que se combinan para crear una herramienta de administración de registros permitiendo la monitorización, consolidación y análisis de logs generados en múltiples servidores, estas herramientas son:ElasticSearch, Logstash y Kibana.
+Para poder montar la pila completa sera necesario que la maquina que aloje las tres maquinas tenga mas de 2Gb de ram. Tambien es posible instalar estas herramientas en equipos distintos, sin embarlo la maquina donde se instale elasticsearch necesitara un minimo de 2gb." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/montaje-de-pila-elk/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T18:22:23&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T18:22:23&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Montaje de pila ELK</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="que-es-una-pila-elk"><strong>¿Que es una pila ELK?</strong></h3>
+<p>Es un conjunto de herramientas de gran potencial de código abierto que se combinan para crear una herramienta de administración de registros permitiendo la monitorización, consolidación y análisis de logs generados en múltiples servidores, estas herramientas son:ElasticSearch, Logstash y Kibana.</p>
+<p>Para poder montar la pila completa sera necesario que la maquina que aloje las tres maquinas tenga mas de 2Gb de ram. Tambien es posible instalar estas herramientas en equipos distintos, sin embarlo la maquina donde se instale elasticsearch necesitara un minimo de 2gb.</p>
+<h3 id="elasticsearch"><strong>Elasticsearch</strong></h3>
+<p>Elasticsearch es un motor de búsqueda que se basa en Lucene el cual nos permite realizar búsquedas por una gran cantidad de datos de un texto específico. Está escrito en Java y se basa sobre una licencia Apache.
+Gracias al motor Lucene sobre el que está implementado, Elasticsearch nos ofrece capacidades de búsquedas de texto, autocompletado, soporte de geolocalización,…</p>
+<p>Se podría decir que Elasticsearch es como una base de datos NoSQL orientada a documentos JSON, los cuales pueden ser consultados, creados, actualizados o borrados mediante un un sencillo API Rest.</p>
+<p>Características:</p>
+<ul>
+<li>Acceso a datos: Podemos añadir, buscar y analizar grandes cantidades de datos en tiempo real de forma distribuida. Tanto la configuración como el acceso a los datos lo podemos hacer mediante APIrestful, además cuenta con varias librerías para clientes (java, python, php, ruby,…)</li>
+<li>Escalabilidad: Permite una arquitectura distribuida, escalable horizontalmente y en alta disponibilidad.</li>
+<li>Rapidez: Esta diseñado para realizar búsquedas de texto completo muy rápido.</li>
+<li>Permite almacenar documentos en formato json, lo que es muy util para soluciones NoSQL.</li>
+</ul>
+<p>Instalación:</p>
+<p>Elasticsearch como se ha dicho anteriormente esta basado en java, por lo que para poder instalarlo previamente sera necesario instalar el paquete default-jdk</p>
+<pre><code>apt install default-jdk
+</code></pre><p>Establecemos una variable de entorno llamada $JAVA_HOME, esto no es obligatorio, pero si muy recomendable, de esta forma las herramientas basadas en java sabran donde se encuentran los paquetes java necesarios para el funcionamiento.</p>
+<pre><code>export JAVA_HOME=&quot;/usr/lib/jvm/default-java&quot;
+</code></pre><p>Instalamos ademas el paquete gnupg, ya que sera necesario para descargar y añadir la clave de elasticsearch a los repositorios.</p>
+<pre><code>apt install gnupg
+</code></pre><p>Descargamos la clave oficial de elasticsearch:</p>
+<pre><code>wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+</code></pre><p>Esta clave también sera usada por kibana y logstash.</p>
+<p>Instalamos también apt-transport-https para poder usar los repositorios https de elastic:</p>
+<pre><code>sudo apt install apt-transport-https
+</code></pre><p>Añadimos los repositorios de elasticsearch:</p>
+<pre><code>echo &quot;deb https://artifacts.elastic.co/packages/7.x/apt stable main&quot; | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+</code></pre><p>Actualizamos e instalamos elasticsearch</p>
+<pre><code>apt update &amp;&amp; apt install elasticsearch
+</code></pre><p>Iniciamos el demonio y habilitamos el servicio para que inicie al arrancar la maquina:</p>
+<pre><code>systemctl daemon-reload
+systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
+</code></pre><p>Configuración de elasticsearch (/etc/elasticsearch/elasticsearch.yml):</p>
+<pre><code>path.data: /var/lib/elasticsearch #donde almacena datos por defecto
+path.logs: /var/log/elasticsearch #donde almacena logs por defecto
+discovery.seed_hosts: [“localhost”, “10.0.0.12”]
+network.host: 0.0.0.0 #direcciones de las que elasticsearch permite peticiones.
+cluster.name: openstack #nombre del cluster
+node.name: ${HOSTNAME} #nombre del nodo
+bootstrap.system_call_filter: false
+</code></pre><p>La opción boostrap.system se usa para reservar memoria para este servico, en este caso al no ser necesario se configura la opción a false.</p>
+<p>Se reinicia el servicio:</p>
+<pre><code>systemctl restart elasticsearch.service
+</code></pre><p>Para comprobar que funciona correctamente, instalamos el paquete curl:</p>
+<pre><code>apt install curl
+</code></pre><p>Hacemos la prueba ejecutando curl -X GET ‘http://:9200’, despues podremos ver el estado del cluster con la siguiente consulta:</p>
+<pre><code>root@dulcinea:/home/debian# curl -X GET 'http://localhost:9200'
+{
+  &quot;name&quot; : &quot;dulcinea&quot;,
+  &quot;cluster_name&quot; : &quot;Openstack&quot;,
+  &quot;cluster_uuid&quot; : &quot;CVM-GIa-SSaheA0bXU1QsA&quot;,
+  &quot;version&quot; : {
+    &quot;number&quot; : &quot;7.10.2&quot;,
+    &quot;build_flavor&quot; : &quot;default&quot;,
+    &quot;build_type&quot; : &quot;deb&quot;,
+    &quot;build_hash&quot; : &quot;747e1cc71def077253878a59143c1f785afa92b9&quot;,
+    &quot;build_date&quot; : &quot;2021-01-13T00:42:12.435326Z&quot;,
+    &quot;build_snapshot&quot; : false,
+    &quot;lucene_version&quot; : &quot;8.7.0&quot;,
+    &quot;minimum_wire_compatibility_version&quot; : &quot;6.8.0&quot;,
+    &quot;minimum_index_compatibility_version&quot; : &quot;6.0.0-beta1&quot;
+  },
+  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+}
+</code></pre><p>Esta consulta nos devuelve información básica del servidor.</p>
+<pre><code>root@dulcinea:/home/debian# curl -X GET 'http://localhost:9200/_cluster/health?pretty'
+{
+  &quot;cluster_name&quot; : &quot;Openstack&quot;,
+  &quot;status&quot; : &quot;yellow&quot;,
+  &quot;timed_out&quot; : false,
+  &quot;number_of_nodes&quot; : 1,
+  &quot;number_of_data_nodes&quot; : 1,
+  &quot;active_primary_shards&quot; : 13,
+  &quot;active_shards&quot; : 13,
+  &quot;relocating_shards&quot; : 0,
+  &quot;initializing_shards&quot; : 0,
+  &quot;unassigned_shards&quot; : 2,
+  &quot;delayed_unassigned_shards&quot; : 0,
+  &quot;number_of_pending_tasks&quot; : 0,
+  &quot;number_of_in_flight_fetch&quot; : 0,
+  &quot;task_max_waiting_in_queue_millis&quot; : 0,
+  &quot;active_shards_percent_as_number&quot; : 86.66666666666667
+}
+</code></pre><p>Esta consulta nos devuelve información del estado del servidor, en este caso esta en estado &ldquo;yellow&rdquo; ya que no tiene replicas creadas.</p>
+<h3 id="kibana"><strong>Kibana</strong></h3>
+<p>Kibana es una interfaz de usuario gratuita y abierta que te permite visualizar los datos de Elasticsearch y navegar en el ElasticStack. Realiza lo que desees, desde rastrear la carga de búsqueda hasta comprender la forma en que las solicitudes fluyen por tus apps.</p>
+<p>Características:</p>
+<pre><code>• Visualizaciones, histogramas, gráficas en tiempo, tartas y roscos, tablas…
+• Datos en tiempo real ya que elasticsearch busca la información en pocos segundos
+• Dashboards: se recogen visualizaciones en paneles donde tener una vista global de todas.
+• Geolocalizacion: coordenadas en mapas
+</code></pre>
+<p>Instalación de kibana:</p>
+<p>En este caso como kibana va ha estar en la misma maquina que elasticsearch, no sera necesario volver a descargar la clave ni añadir el repositorio de nuevo, por lo que simplemente ejecutamos un install.</p>
+<pre><code>apt install kibana
+</code></pre><p>Se habilita el servidor:</p>
+<pre><code>systemctl daemon-reload
+systemctl enable kibana.service
+systemctl start kibana.service
+</code></pre><p>Configuración de kibana (/etc/kibana/kibana.yml):</p>
+<pre><code>server.port: 5601
+server.host: 0.0.0.0 #dirección donde escuchara kibana
+elasticsearch.hosts: “http://172.28.128.33:9200&quot;
+logging.dest: /var/log/kibana/kibana.log
+</code></pre><p>El ultimo parámetro indica el fichero log de kibana, pero para que funcione tendrá que crearse el directorio kibana y hacerlo propiedad del usuario kibana:</p>
+<pre><code>mkdir /var/log/kibana
+chown -R kibana:kibana /var/log/kibana
+</code></pre><p><img src="/monitorizacion/kibana.png" alt="kibana"></p>
+<h3 id="logstash"><strong>Logstash</strong></h3>
+<p>logstash es un pipeline de procesamiento de datos gratuito y abierto del lado del servidor que ingresa datos de una multitud de fuentes, los transforma y luego los envía a la ubicación elegida.</p>
+<p>Caracteristicas:</p>
+<pre><code>• Soporta distintos formatos de entrada, permitiendo la entrada de datos simultanea de logs, métricas, bases de datos, etc.
+• Transformaciones al vuelo: estructura datos, añade geolocalizaciones, trabaja con fingerprints y reconoce fechas
+• Distintas salidas disponibles: encamina la información hacia ellas aportando flexibilidad para distintos casos de uso.
+• Extensibilidad: ofrece +200 plugins ademas de permitir crear plugins propios.
+• Durabilidad: permite usar una “cola” de almacenamiento temporal frente a errores.
+• Monitorizacion: visibilidad de los recurso de las maquinas y estadísticas del servicio.
+• Seguridad: ofrece información cifrada de la comunicación de los servicios tanto de entrada como de salida.
+</code></pre>
+<p>Se instala y se habilita logstash</p>
+<pre><code>apt install logstash
+</code></pre><p>Habilitamos el logstash:</p>
+<pre><code>systemctl enable logstash
+</code></pre><h3 id="instalación-y-configuración-por-parte-de-los-clientes"><strong>Instalación y configuración por parte de los clientes</strong></h3>
+<p>Metricbeats:</p>
+<p>Descargamos e instalamos metricbeats para recoger métricas del sistema operativo y los servicios iniciados en la maquina.</p>
+<pre><code>curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.10.2-amd64.deb
+</code></pre><pre><code>dpkg -i metricbeat-7.10.2-amd64.deb
+</code></pre><p>Configuración de metricbeat (/etc/metricbeat/metricbeat.yml):</p>
+<pre><code>output.elasticsearch: 
+hosts: 172.28.128.33 #direccion elasticsearch
+username: &quot;elastic&quot; 
+password: &quot;&lt;password&gt;&quot; 
+setup.kibana: 
+host: 172.28.128.33
+</code></pre><p>Añadimos los modulos necesarios mara que metricbeats pueda comunicarse con nuestras herramientas:</p>
+<pre><code>metricbeat modules enable logstash
+metricbeat modules enable elasticsearch
+metricbeat modules enable kibana
+</code></pre><p>Habilitamos metricbeats:</p>
+<pre><code>metricbeat setup
+systemctl daemon-reload
+systemctl enable filebeat
+systemctl start filebeat
+</code></pre><p>Por parte de los clientes, se va a instalar en tos ellos metricbeat y en algunos casos como en el caso de centos como en ubuntu se instalara también filebeat, en el caso de centos para obtener los logs de apache y en el caso de ubuntu para obtener los logs de mysql con el que se podrán monitorizar ademas las copias de seguridad.</p>
+<p>En el caso de freston y sancho, la instalación de metricbeat y de filebeat se hace  de la misma forma que en dulcinea, se añade el repositorio, se instala con curl, se desempaqueta con dpkg, se instala y configura indicando el host de kibana y elasticsearch.</p>
+<p>Por otro lado en centos importamos la clave de elastic:</p>
+<pre><code>rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+</code></pre><p>Creamos un fichero de configuración en el repositorio (/etc/yum.repos.d/elastic.repo):</p>
+<pre><code>[elastic-7.x]
+name=Elastic repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+</code></pre><p>Instalamos metricbeat:</p>
+<pre><code>dnf install metricbeat
+</code></pre><p>Se habilitan los modulos y se inicia tanto el servicio como el demonio.</p>
+<pre><code>metricbeat modules enable logstash
+metricbeat modules enable elasticsearch
+metricbeat modules enable kibana
+
+metricbeat setup
+systemctl daemon-reload
+systemctl enable metricbeat
+systemctl start metricbeat
+</code></pre><p>Una vez montado todo comprobaremos su funcionamiento:</p>
+<p><img src="/monitorizacion/dulcinea.png" alt="monitorizacion de dulcinea"></p>
+<p><img src="/monitorizacion/metricas.png" alt="comprobacion de metricas del servidor"></p>
+<p><img src="/monitorizacion/mon1.png" alt="monitorizacion"></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>letschat on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/letschat/</link>
+    <description>Recent content in letschat on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Mar 2021 12:13:11 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/letschat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes Letschat</title>
+      <link>https://sergioib.netlify.app/posts/kubernetes-lets-chat/</link>
+      <pubDate>Sat, 13 Mar 2021 12:13:11 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/kubernetes-lets-chat/</guid>
+      <description>Introduccion En este post, lo que haremos sera primero crear un cluster de kubernetes, para lo cual nuestro equipo debe de contar con al menos 4 o 5 Gb de ram al menos ya se van a crear 3 maquinas virtuales, un nodo master o controlador y 2 nodos secundarios.
+En este escenario credo haciendo uso de vagrant, desplegaremos una aplicacion llamada letschat usando kubeadm.
+Preparacion del escenario Empezamos creando en nuestro equipo un directorio donde almacenaremos nuestro escenario vagrant.</description>
+    </item>
+    
+  </channel>
+</rss>

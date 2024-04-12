@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Introducción a Docker // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introducción a Docker"/>
+<meta name="twitter:description" content="¿Que es Docker? Docker es un proyecto de software libre que permite automatizar el despliegue de aplicaciones dentro de contenedores.
+Docker nos permite de forma sencilla crear contenedores ligeros y faciles de mover donde ejecutar nuestras aplicaciones software sobre cualquier máquina con Docker instalado, independientemente del sistema operativo que la máquina tenga, facilitando así también los despliegues.
+¿Que son los contenedores?
+Los contenedores son una forma de virtulización del sistema opertaivo, son como maquinas virtuales aisladas en los que podemos ejecutar cualquier cosa como por ejemplo microservicios, aplicaciones, etc&hellip;"/>
+
+    <meta property="og:title" content="Introducción a Docker" />
+<meta property="og:description" content="¿Que es Docker? Docker es un proyecto de software libre que permite automatizar el despliegue de aplicaciones dentro de contenedores.
+Docker nos permite de forma sencilla crear contenedores ligeros y faciles de mover donde ejecutar nuestras aplicaciones software sobre cualquier máquina con Docker instalado, independientemente del sistema operativo que la máquina tenga, facilitando así también los despliegues.
+¿Que son los contenedores?
+Los contenedores son una forma de virtulización del sistema opertaivo, son como maquinas virtuales aisladas en los que podemos ejecutar cualquier cosa como por ejemplo microservicios, aplicaciones, etc&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/introduccion-a-docker/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-21T13:14:06&#43;02:00" />
+<meta property="article:modified_time" content="2021-09-21T13:14:06&#43;02:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Introducción a Docker</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Sep 21, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          18 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h3 id="que-es-docker"><strong>¿Que es Docker?</strong></h3>
+<p>Docker es un proyecto de software libre que permite automatizar el despliegue de aplicaciones dentro de contenedores.</p>
+<p>Docker nos permite de forma sencilla crear contenedores ligeros y faciles de mover donde ejecutar nuestras aplicaciones software sobre cualquier máquina con Docker instalado, independientemente del sistema operativo que la máquina tenga, facilitando así también los despliegues.</p>
+<p><strong>¿Que son los contenedores?</strong></p>
+<p>Los contenedores son una forma de virtulización del sistema opertaivo, son como maquinas virtuales aisladas en los que podemos ejecutar cualquier cosa como por ejemplo microservicios, aplicaciones, etc&hellip;</p>
+<h3 id="caracteristicas-de-docker"><strong>Caracteristicas de Docker</strong></h3>
+<ul>
+<li>
+<p><strong>Portabilidad</strong>: El contenedor Docker podremos desplegarlo en cualquier otro sistema siempre y cuando soporte esta tecnología, con lo que nos ahorraremos el tener que instalar en este nuevo entorno todas aquellas aplicaciones que normalmente usemos.</p>
+</li>
+<li>
+<p><strong>Ligereza</strong>: Los sistemas virtualizados con Docker suelen pesar mucho menos que usando otros medios como pueden ser maquinas virtuales.</p>
+</li>
+<li>
+<p><strong>Autosuficiencia</strong>: Un contenedor Docker no contiene todo un sistema completo, sino únicamente aquellas librerías, archivos y configuraciones necesarias para desplegar las funcionalidades que contenga. Asimismo, Docker se encarga de la gestión del contenedor y de las aplicaciones que contenga.</p>
+</li>
+<li>
+<p><strong>Seguridad</strong>: Es seguro haciendo uso de namespaces y cgroups, los recursos están aislados.</p>
+</li>
+<li>
+<p><strong>Uso de imagenes</strong>: Una imagen Docker podríamos entenderla como un Sistema Operativo con aplicaciones instaladas. A partir de una imagen se puede crear un contenedor. Las imágenes de docker son portables entre diferentes plataformas, el único requisito es que en el sistema huésped esté disponible docker.</p>
+</li>
+</ul>
+<h3 id="instalación-de-docker-debian-buster"><strong>Instalación de Docker (Debian Buster)</strong></h3>
+<ol>
+<li>Empezamos actualizando la paqueteria:</li>
+</ol>
+<pre><code>sudo apt-get update
+</code></pre><ol start="2">
+<li>Instalamos los siguientes paquetes para el uso de docker:</li>
+</ol>
+<pre><code>sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+</code></pre><ol start="3">
+<li>Añadimos la clave gpg a nuestro repositorio (en este caso repositorios de debian):</li>
+</ol>
+<pre><code>curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+</code></pre><ol start="4">
+<li>Configuramos el repositorio estable de docker:</li>
+</ol>
+<pre><code>echo \
+  &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</code></pre><ol start="5">
+<li>Instalamos doscker:</li>
+</ol>
+<pre><code>sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre><p>Si lo que queremos es usar docker sin sudo, ejecutaremos el siguiente comando:</p>
+<pre><code>sudo usermod -aG docker $USER
+</code></pre><h3 id="comandos-utiles-de-docker"><strong>Comandos utiles de docker</strong></h3>
+<ul>
+<li>Ejecutar un contenedor a partir de una imagen:</li>
+</ul>
+<pre><code>docker run &quot;nombre de la imagen&quot;
+</code></pre><p>Podemos obtener varias imagenes de docker en la sigiente pagina <a href="https://hub.docker.com/">Dockerhub</a>. En el caso de que una imagen tenga varias versiones podemos ejecutar la version deseada de la siguiente forma:</p>
+<pre><code>docker run &quot;nombre de la imagen&quot;:&quot;version&quot;
+</code></pre><p>En el caso de no indicar la version, por defecto se ejecutara la ultima version que exista de la imagen.</p>
+<ul>
+<li>Ejecutar un contenedor en background o segundo plano:</li>
+</ul>
+<pre><code>docker run -d &quot;nombre de la imagen&quot;
+</code></pre><ul>
+<li>Descargar imagenes docker:</li>
+</ul>
+<pre><code>docker pull &quot;nombre de la imagen&quot;
+</code></pre><p>Aunque este comando no es del todo necesario ya que si la imagen que queremos ejecutar no la tenemos, al ejecutar docker run se descarga de forma automatica siempre y cuando exista la imagen que queremos. Este comando se usa sobre todo en el caso de querer descargar imagenes sin que se ejecuten automticamente.</p>
+<ul>
+<li>Comprobar las imagenes que tenemos en nuestra maquina:</li>
+</ul>
+<pre><code>docker images
+</code></pre><p>Ejemplo:</p>
+<pre><code>sergioib@debian-sergio:~$ docker images
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+sergioib94/drupal          v1                  ffabd2bb2653        6 months ago        334MB
+sergioib94/bookmedik-php   v1                  5b857f8a175a        6 months ago        436MB
+mysql                      5.6                 0abf1c71efa3        6 months ago        303MB
+sergioib94/bookmedik2      v1                  5dd61ff34e91        6 months ago        435MB
+sergioib94/bookmedik       v1                  3d1d3ed847f8        6 months ago        249MB
+sergioib94/bookmedik       &lt;none&gt;              df7505c5a0ba        6 months ago        251MB
+mariadb                    latest              70e69b4a7bda        7 months ago        401MB
+joomla                     latest              6014b57fda53        7 months ago        458MB
+php                        7.4-apache          83db90327db8        7 months ago        414MB
+debian                     latest              5890f8ba95f6        7 months ago        114MB
+php                        7.4.3-apache        d753d5b380a1        7 months ago       414MB
+</code></pre><p>En mi caso estas son las imagenes que tengo en mi equipo, algunas usadas en otras practicas y ejemplos y otras descargadas y modificadas por mi.</p>
+<p>Cada imagen cuenta con una ID unica que podremos usar posteriormente para eliminar las imagenes.</p>
+<ul>
+<li>Mostrar contenedores que se estan ejecutando:</li>
+</ul>
+<pre><code>docker ps
+</code></pre><p>A este comando le podemos añadir la opción -a si lo que queremos es mostrar todos los contenedores que en algun momento se han ejecutado.</p>
+<pre><code>sergioib@debian-sergio:~$ docker ps
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS                          PORTS                     NAMES
+83deaf076a51        joomla                        &quot;/entrypoint.sh apac…&quot;   6 months ago        Up 2 hours                      0.0.0.0:8080-&gt;80/tcp      deploy_joomla_1
+530ef214963a        mysql:5.6                     &quot;docker-entrypoint.s…&quot;   6 months ago        Up 2 hours                      0.0.0.0:32768-&gt;3306/tcp   deploy_joomladb_1
+220f6974c26f        mysql:5.6                     &quot;docker-entrypoint.s…&quot;   6 months ago        Restarting (1) 31 seconds ago                             deploy_db_1
+b18afffe8d15        sergioib94/drupal:v1          &quot;/usr/sbin/apache2ct…&quot;   6 months ago        Up 2 hours                      0.0.0.0:8083-&gt;80/tcp      drupal
+28dc5d493419        sergioib94/bookmedik-php:v1   &quot;docker-php-entrypoi…&quot;   6 months ago        Up 2 hours                      0.0.0.0:8081-&gt;80/tcp      bookmedik-php
+
+sergioib@debian-sergio:~$ docker ps -a
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS                         PORTS                     NAMES
+83deaf076a51        joomla                        &quot;/entrypoint.sh apac…&quot;   6 months ago        Up 2 hours                     0.0.0.0:8080-&gt;80/tcp      deploy_joomla_1
+530ef214963a        mysql:5.6                     &quot;docker-entrypoint.s…&quot;   6 months ago        Up 2 hours                     0.0.0.0:32768-&gt;3306/tcp   deploy_joomladb_1
+220f6974c26f        mysql:5.6                     &quot;docker-entrypoint.s…&quot;   6 months ago        Restarting (1) 6 seconds ago                             deploy_db_1
+b18afffe8d15        sergioib94/drupal:v1          &quot;/usr/sbin/apache2ct…&quot;   6 months ago        Up 2 hours                     0.0.0.0:8083-&gt;80/tcp      drupal
+631dc24356c6        5890f8ba95f6                  &quot;/bin/sh -c 'apt-get…&quot;   6 months ago        Exited (100) 6 months ago                                mystifying_visvesvaraya
+28dc5d493419        sergioib94/bookmedik-php:v1   &quot;docker-php-entrypoi…&quot;   6 months ago        Up 2 hours                     0.0.0.0:8081-&gt;80/tcp      bookmedik-php
+</code></pre><ul>
+<li>Reiniciar un contenedor:</li>
+</ul>
+<pre><code>docker start &quot;ID del contenedor&quot;
+</code></pre><ul>
+<li>Mostrar logs de un contenedor:</li>
+</ul>
+<pre><code>docker logs &quot;ID del contenedor&quot; o bien docker logs &quot;nombre del contenedor&quot;
+</code></pre><ul>
+<li>Ejecutar comandos dentro de un contenedor que se este ejecutando:</li>
+</ul>
+<pre><code>docker exec &quot;ID del contenedor&quot;
+</code></pre><p>Con este comando podemos usar las opciones -i para crear una sesion interactiva y -t emulara una terminal. Por ejemplo:</p>
+<pre><code>sergioib@debian-sergio:~$ docker exec -it 83deaf076a51 sh
+# ls
+LICENSE.txt  administrator  cache  components	      htaccess.txt  includes   language  libraries  modules  robots.txt  tmp
+README.txt   bin	    cli    configuration.php  images	    index.php  layouts	 media	    plugins  templates	 web.config.txt
+# 
+</code></pre><p>En este caso por ejemplo abrimos una terminal sh para poder ejecutar comandos en el contenedor que en este caso es un contenedor joomla y probamos la ejecucion de ls.</p>
+<ul>
+<li>Parar uno o varios contenedores:</li>
+</ul>
+<pre><code>docker stop &quot;ID del contenedor&quot;
+</code></pre><p>En el caso de querer parar varios contenedores simplemente se ponen las ID de los contenedores separadas por espacios una tras otra.</p>
+<ul>
+<li>Conectarse al contenedor:</li>
+</ul>
+<pre><code>docker attach &quot;ID contenedor&quot;
+</code></pre><ul>
+<li>Mostrar las caracteristicas del contenedor:</li>
+</ul>
+<pre><code>docker inspect &quot;ID del conetedor&quot;
+</code></pre><p>Ejemplo:</p>
+<pre><code>sergioib@debian-sergio:~$ docker inspect b18afffe8d15
+[
+    {
+        &quot;Id&quot;: &quot;b18afffe8d155d67e3992d10c4336a78c90afcadba4fbddc6f7379d66ca5ceec&quot;,
+        &quot;Created&quot;: &quot;2021-03-03T15:57:19.599943415Z&quot;,
+        &quot;Path&quot;: &quot;/usr/sbin/apache2ctl&quot;,
+        &quot;Args&quot;: [
+            &quot;-D&quot;,
+            &quot;FOREGROUND&quot;
+        ],
+        &quot;State&quot;: {
+            &quot;Status&quot;: &quot;running&quot;,
+            &quot;Running&quot;: true,
+            &quot;Paused&quot;: false,
+            &quot;Restarting&quot;: false,
+            &quot;OOMKilled&quot;: false,
+            &quot;Dead&quot;: false,
+            &quot;Pid&quot;: 1976,
+            &quot;ExitCode&quot;: 0,
+            &quot;Error&quot;: &quot;&quot;,
+            &quot;StartedAt&quot;: &quot;2021-09-23T08:46:42.423040032Z&quot;,
+            &quot;FinishedAt&quot;: &quot;2021-09-22T14:27:05.965384671Z&quot;
+        },
+        &quot;Image&quot;: &quot;sha256:ffabd2bb26538aa1861095857117a51d13cae77cc89e9736cd69ddd006409803&quot;,
+        &quot;ResolvConfPath&quot;: &quot;/var/lib/docker/containers/b18afffe8d155d67e3992d10c4336a78c90afcadba4fbddc6f7379d66ca5ceec/resolv.conf&quot;,
+        &quot;HostnamePath&quot;: &quot;/var/lib/docker/containers/b18afffe8d155d67e3992d10c4336a78c90afcadba4fbddc6f7379d66ca5ceec/hostname&quot;,
+        &quot;HostsPath&quot;: &quot;/var/lib/docker/containers/b18afffe8d155d67e3992d10c4336a78c90afcadba4fbddc6f7379d66ca5ceec/hosts&quot;,
+        &quot;LogPath&quot;: &quot;/var/lib/docker/containers/b18afffe8d155d67e3992d10c4336a78c90afcadba4fbddc6f7379d66ca5ceec/b18afffe8d155d67e3992d10c4336a78c90afcadba4fbddc6f7379d66ca5ceec-json.log&quot;,
+        &quot;Name&quot;: &quot;/drupal&quot;,
+        &quot;RestartCount&quot;: 0,
+        &quot;Driver&quot;: &quot;overlay2&quot;,
+        &quot;Platform&quot;: &quot;linux&quot;,
+        &quot;MountLabel&quot;: &quot;&quot;,
+        &quot;ProcessLabel&quot;: &quot;&quot;,
+        &quot;AppArmorProfile&quot;: &quot;docker-default&quot;,
+        &quot;ExecIDs&quot;: null,
+        &quot;HostConfig&quot;: {
+            &quot;Binds&quot;: [
+                &quot;/home/sergio/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/vol-app:/var/log/apache2:rw&quot;
+            ],
+            &quot;ContainerIDFile&quot;: &quot;&quot;,
+            &quot;LogConfig&quot;: {
+                &quot;Type&quot;: &quot;json-file&quot;,
+                &quot;Config&quot;: {}
+            },
+            &quot;NetworkMode&quot;: &quot;deploy_default&quot;,
+            &quot;PortBindings&quot;: {
+                &quot;80/tcp&quot;: [
+                    {
+                        &quot;HostIp&quot;: &quot;&quot;,
+                        &quot;HostPort&quot;: &quot;8083&quot;
+                    }
+                ]
+            },
+            &quot;RestartPolicy&quot;: {
+                &quot;Name&quot;: &quot;always&quot;,
+                &quot;MaximumRetryCount&quot;: 0
+            },
+            &quot;AutoRemove&quot;: false,
+            &quot;VolumeDriver&quot;: &quot;&quot;,
+            &quot;VolumesFrom&quot;: [],
+            &quot;CapAdd&quot;: null,
+            &quot;CapDrop&quot;: null,
+            &quot;Dns&quot;: [],
+            &quot;DnsOptions&quot;: [],
+            &quot;DnsSearch&quot;: [],
+            &quot;ExtraHosts&quot;: null,
+            &quot;GroupAdd&quot;: null,
+            &quot;IpcMode&quot;: &quot;shareable&quot;,
+            &quot;Cgroup&quot;: &quot;&quot;,
+            &quot;Links&quot;: null,
+            &quot;OomScoreAdj&quot;: 0,
+            &quot;PidMode&quot;: &quot;&quot;,
+            &quot;Privileged&quot;: false,
+            &quot;PublishAllPorts&quot;: false,
+            &quot;ReadonlyRootfs&quot;: false,
+            &quot;SecurityOpt&quot;: null,
+            &quot;UTSMode&quot;: &quot;&quot;,
+            &quot;UsernsMode&quot;: &quot;&quot;,
+            &quot;ShmSize&quot;: 67108864,
+            &quot;Runtime&quot;: &quot;runc&quot;,
+            &quot;ConsoleSize&quot;: [
+                0,
+                0
+            ],
+            &quot;Isolation&quot;: &quot;&quot;,
+            &quot;CpuShares&quot;: 0,
+            &quot;Memory&quot;: 0,
+            &quot;NanoCpus&quot;: 0,
+            &quot;CgroupParent&quot;: &quot;&quot;,
+            &quot;BlkioWeight&quot;: 0,
+            &quot;BlkioWeightDevice&quot;: null,
+            &quot;BlkioDeviceReadBps&quot;: null,
+            &quot;BlkioDeviceWriteBps&quot;: null,
+            &quot;BlkioDeviceReadIOps&quot;: null,
+            &quot;BlkioDeviceWriteIOps&quot;: null,
+            &quot;CpuPeriod&quot;: 0,
+            &quot;CpuQuota&quot;: 0,
+            &quot;CpuRealtimePeriod&quot;: 0,
+            &quot;CpuRealtimeRuntime&quot;: 0,
+            &quot;CpusetCpus&quot;: &quot;&quot;,
+            &quot;CpusetMems&quot;: &quot;&quot;,
+            &quot;Devices&quot;: null,
+            &quot;DeviceCgroupRules&quot;: null,
+            &quot;DiskQuota&quot;: 0,
+            &quot;KernelMemory&quot;: 0,
+            &quot;MemoryReservation&quot;: 0,
+            &quot;MemorySwap&quot;: 0,
+            &quot;MemorySwappiness&quot;: null,
+            &quot;OomKillDisable&quot;: false,
+            &quot;PidsLimit&quot;: 0,
+            &quot;Ulimits&quot;: null,
+            &quot;CpuCount&quot;: 0,
+            &quot;CpuPercent&quot;: 0,
+            &quot;IOMaximumIOps&quot;: 0,
+            &quot;IOMaximumBandwidth&quot;: 0,
+            &quot;MaskedPaths&quot;: [
+                &quot;/proc/asound&quot;,
+                &quot;/proc/acpi&quot;,
+                &quot;/proc/kcore&quot;,
+                &quot;/proc/keys&quot;,
+                &quot;/proc/latency_stats&quot;,
+                &quot;/proc/timer_list&quot;,
+                &quot;/proc/timer_stats&quot;,
+                &quot;/proc/sched_debug&quot;,
+                &quot;/proc/scsi&quot;,
+                &quot;/sys/firmware&quot;
+            ],
+            &quot;ReadonlyPaths&quot;: [
+                &quot;/proc/bus&quot;,
+                &quot;/proc/fs&quot;,
+                &quot;/proc/irq&quot;,
+                &quot;/proc/sys&quot;,
+                &quot;/proc/sysrq-trigger&quot;
+            ]
+        },
+        &quot;GraphDriver&quot;: {
+            &quot;Data&quot;: {
+                &quot;LowerDir&quot;: &quot;/var/lib/docker/overlay2/99132561004d96471fbd8c8bf78bcdd3edb404b60bb6a56b7bd7b5210642cf9a-init/diff:/var/lib/docker/overlay2/8c19cff03760c3f3538225d3dda65f1417b24d7bf36620df33a0b82397ae0bdc/diff:/var/lib/docker/overlay2/59b79af32079cb6f562e43f6a2942e683371fedf54ab563b2d02a900328286a3/diff:/var/lib/docker/overlay2/7120a8197d4c96b9f28c9920a6efd08ef521c63dc59853c0b54d04cc147c2824/diff:/var/lib/docker/overlay2/8fd883ebf1a0ff23f7569944810d7e1442a78af7305c2ab7c5d7a94df2dfdba3/diff&quot;,
+                &quot;MergedDir&quot;: &quot;/var/lib/docker/overlay2/99132561004d96471fbd8c8bf78bcdd3edb404b60bb6a56b7bd7b5210642cf9a/merged&quot;,
+                &quot;UpperDir&quot;: &quot;/var/lib/docker/overlay2/99132561004d96471fbd8c8bf78bcdd3edb404b60bb6a56b7bd7b5210642cf9a/diff&quot;,
+                &quot;WorkDir&quot;: &quot;/var/lib/docker/overlay2/99132561004d96471fbd8c8bf78bcdd3edb404b60bb6a56b7bd7b5210642cf9a/work&quot;
+            },
+            &quot;Name&quot;: &quot;overlay2&quot;
+        },
+        &quot;Mounts&quot;: [
+            {
+                &quot;Type&quot;: &quot;bind&quot;,
+                &quot;Source&quot;: &quot;/home/sergio/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/vol-app&quot;,
+                &quot;Destination&quot;: &quot;/var/log/apache2&quot;,
+                &quot;Mode&quot;: &quot;rw&quot;,
+                &quot;RW&quot;: true,
+                &quot;Propagation&quot;: &quot;rprivate&quot;
+            }
+        ],
+        &quot;Config&quot;: {
+            &quot;Hostname&quot;: &quot;b18afffe8d15&quot;,
+            &quot;Domainname&quot;: &quot;&quot;,
+            &quot;User&quot;: &quot;&quot;,
+            &quot;AttachStdin&quot;: false,
+            &quot;AttachStdout&quot;: false,
+            &quot;AttachStderr&quot;: false,
+            &quot;ExposedPorts&quot;: {
+                &quot;80/tcp&quot;: {}
+            },
+            &quot;Tty&quot;: false,
+            &quot;OpenStdin&quot;: false,
+            &quot;StdinOnce&quot;: false,
+            &quot;Env&quot;: [
+                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;
+            ],
+            &quot;Cmd&quot;: [
+                &quot;/usr/sbin/apache2ctl&quot;,
+                &quot;-D&quot;,
+                &quot;FOREGROUND&quot;
+            ],
+            &quot;ArgsEscaped&quot;: true,
+            &quot;Image&quot;: &quot;sergioib94/drupal:v1&quot;,
+            &quot;Volumes&quot;: {
+                &quot;/var/log/apache2&quot;: {}
+            },
+            &quot;WorkingDir&quot;: &quot;&quot;,
+            &quot;Entrypoint&quot;: null,
+            &quot;OnBuild&quot;: null,
+            &quot;Labels&quot;: {
+                &quot;com.docker.compose.config-hash&quot;: &quot;bdc0b1a85207601bcc1fd0c585c01d9686d3d4f0ff6fd4db65d59399d6b782eb&quot;,
+                &quot;com.docker.compose.container-number&quot;: &quot;1&quot;,
+                &quot;com.docker.compose.oneoff&quot;: &quot;False&quot;,
+                &quot;com.docker.compose.project&quot;: &quot;deploy&quot;,
+                &quot;com.docker.compose.service&quot;: &quot;drupal&quot;,
+                &quot;com.docker.compose.version&quot;: &quot;1.21.0&quot;
+            }
+        },
+        &quot;NetworkSettings&quot;: {
+            &quot;Bridge&quot;: &quot;&quot;,
+            &quot;SandboxID&quot;: &quot;ed755bb08c99f9185c07790e7a3d1c57a3d36fbb3424b680c0e6985ab6173f2c&quot;,
+            &quot;HairpinMode&quot;: false,
+            &quot;LinkLocalIPv6Address&quot;: &quot;&quot;,
+            &quot;LinkLocalIPv6PrefixLen&quot;: 0,
+            &quot;Ports&quot;: {
+                &quot;80/tcp&quot;: [
+                    {
+                        &quot;HostIp&quot;: &quot;0.0.0.0&quot;,
+                        &quot;HostPort&quot;: &quot;8083&quot;
+                    }
+                ]
+            },
+            &quot;SandboxKey&quot;: &quot;/var/run/docker/netns/ed755bb08c99&quot;,
+            &quot;SecondaryIPAddresses&quot;: null,
+            &quot;SecondaryIPv6Addresses&quot;: null,
+            &quot;EndpointID&quot;: &quot;&quot;,
+            &quot;Gateway&quot;: &quot;&quot;,
+            &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+            &quot;GlobalIPv6PrefixLen&quot;: 0,
+            &quot;IPAddress&quot;: &quot;&quot;,
+            &quot;IPPrefixLen&quot;: 0,
+            &quot;IPv6Gateway&quot;: &quot;&quot;,
+            &quot;MacAddress&quot;: &quot;&quot;,
+            &quot;Networks&quot;: {
+                &quot;deploy_default&quot;: {
+                    &quot;IPAMConfig&quot;: null,
+                    &quot;Links&quot;: null,
+                    &quot;Aliases&quot;: [
+                        &quot;drupal&quot;,
+                        &quot;b18afffe8d15&quot;
+                    ],
+                    &quot;NetworkID&quot;: &quot;2d13f9ba198280146426de0bc4704bd911c6a593640187644d83bda98cf8daab&quot;,
+                    &quot;EndpointID&quot;: &quot;df8047a7c43eab47ea408f970c982eb6c86e743897d3c4328a013cc7415a4785&quot;,
+                    &quot;Gateway&quot;: &quot;172.21.0.1&quot;,
+                    &quot;IPAddress&quot;: &quot;172.21.0.4&quot;,
+                    &quot;IPPrefixLen&quot;: 16,
+                    &quot;IPv6Gateway&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6PrefixLen&quot;: 0,
+                    &quot;MacAddress&quot;: &quot;02:42:ac:15:00:04&quot;,
+                    &quot;DriverOpts&quot;: null
+                }
+            }
+        }
+    }
+]
+</code></pre><p>En este caso vemos la informacion relacionada con un contenedor que aloja Drupal. Aqui podemos encontrar varia informacion como:</p>
+<ul>
+<li>
+<p>El id del contenedor.</p>
+</li>
+<li>
+<p>Los puertos abiertos y sus redirecciones</p>
+</li>
+<li>
+<p>Los bind mounts y volúmenes usados.</p>
+</li>
+<li>
+<p>El tamaño del contenedor</p>
+</li>
+<li>
+<p>La configuración de red del contenedor.</p>
+</li>
+<li>
+<p>El ENTRYPOINT que es lo que se ejecuta al hacer docker run.</p>
+</li>
+<li>
+<p>El valor de las variables de entorno.</p>
+</li>
+<li>
+<p>Y muchas más cosas….</p>
+</li>
+<li>
+<p>Destruir o &ldquo;matar&rdquo; un contenedor:</p>
+</li>
+</ul>
+<pre><code>docker kill &quot;ID controlador&quot;
+</code></pre><ul>
+<li>Pausar/reanudar un contenedor:</li>
+</ul>
+<pre><code>docker pause &quot;ID controlador&quot; / docker unpause &quot;ID controlador&quot;
+</code></pre><ul>
+<li>Ver o establecer un puerto para un contenedor:</li>
+</ul>
+<pre><code>docker port &quot;numero de puerto&quot; &quot;ID contenedor&quot;
+</code></pre><p>A la hora de establecer el puerto de un contenedor tambien podemos hacerlo usando la opcion -p:</p>
+<pre><code>docker -p &quot;nuemro de puerto&quot; &quot;ID contenedor&quot;
+</code></pre><ul>
+<li>Renombrar un contenedor:</li>
+</ul>
+<pre><code>docker renamo &quot;ID contenedor&quot;
+</code></pre><ul>
+<li>Eliminar todos los contenedores:</li>
+</ul>
+<pre><code>docker rm -f $(docker ps -a -q)
+</code></pre><ul>
+<li>Comprobar la version de docker:</li>
+</ul>
+<pre><code>docker --version
+</code></pre><p>Ejemplo:</p>
+<pre><code>sergioib@debian-sergio:~$ docker --version
+Docker version 18.09.1, build 4c52b90
+</code></pre><p>En mi caso la version esta un poco desactualizada ya que actualmente si no me equivoco la version actual es la 20.10.</p>
+<h3 id="creación-de-imágenes"><strong>Creación de imágenes</strong></h3>
+<h4 id="modificando-una-imagen"><strong>Modificando una imagen</strong></h4>
+<p>Con Docker tenemos la posibilidad de crear una imagen personalizada a partir de una imagen ya existente modificando el contenedor de la siguiente forma:</p>
+<ol>
+<li>Arrancamos un contenedor artiendo de una imagen como base:</li>
+<li>Realizamos algun tipo de modificacion:</li>
+<li>Usamos el comando docker commit para crear una imagen que contenga la imagen base usasda + las modificaciones añadidas:</li>
+</ol>
+<p>En el caso de que queramos añadir nuestra imagen personalizada en docker hub ejecutamos los siguientes comandos:</p>
+<ol>
+<li>
+<p>Nos logueamos en docker hub ejecutando el comando docker logine introduciendo nuestro usuario y contraseña.</p>
+</li>
+<li>
+<p>Una vez logueados ejecutamos docker push subiendo nuestra imagen a docker hub.</p>
+</li>
+</ol>
+<pre><code>sergioib@debian-sergio:~$ docker ps
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS                          PORTS                     NAMES
+b18afffe8d15        sergioib94/drupal:v1          &quot;/usr/sbin/apache2ct…&quot;   6 months ago        Up 3 hours                      0.0.0.0:8083-&gt;80/tcp      drupal
+</code></pre><p>En mi caso por ejemplo cuento con una imagen modificada por mi de un contenedor que cuenta con un drupal, en este caso si quiero subir este drupal mio a docker hub tendria que loguarme con docker login y una vez logueado subir la imagen con docker push:</p>
+<pre><code>docker push sergioib94/drupal:v1
+</code></pre><p>De esta forma cualquier usuario de docker hub puede descargarse nuestra imagen y trabajar con ella ejecutando un docker pull.</p>
+<h4 id="haciendo-uso-de-un-fichero-dockerfile"><strong>Haciendo uso de un fichero dockerfile</strong></h4>
+<p>Esta que hemos visto es una forma de crear una imagen personalizada en docker, pero lo abitual es crearla haciendo uso de un fichero dockerfile.</p>
+<p>¿Que es un fichero dockerfile? este es un fichero de texto plano que contiene una serie de instrucciones, necesarias para crear una imagen que posteriormente, se convertirá en una aplicacion.</p>
+<p>Unos ejemplos sobre el uso de dockerfile los podemos encontrar en el post <a href="https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/">aplicaciones web php en docker</a> en el que a traves de unos ejercicios hacemos uso de una imagen de la aplicacion bookmedic y la personalizamos.</p>
+<p>La estructura de los dockerfile sera la siguiente:</p>
+<ul>
+<li>
+<p>En los ficheros dockerfile la primera linea que indicaremos sera un <strong>FROM</strong> indicando la imagen &ldquo;padre&rdquo; o imagen base que va a usarse.</p>
+</li>
+<li>
+<p>La linea de <strong>WORKDIR</strong>, en el que se va a declarar en que directorio se va a realizar todo el trabajo, en el caso de que no exista el directorio, se creara de forma automática.</p>
+</li>
+<li>
+<p>En el caso necesario podemos tener tambien una linea <strong>COPY</strong> con la linea copy podremos copiar los ficheros del directorio donde esta nuestro dockerfile al directorio de trabajo de nuestro contenedor indicado en la linea workdir.</p>
+</li>
+<li>
+<p>Podemos hacer uso tambien de RUN en nuestro dockerfile para que se ejecuten los comandos indocados una vez se cree el contenedor.</p>
+</li>
+<li>
+<p>Todos los dockerfile deben acabar con una linea <strong>CMD</strong>, indicando los comandos o scripts que se van a ejecutar.</p>
+</li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code>FROM php:7.4-apache
+
+ENV MARIADB_USER admin
+ENV MARIADB_PASS admin
+ENV MARIADB_HOST servidor_mysql2
+
+RUN apt-get update
+RUN docker-php-ext-install pdo pdo_mysql mysqli json
+RUN a2enmod rewrite
+
+EXPOSE 80
+
+WORKDIR /var/www/html
+
+COPY bookmedik/ /var/www/html
+
+ADD script.sh /usr/local/bin/script.sh
+
+RUN chmod +x /usr/local/bin/script.sh
+
+CMD [&quot;script.sh&quot;]
+</code></pre><p>En este ejemplo usamos una imagen base de php version 7.4 con apache. Se han creado tres variables, mariadb_user, mariadb_pass y mariadb_host de forma que el mysql que tendremos en nuestro contenedor reciva las varioables a traves del script indicado al final del dockerfile.</p>
+<p>Una vez creado el contenedor se ejecutaran los comandos indicados con run, es decir que el contenedor de actualizara, se descargaran varios paquetes y se habilitara el modulo rewrite de apache.</p>
+<p>Como nuestro contenedor tendra un apache y php, se abrira el puerto 80 para que haga uso de el apache usando para ello la linea <strong>EXPOSE</strong>.</p>
+<p>El directorio de trabajo indicado sera /var/www/html y copiaremos en ese directorio los ficheros de nuestro directorio bookmedik (una aplicacion web que hace de agenda).</p>
+<p>añdimos s nuestro contenedor el script indicado usando <strong>ADD</strong> en la ubicacion necesaria y jecutamos otro RUN para darle permisos de ejecucion a al script y que de esa forma mysql reciba los datos necesario y al ejecutar apache se pueda usar la aplicacion web de bookmedik</p>
+<p>El contenido de nuestro script.sh sera el siguiente:</p>
+<pre><code>#!/bin/bash
+sed -i &quot;s/$this-&gt;user=\&quot;root\&quot;;/$this-&gt;user=\&quot;$MARIADB_USER\&quot;;/g&quot; /var/www/html/core/controller/Database.php
+sed -i &quot;s/$this-&gt;pass=\&quot;\&quot;;/$this-&gt;pass=\&quot;$MARIADB_PASS\&quot;;/g&quot; /var/www/html/core/controller/Database.php
+sed -i &quot;s/$this-&gt;host=\&quot;localhost\&quot;;/$this-&gt;host=\&quot;$MARIADB_HOST\&quot;;/g&quot; /var/www/html/core/controller/Database.php
+</code></pre><p>Después para construir el contenedor, ejecutamos docker build -t &ldquo;nombre de la imagen&rdquo;</p>
+<h3 id="redes-en-docker"><strong>Redes en Docker</strong></h3>
+<p>A los contenedores que creemos, tenemos la posibilidad de añadirlos a una red haciendo uso de los siguientes comandos:</p>
+<ul>
+<li>Conectar/desconectar una red de un contenedor:</li>
+</ul>
+<pre><code>docker network connect/disconnect &quot;ID red&quot;
+</code></pre><ul>
+<li>Crear una nueva red:</li>
+</ul>
+<pre><code>docker network create
+</code></pre><ul>
+<li>Mostrar informacion de una red:</li>
+</ul>
+<pre><code>docker network inspect &quot;ID red&quot;
+</code></pre><ul>
+<li>Mostrar todas las redes docker</li>
+</ul>
+<pre><code>docker network ls
+</code></pre><ul>
+<li>Eliminar red:</li>
+</ul>
+<pre><code>docker network rm
+</code></pre><p>Por defecto al instalar docker se crean automaticamente tres redes, bridge, none y host:</p>
+<pre><code>sergioib@debian-sergio:~$ docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+1857a84cc7c7        bridge              bridge              local
+daeb4ba11558        host                host                local
+98f5e7fa91c2        none                null                local
+</code></pre><ul>
+<li>
+<p>Red bridge: Es la red a la que se conectan los contenedores por defecto (con direccionamiento 172.17.0.0/16). Esta red corresponde a la interfaz docker0 en nuestra maquina fisica, esta interfaz hace de puerta de enlace de los contenedores.</p>
+<ul>
+<li>
+<p>Con esta red podremos aislar los distintos contenedores en distintas subredes docker, de tal manera que desde cada una de las subredes solo podremos acceder a los equipos de esa misma subred.</p>
+</li>
+<li>
+<p>Aislar los contenedores del acceso exterior.</p>
+</li>
+<li>
+<p>Publicar servicios que tengamos en los contenedores mediante redirecciones que docker implementará con las reglas de iptables.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Si conectamos un contenedor a la red host, el contenedor estaría en la misma red que el host (por lo tanto toma direccionamiento del servidor DHCP de nuestra red). Además los puertos son accesibles directamente desde el host.</p>
+</li>
+<li>
+<p>La red none no configurará ninguna IP para el contenedor y no tiene acceso a la red externa ni a otros contenedores. Tiene la dirección loopback y se puede usar para ejecutar trabajos por lotes.</p>
+</li>
+</ul>
+<h3 id="almacenamiento-en-docker"><strong>Almacenamiento en Docker</strong></h3>
+<p>La información de los contenedores que ejecutamos es efimera, lo que quiere decir que una vez cerramos sesión, toda la informacion se pierde por lo que necesitaremos crear volumenes si queremos que dicha informacion permanezca. Estos volumenes son simplemente directorios que se crean en nuestro sistema de ficheros para que docker pueda almacenar la información.</p>
+<p>Para mantener la informacion de los contenedores tendremos varias opciones:</p>
+<ul>
+<li>Volumenes docker</li>
+<li>Bind mounts</li>
+</ul>
+<h4 id="volumenes-docker"><strong>Volumenes docker</strong></h4>
+<p>Para gestionar los volumenes docker podemos ejecutar los siguientes comandos:</p>
+<ul>
+<li>Creacion de volumenes:</li>
+</ul>
+<pre><code>docker volume create &quot;nombre del volumen&quot;
+</code></pre><ul>
+<li>Eliminacion de volumenes:</li>
+</ul>
+<pre><code>docker volume rm &quot;nombre del volumen&quot;
+</code></pre><ul>
+<li>Mostrar volumenes que tenemos creados:</li>
+</ul>
+<pre><code>docker volume ls
+</code></pre><ul>
+<li>Eliminacion de volumenes que no se estan usando:</li>
+</ul>
+<pre><code>docker volume prune
+</code></pre><ul>
+<li>Mostrar detalles sobre los volumenes:</li>
+</ul>
+<pre><code>docker volume inspect &quot;nombre del volumen&quot;
+</code></pre><p>Como ejemplo se va a crear un contenedor con una imagen base de debian haciendo uso de la opción -v para asi indicar la ubicación de nuestro volumen creado.</p>
+<pre><code>#Creamos primero un volumen que usaremos de prueba.
+
+sergioib@debian-sergio:~$ docker volume create prueba
+prueba
+
+#Ejecutamos el contenedor indicando tanto el nombre del contenedor, donde se ubicara el volumen y la imagen a usar.
+
+sergioib@debian-sergio:~$ docker run -d --name debian-prueba -v prueba:/usr/share/prueba debian
+905c1a3bac1bdce990d459aa9668e90d55135fc29f080a2056286c66b4a2c037
+
+#Comprobamos que se ha creado.
+
+sergioib@debian-sergio:~$ docker ps -a
+CONTAINER ID        IMAGE                         COMMAND                  CREATED              STATUS                          PORTS                     NAMES                          prueba-mdb
+905c1a3bac1b        debian                        &quot;bash&quot;                   3 minutes ago        UP 3 minutes ago                                  debian-prueba
+</code></pre><h4 id="bind-mounts"><strong>Bind mounts</strong></h4>
+<p>Con el método bind mount hacemos la información persistente y estará gestionada por nosotros mismos, a diferencia de los volúmenes Docker que requieren permisos. Este sistema es muy parecido ya que se trata de montar una parte del sistema de ficheros en el contenedor.</p>
+<p>Para poner en practica este método, empezaremos creando un directorio donde se alojara nuestra información. Este volumen se usara más adelante como ejemplo a la hora de usar docker compose, en este caso se ha creado el directorio en la siguiente ruta &ldquo;docker-bookmedik/Tarea4/&rdquo;.</p>
+<h3 id="docker-compose"><strong>Docker Compose</strong></h3>
+<p>Docker-Compose es una herramienta soluciona el problema de tener que repetir cada comando al levantar nuestro contenedores, ya que parte de un fichero YML en el que estan indicados todos los elementos que necesita Docker para montar nuestros escenarios de multicontenedor. Es importante el orden en el que se escriben los parámetros.</p>
+<p>Para hacer uso de docker compose, lo primero sera instalarlo:</p>
+<pre><code># Añadimos la clave GPG
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+# Buscamos el paquete 
+sudo apt-cache policy docker-compose
+
+# Lo instalamos
+sudo apt-get install docker-compose
+</code></pre><p>Ejemplo de uso:</p>
+<p>Vamos ha hacer una prueba de instalación, instalando como ejemplo un contenedor docker con drupal que use una base de datos mysql.</p>
+<p>Para ello crearemos una carpeta deply donde guardaremos nuestro docker compose, a diferencia de con dockerfile que lo guardabamos todo lo relacionado con la instalacion del contenedor en un directorio buil (no es necesaria esta distincion entre directorio build y directorio deploy, es solo para que se entienda mejor).</p>
+<p>Nuestro fichero docker compose sera el siguiente:</p>
+<pre><code>version: &quot;3.1&quot;
+
+services:
+  db:
+    container_name: servidor_mysql_drupal
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: drupal_admin
+    volumes:
+      - /home/sergio/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/vol-maria:/var/lib/mysql
+
+  drupal:
+    container_name: drupal
+    image: sergioib94/drupal:v1
+    restart: always
+    ports:
+      - 8083:80
+    volumes:
+      - /home/sergio/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/vol-app:/var/log/apache2
+</code></pre><p>En este ejemplo estamos creando dos contenedores, uno al que llamamos db que alojara la base de datos de mariadb y otro contenedor en el que se desplegará drupal.</p>
+<p>En el contenedor de mariadb, indicamos tanto la imagen que se usará, asi como las variables de entorno necesarias para que dicha base de datos funcione correctamente (nombre de la base de datos, usuario, contraseña, contraseña de administrador) y querer que permanezcan persistentes los datos de nuestra base de datos, creamos un volumen persistente haciendo uso de bind mount.</p>
+<p>Por otro lado al contenedor de drupal solo sera necesario indicar la imagen que en este caso es una imagen drupal configurada por mi ya que la configuración por defecto daba error a la hora de instarse, indicamos los puertos a usar (en mi caso el puerto 8083 ya que los puertos 82, 81 y 80 los tengo ocupados con otros contenedores).</p>
+<p>Desplegamos el docker compose ejecutando el siguiente comando en el directorio donde este el fichero:</p>
+<pre><code>sergioib@debian-sergio:~/Escritorio/Informatica/Github/docker-bookmedik/Tarea4/deploy$ docker-compose up -d
+Creating servidor_mysql_drupal ... done
+Creating drupal                ... done
+
+sergioib@debian-sergio:~$ docker ps
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS              PORTS                     NAMES
+205d30bcee2f        mariadb                       &quot;docker-entrypoint.s…&quot;   10 minutes ago      Up About a minute   3306/tcp                  servidor_mysql_drupal
+b18afffe8d15        sergioib94/drupal:v1          &quot;/usr/sbin/apache2ct…&quot;   7 months ago        Up About a minute   0.0.0.0:8083-&gt;80/tcp      drupal
+                    0.0.0.0:8083-&gt;80/tc
+</code></pre><p>Una vez desplegado, comenzaremos con la instalación y comprobaremos que funciona correctamente, para ello en nuestro navegador accedemos al puerto indicado anteriormente, es decir a localhost:8083.</p>
+<p>Comenzamos con la instalación y comprobamos que podemos usar drupal:</p>
+<p><img src="/intro-docker/idioma.png" alt="Elección de idioma"></p>
+<p><img src="/intro-docker/instalacion.png" alt="Comenzamos la instalación"></p>
+<p><img src="/intro-docker/drupal.png" alt="Drupal"></p>
+<h3 id="instalación-de-docker-en-windows"><strong>Instalación de Docker en Windows</strong></h3>
+<p>Aunque el proyecto de docker inicialmente era para uso de sistemas Linux, actualmente tambien es posible usarlo en sistemas operativos de windows siempre que nuestro windows cumpla con algunos requisitos:</p>
+<ul>
+<li>Windows 10 versión Professional o Enterprise.</li>
+<li>Virtualización activada en nuestro equipo.</li>
+<li>Windows actualizado.</li>
+</ul>
+<p>La instalación de docker al igual que la mayoria de instalaciones en windows es bastante simple, lo descargamos <a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">aqui</a>. En mi caso la version de docker que tengo es la 4.1.0.</p>
+<p>Una vez descargado, ejecutamos el fichero .exe y comenzara el proceso de instalación.</p>
+<p><img src="/intro-docker/docker1.png" alt="instalación docker"></p>
+<p>Cuando la instalación finalice, debera reiniciarse el equipo para que docker pueda poder usarse (en algunos casos se iniciará y abrirá sin necesidad de reinicio).</p>
+<p>A la hora de empezar a usar docker por primera vez, es posible que nos salga un error parecido al siguiente:</p>
+<p><img src="/intro-docker/docker-error.png" alt="error wls2"></p>
+<p>Este error se debe a que docker detecta que nuestra versión de WLS (Windows Subsystem for Linux) es antigua por lo que deberemos instalar la version actual que seria la versión 2 que es la que ahoramismo esta sustituyendo tanto el uso de Hyper-v y VirtualBox en el uso de docker.</p>
+<p>Para reparar este error podemos hacer dos cosas, o bien actualizar a WSL2 o utilizar Hyper-V en lugar de WLS2 (Esta última opción en mi caso no ha funcionado con mi version de docker la 4.1.0):</p>
+<ul>
+<li>Actualizando WLS2:</li>
+</ul>
+<p>Empezamos descargandonos la actualización <a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">aqui</a> (link valido para equipos x64).</p>
+<p>Una vez descargado WLS2, ejecutamos el instalador y acabar la instalacion reiniciamos docker.</p>
+<p><img src="/intro-docker/docker3.png" alt="instalación docker"></p>
+<p>Probamos a crear un par de contenedores a traves de la cmd:</p>
+<p><img src="/intro-docker/docker4.png" alt="creación de contenedores"></p>
+<p>Podemos ver que en windows podemos trabajar tanto por linea de comandos como por entorno gráfico.</p>
+<p><img src="/intro-docker/docker5.png" alt="docker desktop"></p>
+<ul>
+<li>Usando Hyper-V:</li>
+</ul>
+<p>Vamos a la configuración de windows:</p>
+<pre><code>Inicio &gt; Configuración &gt; Aplicaciones &gt; Características Opcionales
+</code></pre><p>Marcamos &ldquo;Hyper-V&rdquo; y damos click en &ldquo;Aceptar&rdquo; para reiniciar Windows.</p>
+<p><img src="/intro-docker/docker2.png" alt="instalación Hyper-V"></p>
+<p>Después de reiniciar vamos a la configuración de docker, desmarcamos la opción de &ldquo;Use the WSL 2 Based engine&rdquo; y damos click en &ldquo;Save &amp; Restart&rdquo;.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

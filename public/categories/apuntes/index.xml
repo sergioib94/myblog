@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apuntes on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/apuntes/</link>
+    <description>Recent content in Apuntes on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Sep 2021 13:14:06 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/apuntes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducción a Docker</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-docker/</link>
+      <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-docker/</guid>
+      <description>¿Que es Docker? Docker es un proyecto de software libre que permite automatizar el despliegue de aplicaciones dentro de contenedores.
+Docker nos permite de forma sencilla crear contenedores ligeros y faciles de mover donde ejecutar nuestras aplicaciones software sobre cualquier máquina con Docker instalado, independientemente del sistema operativo que la máquina tenga, facilitando así también los despliegues.
+¿Que son los contenedores?
+Los contenedores son una forma de virtulización del sistema opertaivo, son como maquinas virtuales aisladas en los que podemos ejecutar cualquier cosa como por ejemplo microservicios, aplicaciones, etc&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Introducción a PLSQL (Oracle)</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</link>
+      <pubDate>Mon, 13 Sep 2021 12:36:20 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</guid>
+      <description>Introducción   Características
+  Es una extensión de SQL con características de lenguaje de programación.
+  Se ejecuta en el lado del servidor y los procedimientos y funciones se almacenan en la BD.
+  Las sentencias SQL de consulta y manipulación de datos pueden ser incluidas en unidades procedurales de código, pero no pueden usarse instrucciones DDL ni DCL.
+  No tiene instrucciones de entrada por teclado o salida por pantalla.</description>
+    </item>
+    
+    <item>
+      <title>Introducción a las Bases De Datos (Oracle)</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</link>
+      <pubDate>Tue, 07 Sep 2021 11:33:23 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</guid>
+      <description>Tipos de sentencias en oracle   DDL → nos permitirá crear,modificar o eliminar los objetos de la base de datos. Las instrucciones serian Create, Alter (modificar), Drop (eliminar objetos).
+  DML → permite manipular los datos. Esto se hace con las siguientes instrucciones: Insert, Update, Delete (elimina datos) y Select.
+  DCL → tiene las siguientes instrucciones: Commit (guardar), Rollback (deshacer hasta el ultimo commit), grant (para dar permisos a un usuario) y revoke (quitar permisos a un usuario).</description>
+    </item>
+    
+    <item>
+      <title>Introducción a C&#43;&#43;</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</link>
+      <pubDate>Wed, 09 Jun 2021 16:43:19 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</guid>
+      <description>Introducción C++ es un lenguaje de programación compilado creado en 1979 derivado del lenguaje C quedándose con lo mejor de C y añadiendo funcionalidades nuevas.
+Una de las mejoras que añade C++ es la posibilidad de usar la programación orientada a objetos la cual nos permite ampliar los tipos de datos que podemos utilizar permitiendo definir clases y objetos.
+Para escribir un programa en C++ necesitaremos de un editor de texto y un compilador, pero lo normal es utilizar herramientas de entornos integrados de desarrollo o IDEs que básicamente son herramientas como por ejemplo Visual Studio Code que permiten tanto editar el código fuente como compilar el programa una vez acabado.</description>
+    </item>
+    
+    <item>
+      <title>Active Directory</title>
+      <link>https://sergioib.netlify.app/posts/active-directory/</link>
+      <pubDate>Sun, 23 May 2021 15:28:17 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/active-directory/</guid>
+      <description>¿Que es? Active Directory es un servicio de directorio que almacena objetos de datos en su entorno de red local. El servicio registra datos en los usuarios, dispositivos, aplicaciones, grupos, y dispositivos en una estructura jerárquica.
+La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente.</description>
+    </item>
+    
+    <item>
+      <title>Conceptos Basicos de Mongodb</title>
+      <link>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</link>
+      <pubDate>Sat, 03 Apr 2021 13:25:45 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</guid>
+      <description>Introducción En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD.
+Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university).</description>
+    </item>
+    
+  </channel>
+</rss>

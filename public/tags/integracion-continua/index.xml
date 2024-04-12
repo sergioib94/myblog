@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>integracion continua on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/integracion-continua/</link>
+    <description>Recent content in integracion continua on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 18:12:40 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/integracion-continua/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduccion a la Integracion Continua</title>
+      <link>https://sergioib.netlify.app/posts/integracion-continua/</link>
+      <pubDate>Fri, 12 Mar 2021 18:12:40 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integracion-continua/</guid>
+      <description>Integración continua de aplicación Django (test + deploy) Vamos a trabajar con el repositorio de la aplicación django_tutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.
+Para ejecutar las pruebas unitarias, ejecutamos la instrucción python3 manage.py test.
+Clonamos nuestro repositorio github en nuestro entorno virtual:
+(IC) sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv/IC$ git clone git@github.com:sergioib94/django_tutorial.git Clonando en &#39;django_tutorial&#39;... remote: Enumerating objects: 51, done. remote: Counting objects: 100% (51/51), done.</description>
+    </item>
+    
+  </channel>
+</rss>

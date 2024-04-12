@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>HTTPS en OVH // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTTPS en OVH"/>
+<meta name="twitter:description" content="Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.
+   Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.    Explica detenidamente cómo se solicita un certificado en Let&rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:
+ ¿Qué función tiene el cliente ACME?  El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado."/>
+
+    <meta property="og:title" content="HTTPS en OVH" />
+<meta property="og:description" content="Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.
+   Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.    Explica detenidamente cómo se solicita un certificado en Let&rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:
+ ¿Qué función tiene el cliente ACME?  El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/https-ovh/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-12T13:05:15&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-12T13:05:15&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">HTTPS en OVH</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          8 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.</p>
+<ul>
+<li>
+<ol>
+<li>Vamos a utilizar el servicio <a href="https://letsencrypt.org">https://letsencrypt.org</a> para solicitar los certificados de nuestras páginas.</li>
+</ol>
+</li>
+</ul>
+<p>Explica detenidamente cómo se solicita un certificado en Let&rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:</p>
+<ul>
+<li>¿Qué función tiene el cliente ACME?</li>
+</ul>
+<p>El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado.</p>
+<ul>
+<li>¿Qué configuración se realiza en el servidor web?</li>
+</ul>
+<p>En el servidor web autogenera un certificado y una clave para asegurar nuestro sitio y añade los puertos de escucha al 443 que son los que utiliza ssl para la navegación segura por https.</p>
+<ul>
+<li>¿Qué pruebas realiza Let&rsquo;s Encrypt para asegurar que somos los administrados del sitio web?</li>
+</ul>
+<p>La primera vez que interactuamos con let’s encrypt para solicitar los certificados, se crean un par de claves rsa. Después se le demuestra a let’s encrypt que el servidor controla uno o varios dominios a través de a través de los retos. Hay dos tipos de retos principalmente, http-challenge y dns-challenge.</p>
+<p>Mediante el http-challnge, let’s encrypt manda un token al servidor para ponerlo en una ubicación especifica del servidor web, además de ente token, también se guarda la firma del token de forma que si let’s encrypt es capaz de acceder al puerto 80 y obtener el fichero con la configuración esperada, valida la firma y quedara confirmado que el sitio web es de nuestra prioridad.</p>
+<ul>
+<li>¿Se puede usar el DNS para verificar que somos administradores del sitio?</li>
+</ul>
+<p>Si, siempre y cuando contemos con dns en nuestro servidor y los plugins que se vayan a usar sean dns-challenge.</p>
+<p>Solicitud de los certificados:</p>
+<p>Para solicitar los certificados para nuestros sitios web <a href="http://www.iesgn07.es">www.iesgn07.es</a> y portal.iesgn07.es, necesitaremos la herramienta de let’s encypt certbot. Certbot se instala de la siguiente forma:</p>
+<pre><code>sudo apt install certbot
+</code></pre><p>Como nuestro servidor cuenta con dos sitios web, se solicitaran los certificados de dos formas distintas:
+Para el primer sitio web <a href="http://www.iesgn07.es">www.iesgn07.es</a>, se solicitara ejecutando el comando certbot &ndash;nginx:</p>
+<pre><code>debian@hades:~$ sudo certbot --nginx
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: portal.iesgn07.es
+2: www.iesgn07.es
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 2
+Cert not yet due for renewal
+
+You have an existing certificate that has exactly the same domains or certificate name you requested and isn't close to expiry.
+(ref: /etc/letsencrypt/renewal/www.iesgn07.es.conf)
+
+What would you like to do?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Attempt to reinstall this existing certificate
+2: Renew &amp; replace the cert (limit ~5 per 7 days)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
+Renewing an existing certificate
+Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/iesgn
+
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+new sites, or if you're confident your site works on HTTPS. You can undo this
+change by editing your web server's configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
+Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/iesgn
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Your existing certificate has been successfully renewed, and the new certificate
+has been installed.
+
+The new certificate covers the following domains: https://www.iesgn07.es
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=www.iesgn07.es
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/www.iesgn07.es/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/www.iesgn07.es/privkey.pem
+   Your cert will expire on 2021-03-01. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the &quot;certonly&quot; option. To non-interactively renew *all* of
+   your certificates, run &quot;certbot renew&quot;
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+</code></pre><p>De forma automática, certbot nos permite elegir a cual de nuestros sitios web se le hará el certificado automático y si se desea o no que se haga una redirección de http a https de forma automática.</p>
+<p>Funcionamiento:</p>
+<p><img src="/https-ovh/https_iesgn.png" alt="https iesgn"></p>
+<p><img src="/https-ovh/https_cloud.png" alt="https cloud"></p>
+<p>Para el portal.iesgn07.es sitio solicitaremos el certificado de una forma mas manual.</p>
+<pre><code>certbot certonly --standalone portal.iesgn07.es
+</code></pre><p>Haciendo uso de la opción standalone, lo que haremos sera instalar solo los certificados, pero no se configurara el sitio https, la configuración y redirección de http a https sera cosa nuestra.</p>
+<pre><code>debian@hades:~$ sudo certbot certonly --standalone -d portal.iesgn07.es
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator standalone, Installer None
+Cert not yet due for renewal
+
+You have an existing certificate that has exactly the same domains or certificate name you requested and isn't close to expiry.
+(ref: /etc/letsencrypt/renewal/portal.iesgn07.es.conf)
+
+What would you like to do?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Keep the existing certificate for now
+2: Renew &amp; replace the cert (limit ~5 per 7 days)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
+Renewing an existing certificate
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/portal.iesgn07.es/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/portal.iesgn07.es/privkey.pem
+   Your cert will expire on 2021-03-01. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   &quot;certbot renew&quot;
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+</code></pre><p>De estas dos formas ya tendremos nuestros dos certificados, solo faltara configurar el sitio portal para añadirle el certificado y una redirección de http a https.</p>
+<ul>
+<li>
+<ol start="3">
+<li>Utiliza dos ficheros de configuración de nginx: uno para la configuración del virtualhost HTTP y otro para la configuración del virtualhost HTTPS.*</li>
+</ol>
+</li>
+</ul>
+<p>El fichero de configuración de portal, se queda tal cual, no hará falta tocarlo, de ese fichero hacemos una copia a la que añadiremos la configuracion de https quedando el fichero de la siguiente forma:</p>
+<pre><code>http:
+
+server {
+
+        listen 80;
+        listen [::]:80;
+
+        root /srv/www/drupal;
+
+        index index.html index.htm index.nginx-debian.html index.php;
+
+        server_name portal.iesgn07.es;
+
+        return 301 https://portal.iesgn07.es$request_uri;
+
+        location / {
+         try_files $uri $uri/ /index.php?$args;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+        }
+</code></pre><pre><code>https:
+
+server {
+
+        listen [::]:443 ssl;
+        listen 443 ssl;
+
+        root /srv/www/drupal;
+
+        index index.html index.htm index.nginx-debian.html index.php;
+
+        server_name portal.iesgn07.es;
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+        }
+    ssl_certificate /etc/letsencrypt/live/portal.iesgn07.es/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/portal.iesgn07.es/privkey.pem;
+
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+</code></pre><ul>
+<li>
+<ol start="4">
+<li>Realiza una redirección o una reescritura para que cuando accedas a HTTP te redirija al sitio HTTPS.</li>
+</ol>
+</li>
+</ul>
+<pre><code>Server {
+	listen 80;
+	listen [;;]: 80;
+	server_name portal.iesgn07.es;
+	return 301 https://portal.iesgn07.es$request_uri;
+</code></pre><ul>
+<li>
+<ol start="5">
+<li>Comprueba que se ha creado una tarea cron que renueva el certificado cada 3 meses.</li>
+</ol>
+</li>
+</ul>
+<p>Ejecutamos crontab -b y una vez dentro del fichero crontab configuramos la tarea para que se renueve cada 3 meses de la siguinete forma:</p>
+<pre><code>* * * */3 * certbot renew --quiet --renew-hook systemctl restart nginx.service 
+</code></pre><p>Des esta forma cada 3 meses se hará una renovación de forma silenciosa (sin que el usuario se entere) y se hará un reinicio de nginx para que funcione con los certificados renovados.</p>
+<ul>
+<li>
+<ol start="6">
+<li>Comprueba que las páginas son accesible por HTTPS y visualiza los detalles del certificado que has creado.</li>
+</ol>
+</li>
+</ul>
+<p>Certificado <a href="http://www.iesgn07.es">www.iesgn07.es</a>:</p>
+<p><img src="/https-ovh/certificado_iesgn.png" alt="certificado iesgn"></p>
+<p>Certificado portal.iesgn07.es:</p>
+<p><img src="/https-ovh/certificado_cloud.png" alt="certificado cloud"></p>
+<p>Certificado portal.iesgn07.es:</p>
+<ul>
+<li>
+<ol start="7">
+<li>Modifica la configuración del cliente de Nextcloud para comprobar que sigue en funcionamiento con HTTPS.</li>
+</ol>
+</li>
+</ul>
+<p><img src="/https-ovh/https_nextcloud.png" alt="https nextcloud"></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

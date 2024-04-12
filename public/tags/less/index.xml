@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>less on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/less/</link>
+    <description>Recent content in less on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Mar 2021 16:10:39 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/less/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compilacion Programa C con Makefile</title>
+      <link>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</link>
+      <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</guid>
+      <description>Compilacion paquete less Empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.
+apt source less Una vez que se tenga el código en nuestra maquina, lo siguiente sera descomprimirlo ejecutando el comando tar.
+tar xvzf less_487.orig.tar.gz Dentro del directorio less ejecutamos ./configure para comprobar si el paquete esta bien configurado para el sistema.</description>
+    </item>
+    
+  </channel>
+</rss>

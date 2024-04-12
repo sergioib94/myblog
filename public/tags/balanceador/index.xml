@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>balanceador on My New Hugo Site</title>
+    <link>https://sergioib.netlify.app/tags/balanceador/</link>
+    <description>Recent content in balanceador on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Mar 2021 12:44:43 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/tags/balanceador/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Proxy y Balanceador De Carga</title>
+      <link>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</link>
+      <pubDate>Sat, 13 Mar 2021 12:44:43 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</guid>
+      <description>Balanceador de carga En la maquina de nuestro escenario llamada balanceador, instalamos haproxy:
+apt install haproxy Configuramos haproxy (/etc/haproxy/haproxy.cfg) de la siguiente forma:
+global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 127.0.0.1 local1 notice defaults mode http log global timeout connect 5000ms timeout client 50000ms timeout server 50000ms listen granja_cda bind 172.22.5.31:80 #aquí pon la dirección ip del balanceador mode http stats enable stats auth cda:cda balance roundrobin server uno 10.</description>
+    </item>
+    
+  </channel>
+</rss>

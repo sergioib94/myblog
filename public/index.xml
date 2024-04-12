@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/</link>
+    <description>Recent content on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Dec 2021 13:44:30 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducción SoftEther VPN</title>
+      <link>https://sergioib.netlify.app/posts/softether-vpn/</link>
+      <pubDate>Tue, 21 Dec 2021 13:44:30 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/softether-vpn/</guid>
+      <description>Introducción Softether VPN es uno de los softwares VPN multiprotocolo mas potentes y rápido del mundo actualmente. Funciona en sistemas Windows, Solaris, Mac, FreeBSD y algunas distribuciones de Linux. Ademas de ser de software libre, también es una alternativa muy buena a openvpn y a los servidores VPN de microsoft.
+Una de las funciones con las que cuenta este software es la de clonación de openvpn server, mediante la cual si se tiene un server openvpn, este se puede convertir rápidamente en un server Softether.</description>
+    </item>
+    
+    <item>
+      <title>Introducción a Docker</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-docker/</link>
+      <pubDate>Tue, 21 Sep 2021 13:14:06 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-docker/</guid>
+      <description>¿Que es Docker? Docker es un proyecto de software libre que permite automatizar el despliegue de aplicaciones dentro de contenedores.
+Docker nos permite de forma sencilla crear contenedores ligeros y faciles de mover donde ejecutar nuestras aplicaciones software sobre cualquier máquina con Docker instalado, independientemente del sistema operativo que la máquina tenga, facilitando así también los despliegues.
+¿Que son los contenedores?
+Los contenedores son una forma de virtulización del sistema opertaivo, son como maquinas virtuales aisladas en los que podemos ejecutar cualquier cosa como por ejemplo microservicios, aplicaciones, etc&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Introducción a PLSQL (Oracle)</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</link>
+      <pubDate>Mon, 13 Sep 2021 12:36:20 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</guid>
+      <description>Introducción   Características
+  Es una extensión de SQL con características de lenguaje de programación.
+  Se ejecuta en el lado del servidor y los procedimientos y funciones se almacenan en la BD.
+  Las sentencias SQL de consulta y manipulación de datos pueden ser incluidas en unidades procedurales de código, pero no pueden usarse instrucciones DDL ni DCL.
+  No tiene instrucciones de entrada por teclado o salida por pantalla.</description>
+    </item>
+    
+    <item>
+      <title>Introducción a las Bases De Datos (Oracle)</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</link>
+      <pubDate>Tue, 07 Sep 2021 11:33:23 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</guid>
+      <description>Tipos de sentencias en oracle   DDL → nos permitirá crear,modificar o eliminar los objetos de la base de datos. Las instrucciones serian Create, Alter (modificar), Drop (eliminar objetos).
+  DML → permite manipular los datos. Esto se hace con las siguientes instrucciones: Insert, Update, Delete (elimina datos) y Select.
+  DCL → tiene las siguientes instrucciones: Commit (guardar), Rollback (deshacer hasta el ultimo commit), grant (para dar permisos a un usuario) y revoke (quitar permisos a un usuario).</description>
+    </item>
+    
+    <item>
+      <title>Introducción a C&#43;&#43;</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</link>
+      <pubDate>Wed, 09 Jun 2021 16:43:19 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-c&#43;&#43;/</guid>
+      <description>Introducción C++ es un lenguaje de programación compilado creado en 1979 derivado del lenguaje C quedándose con lo mejor de C y añadiendo funcionalidades nuevas.
+Una de las mejoras que añade C++ es la posibilidad de usar la programación orientada a objetos la cual nos permite ampliar los tipos de datos que podemos utilizar permitiendo definir clases y objetos.
+Para escribir un programa en C++ necesitaremos de un editor de texto y un compilador, pero lo normal es utilizar herramientas de entornos integrados de desarrollo o IDEs que básicamente son herramientas como por ejemplo Visual Studio Code que permiten tanto editar el código fuente como compilar el programa una vez acabado.</description>
+    </item>
+    
+    <item>
+      <title>Active Directory</title>
+      <link>https://sergioib.netlify.app/posts/active-directory/</link>
+      <pubDate>Sun, 23 May 2021 15:28:17 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/active-directory/</guid>
+      <description>¿Que es? Active Directory es un servicio de directorio que almacena objetos de datos en su entorno de red local. El servicio registra datos en los usuarios, dispositivos, aplicaciones, grupos, y dispositivos en una estructura jerárquica.
+La estructura de los datos permite encontrar los detalles de los recursos conectados a la red desde una ubicación. En esencia, Active Directory actúa como un directorio telefónico para su red, por lo que puede buscar y administrar dispositivos fácilmente.</description>
+    </item>
+    
+    <item>
+      <title>Conceptos Basicos de Mongodb</title>
+      <link>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</link>
+      <pubDate>Sat, 03 Apr 2021 13:25:45 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</guid>
+      <description>Introducción En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD.
+Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university).</description>
+    </item>
+    
+    <item>
+      <title>Aplicaciones web PHP en Docker</title>
+      <link>https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/</link>
+      <pubDate>Sun, 14 Mar 2021 13:26:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/aplicaciones-web-php-en-docker/</guid>
+      <description>Introduccion En esta practica haciendo uso de docker, vamos a desplegar distintas aplicaciones en contenedores, en los primeros ejercicios se trabajara con bookmedik (aplicacion para organizar citas medicas) y en las dos ultimas se usara drupal y joomla.
+La forma de trabajar sera la siguiente, en nuestro equipo tendremos un directorio con todo lo necesario para los distintos ejercicios y dentro de este directorio habra otros dos (en los casos que sea necesario), tendremos un directorio buil donde tendremos tanto el directorio de la aplicacion con los ficheros necesarios para su ejecucion, un dockerfile que usaremos para crear los contenedores y un fichero script ue modificara y añadira los datos necesario en los contenedores.</description>
+    </item>
+    
+    <item>
+      <title>Bacula</title>
+      <link>https://sergioib.netlify.app/posts/bacula/</link>
+      <pubDate>Sun, 14 Mar 2021 12:08:28 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/bacula/</guid>
+      <description>Introduccion Bacula es un sistema de copias de seguridad que funciona como cliente y servidor. Este sistema de copias de seguridad va a ser instalado en una de las maquinas virtuales de nuestro escenario openstack que hemos creado en posts anteriores, mas concretamente como bacula necesita de una base de datos mariadb, se usara nuestra maquina Sancho (servidor de base de datos del escenario openstack) como servidor de copias de seguridad y las demas maquinas haran de clientes.</description>
+    </item>
+    
+    <item>
+      <title>Creacion blog Pelican</title>
+      <link>https://sergioib.netlify.app/posts/creacion-blog-pelican/</link>
+      <pubDate>Sat, 13 Mar 2021 22:18:18 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-blog-pelican/</guid>
+      <description>Instalacion de Pelican Para poder instalar este gestor de paginas web, ejecutamos apt install pelican y una vez instalado ejecutamos apt install markdown, que es el idioma en el que se escribirán los artículos del blog. Una vez instalados pelican y markdown en nuestro entorno de desarrollo (nuestra máquina) estará listo para usarse.
+apt install pelican apt install markdown Configuracion de un sitio web Para comenzar la configuracion de nuestro sitio web, lo primero sera ejecutar el comando pelican-quickstart donde empezaran a salir preguntas sobre la configuracion que deberan responderse:</description>
+    </item>
+    
+    <item>
+      <title>Instalacion Openstack con Kolla Ansible</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/</link>
+      <pubDate>Sat, 13 Mar 2021 13:08:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-openstack-kolla-ansible/</guid>
+      <description>Introduccion Para esta practica contaremos con un escenario de 3 nodos creados con vagrant:
+ Instalador (sistema ubuntu), sera donde se preparara openstack para su despliegue. Master (sistema ubuntu) Compute (sistema ubuntu)  El montaje de openstack requiere de mucho recurso por parte de la maquina anfitriona, el nodo master debe de tener al menos 6Gb de ram para que sea capaz de funcionar y de poder desplegarse sin problemas, con respecto a los otros 2 nodos se recomienda usar al menos 2Gb.</description>
+    </item>
+    
+    <item>
+      <title>Proxy y balanceador de carga</title>
+      <link>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</link>
+      <pubDate>Sat, 13 Mar 2021 12:44:43 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</guid>
+      <description>Balanceador de carga En la maquina de nuestro escenario llamada balanceador, instalamos haproxy:
+apt install haproxy Configuramos haproxy (/etc/haproxy/haproxy.cfg) de la siguiente forma:
+global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 127.0.0.1 local1 notice defaults mode http log global timeout connect 5000ms timeout client 50000ms timeout server 50000ms listen granja_cda bind 172.22.5.31:80 #aquí pon la dirección ip del balanceador mode http stats enable stats auth cda:cda balance roundrobin server uno 10.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Letschat</title>
+      <link>https://sergioib.netlify.app/posts/kubernetes-lets-chat/</link>
+      <pubDate>Sat, 13 Mar 2021 12:13:11 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/kubernetes-lets-chat/</guid>
+      <description>Introduccion En este post, lo que haremos sera primero crear un cluster de kubernetes, para lo cual nuestro equipo debe de contar con al menos 4 o 5 Gb de ram al menos ya se van a crear 3 maquinas virtuales, un nodo master o controlador y 2 nodos secundarios.
+En este escenario credo haciendo uso de vagrant, desplegaremos una aplicacion llamada letschat usando kubeadm.
+Preparacion del escenario Empezamos creando en nuestro equipo un directorio donde almacenaremos nuestro escenario vagrant.</description>
+    </item>
+    
+    <item>
+      <title>Vpn Site to Site</title>
+      <link>https://sergioib.netlify.app/posts/vpn-site-to-site/</link>
+      <pubDate>Fri, 12 Mar 2021 19:00:38 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/vpn-site-to-site/</guid>
+      <description>Introduccion Configuraremos una conexión VPN sitio a sitio entre dos equipos del cloud openstack:
+Cada equipo estará conectado a dos redes, una de ellas en común. Para la autenticación de los extremos se usarán obligatoriamente certificados digitales, que se generarán utilizando openssl y se almacenarán en el directorio /etc/openvpn, junto con con los parámetros Diffie-Helman y el certificado de la propia Autoridad de Certificación.
+Se utilizarán direcciones de la red 10.</description>
+    </item>
+    
+    <item>
+      <title>Rendimiento de servidor Web con Varnish</title>
+      <link>https://sergioib.netlify.app/posts/rendimiento-de-servidor-web-con-varnish/</link>
+      <pubDate>Fri, 12 Mar 2021 18:53:19 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/rendimiento-de-servidor-web-con-varnish/</guid>
+      <description>Tarea 1: Vamos a configurar una máquina con la configuración ganadora: nginx + fpm_php (socket unix.Para ello ejecuta la receta ansible que encontraras en este repositorio. Accede al wordpress y termina la configuración del sitio.  Una vez que tengamos el repositorio en nuestra maquina, debemos de modificar la ip que tenemos en nuestro fichero host y poner la ip del equipo al que nos vayamos a conectar, es este caso la de mi equipo es 172.</description>
+    </item>
+    
+    <item>
+      <title>ISCSI</title>
+      <link>https://sergioib.netlify.app/posts/iscsi/</link>
+      <pubDate>Fri, 12 Mar 2021 18:44:37 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/iscsi/</guid>
+      <description>Introducción ISCSI es un estándar que permite el uso del protocolo SCSI sobre redes TCP/IP. iSCSI es un protocolo de la capa de transporte definido en las especificaciones SCSI-3.
+Para esta practica se han creado 3 maquinas virtuales, 2 debian 10, una cliente y otra servidor con 3 discos de 1Gb y una maquina windows 7.
+Instalación y configuración En el servidor, empezamos instalando los paquetes tgt y lvm2.
+apt install tgt lvm2 Mientras en el cliente debian instalamos el paquete iscsi</description>
+    </item>
+    
+    <item>
+      <title>Montaje de pila ELK</title>
+      <link>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</link>
+      <pubDate>Fri, 12 Mar 2021 18:22:23 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/montaje-de-pila-elk/</guid>
+      <description>¿Que es una pila ELK? Es un conjunto de herramientas de gran potencial de código abierto que se combinan para crear una herramienta de administración de registros permitiendo la monitorización, consolidación y análisis de logs generados en múltiples servidores, estas herramientas son:ElasticSearch, Logstash y Kibana.
+Para poder montar la pila completa sera necesario que la maquina que aloje las tres maquinas tenga mas de 2Gb de ram. Tambien es posible instalar estas herramientas en equipos distintos, sin embarlo la maquina donde se instale elasticsearch necesitara un minimo de 2gb.</description>
+    </item>
+    
+    <item>
+      <title>Introduccion a la Integracion Continua</title>
+      <link>https://sergioib.netlify.app/posts/integracion-continua/</link>
+      <pubDate>Fri, 12 Mar 2021 18:12:40 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integracion-continua/</guid>
+      <description>Introducción La integración continua es una práctica de desarrollo de software mediante la cual los desarrolladores combinan los cambios en el código en un repositorio central de forma periódica, tras lo cual se ejecutan versiones y pruebas automáticas.
+Los objetivos clave de la integración continua consisten en encontrar y arreglar errores con mayor rapidez, mejorar la calidad del software y reducir el tiempo que se tarda en validar y publicar nuevas actualizaciones de software.</description>
+    </item>
+    
+    <item>
+      <title>Cortafuegos en escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 17:53:20 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cortafuegos-en-escenario-openstack/</guid>
+      <description>Introducción Vamos a construir un cortafuegos en la mquina dulcinea de nuestro escenario en openstack que nos permita controlar el tráfico de nuestra red. El cortafuegos que vamos a construir debe funcionar tras un reinicio.
+En este caso la maquina dulcinea cuenta con 3 interfaces de red:
+ eth0: interfaz al exterior eth1: interfaz de la red interna donde estan alojadas las maquinas freston(servidor ldap y de correos) y sancho (servidor base de datos y de copias de seguridad) eth2: interfaz a red dmz donde esta la maquina quijote (servidor web)  Política por defecto</description>
+    </item>
+    
+    <item>
+      <title>Sistemas de ficheros Btrfs</title>
+      <link>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</link>
+      <pubDate>Fri, 12 Mar 2021 17:50:31 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/sistemas-de-ficheros-btrfs/</guid>
+      <description>Introducción Btrfs es un sistema de archivos copy-on-write anunciado por Oracle Corporation para GNU/Linux.
+Su objetivo es sustituir al actual sistema de archivos ext4, eliminando el mayor número de sus limitaciones, en especial con el tamaño máximo de los ficheros; además de la adopción de nuevas tecnologías no soportadas por ext3. Se afirma también que se &amp;ldquo;centrará en la tolerancia a fallos, reparación y fácil administración&amp;rdquo;.
+En este post crearemos un escenario vagrant con una maquina que incluya varios discos y a traves de varias pruebas comprobaremos el funcionamiento y rendimiento de btrfs.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion de Mezzanine en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 16:01:48 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-de-aplicacion-web-python-openstack/</guid>
+      <description>Introducción En este post vamos a desplegar un CMS python basado en django, en este caso se ha elegido Mezzanine.
+Para ello contaremos conn dos entornos de trabajo, uno sera el entorno de desarrollo que sera mi propia maquina con un entorno virtual, y por otro lado el entorno de produccion que sera el nodo Quijote del entorno openstack creado y la practica de &amp;ldquo;Creacion de escenario Openstack&amp;rdquo;.
+Entorno de desarrollo Creamos el entorno virtual:</description>
+    </item>
+    
+    <item>
+      <title>HTTPS en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/https-en-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 15:52:50 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/https-en-openstack/</guid>
+      <description>Introducción El siguiente paso en nuestro escenario opensatack sera configurar de forma adecuada el protocolo HTTPS en nuestro servidor web para nuestra aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad &amp;ldquo;gestiona&amp;rdquo;.
+Instalamos openssl para crear nuestro certificado sudo apt install openssl Se crea la clave
+openssl genrsa 4096 &amp;gt; /etc/ssl/private/sergio.ibanez.key Se crea el fichero csr
+openssl req -new -key /etc/ssl/private/sergio.</description>
+    </item>
+    
+    <item>
+      <title>Instalación y configuración basica Vmware ESXI</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</link>
+      <pubDate>Fri, 12 Mar 2021 14:24:08 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-basica-vmware/</guid>
+      <description>Introducción ¿Que es Vmware?
+Vmware, es una de las herramientas más populares que se utilizan a la hora de virtualizar. La virtualización es el proceso a través del cual se emula un recurso, como por ejemplo puede ser un sistema operativo, a través de una herramienta de software. Este software en este caso, sería Vmware.
+Con Vmware tenemos la posibilidad de ejecutar un sistema operativo, de la misma forma que si estuviera instalado en un servidor físico, pero sin llegar a estarlo, ya que estos sistemas operativos se encuentran corriendo dentro de otros sistemas, que son conocidos como el host.</description>
+    </item>
+    
+    <item>
+      <title>Servidores Web, base de Datos y DNS en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</link>
+      <pubDate>Fri, 12 Mar 2021 14:18:01 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</guid>
+      <description>Introducción Haciendo uso de nuestro escenario openstack creado en practicas anteriores instalaremos y configuraremos los siguientes servidores en los distintos nodos del escenario:
+Servidor DNS
+Vamos a instalar un servidor dns en freston que nos permita gestionar la resolución directa e inversa de nuestros nombres. Tendremos un servidor dns con autoridad sobre un subdominio de nuestro dominio principal gonzalonazareno.org, que se llamará tu_nombre.gonzalonazareno.org. A partir de este momento no será necesario la resolución estática en los servidores.</description>
+    </item>
+    
+    <item>
+      <title>Usuarios, grupos y ACLs en Ldap</title>
+      <link>https://sergioib.netlify.app/posts/usuarios-grupos-y-acls-en-ldap/</link>
+      <pubDate>Fri, 12 Mar 2021 14:14:51 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/usuarios-grupos-y-acls-en-ldap/</guid>
+      <description>Crea 10 usuarios con los nombres que prefieras en LDAP, esos usuarios deben ser objetos de los tipos posixAccount e inetOrgPerson. Estos usuarios tendrán un atributo userPassword.  Para crear estos usuarios, creamos un fichero .ldif llamado por ejemplo usuarios con el siguiente contenido:
+dn: uid=sergio,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Sergio Ibañez uid: sergio uidNumber: 2000 gidNumber: 2000 homeDirectory: /home/sergio loginShell: /bin/bash userPassword: {SSHA}PkyDS12f+fo6sR3uHGsY25CvUjMrmrVy sn: ibañez dn: uid=manuel,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Manuel Lora uid: manuel uidNumber: 2001 gidNumber: 2001 homeDirectory: /home/lora loginShell: /bin/bash userPassword: {SSHA}ODN7zIXBS0rDW+Uf9Z1J1/GUcBXhtrS/ sn: lora dn: uid=juanan,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Antonio uid: juanan uidNumber: 2002 gidNumber: 2002 homeDirectory: /home/juanan loginShell: /bin/bash userPassword: {SSHA}V+mrXKnbB/ReYwrdQ7Gh85ZQZw1A2iqs sn: reifs dn: uid=fran,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Fran Madueño uid: fran uidNumber: 2003 gidNumber: 2003 homeDirectory: /home/fran loginShell: /bin/bash userPassword: {SSHA}RnYnua1fD3L1UCc4arAfVrfNWrokHsoF sn: madueño dn: uid=alejandro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alejando Gutierrez uid: alejandro uidNumber: 2004 gidNumber: 2004 homeDirectory: /home/alejandro loginShell: /bin/bash userPassword: {SSHA}H4js7CR0IjdgRIYJFtHA7zkq7+9gWNff sn: gutierrez dn: uid=calderon,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Jose Miguel uid: calderon uidNumber: 2005 gidNumber: 2005 homeDirectory: /home/calderon loginShell: /bin/bash userPassword: {SSHA}ioP7oyy5KXGXmTQE8sLajhSTPV0bUyVk sn: calderon dn: uid=adrian,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Adrian Jaramillo uid: adrian uidNumber: 2006 gidNumber: 2006 homeDirectory: /home/adrian loginShell: /bin/bash userPassword: {SSHA}jGxqVD3yK9yRm8qtWVuFW7du/I75p9Qv sn: jaramillo dn: uid=celia,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Celia Garcia uid: celia uidNumber: 2007 gidNumber: 2007 homeDirectory: /home/celia loginShell: /bin/bash userPassword: {SSHA}WQ8IgcfkrrAz5sNwfqsdJhBtNXHJ1OyQ sn: garcia dn: uid=alvaro,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Alvaro Vaca uid: alvaro uidNumber: 2008 gidNumber: 2008 homeDirectory: /home/alvaro loginShell: /bin/bash userPassword: {SSHA}W0XxEk1ojVDliy4jIN3IyZ4RVqFwiLxi sn: vaca dn: uid=juanlu,ou=People,dc=sergio,dc=gonzalonazareno,dc=org objectClass: top objectClass: posixAccount objectClass: inetOrgPerson cn: Juan Luis uid: juanlu uidNumber: 2009 gidNumber: 2009 homeDirectory: /home/juanlu loginShell: /bin/bash userPassword: {SSHA}u+yL9u8EiUlYVKHvsD+j+Ww7iOGaNOBW sn: millan En este fichero, la estructura con la que se van a crear los usuarios es la misma:</description>
+    </item>
+    
+    <item>
+      <title>Ldaps</title>
+      <link>https://sergioib.netlify.app/posts/ldaps/</link>
+      <pubDate>Fri, 12 Mar 2021 14:13:08 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/ldaps/</guid>
+      <description>Introducción Configuraremos el servidor LDAP de frestón instalado y configurado en la practica anterior para que utilice el protocolo ldaps:// a la vez que el ldap:// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en el cliente ldap de frestón para que todas las consultas se realicen por defecto utilizando ldaps://
+LDAPs Lo primero que tendremos que hacer para usar ldaps, sera tener tanto un certificado .</description>
+    </item>
+    
+    <item>
+      <title>Instalacion y configuracion básica OpenLDAP</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</link>
+      <pubDate>Fri, 12 Mar 2021 14:11:19 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-openldap/</guid>
+      <description>Introducción En la maquina Freston de Openstack creada y configurada en la practica &amp;ldquo;modificaciones del escenario openstack&amp;rdquo;, se hara una instalacion y configuracion basica de un srvidor Ldap utilizando como base el nombre DNS asignado.
+¿Que es LDAP?
+Se trata de un conjunto de protocolos de licencia abierta que son utilizados para acceder a la información que está almacenada de forma centralizada en una red. Este protocolo se utiliza a nivel de aplicación para acceder a los servicios de directorio remoto.</description>
+    </item>
+    
+    <item>
+      <title>Modificaciones del escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 14:06:50 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/modificaciones-del-escenario-openstack/</guid>
+      <description>Introducción En el siguiente post, haciendo uso del escenario openstack creado en una de las practicas anteriores haremos una serie de modificaciones en dicho escenario.
+Modificaciones:
+  Creación de la red DMZ: Nombre: DMZ de &amp;ldquo;nombre de usuario&amp;rdquo; 10.0.2.0/24
+  Creación de las instancias: freston: Debian Buster sobre volumen de 10GB con sabor m1.mini Conectada a la red interna Accesible indirectamente a través de dulcinea IP estática
+  Modificación de la ubicación de quijote Pasa de la red interna a la DMZ y su direccionamiento tiene que modificarse apropiadamente</description>
+    </item>
+    
+    <item>
+      <title>Despliegue CMS Java</title>
+      <link>https://sergioib.netlify.app/posts/despliegue-cms-java/</link>
+      <pubDate>Fri, 12 Mar 2021 13:49:27 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/despliegue-cms-java/</guid>
+      <description>Introduccion En este post, se va a desplegar una aplicacion cms java, en este caso Guacamole.
+Guacamole es una aplicacion que permite acceder a uno o más escritorios desde cualquier lugar de forma remota, sin tener que instalar un cliente, especialmente cuando no es posible instalar un cliente. Al configurar un servidor Guacamole, puede proporcionar acceso a cualquier otra maquina en la red desde prácticamente cualquier otra maquina en Internet, en cualquier parte del mundo.</description>
+    </item>
+    
+    <item>
+      <title>HTTPS en OVH</title>
+      <link>https://sergioib.netlify.app/posts/https-ovh/</link>
+      <pubDate>Fri, 12 Mar 2021 13:05:15 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/https-ovh/</guid>
+      <description>Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente.
+   Vamos a utilizar el servicio https://letsencrypt.org para solicitar los certificados de nuestras páginas.    Explica detenidamente cómo se solicita un certificado en Let&amp;rsquo;s Encrypt. En tu explicación deberás responder a estas preguntas:
+ ¿Qué función tiene el cliente ACME?  El cliente ACME tiene dos funciones, por un lado valida el dominio y por otro lado solicita el certificado.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion y configuracion servidor DNS</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</link>
+      <pubDate>Fri, 12 Mar 2021 12:56:19 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</guid>
+      <description>Introducción En post a traves de una serie de tareas, configuraremos e instalaremos dos servidores dns para comprobar y ver su funcionamiento, dnsmaq y bind9.
+En nuestra red local tenemos un servidor Web que sirve dos páginas web: www.iesgn.org, departamentos.iesgn.org.
+Instalaremos en nuestra red local un servidor DNS. El nombre del servidor será tunombre.iesgn.org.
+Servidor DNSmasq  Instalamos el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.</description>
+    </item>
+    
+    <item>
+      <title>Actualizacion de Centos7 a Centos8</title>
+      <link>https://sergioib.netlify.app/posts/actualizacion-centos8/</link>
+      <pubDate>Fri, 12 Mar 2021 12:52:53 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/actualizacion-centos8/</guid>
+      <description>Introduccion Esta practica se realizara en una maquina virtual llamada Quijote en un escenario opestack creado en practicas anteriores que cuenta con un sistema operativo Centos 7 que se actualizara a Centos 8.
+Actualizacion de Centos 7 a Centos 8 en la maquina quijote Antes de comenzar con la actualización comprobamos la versión de nuestra maquina centos:
+[centos@quijote ~]$ cat /etc/centos-release CentOS Linux release 7.9.2009 (Core) En este caso comenzaremos con la version 7.</description>
+    </item>
+    
+    <item>
+      <title>Despliegue de aplicaciones python</title>
+      <link>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</link>
+      <pubDate>Fri, 12 Mar 2021 12:22:28 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/despliegue-de-aplicaciones-python/</guid>
+      <description>Tarea 1: Entorno de desarrollo  Vamos a desarrollar la aplicación del tutorial de django 3.1. Vamos a configurar tu equipo como entorno de desarrollo para trabajar con la aplicación, para ello:
+ Realiza un fork del repositorio de GitHub: https://github.com/josedom24/django_tutorial. Crea un entorno virtual de python3 e instala las dependencias necesarias para que funcione el proyecto (fichero requirements.txt).  Creamos el entorno virtual:
+sergioib@debian-sergio:~/Escritorio/Informatica/Virtualenv$ python3 -m venv practica_despliegue Clonamos el repositorio de django-tutorial en el entorno virtual:</description>
+    </item>
+    
+    <item>
+      <title>Creacion de escenario Openstack</title>
+      <link>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</link>
+      <pubDate>Fri, 12 Mar 2021 11:43:35 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-escenario-openstack/</guid>
+      <description>Introduccion En este post se creara un escenario en openstack con varias maquinas virtuales donde a lo largo del curso se realizaran la mayoria de las practicas.
+Creacion del escenario   Tarea 1: Creación de la red interna: ◦ Nombre red interna de &amp;lt;sergio.ibañez&amp;gt; ◦ 10.0.1.0/24
+  Tarea 2: Creación de las instancias: ◦ Dulcinea: ▪ Debian Buster sobre volumen con sabor m1.mini ▪ Accesible directamente a través de la red externa y con una IP flotante ▪ Conectada a la red interna, de la que será la puerta de enlace ◦ Sancho: ▪ Ubuntu 20.</description>
+    </item>
+    
+    <item>
+      <title>Aplicaciones PHP en OVH</title>
+      <link>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</link>
+      <pubDate>Fri, 12 Mar 2021 10:37:20 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/aplicaciones-php-ovh/</guid>
+      <description>Introduccion En este post aprenderemos a migrar dos aplicaciones, Drupal y Nextcloud, para ello contamos con un un escenario compuesto por dos maquinas virtuales en redes distintas. La primera maquina virtual estara echa en vagrant y sera la maquina usada en la practica anterior &amp;ldquo;Instalacion local CMS PHP &amp;ldquo;.
+La segunda maquina estara alojada en OVH y es la maquina hecha en la practica anterior &amp;ldquo;OVH LEMP&amp;rdquo;.
+Lo que haremos sera instalar la aplicacion Nextcloud en la maquina vagrant local y migrar tanto drupal como nextcloud a la maquina OVH.</description>
+    </item>
+    
+    <item>
+      <title>OVH Lemp</title>
+      <link>https://sergioib.netlify.app/posts/ovh-lemp/</link>
+      <pubDate>Fri, 12 Mar 2021 09:44:16 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/ovh-lemp/</guid>
+      <description>Introduccion En este post instalaremos un servidor Lemp (Linux, (E)nginx, Mariadb y PHP) en una maquina virtual alojada en OVH en la que mas adelante instalaremos varias aplicaciones.
+Instalacion de servidor web nginx sudo apt install nginx Instalacion de MariaDB asegurando el servicio, ya que lo vamos a tener corriendo en el entorno de producción sudo apt install -y mariadb-server mariadb-client Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:</description>
+    </item>
+    
+    <item>
+      <title>Servidor Web Nginx</title>
+      <link>https://sergioib.netlify.app/posts/servidor-web-nginx/</link>
+      <pubDate>Thu, 11 Mar 2021 16:43:41 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidor-web-nginx/</guid>
+      <description>Introducción NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar. Ofrece recursos de equilibrio de carga, proxy inverso y streaming, además de gestionar miles de conexiones simultáneas. El resultado de sus aportes es una mayor velocidad y escalabilidad.
+Además de otras tareas, los servidores web son los encargados de la entrega de aplicaciones web, respondiendo a peticiones HTTPS realizadas por usuarios, normalmente desde un navegador web.</description>
+    </item>
+    
+    <item>
+      <title>Configuracion cliente VPN con certificado x509</title>
+      <link>https://sergioib.netlify.app/posts/configuracio-clientevpn/</link>
+      <pubDate>Thu, 11 Mar 2021 16:19:25 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracio-clientevpn/</guid>
+      <description>Introducción Teniendo en cuenta que en el instituto y en casa cuentan con redes distintas, se configurara un cliente vpn para poder permitir la conexion entre las distintas redes.
+Configuración del cliente VPN  Empezamos generando una clave privada RSA 4096  Para generarnos nuestra clave privada rsa hacemos uso del comando openssl:
+root@debian-sergio:~# openssl genrsa 4096 &amp;gt; /etc/ssl/private/debian-sergio.ibanez.key Generating RSA private key, 4096 bit long modulus (2 primes) ........................++++ .</description>
+    </item>
+    
+    <item>
+      <title>Configuracion apache con .htaccess</title>
+      <link>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</link>
+      <pubDate>Thu, 11 Mar 2021 16:17:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</guid>
+      <description>Date de alta en un proveedor de hosting. ¿Si necesitamos configurar el servidor web que han configurado los administradores del proveedor?, ¿qué podemos hacer? Explica la directiva AllowOverride de apache2. Utilizando archivos .htaccess realiza las siguientes configuraciones:  Se ha dado de alta en 000.webhost
+ Tarea1: Habilita el listado de ficheros en la URL http://host.dominio/nas.  Configuramos el fichero .htaccess añadiéndole la siguiente linea:
+Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer una prueba de funcionamiento.</description>
+    </item>
+    
+    <item>
+      <title>Control de acceso, autentificacion y autorizacion</title>
+      <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</guid>
+      <description>Introduccion Haciendo uso de la practica anterior en la que instalamos el virtualhosting apache en vagrant o bien creando un escenario nuesvo en el que instalaremos un servidor dhcp, configuraremos el control de acceso, autentificacion y autorizacion para acceder al sitio web creado.
+Configuración  Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública.</description>
+    </item>
+    
+    <item>
+      <title>Compilacion programa C con Makefile</title>
+      <link>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</link>
+      <pubDate>Thu, 11 Mar 2021 16:10:39 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/compilacion-programac-makefile/</guid>
+      <description>Introduccion En este post a modo de aprendizaje para aprender mas sobre debian y su paqueteria se va a proceder a la compilacion de un paquete escrito en C, en este caso el paquete less para posteriormente ser capaces de compilar nuestro sistema operativo.
+Compilacion paquete less Para dicha compilacion empezaremos ejecutando el siguiente comando para tener el código fuente del paquete que vamos a compilar que en este caso a modo de prueba se compilara el paquete less.</description>
+    </item>
+    
+    <item>
+      <title>Integridad, firmas y autentificacion</title>
+      <link>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:00:38 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/integridad-firmas-autentificacion/</guid>
+      <description>Introduccion En esta apartado mediante un conjunto de tareas trabajaremos temas de seguridad como las firmas electronicas usando gpg, correos seguros usando thunderbird/evolution, integridad de archivos y autentificacion con ssh.
+Firmas electrónicas  Para trabajar con una firma electronica, empezaremos mandando un documento y la firma electrónica del mismo a un compañero. Una vez recibida, verificaremos la firma que se ha recibido.  Creamos el fichero firmado:
+sergioib@debian-sergio:~/Descargas$ gpg --output doc.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion local CMS PHP</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</link>
+      <pubDate>Thu, 11 Mar 2021 10:13:49 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-local-cms-php/</guid>
+      <description>Instalación de un servidor LAMP Empezamos creando una instancia de vagrant basado en un box debian o ubuntu y una vez creado ejecutamos vagrant init en el directorio donde crearemos el vagrantfile.
+Configuración del vagrantfile:
+Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define :nodo1 do |nodo1| nodo1.vm.box = &amp;quot;debian/buster64&amp;quot; nodo1.vm.hostname = &amp;quot;server&amp;quot; nodo1.vm.network :private_network, type: &amp;quot;dhcp&amp;quot; end Una vez configurado el vagrantfile levantamos el escenario usando vagrant up y luego nos conectamos al servidor con vagrant ssh.</description>
+    </item>
+    
+    <item>
+      <title>Mapeo URL Virtualhost</title>
+      <link>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</link>
+      <pubDate>Thu, 11 Mar 2021 09:54:31 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</guid>
+      <description>Crea un nuevo host virtual que es accedido con el nombre www.mapeo.com, cuyo DocumentRoot sea /srv/mapeo.  Creación del fichero .conf
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf mapeo.conf Modificaciones en mapeo.conf
+&amp;lt;VirtualHost *:80&amp;gt; ServerAdmin webmaster@localhost DocumentRoot /srv/mapeo ServerName www.mapeo.com ErrorLog ${APACHE_LOG_DIR}/error.log CustomLog ${APACHE_LOG_DIR}/access.log combined &amp;lt;/VirtualHost&amp;gt; Creamos el directorio en srv
+vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/ Configuración apache2
+&amp;lt;Directory /srv/&amp;gt; Options Indexes FollowSymLinks AllowOverride None Require all granted &amp;lt;/Directory&amp;gt; Creación del enlace simbólico</description>
+    </item>
+    
+    <item>
+      <title>Virtualhost apache</title>
+      <link>https://sergioib.netlify.app/posts/virtualhost-apache/</link>
+      <pubDate>Thu, 11 Mar 2021 09:47:06 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/virtualhost-apache/</guid>
+      <description>Introducción En este post mediando una serie de tareas se configurara un virtualhost apache en un una maquina virtual creada con vagrant.
+¿Que es un virtualhost?
+El término Hosting Virtual o vertialhost se refiere a hacer funcionar más de un sitio web (como en este caso www.iesgn.org y www.departamentosgn.org) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio).</description>
+    </item>
+    
+    <item>
+      <title>Servidor DHCP Linux</title>
+      <link>https://sergioib.netlify.app/posts/servidor-dhcp-linux/</link>
+      <pubDate>Thu, 11 Mar 2021 09:33:55 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidor-dhcp-linux/</guid>
+      <description>Funcionamiento de un servidor DHCP El cliente al iniciarse se encuentra en estado init, sin saber sus parámetros ip en ese momento envía un mensaje DHCPDiscover a la dirección de broadcast para saber si algún servidor dhcp le puede ofrecer una ip. El cliente espera un tiempo entre 1 y 10 seg al enviar este dhcpdiscover para evitar posibles colisiones con otras peticiones de otros clientes.
+Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en la que recibira las dhcpoffer de los servidores dhcp.</description>
+    </item>
+    
+    <item>
+      <title>Cifrado Asimetrico GPG Y Openssl</title>
+      <link>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</link>
+      <pubDate>Thu, 11 Mar 2021 09:15:13 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/cifrado-asimetrico-gpg-y-openssl/</guid>
+      <description>Tarea 1: Generación de claves  Genera un par de claves (pública y privada). ¿En que directorio se guarda las claves de un usuario?  gpg --gen-key Se nos piden algunos datos como nombre y apellidos, correo y contraseña y una vez introducida la información, se ve que la clave se nos crea en un directorio oculto .gnupg
+ gpg: clave CFCF1D130D5A52C5 marcada como de confianza absoluta gpg: creado el directorio &#39;/home/sergioib/.</description>
+    </item>
+    
+    <item>
+      <title>Creacion blog Hugo</title>
+      <link>https://sergioib.netlify.app/posts/creacion-blog-hugo/</link>
+      <pubDate>Thu, 11 Mar 2021 08:07:44 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/creacion-blog-hugo/</guid>
+      <description>Introducción En este post se hablara de como ha sido creado este blog usando hugo donde se van a ir publicando trabajos y apuntos relacionados con el grado superior de Administracion de Sistemas Informaticos en Red (ASIR) ademas de apuntes o documentacion de interes y ademas la configuracion continua que se hara a traves de Github y Netlify.
+Creación del blog Para poder crear nuestro blog con hugo, lo primero que necesitaremos sera instalar hugo en nuestro sistema, en mi caso debian 10.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion de Debian10</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-debian10/</link>
+      <pubDate>Wed, 10 Mar 2021 21:20:45 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-debian10/</guid>
+      <description>Instacacion Debian 10 Introducción En un portátil (HP pavilion 15) con 1TB de disco se crearan particiones LVM donde se instalara un sistema debían 10. En el caso de mi disco ya tiene dos particiones en disco dedicadas a Windows 10 y otros, por lo que como Windows no es compatible con LVM, esas dos particiones no se van a tocar y la partición para Linux ocupara 500GB.
+Ventajas de instalar el sistema en particiones lvm   Permite un almacenamiento mas flexible de archivos que haciendo particiones normales, ya que si a lo largo del tiempo se acaba el espacio de la partición puede redimensionarse e incluso añadir discos adicionales para aumentar el tamaño.</description>
+    </item>
+    
+  </channel>
+</rss>

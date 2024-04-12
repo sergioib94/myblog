@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Servicios on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/servicios/</link>
+    <description>Recent content in Servicios on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Mar 2021 12:44:43 +0100</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/servicios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Proxy y balanceador de carga</title>
+      <link>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</link>
+      <pubDate>Sat, 13 Mar 2021 12:44:43 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/proxy-y-balanceador-de-carga/</guid>
+      <description>Balanceador de carga En la maquina de nuestro escenario llamada balanceador, instalamos haproxy:
+apt install haproxy Configuramos haproxy (/etc/haproxy/haproxy.cfg) de la siguiente forma:
+global daemon maxconn 256 user haproxy group haproxy log 127.0.0.1 local0 log 127.0.0.1 local1 notice defaults mode http log global timeout connect 5000ms timeout client 50000ms timeout server 50000ms listen granja_cda bind 172.22.5.31:80 #aquí pon la dirección ip del balanceador mode http stats enable stats auth cda:cda balance roundrobin server uno 10.</description>
+    </item>
+    
+    <item>
+      <title>Rendimiento de servidor Web con Varnish</title>
+      <link>https://sergioib.netlify.app/posts/rendimiento-de-servidor-web-con-varnish/</link>
+      <pubDate>Fri, 12 Mar 2021 18:53:19 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/rendimiento-de-servidor-web-con-varnish/</guid>
+      <description>Tarea 1: Vamos a configurar una máquina con la configuración ganadora: nginx + fpm_php (socket unix.Para ello ejecuta la receta ansible que encontraras en este repositorio. Accede al wordpress y termina la configuración del sitio.  Una vez que tengamos el repositorio en nuestra maquina, debemos de modificar la ip que tenemos en nuestro fichero host y poner la ip del equipo al que nos vayamos a conectar, es este caso la de mi equipo es 172.</description>
+    </item>
+    
+    <item>
+      <title>Servidores Web, base de Datos y DNS en Openstack</title>
+      <link>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</link>
+      <pubDate>Fri, 12 Mar 2021 14:18:01 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidores-web-base-de-datos-y-dns/</guid>
+      <description>Introducción Haciendo uso de nuestro escenario openstack creado en practicas anteriores instalaremos y configuraremos los siguientes servidores en los distintos nodos del escenario:
+Servidor DNS
+Vamos a instalar un servidor dns en freston que nos permita gestionar la resolución directa e inversa de nuestros nombres. Tendremos un servidor dns con autoridad sobre un subdominio de nuestro dominio principal gonzalonazareno.org, que se llamará tu_nombre.gonzalonazareno.org. A partir de este momento no será necesario la resolución estática en los servidores.</description>
+    </item>
+    
+    <item>
+      <title>Instalacion y configuracion servidor DNS</title>
+      <link>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</link>
+      <pubDate>Fri, 12 Mar 2021 12:56:19 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/instalacion-y-configuracion-servidor-dns/</guid>
+      <description>Introducción En post a traves de una serie de tareas, configuraremos e instalaremos dos servidores dns para comprobar y ver su funcionamiento, dnsmaq y bind9.
+En nuestra red local tenemos un servidor Web que sirve dos páginas web: www.iesgn.org, departamentos.iesgn.org.
+Instalaremos en nuestra red local un servidor DNS. El nombre del servidor será tunombre.iesgn.org.
+Servidor DNSmasq  Instalamos el servidor dns dnsmasq en pandora.iesgn.org y configúralo para que los clientes puedan conocer los nombres necesarios.</description>
+    </item>
+    
+    <item>
+      <title>OVH Lemp</title>
+      <link>https://sergioib.netlify.app/posts/ovh-lemp/</link>
+      <pubDate>Fri, 12 Mar 2021 09:44:16 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/ovh-lemp/</guid>
+      <description>Introduccion En este post instalaremos un servidor Lemp (Linux, (E)nginx, Mariadb y PHP) en una maquina virtual alojada en OVH en la que mas adelante instalaremos varias aplicaciones.
+Instalacion de servidor web nginx sudo apt install nginx Instalacion de MariaDB asegurando el servicio, ya que lo vamos a tener corriendo en el entorno de producción sudo apt install -y mariadb-server mariadb-client Una vez que tengamos mariadb instalado, para asegurarlo ejecutamos sudo mysql_secure_installation:</description>
+    </item>
+    
+    <item>
+      <title>Servidor Web Nginx</title>
+      <link>https://sergioib.netlify.app/posts/servidor-web-nginx/</link>
+      <pubDate>Thu, 11 Mar 2021 16:43:41 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidor-web-nginx/</guid>
+      <description>Introducción NGINX es un servidor web open source de alta performance que ofrece el contenido estático de un sitio web de forma rápida y fácil de configurar. Ofrece recursos de equilibrio de carga, proxy inverso y streaming, además de gestionar miles de conexiones simultáneas. El resultado de sus aportes es una mayor velocidad y escalabilidad.
+Además de otras tareas, los servidores web son los encargados de la entrega de aplicaciones web, respondiendo a peticiones HTTPS realizadas por usuarios, normalmente desde un navegador web.</description>
+    </item>
+    
+    <item>
+      <title>Configuracion apache con .htaccess</title>
+      <link>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</link>
+      <pubDate>Thu, 11 Mar 2021 16:17:14 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/configuracion-apache-con-htaccess/</guid>
+      <description>Date de alta en un proveedor de hosting. ¿Si necesitamos configurar el servidor web que han configurado los administradores del proveedor?, ¿qué podemos hacer? Explica la directiva AllowOverride de apache2. Utilizando archivos .htaccess realiza las siguientes configuraciones:  Se ha dado de alta en 000.webhost
+ Tarea1: Habilita el listado de ficheros en la URL http://host.dominio/nas.  Configuramos el fichero .htaccess añadiéndole la siguiente linea:
+Options +Indexes Creamos una carpeta llamada nas y un par de ficheros para hacer una prueba de funcionamiento.</description>
+    </item>
+    
+    <item>
+      <title>Control de acceso, autentificacion y autorizacion</title>
+      <link>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</link>
+      <pubDate>Thu, 11 Mar 2021 16:13:52 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/control-de-acceso-autentificacion-autorizacion/</guid>
+      <description>Introduccion Haciendo uso de la practica anterior en la que instalamos el virtualhosting apache en vagrant o bien creando un escenario nuesvo en el que instalaremos un servidor dhcp, configuraremos el control de acceso, autentificacion y autorizacion para acceder al sitio web creado.
+Configuración  Tarea1: A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública.</description>
+    </item>
+    
+    <item>
+      <title>Mapeo URL Virtualhost</title>
+      <link>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</link>
+      <pubDate>Thu, 11 Mar 2021 09:54:31 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/</guid>
+      <description>Crea un nuevo host virtual que es accedido con el nombre www.mapeo.com, cuyo DocumentRoot sea /srv/mapeo.  Creación del fichero .conf
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf mapeo.conf Modificaciones en mapeo.conf
+&amp;lt;VirtualHost *:80&amp;gt; ServerAdmin webmaster@localhost DocumentRoot /srv/mapeo ServerName www.mapeo.com ErrorLog ${APACHE_LOG_DIR}/error.log CustomLog ${APACHE_LOG_DIR}/access.log combined &amp;lt;/VirtualHost&amp;gt; Creamos el directorio en srv
+vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/ Configuración apache2
+&amp;lt;Directory /srv/&amp;gt; Options Indexes FollowSymLinks AllowOverride None Require all granted &amp;lt;/Directory&amp;gt; Creación del enlace simbólico</description>
+    </item>
+    
+    <item>
+      <title>Virtualhost apache</title>
+      <link>https://sergioib.netlify.app/posts/virtualhost-apache/</link>
+      <pubDate>Thu, 11 Mar 2021 09:47:06 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/virtualhost-apache/</guid>
+      <description>Introducción En este post mediando una serie de tareas se configurara un virtualhost apache en un una maquina virtual creada con vagrant.
+¿Que es un virtualhost?
+El término Hosting Virtual o vertialhost se refiere a hacer funcionar más de un sitio web (como en este caso www.iesgn.org y www.departamentosgn.org) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio).</description>
+    </item>
+    
+    <item>
+      <title>Servidor DHCP Linux</title>
+      <link>https://sergioib.netlify.app/posts/servidor-dhcp-linux/</link>
+      <pubDate>Thu, 11 Mar 2021 09:33:55 +0100</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/servidor-dhcp-linux/</guid>
+      <description>Funcionamiento de un servidor DHCP El cliente al iniciarse se encuentra en estado init, sin saber sus parámetros ip en ese momento envía un mensaje DHCPDiscover a la dirección de broadcast para saber si algún servidor dhcp le puede ofrecer una ip. El cliente espera un tiempo entre 1 y 10 seg al enviar este dhcpdiscover para evitar posibles colisiones con otras peticiones de otros clientes.
+Cuando ya se ha mandado el dhcpdiscover el cliente entra en fase selecting, en la que recibira las dhcpoffer de los servidores dhcp.</description>
+    </item>
+    
+  </channel>
+</rss>

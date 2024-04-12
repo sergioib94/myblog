@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Mapeo URL Virtualhost // Blog de Sergioib</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sergio Ibañez" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sergioib.netlify.app/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mapeo URL Virtualhost"/>
+<meta name="twitter:description" content="Crea un nuevo host virtual que es accedido con el nombre www.mapeo.com, cuyo DocumentRoot sea /srv/mapeo.  Creación del fichero .conf
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf mapeo.conf Modificaciones en mapeo.conf
+&lt;VirtualHost *:80&gt; ServerAdmin webmaster@localhost DocumentRoot /srv/mapeo ServerName www.mapeo.com ErrorLog ${APACHE_LOG_DIR}/error.log CustomLog ${APACHE_LOG_DIR}/access.log combined &lt;/VirtualHost&gt; Creamos el directorio en srv
+vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/ Configuración apache2
+&lt;Directory /srv/&gt; Options Indexes FollowSymLinks AllowOverride None Require all granted &lt;/Directory&gt; Creación del enlace simbólico"/>
+
+    <meta property="og:title" content="Mapeo URL Virtualhost" />
+<meta property="og:description" content="Crea un nuevo host virtual que es accedido con el nombre www.mapeo.com, cuyo DocumentRoot sea /srv/mapeo.  Creación del fichero .conf
+vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf mapeo.conf Modificaciones en mapeo.conf
+&lt;VirtualHost *:80&gt; ServerAdmin webmaster@localhost DocumentRoot /srv/mapeo ServerName www.mapeo.com ErrorLog ${APACHE_LOG_DIR}/error.log CustomLog ${APACHE_LOG_DIR}/access.log combined &lt;/VirtualHost&gt; Creamos el directorio en srv
+vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/ Configuración apache2
+&lt;Directory /srv/&gt; Options Indexes FollowSymLinks AllowOverride None Require all granted &lt;/Directory&gt; Creación del enlace simbólico" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sergioib.netlify.app/posts/mapeo-url-servidor-dhcp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-11T09:54:31&#43;01:00" />
+<meta property="article:modified_time" content="2021-03-11T09:54:31&#43;01:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sergioib.netlify.app/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sergio Ibañez" /></a>
+      <h1>Blog de Sergioib</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/categories/">Categories</a>
+      </nav>
+      <p>Blog de informatica dedicado a practicas realizadas en ASIR, a apuntes de administración y variedades informáticas</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sergioib94" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Mapeo URL Virtualhost</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 11, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <ul>
+<li>Crea un nuevo host virtual que es accedido con el nombre <a href="http://www.mapeo.com">www.mapeo.com</a>, cuyo DocumentRoot sea /srv/mapeo.</li>
+</ul>
+<p>Creación del fichero .conf</p>
+<pre><code>vagrant@nodo1:/etc/apache2/sites-available$ sudo cp 000-default.conf mapeo.conf
+</code></pre><p>Modificaciones en mapeo.conf</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster@localhost
+        DocumentRoot /srv/mapeo
+        ServerName www.mapeo.com
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre><p>Creamos el directorio en srv</p>
+<pre><code>vagrant@nodo1:/srv$ sudo mkdir -p mapeo/principal
+vagrant@nodo1:/srv$ chown -R www-data:www-data mapeo/ 
+</code></pre><p>Configuración apache2</p>
+<pre><code>&lt;Directory /srv/&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+&lt;/Directory&gt;
+</code></pre><p>Creación del enlace simbólico</p>
+<pre><code>vagrant@nodo1:/srv/mapeo$ sudo a2ensite mapeo.conf
+</code></pre><ul>
+<li>Tarea 1: Cuando se entre a la dirección <a href="http://www.mapeo.com">www.mapeo.com</a> se redireccionará automáticamente a <a href="http://www.mapeo.com/principal,">www.mapeo.com/principal,</a> donde se mostrará el mensaje de bienvenida.</li>
+</ul>
+<p>Para hacer la redirección lo primero será crear el directorio principal en /srv/mapeo y dentro del directorio principal un pequeño index.html con el mensaje de bienvenida. Una vez hecho esto en el fichero mapeo.conf se tendrá que añadir la siguiente linea para que la redirección funcione.</p>
+<pre><code>RedirectMatch 301 ^/$ http://www.mapeo.com/principal/ 
+</code></pre><p>Con la linea anterior se indicara una redirección permanente (301) a la ruta /principal.</p>
+<p><img src="/mapeo-url/principal.png" alt="pagina principal"></p>
+<ul>
+<li>Tarea 2: En el directorio principal no se permite ver la lista de los ficheros, no se permite que se siga los enlaces simbólicos y no se permite negociación de contenido. Muestra al profesor el funcionamiento. ¿Qué configuración tienes que poner?</li>
+</ul>
+<p>Options: Determina para que sirven las siguientes opciones de funcionamiento:</p>
+<p>All → Todas las opciones salvo multiviews
+FollowSymLinks → Se pueden seguir los enlaces simbólicos.
+Indexes → En el caso de acceder a un directorio y no encontrar un index.html, se mostrara la lista de ficheros del directorio.
+MultiViews → Dependiendo del usuario que acceda al sitio web, se muestra un contenido u otro, como por ejemplo el idioma.
+SymLinksOwnerMatch → Se pueden seguir los enlaces simbólicos siempre y cuando el destino y el enlace simbólico sean del mismo propietario.
+ExecCGI → Permite usar script CGI.</p>
+<p>Determina como funciona si delante de las opciones pongo el signo + o -.</p>
+<p>En el caso de usar “+” activamos la opcion y en el caso de usar “-”, la desactivamos. En este caso como se pide que en el directorio principal no se vea lista de ficheros, ni enlaces simbólicos ni negociación de contenido, la configuración seria la siguiente:</p>
+<pre><code>&lt;Directory /srv/mapeo/principal&gt;
+	Options -Indexes -FollowSymLinks -Multiviews
+	AllowOverride All
+	Require all granted
+&lt;/Directory&gt;
+</code></pre><ul>
+<li>Tarea 3: Si accedes a la página <a href="http://www.mapeo.com/principal/documentos">www.mapeo.com/principal/documentos</a> se visualizarán los documentos que hay en /home/usuario/doc. Por lo tanto se permitirá el listado de fichero y el seguimiento de enlaces simbólicos siempre que el propietario del enlace y del fichero al que apunta sean el mismo usuario. Explica bien y pon una prueba de funcionamiento donde se vea bien el seguimiento de los enlaces simbólicos.</li>
+</ul>
+<p>Para empezar en /home/vagrant, se creara un directorio con unos ficheros a los que se les a llamado prueba.txt. Después se configurara en el fichero mapeo.conf un alias añadiendo la siguiente linea:</p>
+<pre><code>Alias /principal/documentos /home/vagrant/doc
+</code></pre><p>Luego en este mismo mapeo.conf o bien en apache2.conf se configurará el directory del directorio /doc de la siguiente forma:</p>
+<pre><code>Directory /home/vagrant/doc&gt;
+        Options Indexes SymLinksIfOwnerMatch
+        AllowOverride All
+        Require all granted
+&lt;/Directory&gt;
+</code></pre><p>Por ultimo para comprobar que funciona se crearan los enlaces simbólicos en /srv/mapeo/principal/documentos apuntando a los ficheros creados previamente en /home/vagrant/doc</p>
+<pre><code>vagrant@nodo1:/srv/mapeo/principal/documentos$ sudo ln -s /home/vagrant/doc/prueba1.txt
+vagrant@nodo1:/srv/mapeo/principal/documentos$ sudo chown -R www-data:www-data prueba1.txt 
+vagrant@nodo1:/srv/mapeo/principal/documentos$ sudo ln -s /home/vagrant/doc/prueba2.txt
+vagrant@nodo1:/srv/mapeo/principal/documentos$ sudo chown www-data:www-data prueba2.txt 
+</code></pre><p>Con los comandos anteriores creamos los enlaces simbólicos y los cambiamos de propietario, de esta forma tanto el fichero1 como el enlace al fichero1 serán de www-data, mientras que el fichero2 sera de www-data y el enlace de root, quedando los ficheros de la siguiente forma:</p>
+<pre><code>vagrant@nodo1:~$ ls -l /srv/mapeo/principal/documentos/
+total 0
+lrwxrwxrwx 1 www-data www-data 29 Oct 22 10:06 prueba1.txt -&gt; /home/vagrant/doc/prueba1.txt
+lrwxrwxrwx 1 root     root     29 Oct 22 10:08 prueba2.txt -&gt; /home/vagrant/doc/prueba2.txt
+vagrant@nodo1:~$ ls -l /home/vagrant/doc/
+total 8
+-rw-r--r-- 1 www-data www-data 28 Oct 22 16:13 prueba1.txt
+-rw-r--r-- 1 www-data www-data 24 Oct 22 16:13 prueba2.txt
+</code></pre><p>De esta forma al acceder a /documentos en un navegador se nos mostraran ambos ficheros, pero solo se podrá acceder al contenido del fichero1 ya que es el único de los dos cuyo propietario es el mismo tanto en fichero como en enlace.</p>
+<p>Pruebas de funcionamiento:</p>
+<p>fichero1:</p>
+<p><img src="/mapeo-url/fichero1.png" alt="primer fichero"></p>
+<p>fichero2</p>
+<p><img src="/mapeo-url/forbiden.png" alt="forbiden"></p>
+<p>En este caso el error 403 del fichero2 sale personalizado ya que es el ultimo ejercicio que hice, pero no se nos permite el acceso ya que los propietarios de fichero y enlace no son los mismos.</p>
+<ul>
+<li>Tarea 4: En todo el host virtual se debe redefinir los mensajes de error de objeto no encontrado y no permitido. Para el ello se crearan dos ficheros html dentro del directorio error. Entrega las modificaciones necesarias en la configuración y una comprobación del buen funcionamiento.</li>
+</ul>
+<p>Para los mensajes de error personalizados empezamos creando un directorio errores con dos ficheros html con los errores que vamos a personalizar, en este caso el 404 y el 403, este directorio errores estará ubicado en /srv/mapeo.</p>
+<p>Una vez creados el directorio y los ficheros.html, se configuraran dos cosas en el fichero mapeo.conf:</p>
+<p>Primero, crear un alias para que resulte mas sencillo poner la ruta hacia los ficheros.html en lugar de poner la ruta completa</p>
+<pre><code>Alias /error /srv/mapeo/errores
+</code></pre><p>Segundo usar las lineas ErrorDocument de forma que que cuando salte un error, se muestre el mensaje personalizado que se ha creado anteriormente de la siguiente forma:</p>
+<pre><code>ErrorDocument 404 /error/404.html
+ErrorDocument 403 /error/403.html
+</code></pre><p>Ejecutamos un systemctl reload apache2 como root y comprobamos que se muestren los mensajes.</p>
+<p>Error 404:</p>
+<p><img src="/mapeo-url/error_404.png" alt="error 404"></p>
+<p>Error 403:</p>
+<p><img src="/mapeo-url/error_403.png" alt="error 403"></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

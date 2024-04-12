@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Base de Datos on Blog de Sergioib</title>
+    <link>https://sergioib.netlify.app/categories/base-de-datos/</link>
+    <description>Recent content in Base de Datos on Blog de Sergioib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Sep 2021 12:36:20 +0200</lastBuildDate><atom:link href="https://sergioib.netlify.app/categories/base-de-datos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducción a PLSQL (Oracle)</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</link>
+      <pubDate>Mon, 13 Sep 2021 12:36:20 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-plsql-oracle/</guid>
+      <description>Introducción   Características
+  Es una extensión de SQL con características de lenguaje de programación.
+  Se ejecuta en el lado del servidor y los procedimientos y funciones se almacenan en la BD.
+  Las sentencias SQL de consulta y manipulación de datos pueden ser incluidas en unidades procedurales de código, pero no pueden usarse instrucciones DDL ni DCL.
+  No tiene instrucciones de entrada por teclado o salida por pantalla.</description>
+    </item>
+    
+    <item>
+      <title>Introducción a las Bases De Datos (Oracle)</title>
+      <link>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</link>
+      <pubDate>Tue, 07 Sep 2021 11:33:23 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/introduccion-a-las-bases-de-datos-oracle/</guid>
+      <description>Tipos de sentencias en oracle   DDL → nos permitirá crear,modificar o eliminar los objetos de la base de datos. Las instrucciones serian Create, Alter (modificar), Drop (eliminar objetos).
+  DML → permite manipular los datos. Esto se hace con las siguientes instrucciones: Insert, Update, Delete (elimina datos) y Select.
+  DCL → tiene las siguientes instrucciones: Commit (guardar), Rollback (deshacer hasta el ultimo commit), grant (para dar permisos a un usuario) y revoke (quitar permisos a un usuario).</description>
+    </item>
+    
+    <item>
+      <title>Conceptos Basicos de Mongodb</title>
+      <link>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</link>
+      <pubDate>Sat, 03 Apr 2021 13:25:45 +0200</pubDate>
+      
+      <guid>https://sergioib.netlify.app/posts/apuntes-basicos-mongodb/</guid>
+      <description>Introducción En este post se va a explicar tanto la instalacion y configuracion de mongodb ademas de varios de los concepos basicos como pueden ser el uso de proyecciones y operadores CRUD.
+Este post son una serie de explicaciones y apuntes realizados siguiendo varios cursos online. Se usaran varias herramientas como pueden ser mongo shell (cliente de linea de comandos), mongo compass (cliente grafico) y un servidor Atlas de mongodb (proporcionado en el curso de mongo university).</description>
+    </item>
+    
+  </channel>
+</rss>
